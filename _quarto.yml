@@ -35,7 +35,7 @@ website:
     contents:
       - section: "Formation introductive"
         contents:
-          - formation/index.qmd
+          - formation/chapitre0.qmd
           - formation/chapitre1.qmd
           - foramation/chapitre2.qmd 
           - formation/chapitre3.qmd
