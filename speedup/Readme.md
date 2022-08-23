@@ -1,0 +1,3 @@
+- Commandes et packages qui améliorent la durée d'exécution.
+- Benchmark avec les commandes usines
+- Si fonctions équivalentes, benchmarks avec des fonctions R
