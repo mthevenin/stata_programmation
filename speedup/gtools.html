@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Gtools</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../speedup/intro.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html">Programmation</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://mthevenin.github.io/stata_fr/">Retour Stata-Ined</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://mthevenin.github.io/stata_graphiques/">Graphiques</a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/mthevenin"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:marc.thevenin@ined.fr"><i class="bi bi-envelope" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html">A propos</a>
+  </li>  
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+              </div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Gtools</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">Formation introductive</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../formation/chapitre0.html" class="sidebar-item-text sidebar-link">Présentation</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  formation/chapitre1.qmd
+  </li>
+          <li class="sidebar-item">
+  foramation/chapitre2.qmd
+  </li>
+          <li class="sidebar-item">
+  formation/chapitre3.qmd
+  </li>
+          <li class="sidebar-item">
+  formation/chapitre4.qmd
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../formation/chapitre5.html" class="sidebar-item-text sidebar-link">Les variables</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  formation/chapitre6.qmd
+  </li>
+          <li class="sidebar-item">
+  formation/chapitre7.qmd
+  </li>
+          <li class="sidebar-item">
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">Faites un profile</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../profile/profile1.html" class="sidebar-item-text sidebar-link">Principe</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../profile/profile2.html" class="sidebar-item-text sidebar-link">Exemple profile.do</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Need for speed</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../speedup/intro.html" class="sidebar-item-text sidebar-link">Introduction</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../speedup/gtools.html" class="sidebar-item-text sidebar-link active">Gtools</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">Super Macro World</span>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Sections</h2>
+   
+  <ul>
+  <li><a href="#gtools" id="toc-gtools" class="nav-link active" data-scroll-target="#gtools"><strong>GTOOLS</strong></a></li>
+  <li><a href="#gquantiles" id="toc-gquantiles" class="nav-link" data-scroll-target="#gquantiles"><strong>gquantiles</strong></a></li>
+  <li><a href="#greshape" id="toc-greshape" class="nav-link" data-scroll-target="#greshape"><strong>greshape</strong></a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Gtools</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<p>Version 1 - en cours - [Aout/Septembre 2022]</p>
+<ul>
+<li>gquantiles</li>
+<li>greshape wide/long</li>
+</ul>
+<section id="gtools" class="level1">
+<h1><strong>GTOOLS</strong></h1>
+<p>Auteur: <strong><em>Mauricio Caceres Bravo</em></strong></p>
+<p><strong><em>Installation</em></strong>:</p>
+<ul>
+<li><a href="https://gtools.readthedocs.io/en/latest/index.html" class="uri">https://gtools.readthedocs.io/en/latest/index.html</a></li>
+<li><a href="https://github.com/mcaceresb/stata-gtools" class="uri">https://github.com/mcaceresb/stata-gtools</a></li>
+</ul>
+<p>Les Benchmarks réalisés par l’auteur ont été faits avec Stata MP. De mo,n côté fait tourné son programme (<a href="https://raw.githubusercontent.com/mcaceresb/stata-gtools/master/docs/benchmarks/quick.do">lien</a>) avec Stata 17 SE sous windows. Les résultats sont les suivants:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>     Versus <span class="sc">|</span> Native <span class="sc">|</span> gtools <span class="sc">|</span> % faster </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> <span class="sc">----------</span> <span class="er">|</span> <span class="sc">------</span> <span class="er">|</span> <span class="sc">------</span> <span class="er">|</span> <span class="sc">--------</span> </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>   collapse <span class="sc">|</span>   <span class="fl">1.53</span> <span class="sc">|</span>   <span class="fl">1.25</span> <span class="sc">|</span>   <span class="fl">18.51</span>% </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>   collapse <span class="sc">|</span>   <span class="fl">1.68</span> <span class="sc">|</span>   <span class="fl">1.17</span> <span class="sc">|</span>   <span class="fl">29.91</span>% </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    reshape <span class="sc">|</span>  <span class="fl">31.63</span> <span class="sc">|</span>   <span class="fl">6.90</span> <span class="sc">|</span>   <span class="fl">78.19</span>% </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    reshape <span class="sc">|</span>  <span class="fl">60.26</span> <span class="sc">|</span>  <span class="fl">10.95</span> <span class="sc">|</span>   <span class="fl">81.83</span>% </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>      xtile <span class="sc">|</span>  <span class="fl">17.74</span> <span class="sc">|</span>   <span class="fl">1.12</span> <span class="sc">|</span>   <span class="fl">93.67</span>% </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>     pctile <span class="sc">|</span>  <span class="fl">18.20</span> <span class="sc">|</span>   <span class="fl">0.77</span> <span class="sc">|</span>   <span class="fl">95.76</span>% </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>       egen <span class="sc">|</span>   <span class="fl">2.13</span> <span class="sc">|</span>   <span class="fl">0.64</span> <span class="sc">|</span>   <span class="fl">69.77</span>% </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>   contract <span class="sc">|</span>   <span class="fl">4.52</span> <span class="sc">|</span>   <span class="fl">1.74</span> <span class="sc">|</span>   <span class="fl">61.54</span>% </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>       isid <span class="sc">|</span>  <span class="fl">18.71</span> <span class="sc">|</span>   <span class="fl">0.68</span> <span class="sc">|</span>   <span class="fl">96.35</span>% </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a> duplicates <span class="sc">|</span>  <span class="fl">10.07</span> <span class="sc">|</span>   <span class="fl">0.86</span> <span class="sc">|</span>   <span class="fl">91.42</span>% </span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>   levelsof <span class="sc">|</span>   <span class="fl">2.75</span> <span class="sc">|</span>   <span class="fl">0.44</span> <span class="sc">|</span>   <span class="fl">83.94</span>% </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>   distinct <span class="sc">|</span>   <span class="fl">7.24</span> <span class="sc">|</span>   <span class="fl">0.44</span> <span class="sc">|</span>   <span class="fl">93.88</span>% </span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>     winsor <span class="sc">|</span>  <span class="fl">16.09</span> <span class="sc">|</span>   <span class="fl">0.65</span> <span class="sc">|</span>   <span class="fl">95.99</span>% </span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a> sum_detail <span class="sc">|</span>  <span class="fl">17.09</span> <span class="sc">|</span>   <span class="fl">1.22</span> <span class="sc">|</span>   <span class="fl">92.86</span>% </span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    tabstat <span class="sc">|</span>  <span class="fl">11.18</span> <span class="sc">|</span>   <span class="fl">0.67</span> <span class="sc">|</span>   <span class="fl">94.03</span>% </span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a> range_stat <span class="sc">|</span>  <span class="fl">67.37</span> <span class="sc">|</span>   <span class="fl">2.82</span> <span class="sc">|</span>   <span class="fl">95.81</span>% </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Pour mon propre benchmark, les données sont générées de la manière suivante:</p>
+<p><strong>Création de la base de données (N=10M)</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>clear </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>set obs <span class="dv">10000000</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>tempvar x</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>gen <span class="st">`</span><span class="at">x' = runiform()</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="at">gen g = </span><span class="st">`</span>x<span class="st">'&gt;.5</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="st">forv i=1/10 {</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="st">gen y`i'</span> <span class="ot">=</span> <span class="fu">rnormal</span>()    </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Pour récupérer les temps d’exécution, j’utilise un fragment du programme de <em>M.Caceres</em>. Les commandes sont exécutées avec le prefixe <code>bench 1:</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>capture program drop bench</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>program bench</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    gettoken timer call<span class="sc">:</span> <span class="dv">0</span>,    <span class="fu">p</span>(<span class="sc">:</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    gettoken colon call<span class="sc">:</span> call, <span class="fu">p</span>(<span class="sc">:</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    cap timer clear <span class="st">`</span><span class="at">timer'</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="at">    timer on </span><span class="st">`</span>timer<span class="st">'</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="st">    `call'</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    timer off <span class="st">`</span><span class="at">timer'</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="at">    qui timer list</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="at">    c_local r</span><span class="st">`</span>timer<span class="st">' `=r(t`timer'</span><span class="er">)</span><span class="st">'</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="st">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Les tests sont réalisés seulement les équivalents de <code>xtile</code>, <code>reshape</code>, <code>tabstat</code>et <code>levelsof</code></p>
+</section>
+<section id="gquantiles" class="level1">
+<h1><strong>gquantiles</strong></h1>
+<ul>
+<li><p>Commande usine <code>xtile</code> et <code>pctile</code> (<code>help xtile</code>). Le benchmark est seulement effectué pour <code>xtile</code> (affectation d’un quantile à une valeur) qui est plus gourmant que <code>pctile</code> (calcul et report des quantiles).</p></li>
+<li><p>En termes d’options, l’autre intérêt de <strong><code>gquantile</code></strong> est de stratifier l’opération avec l’option <code>by()</code>.</p></li>
+</ul>
+<p><strong><em>Syntaxe courte</em></strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span>xtile</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>gquantiles nouvelle_var <span class="ot">=</span> var1 , xtile  <span class="fu">nq</span>(<span class="co">#) [by(var2)]</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span>pctile</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>gquantiles <span class="at">nouvelle_var =</span> var1 , pctile <span class="fu">nq</span>(<span class="co">#) [by(var2)] </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong><em>Programme</em></strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> Fonction <span class="fu">bench</span> (voir plus haut)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>local n <span class="dv">10000</span> <span class="dv">100000</span> <span class="dv">1000000</span> <span class="dv">10000000</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>foreach N of local n {</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>clear </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>set obs <span class="st">`</span><span class="at">N'</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="at">tempvar x</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="at">qui gen </span><span class="st">`</span>x<span class="st">' = runiform()</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="st">qui gen g = `x'</span><span class="sc">&gt;</span>.<span class="dv">5</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>qui forv i<span class="ot">=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">10</span> {</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>gen y<span class="st">`</span><span class="at">i' = rnormal()    </span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="at">}</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="at">gen id=_n</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="at">di "N=</span><span class="st">`</span>N<span class="st">""</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>qui forv i<span class="ot">=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">10</span> {</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>tempvar yg<span class="st">`</span><span class="at">i'</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="at">bench 1:   xtile </span><span class="st">`</span>yg<span class="st">`</span><span class="at">i'' = y</span><span class="st">`</span>i<span class="st">' ,  nq(10) </span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="st">local rt1 = `rt1'</span> <span class="sc">+</span> <span class="st">`</span><span class="at">r1' </span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="at">  }</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="at">di "XTILE runtime =" </span><span class="st">`</span>rt1<span class="st">'</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="st">qui forv i=1/10 {</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="st">capt drop  `yg`i''  </span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="st">tempvar yg`i'</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>bench <span class="dv">1</span><span class="sc">:</span> gquantiles <span class="st">`</span><span class="at">yg</span><span class="st">`</span>i<span class="st">''</span> <span class="ot">=</span> y<span class="st">`</span><span class="at">i' , xtile  nq(10) </span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="at">local rt2 = </span><span class="st">`</span>rt2<span class="st">' + `r1'</span>     </span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>   }</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>di  <span class="st">"GQUANTILES runtime ="</span> <span class="st">`</span><span class="at">rt2'</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="at">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Résultats</strong></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Stata</th>
+<th>10k</th>
+<th>100k</th>
+<th>1M</th>
+<th>10M</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>xtile</td>
+<td>0.12</td>
+<td>1.65</td>
+<td>16.03</td>
+<td>196.56</td>
+</tr>
+<tr class="even">
+<td><strong>gquantiles</strong></td>
+<td>0.06</td>
+<td>0.22</td>
+<td>1.24</td>
+<td>14.75</td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<thead>
+<tr class="header">
+<th>R</th>
+<th>10k</th>
+<th>100k</th>
+<th>1M</th>
+<th>10M</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>quantcut</td>
+<td>0.04</td>
+<td>0.24</td>
+<td>2.38</td>
+<td>29.11</td>
+</tr>
+<tr class="even">
+<td>ntile</td>
+<td>0.06</td>
+<td>0.16</td>
+<td>1.54</td>
+<td>15.51</td>
+</tr>
+</tbody>
+</table>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Fonctions R
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong><code>quantcut</code></strong>
+<ul>
+<li>librairie <code>gtools</code></li>
+<li>Syntaxe pour la variable y1: <strong><code>df$gy1=quantcut(df$y1,10)</code></strong></li>
+</ul></li>
+<li><strong><code>ntile</code></strong>
+<ul>
+<li>librairie <code>dplyr</code></li>
+<li>Syntaxe pour la variable y1: <strong><code>df=df %&gt;% mutate(gy1 = ntile(y1, 10))</code></strong></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="greshape" class="level1">
+<h1><strong>greshape</strong></h1>
+<ul>
+<li>Niveau syntaxe peu de différence avec la commande usine, si ce n’est pour les arguments <code>i()</code> et <code>j()</code>
+<ul>
+<li><code>i()</code> = <code>id()</code></li>
+<li><code>j()</code> = <code>key()</code></li>
+</ul></li>
+<li>Pour R:
+<ul>
+<li>Fonction de base <code>reshape</code>.
+<ul>
+<li>Avantage: syntaxe très proche de Stata</li>
+<li>Inconvénients: temps d’exécution pas optimal. Pour 10M d’observations, j’ai arrêté l’exécution au bout de 10 minutes.</li>
+</ul></li>
+<li>Fonctions <code>pivot_longer</code> et <code>pivot_wider</code> de **<code>tydir</code>.</li>
+</ul></li>
+</ul>
+<p>Si <strong><code>greshape</code></strong> est nettement plus performant que <strong><code>reshape</code></strong>, il reste nettement en deçà des deux fonctions de la librairie <strong><code>tydir</code></strong> de R.</p>
+<p>Programme</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span>RESHAPE</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>qui bench <span class="dv">1</span><span class="sc">:</span> reshape long y, <span class="fu">i</span>(id) <span class="fu">j</span>(j)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>di <span class="st">"RESHAPE LONG runtime ="</span> <span class="st">`</span><span class="at">r1'</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="at">qui bench 1: reshape wide y, i(id) j(j)</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="at">di "RESHAPE WIDE runtime =" </span><span class="st">`</span>r1<span class="st">'</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="st">**GRESHAPE</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="st">qui bench 1: greshape long y, by(id) keys(j)</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="st">di "GRESHAPE LONG runtime =" `r1'</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>qui bench <span class="dv">1</span><span class="sc">:</span> greshape wide y, <span class="fu">by</span>(id) <span class="fu">keys</span>(j)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>di <span class="st">"GRESHAPE WIDE runtime ="</span> <span class="st">`</span><span class="at">r1'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page"><strong>Long</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false"><strong>Wide</strong></a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<table class="table">
+<thead>
+<tr class="header">
+<th>Stata</th>
+<th>10K</th>
+<th>100k</th>
+<th>1M</th>
+<th>10M</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>reshape long</td>
+<td>0.14</td>
+<td>1.22</td>
+<td>12.36</td>
+<td>245.18</td>
+</tr>
+<tr class="even">
+<td><strong>greshape long</strong></td>
+<td>0.04</td>
+<td>0.21</td>
+<td>3.22</td>
+<td>61.23</td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<thead>
+<tr class="header">
+<th>R</th>
+<th>10k</th>
+<th>100k</th>
+<th>1M</th>
+<th>10M</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>reshape</td>
+<td>0.1</td>
+<td>1.19</td>
+<td>11.9</td>
+<td>///</td>
+</tr>
+<tr class="even">
+<td>pivot_longer</td>
+<td>0.01</td>
+<td>0.12</td>
+<td>0.6</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<table class="table">
+<thead>
+<tr class="header">
+<th>Stata</th>
+<th>10k</th>
+<th>100k</th>
+<th>1M</th>
+<th>10M</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>reshape wide</td>
+<td>0.37</td>
+<td>2.18</td>
+<td>26.58</td>
+<td>338.10</td>
+</tr>
+<tr class="even">
+<td><strong>greshape wide</strong></td>
+<td>0.06</td>
+<td>0.30</td>
+<td>2.79</td>
+<td>55.86</td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<thead>
+<tr class="header">
+<th>R</th>
+<th>10k</th>
+<th>100k</th>
+<th>1M</th>
+<th>10M</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>reshape</td>
+<td>0.37</td>
+<td>3.69</td>
+<td>34.93</td>
+<td>///</td>
+</tr>
+<tr class="even">
+<td>pivot_wider</td>
+<td>0.01</td>
+<td>0.24</td>
+<td>1.98</td>
+<td>38.97</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Fonctions R
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong><code>reshape</code></strong>
+<ul>
+<li>Installé avec R</li>
+<li>Long: <code>long = reshape(gtools, idvar = "id", timevar="j", varying = list(2:11), v.names = "y", direction = "long")</code></li>
+<li>Wide: <code>wide = reshape(long, idvar = "id",  timevar="j",  v.names = "y", sep = "", direction = "wide")</code></li>
+</ul></li>
+<li><strong><code>pivot_longer/pivot_wider</code></strong>
+<ul>
+<li>librairie <code>tydir</code></li>
+<li>long: <code>long = pivot_longer(gtools, cols = starts_with("y"))</code></li>
+<li>wide: <code>wide = pivot_wider(long, names_from = c("name"), values_from = c("value"))</code></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'alternate';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } 
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../speedup/intro.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Introduction</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+      <div class="nav-footer-center">Marc Thévenin - Ined-Sms - Août 2022</div>
+  </div>
+</footer>
+
+
+
+</body></html>
