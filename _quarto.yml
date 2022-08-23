@@ -44,12 +44,15 @@ website:
           - formation/chapitre6.qmd
           - formation/chapitre7.qmd
           - text: "  "  
-      - section: "profile"
+      - section: "Faites un profile"
         contents:
           - profile/profile1.qmd  
           - profile/profile2.qmd
-      - section: "gtools et ftools"
-      - section: "Manipulation macros"
+      - section: "Need for speed"
+        contents:
+          - speedup/intro.qmd  
+          - speedup/gtools.qmd      
+      - section: "Super Macro World"
       
 format:
   html:
