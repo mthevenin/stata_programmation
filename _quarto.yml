@@ -44,7 +44,7 @@ website:
           - formation/chapitre6.qmd
           - formation/chapitre7.qmd
           - text: "  "  
-      - section: "Faites un profile"
+      - section: "Fichier profile"
         contents:
           - profile/profile1.qmd  
           - profile/profile2.qmd
