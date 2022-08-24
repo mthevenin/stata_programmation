@@ -165,7 +165,7 @@ ul.task-list{list-style: none;}
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">Faites un profile</a>
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">Fichier profile</a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -232,18 +232,21 @@ ul.task-list{list-style: none;}
 
 </header>
 
-<p>Version 1 [Aout/Septembre 2022]</p>
+<p>Version 1 avec <strong><code>glevelsof</code></strong> [Aout 2022]</p>
 <ul>
 <li>Stata 17: grosse amélioration du temps d’exécution de certaines commandes, en particulier <strong><code>sort</code></strong> et <strong><code>collapse</code></strong>.</li>
 <li>Depuis de nombreuses années des packages ou commandes standalone amélioraientt le temps d’exécution, en particulier les packages <strong><code>ftools</code></strong> de <em>Sergio Correa</em> ou les commandes <code>fastxtile</code>/<code>fastwpctile</code> d’<strong><code>egenmisc</code></strong>.</li>
-<li>Le package <strong><code>gtools</code></strong> de <em>Mauricio Caceres Bravo</em> donne des résultats vraiment très intéressants lorsqu’on atteint un seuil d’un million d’observations pour des commandes testées: <code>greshape</code>, <code>gquantiles</code>, <code>gegen</code>, <code>glevelof</code> avec une variable caracère, et dans une moindre mesure <code>gcollapse</code>.</li>
+<li>Le package <strong><code>gtools</code></strong> de <em>Mauricio Caceres Bravo</em> donne des résultats vraiment très intéressants lorsqu’on atteint un seuil d’un million d’observations pour les commandes suivantes: <code>greshape</code>, <code>gquantiles</code>, <code>gegen</code>, <code>glevelof</code> avec une variable caractère, et dans une moindre mesure <code>gcollapse</code>.</li>
 <li>Au delà des durées d’exécution, ces packages et commandes peuvent avoir quelques options propres, par exemple, l’option <code>by()</code> de <em><code>gquantiles</code></em> ou la possibilité d’enregistrer les valeurs en ordre décroissant avec <code>glevelsof</code>.</li>
 </ul>
 <p><strong>Benchmarks</strong></p>
 <ul>
-<li>Version Stata 17 SE. Les benchmarks réalisés par <em>Mauricio Caceres</em> sont en version MP. Configuration PC: i5-10210U CPU et 16GO de RAM.</li>
+<li>Version Stata 17 SE. Les benchmarks réalisés par <em>Mauricio Caceres</em> sont en version MP.</li>
+<li>Configuration PC: i5-10210U CPU et 16GO de RAM.</li>
 <li>Volumétries: 10k, 100k, 1M, 10M.</li>
 <li>Comparaisons avec R si fonctions équivalentes.</li>
+<li>Programme Stata: <a href="https://github.com/mthevenin/stata_programmation/blob/main/speedup/benchmark.do" class="uri">https://github.com/mthevenin/stata_programmation/blob/main/speedup/benchmark.do</a></li>
+<li>To do: faire les tests sur la version serveur-linux (toujours Stata 17 SE)</li>
 </ul>
 <p><strong>Sources</strong>:</p>
 <ul>
