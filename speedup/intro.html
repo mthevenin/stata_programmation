@@ -236,8 +236,8 @@ ul.task-list{list-style: none;}
 <ul>
 <li>Stata 17: grosse amélioration du temps d’exécution de certaines commandes, en particulier <strong><code>sort</code></strong> et <strong><code>collapse</code></strong>.</li>
 <li>Depuis de nombreuses années des packages ou commandes standalone amélioraientt le temps d’exécution, en particulier les packages <strong><code>ftools</code></strong> de <em>Sergio Correa</em> ou les commandes <code>fastxtile</code>/<code>fastwpctile</code> d’<strong><code>egenmisc</code></strong>.</li>
-<li>Le package <strong><code>gtools</code></strong> de <em>Mauricio Caceres Bravo</em> donne des résultats très intéressants pour des commandes comme <code>reshape</code>, <code>xtile</code>/<code>pctile</code>.</li>
-<li>Au delà des durées d’exécution, ces packages et commandes peuvent avoir quelques options propres, par exemple, l’option <code>by()</code> de <em><code>gquantiles</code></em>.</li>
+<li>Le package <strong><code>gtools</code></strong> de <em>Mauricio Caceres Bravo</em> donne des résultats vraiment très intéressants lorsqu’on atteint un seuil d’un million d’observations pour des commandes testées: <code>greshape</code>, <code>gquantiles</code>, <code>gegen</code>, <code>glevelof</code> avec une variable caracère, et dans une moindre mesure <code>gcollapse</code>.</li>
+<li>Au delà des durées d’exécution, ces packages et commandes peuvent avoir quelques options propres, par exemple, l’option <code>by()</code> de <em><code>gquantiles</code></em> ou la possibilité d’enregistrer les valeurs en ordre décroissant avec <code>glevelsof</code>.</li>
 </ul>
 <p><strong>Benchmarks</strong></p>
 <ul>

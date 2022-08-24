@@ -280,6 +280,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#gtools" id="toc-gtools" class="nav-link active" data-scroll-target="#gtools"><strong>GTOOLS</strong></a></li>
   <li><a href="#gquantiles" id="toc-gquantiles" class="nav-link" data-scroll-target="#gquantiles"><strong>gquantiles</strong></a></li>
   <li><a href="#greshape" id="toc-greshape" class="nav-link" data-scroll-target="#greshape"><strong>greshape</strong></a></li>
+  <li><a href="#gcollapse" id="toc-gcollapse" class="nav-link" data-scroll-target="#gcollapse"><strong>gcollapse</strong></a></li>
+  <li><a href="#gegen" id="toc-gegen" class="nav-link" data-scroll-target="#gegen"><strong>gegen</strong></a></li>
+  <li><a href="#glevelsof" id="toc-glevelsof" class="nav-link" data-scroll-target="#glevelsof"><strong>glevelsof</strong></a></li>
   </ul>
 </nav>
     </div>
@@ -348,7 +351,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="st">forv i=1/10 {</span></span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="st">gen y`i'</span> <span class="ot">=</span> <span class="fu">rnormal</span>()    </span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>gen id <span class="ot">=</span> _n </span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Pour récupérer les temps d’exécution, j’utilise un fragment du programme de <em>M.Caceres</em>. Les commandes sont exécutées avec le prefixe <code>bench 1:</code></p>
 <div class="cell">
@@ -384,41 +388,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> Fonction <span class="fu">bench</span> (voir plus haut)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>local n <span class="dv">10000</span> <span class="dv">100000</span> <span class="dv">1000000</span> <span class="dv">10000000</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>foreach N of local n {</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>clear </span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>set obs <span class="st">`</span><span class="at">N'</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="at">tempvar x</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="at">qui gen </span><span class="st">`</span>x<span class="st">' = runiform()</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="st">qui gen g = `x'</span><span class="sc">&gt;</span>.<span class="dv">5</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>qui forv i<span class="ot">=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">10</span> {</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>gen y<span class="st">`</span><span class="at">i' = rnormal()    </span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="at">}</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="at">gen id=_n</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="at">di "N=</span><span class="st">`</span>N<span class="st">""</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>qui forv i<span class="ot">=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">10</span> {</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>tempvar yg<span class="st">`</span><span class="at">i'</span></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="at">bench 1:   xtile </span><span class="st">`</span>yg<span class="st">`</span><span class="at">i'' = y</span><span class="st">`</span>i<span class="st">' ,  nq(10) </span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="st">local rt1 = `rt1'</span> <span class="sc">+</span> <span class="st">`</span><span class="at">r1' </span></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="at">  }</span></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="at">di "XTILE runtime =" </span><span class="st">`</span>rt1<span class="st">'</span></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="st">qui forv i=1/10 {</span></span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="st">capt drop  `yg`i''  </span></span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="st">tempvar yg`i'</span></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>bench <span class="dv">1</span><span class="sc">:</span> gquantiles <span class="st">`</span><span class="at">yg</span><span class="st">`</span>i<span class="st">''</span> <span class="ot">=</span> y<span class="st">`</span><span class="at">i' , xtile  nq(10) </span></span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="at">local rt2 = </span><span class="st">`</span>rt2<span class="st">' + `r1'</span>     </span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>   }</span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>di  <span class="st">"GQUANTILES runtime ="</span> <span class="st">`</span><span class="at">rt2'</span></span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="at">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>qui forv i<span class="ot">=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">10</span> {</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span> XTILE</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>tempvar yg<span class="st">`</span><span class="at">i'</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="at">bench 1:   xtile </span><span class="st">`</span>yg<span class="st">`</span><span class="at">i'' = y</span><span class="st">`</span>i<span class="st">' ,  nq(10) </span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="st">local rt1 = `rt1'</span> <span class="sc">+</span> <span class="st">`</span><span class="at">r1' </span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="at">  }</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="at">di "XTILE runtime =" </span><span class="st">`</span>rt1<span class="st">'</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="st">*** GQUANTILES</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="st">qui forv i=1/10 {</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="st">capt drop  `yg`i''  </span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="st">tempvar yg`i'</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>bench <span class="dv">1</span><span class="sc">:</span> gquantiles <span class="st">`</span><span class="at">yg</span><span class="st">`</span>i<span class="st">''</span> <span class="ot">=</span> y<span class="st">`</span><span class="at">i' , xtile  nq(10) </span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="at">local rt2 = </span><span class="st">`</span>rt2<span class="st">' + `r1'</span>     </span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>   }</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>di  <span class="st">"GQUANTILES runtime ="</span> <span class="st">`</span><span class="at">rt2'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>Résultats</strong></p>
+<p><strong><em>Résultats</em></strong> (secondes)</p>
 <table class="table">
 <thead>
 <tr class="header">
@@ -517,20 +506,23 @@ Fonctions R
 </ul></li>
 </ul>
 <p>Si <strong><code>greshape</code></strong> est nettement plus performant que <strong><code>reshape</code></strong>, il reste nettement en deçà des deux fonctions de la librairie <strong><code>tydir</code></strong> de R.</p>
-<p>Programme</p>
+<p><strong><em>Programme</em></strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span>RESHAPE</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>qui bench <span class="dv">1</span><span class="sc">:</span> reshape long y, <span class="fu">i</span>(id) <span class="fu">j</span>(j)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>di <span class="st">"RESHAPE LONG runtime ="</span> <span class="st">`</span><span class="at">r1'</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="at">qui bench 1: reshape wide y, i(id) j(j)</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="at">di "RESHAPE WIDE runtime =" </span><span class="st">`</span>r1<span class="st">'</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="st">**GRESHAPE</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="st">qui bench 1: greshape long y, by(id) keys(j)</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="st">di "GRESHAPE LONG runtime =" `r1'</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>qui bench <span class="dv">1</span><span class="sc">:</span> greshape wide y, <span class="fu">by</span>(id) <span class="fu">keys</span>(j)</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>di <span class="st">"GRESHAPE WIDE runtime ="</span> <span class="st">`</span><span class="at">r1'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> Fonction <span class="fu">bench</span> (voir plus haut)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span>RESHAPE</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>qui bench <span class="dv">1</span><span class="sc">:</span> reshape long y, <span class="fu">i</span>(id) <span class="fu">j</span>(j)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>di <span class="st">"RESHAPE LONG runtime ="</span> <span class="st">`</span><span class="at">r1'</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="at">qui bench 1: reshape wide y, i(id) j(j)</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="at">di "RESHAPE WIDE runtime =" </span><span class="st">`</span>r1<span class="st">'</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="st">**GRESHAPE</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="st">qui bench 1: greshape long y, by(id) keys(j)</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="st">di "GRESHAPE LONG runtime =" `r1'</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>qui bench <span class="dv">1</span><span class="sc">:</span> greshape wide y, <span class="fu">by</span>(id) <span class="fu">keys</span>(j)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>di <span class="st">"GRESHAPE WIDE runtime ="</span> <span class="st">`</span><span class="at">r1'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p><strong><em>Résultats</em></strong> (secondes)</p>
 <div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page"><strong>Long</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false"><strong>Wide</strong></a></li></ul>
 <div class="tab-content">
@@ -674,6 +666,307 @@ Fonctions R
 </ul>
 </div>
 </div>
+</section>
+<section id="gcollapse" class="level1">
+<h1><strong>gcollapse</strong></h1>
+<ul>
+<li>Syntaxe identique à celle de <code>collapse</code>. Par défaut, c’est également la moyenne qui est calculée.</li>
+<li>Ajout d’une option <code>merge</code> <code>replace</code> qui remplace la valeur des observations par l’indicateur séléctionné.</li>
+<li>On ajouté l’option <code>by()</code> sur la variable g (deux groupes).</li>
+</ul>
+<p><strong><em>Programme</em></strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span><span class="er">*</span> COLLAPSE</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>preserve</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>qui bench <span class="dv">1</span><span class="sc">:</span> collapse  y1<span class="sc">-</span>y10,  <span class="fu">by</span>(g)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>local col <span class="st">`</span><span class="at">r1'</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="at">restore</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="at">*** GCOLLAPSE</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="at">preserve</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="at">qui bench 1: gcollapse  y1-y10,  by(g)</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="at">local gcol </span><span class="st">`</span>r1<span class="st">' </span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="st">restore</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="st">di "N=`N"</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="st">di "COLLAPSEruntime =" `col'</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>di <span class="st">"GCOLLAPSEruntime ="</span> <span class="st">`</span><span class="at">gcol'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong><em>Résultats</em></strong> (secondes)</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Stata</th>
+<th>10K</th>
+<th>100K</th>
+<th>1M</th>
+<th>10 M</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>collapse</td>
+<td>0.007</td>
+<td>0.041</td>
+<td>0.461</td>
+<td>7.846</td>
+</tr>
+<tr class="even">
+<td><strong>gcollapse</strong></td>
+<td>0.021</td>
+<td>0.049</td>
+<td>0.219</td>
+<td>2.559</td>
+</tr>
+<tr class="odd">
+<td><strong>R</strong></td>
+<td><strong>10K</strong></td>
+<td><strong>100K</strong></td>
+<td><strong>1M</strong></td>
+<td><strong>10 M</strong></td>
+</tr>
+<tr class="even">
+<td>summarise</td>
+<td>0.03</td>
+<td>0.06</td>
+<td>0.3</td>
+<td>1.91</td>
+</tr>
+</tbody>
+</table>
+<p><em>Note</em>: pour Stata le programme exécute <code>preserve</code>/<code>restore</code>, ce qui augmente légèrement un temps d’exécution</p>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Fonction R
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong><code>summarise()</code></strong>
+<ul>
+<li>librairie <code>dplyr</code></li>
+<li>Syntaxe : <strong><code>collapse= gtools %&gt;%  group_by(g) %&gt;%  summarise(across(y1:y10, ~ mean(.x, na.rm = TRUE)))</code></strong></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<p><strong><em>Programme</em></strong></p>
+</section>
+<section id="gegen" class="level1">
+<h1><strong>gegen</strong></h1>
+<ul>
+<li>Syntaxe identique à celle d’<code>egen</code>. On a choisi comme fonction la moyenne.</li>
+<li>On ajouté l’option <code>by()</code> sur la variable g (deux groupes).</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>forv  i<span class="ot">=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">10</span> {</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>qui bench <span class="dv">1</span><span class="sc">:</span> egen my<span class="st">`</span><span class="at">i' = mean(y</span><span class="st">`</span>i<span class="st">'), by(g)</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="st">local egen = `egen'</span> <span class="sc">+</span> <span class="st">`</span><span class="at">r1' </span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="at">}</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="at">drop my*</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="at">forv  i=1/10 {</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="at">qui bench 1: gegen my</span><span class="st">`</span>i<span class="st">' = mean(y`i'</span><span class="er">)</span>, <span class="fu">by</span>(g)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>local gegen <span class="ot">=</span> <span class="st">`</span><span class="at">gegen' + </span><span class="st">`</span>r1<span class="st">' </span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="st">di "N=`N"</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="st">di "EGEN  runtime =" `egen'</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>di <span class="st">"GEGEN runtime ="</span> <span class="st">`</span><span class="at">gegen'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Stata</th>
+<th>10k</th>
+<th>100k</th>
+<th>1M</th>
+<th>10M</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>egen</td>
+<td>0.23</td>
+<td>0.41</td>
+<td>4.82</td>
+<td>73.6</td>
+</tr>
+<tr class="even">
+<td><strong>gegen</strong></td>
+<td>0.69</td>
+<td>0.20</td>
+<td>0.83</td>
+<td>8.88</td>
+</tr>
+<tr class="odd">
+<td><strong>R</strong></td>
+<td><strong>10k</strong></td>
+<td><strong>100k</strong></td>
+<td><strong>1M</strong></td>
+<td><strong>10M</strong></td>
+</tr>
+<tr class="even">
+<td>mutate + mean</td>
+<td>0.03</td>
+<td>0.05</td>
+<td>0.17</td>
+<td>1.74</td>
+</tr>
+</tbody>
+</table>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Fonction R
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong><code>mutate()</code></strong> associée à la fonction <code>mean</code>
+<ul>
+<li>librairie <code>dplyr</code></li>
+<li>Syntaxe :
+<ul>
+<li><strong><code>var &lt;- c("y1", "y2", "y3", "y4", "y5", "y6", "y7", "y8", "y9", "y10")</code></strong></li>
+<li><strong><code>gtools = gtools %&gt;% group_by(g) %&gt;% mutate(across(var, mean, .names = "m{col}"))</code></strong></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="glevelsof" class="level1">
+<h1><strong>glevelsof</strong></h1>
+<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Rappel
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>La commande <strong><code>levelsof</code></strong> (<code>help levelsof</code>) permet de récupérer automatiquement les valeurs d’une variable pour les transformer sous forme de macro. Par défaut la macro enregistrée est nommée <code>r(levels)</code>, il est possible de l’appeler différemment avec l’option <code>local()</code>. Elle est particulièrement utile en amont d’une opération en boucle de type <code>foreach</code>. La macro générée <code>r(r)</code> permet de récupérer le nombre de valeurs enregistrés, et peut donc être utile pour des instructions en boucle de type <code>forvalue</code> (et évite de programmer une macro avec la fonction <code>word count</code> plus loin).</li>
+<li>Les valeurs sont enregistrées par ordre croissant numérique ou alphabétique selon le type de variable.</li>
+</ul>
+</div>
+</div>
+<p><strong><code>glevelsof</code></strong></p>
+<ul>
+<li>Autorise plusieurs variables. la macro enregistrée concaténera les valeurs et/ou expression avec un séparateur (espace par défaut).</li>
+<li>Permet de trier les valeurs en ordre décroissant en ajoutant <strong>-</strong> devant le nom de la variable.</li>
+</ul>
+<p><strong>benchmark</strong></p>
+<ul>
+<li>Bien évidemment, pas de comparaison possible avec R</li>
+<li>Programme d’origine différent: on va générer une variable qui affecte aléatoirement une lettre de l’alphabet (une version caractère et une version numérique générée avec <code>encode</code>). Le programme a été écrit par <em>Paul Picard</em> sur le forum <em>Statalist</em> (<a href="https://www.statalist.org/forums/forum/general-stata-discussion/general/1421124-generate-random-strings-containing-letters-and-numbers">lien</a>)</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>clear</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>set obs <span class="dv">10000</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>local c2use ABCDEFGHIJKLMNPQRSTUVWXYZ</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>gen random_string <span class="ot">=</span> <span class="fu">substr</span>(<span class="st">"`c2use'"</span>, <span class="fu">runiformint</span>(<span class="dv">1</span>,<span class="fu">length</span>(<span class="st">"`c2use'"</span>)),<span class="dv">1</span>) <span class="sc">+</span> <span class="er">///</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">string</span>(<span class="fu">runiformint</span>(<span class="dv">0</span>,<span class="dv">9</span>)) <span class="sc">+</span> <span class="er">///</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">char</span>(<span class="fu">runiformint</span>(<span class="dv">65</span>,<span class="dv">90</span>)) <span class="sc">+</span> <span class="er">///</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">char</span>(<span class="fu">runiformint</span>(<span class="dv">65</span>,<span class="dv">90</span>)) <span class="sc">+</span> <span class="er">///</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">string</span>(<span class="fu">runiformint</span>(<span class="dv">0</span>,<span class="dv">9</span>)) <span class="sc">+</span> <span class="er">///</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">char</span>(<span class="fu">runiformint</span>(<span class="dv">65</span>,<span class="dv">90</span>))</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>gen xchar <span class="ot">=</span> <span class="fu">substr</span>(random_string,<span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>encode xchar, <span class="fu">gen</span>(xnum)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>drop random_string</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Levelsof :</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>levelsof xchar</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="sc">/</span><span class="er">*</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">"A"' </span><span class="st">`"B"' `"C"'</span> <span class="st">`</span><span class="at">"D"' </span><span class="st">`"E"' `"F"'</span> <span class="st">`</span><span class="at">"G"' </span><span class="st">`"H"' `"I"'</span> <span class="st">`</span><span class="at">"J"' </span><span class="st">`"K"' `"L"'</span> <span class="st">`</span><span class="at">"M"' </span><span class="st">`"N"' `"P"'</span> <span class="st">`</span><span class="at">"Q"' </span><span class="st">`</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="st">"R"' `"S"'</span> <span class="st">`</span><span class="at">"T"' </span><span class="st">`"U"' `"V"'</span> <span class="st">`</span><span class="at">"W"' </span><span class="st">`"X"' `"Y"'</span> <span class="st">`</span><span class="at">"Z"'</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="at">*/</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="at">levelsof xnum</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="at">/*</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="at">1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="at">*/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Glevelsof avec valeurs enregistrées en ordre décroissant:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>glevelsof <span class="sc">-</span>xchar</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">"Z"' </span><span class="st">`"Y"' `"X"'</span> <span class="st">`</span><span class="at">"W"' </span><span class="st">`"V"' `"U"'</span> <span class="st">`</span><span class="at">"T"' </span><span class="st">`"S"' `"R"'</span> <span class="st">`</span><span class="at">"Q"' </span><span class="st">`"P"' `"N"'</span> <span class="st">`</span><span class="at">"M"' </span><span class="st">`"L"' `"K"'</span> <span class="st">`</span><span class="at">"J"' </span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="st">`</span> <span class="st">"I"' `"H"'</span> <span class="st">`</span><span class="at">"G"' </span><span class="st">`"F"' `"E"'</span> <span class="st">`</span><span class="at">"D"' </span><span class="st">`"C"' `"B"'</span> <span class="st">`</span><span class="at">"A"'</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="at">glevelsof -xnum</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="at">25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<table class="table">
+<thead>
+<tr class="header">
+<th><strong>Variable caractère</strong></th>
+<th>10k</th>
+<th>100k</th>
+<th>1M</th>
+<th>10M</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>levelsof</td>
+<td>0.01</td>
+<td>0.10</td>
+<td>2.64</td>
+<td>42.51</td>
+</tr>
+<tr class="even">
+<td><strong>glevelsof</strong></td>
+<td>0.01</td>
+<td>0.01</td>
+<td>0.11</td>
+<td>0.62</td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<thead>
+<tr class="header">
+<th><strong>Variable numerique</strong></th>
+<th>10k</th>
+<th>100k</th>
+<th>1M</th>
+<th>10M</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>levelsof</td>
+<td>0.01</td>
+<td>0.01</td>
+<td>0.09</td>
+<td>1.04</td>
+</tr>
+<tr class="even">
+<td><strong>glevelsof</strong></td>
+<td>0.00</td>
+<td>0.01</td>
+<td>0.04</td>
+<td>0.32</td>
+</tr>
+</tbody>
+</table>
 
 
 </section>
