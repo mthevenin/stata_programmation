@@ -37,7 +37,7 @@ website:
         contents:
           - formation/chapitre0.qmd
           - formation/chapitre1.qmd
-          - foramation/chapitre2.qmd 
+          - formation/chapitre2.qmd 
           - formation/chapitre3.qmd
           - formation/chapitre4.qmd
           - formation/chapitre5.qmd
@@ -53,12 +53,15 @@ website:
           - speedup/intro.qmd  
           - speedup/gtools.qmd      
       - section: "Super Macro World"
+        contents:
+          - macro/intro.qmd        
+      - section: "C'est dans l'R"
       
 format:
   html:
     theme: 
-      dark:  [superhero, theme-light.scss]    
-      light: [superhero,theme-dark.scss]
+      dark:   [superhero, theme-light.scss]  
+      light:  [superhero, theme-dark.scss]          
     code-background: true
     code-copy: true
     toc: true
