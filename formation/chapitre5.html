@@ -26,7 +26,7 @@ ul.task-list{list-style: none;}
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../profile/profile1.html" rel="next">
-<link href="../formation/index.html" rel="prev">
+<link href="../formation/chapitre0.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -134,14 +134,14 @@ ul.task-list{list-style: none;}
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../formation/index.html" class="sidebar-item-text sidebar-link">Présentation</a>
+  <a href="../formation/chapitre0.html" class="sidebar-item-text sidebar-link">Présentation</a>
   </div>
 </li>
           <li class="sidebar-item">
   formation/chapitre1.qmd
   </li>
           <li class="sidebar-item">
-  foramation/chapitre2.qmd
+  formation/chapitre2.qmd
   </li>
           <li class="sidebar-item">
   formation/chapitre3.qmd
@@ -166,7 +166,7 @@ ul.task-list{list-style: none;}
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">profile</a>
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">Fichier profile</a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -185,10 +185,30 @@ ul.task-list{list-style: none;}
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">gtools et ftools</span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">Need for speed</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../speedup/intro.html" class="sidebar-item-text sidebar-link">Introduction</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../speedup/gtools.html" class="sidebar-item-text sidebar-link">Gtools</a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">Manipulation macros</span>
+      <span class="sidebar-item-text sidebar-link text-start">Super Macro World</span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">C'est dans l'R</span>
   </li>
     </ul>
     </div>
@@ -199,20 +219,20 @@ ul.task-list{list-style: none;}
     <h2 id="toc-title">Sections</h2>
    
   <ul>
-  <li><a href="#types-et-format" id="toc-types-et-format" class="nav-link active" data-scroll-target="#types-et-format">Types et format</a>
+  <li><a href="#types-et-format" id="toc-types-et-format" class="nav-link active" data-scroll-target="#types-et-format"><strong>Types et format</strong></a>
   <ul class="collapse">
   <li><a href="#types" id="toc-types" class="nav-link" data-scroll-target="#types">Types</a></li>
   <li><a href="#format" id="toc-format" class="nav-link" data-scroll-target="#format">Format</a></li>
-  <li><a href="#types-numérique-caractère" id="toc-types-numérique-caractère" class="nav-link" data-scroll-target="#types-numérique-caractère">Types numérique &lt;=&gt; caractère</a></li>
+  <li><a href="#modification-du-type" id="toc-modification-du-type" class="nav-link" data-scroll-target="#modification-du-type">Modification du type</a></li>
   </ul></li>
-  <li><a href="#création-dune-variable" id="toc-création-dune-variable" class="nav-link" data-scroll-target="#création-dune-variable">Création d’une variable</a>
+  <li><a href="#création-dune-variable" id="toc-création-dune-variable" class="nav-link" data-scroll-target="#création-dune-variable"><strong>Création d’une variable</strong></a>
   <ul class="collapse">
   <li><a href="#generate---replace" id="toc-generate---replace" class="nav-link" data-scroll-target="#generate---replace">generate - replace</a></li>
   <li><a href="#egen" id="toc-egen" class="nav-link" data-scroll-target="#egen">egen</a></li>
   </ul></li>
-  <li><a href="#les-variables-internes-de-comptage" id="toc-les-variables-internes-de-comptage" class="nav-link" data-scroll-target="#les-variables-internes-de-comptage">Les variables internes de comptage</a></li>
-  <li><a href="#sélection-de-plusieurs-modalités-recodage" id="toc-sélection-de-plusieurs-modalités-recodage" class="nav-link" data-scroll-target="#sélection-de-plusieurs-modalités-recodage">Sélection de plusieurs modalités, recodage</a></li>
-  <li><a href="#les-labels" id="toc-les-labels" class="nav-link" data-scroll-target="#les-labels">Les labels</a></li>
+  <li><a href="#les-variables-internes-de-comptage" id="toc-les-variables-internes-de-comptage" class="nav-link" data-scroll-target="#les-variables-internes-de-comptage"><strong>Les variables internes de comptage</strong></a></li>
+  <li><a href="#sélection-de-plusieurs-modalités-recodage" id="toc-sélection-de-plusieurs-modalités-recodage" class="nav-link" data-scroll-target="#sélection-de-plusieurs-modalités-recodage"><strong>Sélection de plusieurs modalités, recodage</strong></a></li>
+  <li><a href="#les-labels" id="toc-les-labels" class="nav-link" data-scroll-target="#les-labels"><strong>Les labels</strong></a></li>
   </ul>
 </nav>
     </div>
@@ -235,8 +255,16 @@ ul.task-list{list-style: none;}
 
 </header>
 
-<style>div.res pre { background-color:#3B4D5B; color:white; font-weight: bold }</style>
-<style>div.cod pre { background-color:#9F2042; color:white }</style>
+<style>div.res pre { background-color: aquamarine; 
+                     color: black; 
+                     border-color:black; 
+                     border: solid 0.05em }
+                     </style>
+<style>div.cod pre { background-color: skyblue; 
+                     color:black;
+                     border-color:black; 
+                     border: solid 0.05em }
+                    </style>
 <p><strong>[MAJ EN COURS]</strong></p>
 <p><a href="https://github.com/mthevenin/formation_stata/blob/master/programmes/chapitre5.do"><strong>Programme du chapitre</strong></a></p>
 <p><strong>Commandes et fonction introduites</strong><br>
@@ -314,7 +342,7 @@ foreign         byte    %8.0g      origin     Car origin
 ----------------------------------------------------------------------</code></pre>
 </div>
 <section id="types-et-format" class="level1">
-<h1>Types et format</h1>
+<h1><strong>Types et format</strong></h1>
 <section id="types" class="level2">
 <h2 class="anchored" data-anchor-id="types">Types</h2>
 <p>Stata gère tous les types de variables: numérique, caractère, date. Un type de variable est un type de stockage.</p>
@@ -509,8 +537,8 @@ sum gear_ratio, d format</code></pre>
 </code></pre>
 </div>
 </section>
-<section id="types-numérique-caractère" class="level2">
-<h2 class="anchored" data-anchor-id="types-numérique-caractère">Types numérique &lt;=&gt; caractère</h2>
+<section id="modification-du-type" class="level2">
+<h2 class="anchored" data-anchor-id="modification-du-type">Modification du type</h2>
 <p>Il est possible de basculer d’un type caractère à un type numérique et inversement</p>
 <p><strong>De numérique à caractère</strong></p>
 <p><br> Si la variable numérique n’a pas de label affecté sur les modalités, ou qu’on ne veut pas conserver l’information données par les labels, on peut utiliser la commande <code>tostring</code>. On peut créer une nouvelle variable avec l’option <code>gen()</code> ou remplacer la variable numérique d’origine avec l’option <code>replace</code>. Une des deux options doit être nécessairement renseignée.</p>
@@ -632,7 +660,7 @@ Type de variable pour les modèles
 </section>
 </section>
 <section id="création-dune-variable" class="level1">
-<h1>Création d’une variable</h1>
+<h1><strong>Création d’une variable</strong></h1>
 <section id="generate---replace" class="level2">
 <h2 class="anchored" data-anchor-id="generate---replace">generate - replace</h2>
 <p>La création d’une nouvelle variable se fait avec la commande <code>generate</code> généralement tronquée jusqu’à <code>gen</code>.</p>
@@ -835,11 +863,28 @@ list id N make in 66/70</code></pre>
 </div>
 </div>
 <p>On va le voir, ces deux variables qui ont été générées peuvent l’être directement avec les <em>variables internes dites de comptage</em>.</p>
+<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Package gegen (M.Caceres)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Pour les volumétries dépassant le million d’observation il est fortement conseillé d’utilisée les commandes associées au package de <em>Mauricio Caceres</em>, ici la commande <strong><code>gege,</code></strong>.</li>
+<li><a href="https://gtools.readthedocs.io/en/latest/" class="uri">https://gtools.readthedocs.io/en/latest/</a></li>
+<li><a href="https://mthevenin.github.io/stata_programmation/speedup/gtools.html" class="uri">https://mthevenin.github.io/stata_programmation/speedup/gtools.html</a></li>
+</ul>
+</div>
+</div>
 <p><strong>[maj au 01/07/2022]</strong></p>
 </section>
 </section>
 <section id="les-variables-internes-de-comptage" class="level1">
-<h1>Les variables internes de comptage</h1>
+<h1><strong>Les variables internes de comptage</strong></h1>
 <p>Très utile avec des données longitudinales, de durées ou toute base avec des données avec cluster. <br></p>
 <p>Deux variables de comptage: <code>_n</code> et <code>_N</code><br>
 <br></p>
@@ -901,7 +946,7 @@ list make lag_make lead_make in 1/10</code></pre>
 </div>
 </section>
 <section id="sélection-de-plusieurs-modalités-recodage" class="level1">
-<h1>Sélection de plusieurs modalités, recodage</h1>
+<h1><strong>Sélection de plusieurs modalités, recodage</strong></h1>
 <p><strong>inlist</strong><br>
 Pour sélectionner plusieurs modalités d’une variable dans une expression conditionnelle <code>inlist(variable, valeur1, valeur2,..)</code>.<br>
 Utile si la variable n’est pas de type ordinale.<br>
@@ -917,7 +962,7 @@ Permet de changer les valeurs d’une variable numérique:</p>
 <p><br> <strong>Application</strong>: recoder la variable foreign 0=&gt;1 et 1=&gt;2.</p>
 </section>
 <section id="les-labels" class="level1">
-<h1>Les labels</h1>
+<h1><strong>Les labels</strong></h1>
 <p>La création et la modification peut se faire directement via la boite de dialogue du <strong>variable manager</strong>.</p>
 <p><br> <strong>Label des variables</strong><br>
 <br> Syntaxe</p>
@@ -1154,7 +1199,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../formation/index.html" class="pagination-link">
+      <a href="../formation/chapitre0.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Présentation</span>
       </a>          
   </div>
