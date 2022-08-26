@@ -88,6 +88,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../macro/intro.html" rel="next">
 <link href="../speedup/intro.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -202,7 +203,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   formation/chapitre1.qmd
   </li>
           <li class="sidebar-item">
-  foramation/chapitre2.qmd
+  formation/chapitre2.qmd
   </li>
           <li class="sidebar-item">
   formation/chapitre3.qmd
@@ -266,7 +267,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">Super Macro World</span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">Super Macro World</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../macro/intro.html" class="sidebar-item-text sidebar-link">Présentation</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">C'est dans l'R</span>
   </li>
     </ul>
     </div>
@@ -305,10 +321,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<p>Version 1 - en cours - [Aout/Septembre 2022]</p>
+<p>*<strong>Version 1 - en cours - [Aout/Septembre 2022*</strong></p>
 <ul>
 <li>gquantiles</li>
 <li>greshape wide/long</li>
+<li>gcollapse</li>
+<li>gegen</li>
+<li>glevelsof</li>
 </ul>
 <section id="gtools" class="level1">
 <h1><strong>GTOOLS</strong></h1>
@@ -318,7 +337,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="https://gtools.readthedocs.io/en/latest/index.html" class="uri">https://gtools.readthedocs.io/en/latest/index.html</a></li>
 <li><a href="https://github.com/mcaceresb/stata-gtools" class="uri">https://github.com/mcaceresb/stata-gtools</a></li>
 </ul>
-<p>Les Benchmarks réalisés par l’auteur ont été faits avec Stata MP. De mo,n côté fait tourné son programme (<a href="https://raw.githubusercontent.com/mcaceresb/stata-gtools/master/docs/benchmarks/quick.do">lien</a>) avec Stata 17 SE sous windows. Les résultats sont les suivants:</p>
+<p>Les Benchmarks réalisés par l’auteur ont été exécutés avec Stata MP. J’ai fait tourné son programme (<a href="https://raw.githubusercontent.com/mcaceresb/stata-gtools/master/docs/benchmarks/quick.do">lien</a>) avec Stata 17 SE sous windows. Les résultats sont les suivants:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>     Versus <span class="sc">|</span> Native <span class="sc">|</span> gtools <span class="sc">|</span> % faster </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> <span class="sc">----------</span> <span class="er">|</span> <span class="sc">------</span> <span class="er">|</span> <span class="sc">------</span> <span class="er">|</span> <span class="sc">--------</span> </span>
@@ -339,7 +358,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    tabstat <span class="sc">|</span>  <span class="fl">11.18</span> <span class="sc">|</span>   <span class="fl">0.67</span> <span class="sc">|</span>   <span class="fl">94.03</span>% </span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a> range_stat <span class="sc">|</span>  <span class="fl">67.37</span> <span class="sc">|</span>   <span class="fl">2.82</span> <span class="sc">|</span>   <span class="fl">95.81</span>% </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Pour mon propre benchmark, les données sont générées de la manière suivante:</p>
+<p>Pour mon propre benchmark, plus gourmand (10 variables quanti et une variable binaire), les données sont générées de la manière suivante:</p>
 <p><strong>Création de la base de données (N=10M)</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>clear </span>
@@ -354,7 +373,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>gen id <span class="ot">=</span> _n </span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Pour récupérer les temps d’exécution, j’utilise un fragment du programme de <em>M.Caceres</em>. Les commandes sont exécutées avec le prefixe <code>bench 1:</code></p>
+<p>Pour récupérer les durées d’exécution, j’utilise un fragment du programme de <em>M.Caceres</em>. Les commandes sont exécutées avec le prefixe <code>bench 1:</code></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>capture program drop bench</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>program bench</span>
@@ -368,7 +387,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="at">    c_local r</span><span class="st">`</span>timer<span class="st">' `=r(t`timer'</span><span class="er">)</span><span class="st">'</span></span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="st">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Les tests sont réalisés seulement les équivalents de <code>xtile</code>, <code>reshape</code>, <code>tabstat</code>et <code>levelsof</code></p>
+<ul>
+<li>Les tests sont réalisés avec les équivalents de <code>xtile</code>, <code>reshape</code>, <code>collapse</code>et <code>levelsof</code>. L’équivalent à <code>tabstat</code> sera ajouté rapidement.</li>
+<li>Pour information, les programmes des fonctions R sont également rapidement décris. Les durées d’exécution ont été récupérés avec la librairie <code>tictoc</code>.</li>
+</ul>
 </section>
 <section id="gquantiles" class="level1">
 <h1><strong>gquantiles</strong></h1>
@@ -1179,6 +1201,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../macro/intro.html" class="pagination-link">
+        <span class="nav-page-text">Présentation</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
