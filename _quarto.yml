@@ -9,16 +9,15 @@ website:
   page-footer: 
     center: "Marc Thévenin - Ined-Sms - Août 2022" 
     background: light
-
   navbar:
     collapse-below: lg
     left:
-      - href: index.qmd
-        text: "Programmation"
       - href: https://mthevenin.github.io/stata_fr/
-        text: "Retour Stata-Ined"     
+        text: "Stata Ined"  
       - href: https://mthevenin.github.io/stata_graphiques/
-        text: "Graphiques" 
+        text: "Graphiques"
+      - href: https://mthevenin.github.io/stata_programmation/
+        text: "Programmation"
     right:
       - icon: github
         href: https://github.com/mthevenin 
@@ -26,7 +25,6 @@ website:
         href: mailto:marc.thevenin@ined.fr 
       - href: about.qmd 
         text: "A propos"
-    
   sidebar:
     style: "docked"
     align: left
@@ -56,6 +54,10 @@ website:
         contents:
           - macro/intro.qmd        
       - section: "C'est dans l'R"
+      - section: "De beaux tableaux ?"
+        contents:
+          - tableaux/intro.qmd        
+
       
 format:
   html:
