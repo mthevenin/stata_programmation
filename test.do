@@ -1,4 +1,4 @@
 
 
 use nhanes2, clear
-tab sex highbp
+tab region highbp
