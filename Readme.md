@@ -1,0 +1,1 @@
+test exécution prog stata
