@@ -1,0 +1,131 @@
+---
+title: "Exemple profile.do"
+---
+
+
+```{r eval=FALSE}
+
+**************************
+* profile.do Ined        *
+* M.Thevenin Ined-SMS    *
+**************************
+
+/* 
+- Copier le programme ou une partie selon les besoins danx un .do
+- Désactiver les zônes de commentaire *
+- Enregistrer le fichier profile.do dans le répertoire unser
+- Seulement ici les paramètres que j'utilise. On peut, bien évidemment, en ajouter d'autres
+*/  
+  
+*****************************
+* ado + et personal dans D: *
+***************************** 
+
+/* modifier les chemin si nécessaire */  
+  
+* sysdir set PLUS "D:/D/ado/plus"
+* sysdir set PERSONAL "D:/D/ado/personal"
+
+****************
+** STATA_TEMP **
+****************
+
+/* Créer un répertoire, pas forcément du même nom que celui ci et modifier les chemin */  
+  
+* cd "D:\D\stata_temp\"
+
+*************************************************
+* affichage du contenu du repertoire stata_temp *
+*************************************************
+
+* noisily display as txt    "------------------------------------"
+* noisily display as result "  Contenu du repertoire stata_temp  "
+* noisily display as txt    "------------------------------------"
+* noisily dir "D:/D/stata_temp/"
+
+
+**************************************************
+* chargement du répertoire  $tmp dans stata_temp *
+**************************************************
+
+/* attention si plusieurs utilisateurs d'un même programme, le chemin de $tmp risque de ne pas être reconnu */
+
+* global tmp "D:/D/stata_temp/"
+
+
+
+
+******************************************
+* Creation automatique d'un fichier .log *
+******************************************
+
+/* changer le chemin à l'avant dernière ligne: log using.... */
+
+* capture log close statalog
+*  local cdt = "`c(current_date)'"
+* local cdt: subinstr local cdt " " "-", all
+* local cti = "`c(current_time)'"
+* local cti: subinstr local cti ":" ".", all
+* local statalogname "statalog_`cdt'_`cti'.log"
+
+* noisily display "Nom du log: `statalogname'"
+*  log using "D:/D/stata_temp/log/`statalogname'" , text name(statalog)
+*  noisily display ""
+
+
+*****************
+* R source path *
+*****************
+
+* global Rterm_path `"C:\Program Files\R\R-4.1.2\bin\R.exe"'
+
+* global Rterm_options `"--slave --vanilla --args  "`tf1'" "`tf2'" "'
+
+
+***************************************************
+* supprimer le blocage du défilement  de l'output *
+***************************************************
+
+* set more off
+
+*******************************
+* output regression           *
+*******************************
+
+/* nombre de decimales =3 */
+
+* set cformat %9.3f
+
+/* garder baselevel*/
+
+*set showbaselevels on
+
+*******************************
+*      graphique              *
+*******************************
+
+/* Installer au préalab grstyle et colorpalette */
+
+* grstyle init
+* grstyle set imesh
+* grstyle set legend 11, nobox
+* grstyle set color tableau
+
+
+*******************************
+*      python                 *
+*******************************
+
+/* chargement de l'exécutable */
+
+* capture  set python_exec  "C:/Users/thevenin_m/AppData/Local/Programs/Python/Python310/python.exe"
+
+
+****** plugin miniconda
+* python:
+* import os
+* os.environ['QT_QPA_PLATFORM_PLUGIN_PATH']="C:\\Users\\thevenin_m\\Miniconda3\\Library\\plugins\\plugins"
+* end
+```
+
+

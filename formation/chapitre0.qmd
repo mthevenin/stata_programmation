@@ -1,0 +1,57 @@
+---
+title: "Présentation"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(knitr)
+library (rsconnect)
+library(haven)
+library(pander)
+library(memisc)
+library(fontawesome)
+```
+
+<style>div.res pre { background-color: aquamarine; 
+                     color: black; 
+                     border-color:black; 
+                     border: solid 0.05em }
+                     </style>
+                     
+<style>div.cod pre { background-color: skyblue; 
+                     color:black;
+                     border-color:black; 
+                     border: solid 0.05em }
+                    </style>
+
+<br><br>
+
+
+**MAJ EN COURS DE LA VERSION 2018 [nouvelle version fin 2022 au mieux]**
+
+
+* N'intéressera sûrement pas les utilisatrices et utilisateurs aguerri.e.s à Stata.... quoique, on trouve toujours des années plus tard des nouvelles commandes qui facilite vraiment les choses, par exemple sur la rapide reprise du chapitre 5, la commande `sencode` (s pour super).
+* Un document pdf sera mis à disposition au fil des maj
+* La fin de la maj de la formation est programmée pour la fin 2022 (donc prévoir un dépassement), cela devrait (pourrait) aller assez vite
+
+* Début Maj (28:07) : chapitre 5 (variables) => commande `sencode` (hélas découverte récemment), ajout d'une  section sur les variables de type date 
+
+
+------------------
+
+**Blocks de programme**
+
+<div class="cod">
+```{}
+PROGRAMME
+```
+</div>
+
+<div class="res">
+```{}
+RESULTAT DANS L'OUTPUT
+```
+</div>
+
+

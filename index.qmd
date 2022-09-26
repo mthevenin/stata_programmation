@@ -1,0 +1,46 @@
+---
+title: "Programmation"
+---
+
+```{r setup, include=FALSE}
+options(Encoding="UTF-8")
+library(fontawesome)
+```
+
+::: callout-note
+
+## 08 Septembre 2022
+
+::: {layout-ncol=2}
+<br>
+**`collect`** 
+La version 17 de Stata a introduit une suite nommée `collect` permettant de paramétrer, enregistrer, et utiliser des styles pour les tableaux. Dans le fichier d'aide, l'idée de  remplacer les commandes utilisateurs existantes, en particulier la très populaire `outreg2`, est assez clairement annoncée. Après quelques heures d'apprentissage, je suis agréablement surpris pour ne pas dire bluffé.   
+[Une première courte présentation pour les régressions](tableaux/intro.html)
+
+
+![](tableaux/collect.PNG)
+
+:::
+:::
+
+
+
+
+
+
+::: callout-note
+## 26 Août 2022
+
+-   Utilité d'avoir un fichier *profile.do*
+-   Présentation du package `gtools` et de plusieurs commandes associées qui améliore de manière impréssionnante le temps d'exécution. Particulièrement utile pour des bases de données volumineuses
+-   La mise à jour de la formation introductive ne présente pas d'intérêt particulier pour les chercheur.e.s mais je me dois tout de même de la reprendre. Il y a toujours des commandes externes peu connues qui s'avèrent très pratiques: senscode, tabm, fre... Tout le monde connait ????
+-   Les macros. Déjà une section importante traitée pour les graphiques. Dans un premier temps:
+    -   Différences avec les objets de type `scalar`
+    -   Tour d'horizon plus complet sur les fonctions associées aux macros
+-   Pour la question Stata=\>R je vais surement partir sur des traductions expliquées de programmes. Dans un premier temps je vais mettre à jour avec R le travail effectué avec Cris sur Mafe en 2015 [lien](https://mafeproject.site.ined.fr/en/methodo/methodological_notes/) qui consistait à mettre en parallèle, pour une même mise en forme de données biographiques, des programmes en Stata, R et Sas.
+:::
+
+<br>
+
+-   `r fa("r-project", fill = "steelblue")` Support réalisé avec [Rstudio](href:https://www.rstudio.com) - [Quarto](https://quarto.org).
+-   `r fa("code", fill = "steelblue")` Version Stata: [17-SE](https://www.stata.com/)

@@ -1,0 +1,16 @@
+---
+title: "Présentation"
+---
+
+![](donkeykong.gif){width="5%"} **26 AOUT 2022**
+
+
+- Vraisemblablement la section qui sera la plus dense, avec également des éléments de programmation d'algorithme.  
+
+- Pas de contenu en mis à disposition mais on peut déjà se diriger vers le chapitre sur macros dans la formation sur les graphiques: [lien](https://mthevenin.github.io/stata_graphiques/formation/formation21.html)
+- La première contribution sera surement sur les objets **`scalar`**. Il y a souvent des confusions entre ce type d'objets qui ne sont pas justement pas des macros mais des **pseudo variables**, mais dont l'utilisation peut dans certains contextes s'avérer être un bon substitut aux macros de type `local` dans les programmes:
+  - pas d'appel par des côtes
+  - enregistrement sur la session et non sur le temps d'exécution
+  
+  
+  
