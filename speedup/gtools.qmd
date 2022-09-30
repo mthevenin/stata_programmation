@@ -2,17 +2,15 @@
 title: "Gtools"
 ---
 
-
-***Version 1 - en cours - [Aout/Septembre 2022\***
-
-- gquantiles
-- greshape wide/long
-- gcollapse
-- gegen
-- glevelsof
+```{r, include=FALSE}
+options(Encoding="UTF-8")
+library(Statamarkdown)
+stataexe <- "C:/Program Files/Stata17/StataSE-64.exe"
+knitr::opts_chunk$set(engine.path=list(stata=stataexe))
+```
 
 
-# **GTOOLS**
+# **Le package**
 
 Auteur: ***Mauricio Caceres Bravo***
 
@@ -23,7 +21,7 @@ Auteur: ***Mauricio Caceres Bravo***
 
 Les Benchmarks réalisés par l'auteur ont été exécutés avec Stata MP. J'ai fait tourné son programme ([lien](https://raw.githubusercontent.com/mcaceresb/stata-gtools/master/docs/benchmarks/quick.do)) avec Stata 17 SE sous windows. Les résultats sont les suivants:
 
-```{r eval=FALSE}
+```{stata, eval=FALSE}
      Versus | Native | gtools | % faster 
  ---------- | ------ | ------ | -------- 
    collapse |   1.53 |   1.25 |   18.51% 
@@ -48,7 +46,7 @@ Pour mon propre benchmark, plus gourmand (10 variables quanti et une variable bi
 
 **Création de la base de données (N=10M)**
 
-```{r eval=FALSE}
+```{stata, eval=FALSE}
 clear 
 set obs 10000000
 tempvar x
@@ -64,7 +62,7 @@ gen id = _n
 
 Pour récupérer les durées d'exécution, j'utilise un fragment du programme de *M.Caceres*. Les commandes sont exécutées avec le prefixe `bench 1:`
 
-```{r eval=FALSE}
+```{stata, eval=FALSE}
 capture program drop bench
 program bench
     gettoken timer call: 0,    p(:)
@@ -90,7 +88,7 @@ end
 
 ***Syntaxe courte***
 
-```{r eval=FALSE}
+```{stata, eval=FALSE}
 
 *xtile
 gquantiles nouvelle_var = var1 , xtile  nq(#) [by(var2)]
@@ -101,7 +99,7 @@ gquantiles nouvelle_var = var1 , pctile nq(#) [by(var2)]
 
 ***Programme***
 
-```{r eval=FALSE}
+```{stata, eval=FALSE}
 * Fonction bench (voir plus haut)
 
 qui forv i=1/10 {
@@ -164,7 +162,7 @@ Si **`greshape`** est nettement plus performant que **`reshape`**, il reste nett
 
 ***Programme***
 
-```{r eval=FALSE}
+```{stata, eval=FALSE}
 * Fonction bench (voir plus haut)
 
 **RESHAPE
@@ -237,7 +235,7 @@ di "GRESHAPE WIDE runtime =" `r1'
 
 ***Programme*** 
 
-```{r eval=FALSE}
+```{stata, eval=FALSE}
 
 *** COLLAPSE
 preserve
@@ -285,7 +283,7 @@ di "GCOLLAPSEruntime =" `gcol'
 - On ajouté l'option `by()` sur la variable g (deux groupes).
 
 
-```{r eval=FALSE}
+```{stata, eval=FALSE}
 forv  i=1/10 {
 qui bench 1: egen my`i' = mean(y`i'), by(g)
 local egen = `egen' + `r1' 
@@ -343,7 +341,7 @@ di "GEGEN runtime =" `gegen'
 - Bien évidemment, pas de comparaison possible avec R 
 - Programme d'origine différent: on va générer une variable qui affecte aléatoirement une lettre de l'alphabet (une version caractère et une version numérique générée avec `encode`). Le programme a été écrit par *Paul Picard* sur le forum *Statalist* ([lien](https://www.statalist.org/forums/forum/general-stata-discussion/general/1421124-generate-random-strings-containing-letters-and-numbers)) 
 
-```{r eval=FALSE}
+```{stata, eval=FALSE}
 clear
 set obs 10000
 local c2use ABCDEFGHIJKLMNPQRSTUVWXYZ
@@ -360,7 +358,7 @@ drop random_string
 ```
 
 Levelsof :
-```{r eval=FALSE}
+```{stata, eval=FALSE}
 levelsof xchar
 
 /*
@@ -378,7 +376,7 @@ levelsof xnum
 
 Glevelsof avec valeurs enregistrées en ordre décroissant:
 
-```{r eval=FALSE}
+```{stata, eval=FALSE}
 glevelsof -xchar
 
 `"Z"' `"Y"' `"X"' `"W"' `"V"' `"U"' `"T"' `"S"' `"R"' `"Q"' `"P"' `"N"' `"M"' `"L"' `"K"' `"J"' 

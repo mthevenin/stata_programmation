@@ -93,18 +93,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../macro/intro.html" rel="prev">
+<link href="../R.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -165,9 +163,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <a class="nav-link" href="../about.html">A propos</a>
   </li>  
 </ul>
-              <div class="quarto-toggle-container">
-                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-              </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -287,7 +282,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">C'est dans l'R</span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">C’est dans l’R</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../R.html" class="sidebar-item-text sidebar-link">Stata et R</a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -313,20 +320,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Sections</h2>
    
   <ul>
-  <li><a href="#définition-dun-style-pour-une-suite-de-tableaux" id="toc-définition-dun-style-pour-une-suite-de-tableaux" class="nav-link active" data-scroll-target="#définition-dun-style-pour-une-suite-de-tableaux"><strong>Définition d’un style pour une suite de tableaux</strong></a></li>
-  <li><a href="#exemples" id="toc-exemples" class="nav-link" data-scroll-target="#exemples"><strong>Exemples</strong></a>
+  <li><a href="#définition-dun-style-pour-une-suite-de-tableaux" id="toc-définition-dun-style-pour-une-suite-de-tableaux" class="nav-link active" data-scroll-target="#définition-dun-style-pour-une-suite-de-tableaux"><span class="toc-section-number">1</span>  <strong>Définition d’un style pour une suite de tableaux</strong></a></li>
+  <li><a href="#exemples" id="toc-exemples" class="nav-link" data-scroll-target="#exemples"><span class="toc-section-number">2</span>  <strong>Exemples</strong></a>
   <ul class="collapse">
-  <li><a href="#ols" id="toc-ols" class="nav-link" data-scroll-target="#ols"><strong>Ols</strong></a>
+  <li><a href="#ols" id="toc-ols" class="nav-link" data-scroll-target="#ols"><span class="toc-section-number">2.1</span>  <strong>Ols</strong></a>
   <ul class="collapse">
-  <li><a href="#visualisation-des-exportations" id="toc-visualisation-des-exportations" class="nav-link" data-scroll-target="#visualisation-des-exportations"><strong>Visualisation des exportations</strong></a></li>
+  <li><a href="#visualisation-des-exportations" id="toc-visualisation-des-exportations" class="nav-link" data-scroll-target="#visualisation-des-exportations"><span class="toc-section-number">2.1.1</span>  <strong>Visualisation des exportations</strong></a></li>
   </ul></li>
-  <li><a href="#margins-avec-mlogit" id="toc-margins-avec-mlogit" class="nav-link" data-scroll-target="#margins-avec-mlogit"><strong>Margins avec mlogit</strong></a>
+  <li><a href="#margins-avec-mlogit" id="toc-margins-avec-mlogit" class="nav-link" data-scroll-target="#margins-avec-mlogit"><span class="toc-section-number">2.2</span>  <strong>Margins avec mlogit</strong></a>
   <ul class="collapse">
-  <li><a href="#visualisation-des-exportations-1" id="toc-visualisation-des-exportations-1" class="nav-link" data-scroll-target="#visualisation-des-exportations-1"><strong>Visualisation des exportations</strong></a></li>
+  <li><a href="#visualisation-des-exportations-1" id="toc-visualisation-des-exportations-1" class="nav-link" data-scroll-target="#visualisation-des-exportations-1"><span class="toc-section-number">2.2.1</span>  <strong>Visualisation des exportations</strong></a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#sans-style-enregistré" id="toc-sans-style-enregistré" class="nav-link" data-scroll-target="#sans-style-enregistré"><strong>Sans style enregistré</strong></a></li>
-  <li><a href="#le-builder" id="toc-le-builder" class="nav-link" data-scroll-target="#le-builder"><strong>Le builder</strong></a></li>
+  <li><a href="#sans-style-enregistré" id="toc-sans-style-enregistré" class="nav-link" data-scroll-target="#sans-style-enregistré"><span class="toc-section-number">3</span>  <strong>Sans style enregistré</strong></a></li>
+  <li><a href="#le-builder" id="toc-le-builder" class="nav-link" data-scroll-target="#le-builder"><span class="toc-section-number">4</span>  <strong>Le builder</strong></a></li>
   </ul>
 </nav>
     </div>
@@ -364,27 +371,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Exemple2: AME après un modèle multinomial avec les outcomes en colonne. Pour des raisons de place, je n’ai gardé que deux des quatres outcomes dans l’output. J’utilise une multinomiale même s’il s’agit d’une variable ordinale; j’ai seulement pris de que j’avais sous la main pour l’exemple.</li>
 <li>Dans les tableaux les informations reportées sont les effets marginaux (_r_b), les erreurs type (_r_se) et les p-values (_r_p). D’autres sont disponibles commes les bornes des intervalles de confiances.</li>
 </ul>
-<section id="définition-dun-style-pour-une-suite-de-tableaux" class="level1">
-<h1><strong>Définition d’un style pour une suite de tableaux</strong></h1>
+<section id="définition-dun-style-pour-une-suite-de-tableaux" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> <strong>Définition d’un style pour une suite de tableaux</strong></h1>
 <p><strong>Rappel</strong>: un tuto plus complet viendra ultérieurement (s’il y a une demande)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>collect style row split, <span class="fu">dups</span>(first)  <span class="sc">/</span><span class="er">/</span> ajoute le label de la variable à gauche comme nom de variable</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>collect style column,    <span class="fu">dups</span>(center) <span class="sc">/</span><span class="er">/</span> permet de ne pas multiplier le nombre de cellule sur la première ligne</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>collect style cell result[_r_b _r_se _r_p], <span class="fu">nformat</span>(%<span class="fl">8.3</span>f)   <span class="sc">/</span><span class="er">/</span> décimales des <span class="fu">valeurs</span> (ici idem)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>collect style cell border_block,  <span class="fu">border</span>(right, <span class="fu">pattern</span>(nil)) <span class="sc">/</span><span class="er">/</span> bête copier<span class="sc">-</span>coller, je n<span class="st">'ai pas testé avec/sans</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="st">collect layout (colname) (cmdset#result)  // Cette ligne semble obligatoire même si on ne définit pas de style</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="st">                          </span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="st">collect save multimod , replace   // sauvegarde dans repertoire temporaire du style appelé ici multimod (format .stjson)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>collect style <span class="ot">row</span> <span class="kw">split</span>, dups(first)  <span class="co">// ajoute le label de la variable à gauche comme nom de variable</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>collect style column,    dups(<span class="bn">center</span>) <span class="co">// permet de ne pas multiplier le nombre de cellule sur la première ligne</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>collect style cell result[_r_b _r_se _r_p], nformat(%8.3f)   <span class="co">// décimales des valeurs (ici idem)</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>collect style cell border_block,  border(right, pattern(nil)) <span class="co">// bête copier-coller, je n'ai pas testé avec/sans</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>collect layout (colname) (cmdset#result)  <span class="co">// Cette ligne semble obligatoire même si on ne définit pas de style</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                          </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>collect <span class="kw">save</span> multimod , <span class="kw">replace</span>   <span class="co">// sauvegarde dans repertoire temporaire du style appelé ici multimod (format .stjson)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="exemples" class="level1">
-<h1><strong>Exemples</strong></h1>
+<section id="exemples" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> <strong>Exemples</strong></h1>
 <p>Ouverture de la base</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>use https<span class="sc">:</span><span class="er">//</span>www.stata<span class="sc">-</span>press.com<span class="sc">/</span>data<span class="sc">/</span>r17<span class="sc">/</span>nhanes2l, clear</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> https:<span class="co">//www.stata-press.com/data/r17/nhanes2l, clear</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="ols" class="level2">
-<h2 class="anchored" data-anchor-id="ols"><strong>Ols</strong></h2>
+<section id="ols" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="ols"><span class="header-section-number">2.1</span> <strong>Ols</strong></h2>
 <div class="callout-warning callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -397,70 +404,70 @@ Warning
 <div class="callout-body-container callout-body">
 <p>Lorsqu’on génère un tableau avec <code>collect</code> avec un même style il me semble préférable d’exécuter systématiquement:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>collect clear</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>collect use nom_style, replace</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>collect <span class="kw">clear</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>collect <span class="kw">use</span> nom_style, <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 <p><strong>Estimation du modèle avec <code>collect</code></strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>quietly<span class="sc">:</span> collect _r_b _r_se _r_p<span class="sc">:</span> regress bpsystol i.agegrp i.region</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>quietly<span class="sc">:</span> collect _r_b _r_se _r_p<span class="sc">:</span> regress bpsystol i.agegrp i.region i.sex</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">quietly</span>: collect _r_b _r_se _r_p: <span class="kw">regress</span> bpsystol i.agegrp i.region</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">quietly</span>: collect _r_b _r_se _r_p: <span class="kw">regress</span> bpsystol i.agegrp i.region i.sex</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Modification du style pour ajouter le nom des modèles</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>collect label values cmdset <span class="dv">1</span> <span class="st">"Modèle 1"</span> <span class="dv">2</span> <span class="st">"Modèle 2"</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>collect <span class="kw">label</span> <span class="kw">values</span> cmdset 1 <span class="st">"Modèle 1"</span> 2 <span class="st">"Modèle 2"</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>On peut également ajouter un titre, modifier les labels des variables, je pense aussi les libellées des colonnes pour les indicateurs (par exemple AME au lieu de Coefficient).</p>
 <p><strong>Prévisualisation du tableau</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>collect preview</span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>collect preview</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="sc">/</span><span class="er">*</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="sc">------------------------------------------------------------------------------</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                            Modèle <span class="dv">1</span>                       Modèle <span class="dv">2</span>           </span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                 Coefficient Std. error p<span class="sc">-</span>value Coefficient Std. error p<span class="sc">-</span>value</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="sc">------------------------------------------------------------------------------</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>Age group 20–<span class="dv">29</span>        <span class="fl">0.000</span>      <span class="fl">0.000</span>               <span class="fl">0.000</span>      <span class="fl">0.000</span>        </span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>          30–<span class="dv">39</span>        <span class="fl">2.891</span>      <span class="fl">0.664</span>   <span class="fl">0.000</span>       <span class="fl">2.917</span>      <span class="fl">0.661</span>   <span class="fl">0.000</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>          40–<span class="dv">49</span>        <span class="fl">9.580</span>      <span class="fl">0.716</span>   <span class="fl">0.000</span>       <span class="fl">9.584</span>      <span class="fl">0.713</span>   <span class="fl">0.000</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>          50–<span class="dv">59</span>       <span class="fl">18.324</span>      <span class="fl">0.713</span>   <span class="fl">0.000</span>      <span class="fl">18.384</span>      <span class="fl">0.710</span>   <span class="fl">0.000</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>          60–<span class="dv">69</span>       <span class="fl">24.184</span>      <span class="fl">0.574</span>   <span class="fl">0.000</span>      <span class="fl">24.193</span>      <span class="fl">0.571</span>   <span class="fl">0.000</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>          <span class="dv">70</span><span class="sc">+</span>         <span class="fl">30.851</span>      <span class="fl">0.780</span>   <span class="fl">0.000</span>      <span class="fl">30.958</span>      <span class="fl">0.777</span>   <span class="fl">0.000</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>Region    NE           <span class="fl">0.000</span>      <span class="fl">0.000</span>               <span class="fl">0.000</span>      <span class="fl">0.000</span>        </span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>          MW          <span class="sc">-</span><span class="fl">0.023</span>      <span class="fl">0.595</span>   <span class="fl">0.969</span>       <span class="fl">0.033</span>      <span class="fl">0.592</span>   <span class="fl">0.956</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>          S           <span class="sc">-</span><span class="fl">0.303</span>      <span class="fl">0.591</span>   <span class="fl">0.608</span>      <span class="sc">-</span><span class="fl">0.227</span>      <span class="fl">0.588</span>   <span class="fl">0.699</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>          W           <span class="sc">-</span><span class="fl">0.777</span>      <span class="fl">0.601</span>   <span class="fl">0.196</span>      <span class="sc">-</span><span class="fl">0.745</span>      <span class="fl">0.599</span>   <span class="fl">0.213</span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>Sex       Male                                        <span class="fl">0.000</span>      <span class="fl">0.000</span>        </span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>          Female                                     <span class="sc">-</span><span class="fl">4.015</span>      <span class="fl">0.402</span>   <span class="fl">0.000</span></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>Intercept            <span class="fl">117.632</span>      <span class="fl">0.589</span>   <span class="fl">0.000</span>     <span class="fl">119.672</span>      <span class="fl">0.621</span>   <span class="fl">0.000</span></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="sc">------------------------------------------------------------------------------</span></span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="er">*/</span>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">------------------------------------------------------------------------------</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">                            Modèle 1                       Modèle 2           </span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">                 Coefficient Std. error p-value Coefficient Std. error p-value</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">------------------------------------------------------------------------------</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">Age group 20–29        0.000      0.000               0.000      0.000        </span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">          30–39        2.891      0.664   0.000       2.917      0.661   0.000</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">          40–49        9.580      0.716   0.000       9.584      0.713   0.000</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">          50–59       18.324      0.713   0.000      18.384      0.710   0.000</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co">          60–69       24.184      0.574   0.000      24.193      0.571   0.000</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">          70+         30.851      0.780   0.000      30.958      0.777   0.000</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">Region    NE           0.000      0.000               0.000      0.000        </span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co">          MW          -0.023      0.595   0.969       0.033      0.592   0.956</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co">          S           -0.303      0.591   0.608      -0.227      0.588   0.699</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="co">          W           -0.777      0.601   0.196      -0.745      0.599   0.213</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co">Sex       Male                                        0.000      0.000        </span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co">          Female                                     -4.015      0.402   0.000</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="co">Intercept            117.632      0.589   0.000     119.672      0.621   0.000</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="co">------------------------------------------------------------------------------</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><em>Remarque</em>: on peut supprimer les baselines, mais je n’ai pas trouvé comment mettre par exemple <em>ref</em> pour la contrainte à 0.</p>
 <p><strong>Exportations</strong><br>
 J’ai vu large pour l’exemple</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>collect export ex1, <span class="fu">as</span>(docx)     replace</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>collect export ex1, <span class="fu">as</span>(xls)      replace</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>collect export ex1, <span class="fu">as</span>(tex)      replace</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>collect export ex1, <span class="fu">as</span>(html)     replace</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>collect export ex1, <span class="fu">as</span>(markdown) replace</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>collect <span class="kw">export</span> ex1, <span class="kw">as</span>(docx)     <span class="kw">replace</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>collect <span class="kw">export</span> ex1, <span class="kw">as</span>(xls)      <span class="kw">replace</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>collect <span class="kw">export</span> ex1, <span class="kw">as</span>(tex)      <span class="kw">replace</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>collect <span class="kw">export</span> ex1, <span class="kw">as</span>(html)     <span class="kw">replace</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>collect <span class="kw">export</span> ex1, <span class="kw">as</span>(markdown) <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Ensemble du programme (sauf la création du style multimod et les exportations)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>collect clear</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>collect use multimod</span>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>collect <span class="kw">clear</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>collect <span class="kw">use</span> multimod</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>quietly<span class="sc">:</span> collect _r_b _r_se _r_p<span class="sc">:</span> regress bpsystol i.agegrp i.region</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>quietly<span class="sc">:</span> collect _r_b _r_se _r_p<span class="sc">:</span> regress bpsystol i.agegrp i.region i.sex</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="kw">quietly</span>: collect _r_b _r_se _r_p: <span class="kw">regress</span> bpsystol i.agegrp i.region</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="kw">quietly</span>: collect _r_b _r_se _r_p: <span class="kw">regress</span> bpsystol i.agegrp i.region i.sex</span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>collect label values cmdset <span class="dv">1</span> <span class="st">"Modèle 1"</span> <span class="dv">2</span> <span class="st">"Modèle 2"</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>collect <span class="kw">label</span> <span class="kw">values</span> cmdset 1 <span class="st">"Modèle 1"</span> 2 <span class="st">"Modèle 2"</span></span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>collect preview</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="visualisation-des-exportations" class="level3">
-<h3 class="anchored" data-anchor-id="visualisation-des-exportations"><strong>Visualisation des exportations</strong></h3>
+<section id="visualisation-des-exportations" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="visualisation-des-exportations"><span class="header-section-number">2.1.1</span> <strong>Visualisation des exportations</strong></h3>
 <div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page"><strong>Word</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false"><strong>Excel</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false"><strong>Latex (pdf)</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false"><strong>Markdown (Html)</strong></a></li></ul>
 <div class="tab-content">
@@ -829,51 +836,51 @@ J’ai vu large pour l’exemple</p>
 <p>Pour la sortie, j’ai fait également quelques modifs au niveau du texte et changé les valeurs des baselines de 0.00 à <em>Ref</em></p>
 </section>
 </section>
-<section id="margins-avec-mlogit" class="level2">
-<h2 class="anchored" data-anchor-id="margins-avec-mlogit"><strong>Margins avec mlogit</strong></h2>
+<section id="margins-avec-mlogit" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="margins-avec-mlogit"><span class="header-section-number">2.2</span> <strong>Margins avec mlogit</strong></h2>
 <ul>
 <li>Le programme est très simple, et au final on arrive à produire rapidement un output très satisfaisant avec les résulats des différentes modalités en colonne.</li>
 <li>Je n’ai pas reproduit la fin du programme avec <code>collect export</code>.</li>
 </ul>
 <p><em>Rappel</em>: j’ai seulement reporté les AME pour seulement deux catégories <em>excellent</em> et <em>poor</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>collect clear</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>collect use multimod</span>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>collect <span class="kw">clear</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>collect <span class="kw">use</span> multimod</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>qui mlogit hlthstat i.agegrp i.region i.sex i.race</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>qui<span class="sc">:</span> collect _r_b _r_se _r_p<span class="sc">:</span> margins, <span class="fu">dydx</span>(<span class="sc">*</span>) <span class="fu">predict</span>(<span class="fu">outcome</span>(Excellent))</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>qui<span class="sc">:</span> collect _r_b _r_se _r_p<span class="sc">:</span> margins, <span class="fu">dydx</span>(<span class="sc">*</span>) <span class="fu">predict</span>(<span class="fu">outcome</span>(Poor))</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="kw">qui</span> <span class="kw">mlogit</span> hlthstat i.agegrp i.region i.sex i.race</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="kw">qui</span>: collect _r_b _r_se _r_p: margins, <span class="kw">dydx</span>(*) <span class="kw">predict</span>(outcome(Excellent))</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="kw">qui</span>: collect _r_b _r_se _r_p: margins, <span class="kw">dydx</span>(*) <span class="kw">predict</span>(outcome(Poor))</span>
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>collect label values cmdset <span class="dv">1</span> <span class="st">"Excellent"</span> <span class="dv">2</span> <span class="st">"Poor"</span> </span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>collect <span class="kw">label</span> <span class="kw">values</span> cmdset 1 <span class="st">"Excellent"</span> 2 <span class="st">"Poor"</span> </span>
 <span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>collect preview</span>
 <span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="sc">/</span><span class="er">*</span></span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="sc">------------------------------------------------------------------------------</span></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>                            Excellent                        Poor             </span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>                 Coefficient Std. error p<span class="sc">-</span>value Coefficient Std. error p<span class="sc">-</span>value</span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="sc">------------------------------------------------------------------------------</span></span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>Age group 20–<span class="dv">29</span>        <span class="fl">0.000</span>          .       .       <span class="fl">0.000</span>          .       .</span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>          30–<span class="dv">39</span>       <span class="sc">-</span><span class="fl">0.028</span>      <span class="fl">0.015</span>   <span class="fl">0.066</span>       <span class="fl">0.008</span>      <span class="fl">0.004</span>   <span class="fl">0.031</span></span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>          40–<span class="dv">49</span>       <span class="sc">-</span><span class="fl">0.089</span>      <span class="fl">0.016</span>   <span class="fl">0.000</span>       <span class="fl">0.038</span>      <span class="fl">0.006</span>   <span class="fl">0.000</span></span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>          50–<span class="dv">59</span>       <span class="sc">-</span><span class="fl">0.185</span>      <span class="fl">0.014</span>   <span class="fl">0.000</span>       <span class="fl">0.079</span>      <span class="fl">0.008</span>   <span class="fl">0.000</span></span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>          60–<span class="dv">69</span>       <span class="sc">-</span><span class="fl">0.241</span>      <span class="fl">0.012</span>   <span class="fl">0.000</span>       <span class="fl">0.117</span>      <span class="fl">0.006</span>   <span class="fl">0.000</span></span>
-<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>          <span class="dv">70</span><span class="sc">+</span>         <span class="sc">-</span><span class="fl">0.234</span>      <span class="fl">0.014</span>   <span class="fl">0.000</span>       <span class="fl">0.132</span>      <span class="fl">0.011</span>   <span class="fl">0.000</span></span>
-<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>Region    NE           <span class="fl">0.000</span>          .       .       <span class="fl">0.000</span>          .       .</span>
-<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>          MW          <span class="sc">-</span><span class="fl">0.008</span>      <span class="fl">0.012</span>   <span class="fl">0.525</span>       <span class="fl">0.025</span>      <span class="fl">0.006</span>   <span class="fl">0.000</span></span>
-<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>          S           <span class="sc">-</span><span class="fl">0.060</span>      <span class="fl">0.012</span>   <span class="fl">0.000</span>       <span class="fl">0.064</span>      <span class="fl">0.007</span>   <span class="fl">0.000</span></span>
-<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>          W           <span class="sc">-</span><span class="fl">0.050</span>      <span class="fl">0.012</span>   <span class="fl">0.000</span>       <span class="fl">0.028</span>      <span class="fl">0.006</span>   <span class="fl">0.000</span></span>
-<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>Sex       Male         <span class="fl">0.000</span>          .       .       <span class="fl">0.000</span>          .       .</span>
-<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>          Female      <span class="sc">-</span><span class="fl">0.039</span>      <span class="fl">0.008</span>   <span class="fl">0.000</span>      <span class="sc">-</span><span class="fl">0.016</span>      <span class="fl">0.005</span>   <span class="fl">0.001</span></span>
-<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>Race      White        <span class="fl">0.000</span>          .       .       <span class="fl">0.000</span>          .       .</span>
-<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>          Black       <span class="sc">-</span><span class="fl">0.113</span>      <span class="fl">0.011</span>   <span class="fl">0.000</span>       <span class="fl">0.060</span>      <span class="fl">0.010</span>   <span class="fl">0.000</span></span>
-<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>          Other       <span class="sc">-</span><span class="fl">0.042</span>      <span class="fl">0.028</span>   <span class="fl">0.134</span>      <span class="sc">-</span><span class="fl">0.011</span>      <span class="fl">0.017</span>   <span class="fl">0.526</span></span>
-<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a><span class="sc">------------------------------------------------------------------------------</span></span>
-<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a><span class="er">*/</span>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="co">------------------------------------------------------------------------------</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="co">                            Excellent                        Poor             </span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="co">                 Coefficient Std. error p-value Coefficient Std. error p-value</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="co">------------------------------------------------------------------------------</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="co">Age group 20–29        0.000          .       .       0.000          .       .</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="co">          30–39       -0.028      0.015   0.066       0.008      0.004   0.031</span></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="co">          40–49       -0.089      0.016   0.000       0.038      0.006   0.000</span></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a><span class="co">          50–59       -0.185      0.014   0.000       0.079      0.008   0.000</span></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="co">          60–69       -0.241      0.012   0.000       0.117      0.006   0.000</span></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a><span class="co">          70+         -0.234      0.014   0.000       0.132      0.011   0.000</span></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a><span class="co">Region    NE           0.000          .       .       0.000          .       .</span></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a><span class="co">          MW          -0.008      0.012   0.525       0.025      0.006   0.000</span></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a><span class="co">          S           -0.060      0.012   0.000       0.064      0.007   0.000</span></span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a><span class="co">          W           -0.050      0.012   0.000       0.028      0.006   0.000</span></span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a><span class="co">Sex       Male         0.000          .       .       0.000          .       .</span></span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a><span class="co">          Female      -0.039      0.008   0.000      -0.016      0.005   0.001</span></span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a><span class="co">Race      White        0.000          .       .       0.000          .       .</span></span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a><span class="co">          Black       -0.113      0.011   0.000       0.060      0.010   0.000</span></span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a><span class="co">          Other       -0.042      0.028   0.134      -0.011      0.017   0.526</span></span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a><span class="co">------------------------------------------------------------------------------</span></span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="visualisation-des-exportations-1" class="level3">
-<h3 class="anchored" data-anchor-id="visualisation-des-exportations-1"><strong>Visualisation des exportations</strong></h3>
+<section id="visualisation-des-exportations-1" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="visualisation-des-exportations-1"><span class="header-section-number">2.2.1</span> <strong>Visualisation des exportations</strong></h3>
 <div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true"><strong>Word</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false"><strong>Excel</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false"><strong>Latex (pdf</strong>)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-4" role="tab" aria-controls="tabset-2-4" aria-selected="false"><strong>Markdown (Html)</strong></a></li></ul>
 <div class="tab-content">
@@ -1079,50 +1086,50 @@ J’ai vu large pour l’exemple</p>
 </section>
 </section>
 </section>
-<section id="sans-style-enregistré" class="level1">
-<h1><strong>Sans style enregistré</strong></h1>
+<section id="sans-style-enregistré" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> <strong>Sans style enregistré</strong></h1>
 <p>Il est bien évidemment de programmer et d’utiliser les styles à la volée. A minima, il semblerait que pour les résultats de régression la ligne <strong><code>collect layout (colname) (cmdset#result)</code></strong> soit obligatoire.</p>
 <p>Pour un simple modèle (exemple1 Ols), sans style.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>collect clear</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>quietly<span class="sc">:</span> collect _r_b _r_se _r_p<span class="sc">:</span> regress bpsystol i.agegrp i.region i.sex</span>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>collect <span class="kw">clear</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">quietly</span>: collect _r_b _r_se _r_p: <span class="kw">regress</span> bpsystol i.agegrp i.region i.sex</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>collect preview</span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> Your layout specification does not identify any items.</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>* Your layout specification does <span class="kw">not</span> identify any items.</span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>collect clear</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>collect <span class="kw">clear</span></span>
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>collect <span class="fu">layout</span> (colname) (cmdset<span class="co">#result)</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>collect layout (colname) (cmdset#result)</span>
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>                          </span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>quietly<span class="sc">:</span> collect _r_b _r_se _r_p<span class="sc">:</span> regress bpsystol i.agegrp i.region i.sex</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="kw">quietly</span>: collect _r_b _r_se _r_p: <span class="kw">regress</span> bpsystol i.agegrp i.region i.sex</span>
 <span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>collect preview</span>
 <span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="sc">/</span><span class="er">*</span></span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="sc">------------------------------------------</span></span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>          <span class="er">|</span>           <span class="dv">1</span>          <span class="dv">1</span>       <span class="dv">1</span></span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>          <span class="sc">|</span> Coefficient Std. error p<span class="sc">-</span>value</span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="sc">----------+-------------------------------</span></span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>20–<span class="dv">29</span>     <span class="sc">|</span>           <span class="dv">0</span>          <span class="dv">0</span>        </span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>30–<span class="dv">39</span>     <span class="sc">|</span>    <span class="fl">2.917042</span>   .<span class="dv">6613269</span>   <span class="fl">0.000</span></span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>40–<span class="dv">49</span>     <span class="sc">|</span>    <span class="fl">9.584328</span>   .<span class="dv">7129385</span>   <span class="fl">0.000</span></span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>50–<span class="dv">59</span>     <span class="sc">|</span>    <span class="fl">18.38351</span>   .<span class="dv">7100856</span>   <span class="fl">0.000</span></span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>60–<span class="dv">69</span>     <span class="sc">|</span>     <span class="fl">24.1932</span>   .<span class="dv">5711481</span>   <span class="fl">0.000</span></span>
-<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a><span class="dv">70</span><span class="sc">+</span>       <span class="er">|</span>    <span class="fl">30.95843</span>   .<span class="dv">7768639</span>   <span class="fl">0.000</span></span>
-<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>NE        <span class="sc">|</span>           <span class="dv">0</span>          <span class="dv">0</span>        </span>
-<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>MW        <span class="sc">|</span>    .<span class="dv">0329983</span>   .<span class="dv">5917749</span>   <span class="fl">0.956</span></span>
-<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>S         <span class="sc">|</span>   <span class="sc">-</span>.<span class="dv">2269237</span>   .<span class="dv">5877579</span>   <span class="fl">0.699</span></span>
-<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>W         <span class="sc">|</span>   <span class="sc">-</span>.<span class="dv">7447052</span>   .<span class="dv">5985115</span>   <span class="fl">0.213</span></span>
-<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>Male      <span class="sc">|</span>           <span class="dv">0</span>          <span class="dv">0</span>        </span>
-<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>Female    <span class="sc">|</span>    <span class="sc">-</span><span class="fl">4.01548</span>   .<span class="dv">4021621</span>   <span class="fl">0.000</span></span>
-<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>Intercept <span class="sc">|</span>    <span class="fl">119.6719</span>   .<span class="dv">6205858</span>   <span class="fl">0.000</span></span>
-<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a><span class="sc">------------------------------------------</span></span>
-<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a><span class="er">*/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="co">------------------------------------------</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="co">          |           1          1       1</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="co">          | Coefficient Std. error p-value</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="co">----------+-------------------------------</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="co">20–29     |           0          0        </span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="co">30–39     |    2.917042   .6613269   0.000</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="co">40–49     |    9.584328   .7129385   0.000</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="co">50–59     |    18.38351   .7100856   0.000</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a><span class="co">60–69     |     24.1932   .5711481   0.000</span></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a><span class="co">70+       |    30.95843   .7768639   0.000</span></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a><span class="co">NE        |           0          0        </span></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a><span class="co">MW        |    .0329983   .5917749   0.956</span></span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a><span class="co">S         |   -.2269237   .5877579   0.699</span></span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a><span class="co">W         |   -.7447052   .5985115   0.213</span></span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a><span class="co">Male      |           0          0        </span></span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a><span class="co">Female    |    -4.01548   .4021621   0.000</span></span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a><span class="co">Intercept |    119.6719   .6205858   0.000</span></span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a><span class="co">------------------------------------------</span></span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Au lieu de sélectionner des items comme _r_b _r_se _r_se, on peut directement tous ceux qui sont disponibles avec <strong><code>collect get</code></strong>. Pas forcément conseillé avec les exemples car chaque regression enregistre 10 information (bornes des IC, degré de liberté, statistique t pour l’Ols, sa valeur absolue…)</p>
 <p>Pour info la ligne avec collect get est: <strong><code>collect get: regress bpsystol i.agegrp i.region i.sex</code></strong></p>
 </section>
-<section id="le-builder" class="level1">
-<h1><strong>Le builder</strong></h1>
+<section id="le-builder" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> <strong>Le builder</strong></h1>
 <p>Stata a installé un builder intéractif pour mettre en forme. Je ne suis pas du tout à l’aise avec ce genre d’outil, pour ne pas dire complètement nul.</p>
 <p><strong><code>help Tables_Builder</code></strong></p>
 <p><strong>Tutoriels youtube (Chuck Huber):</strong></p>
@@ -1159,121 +1166,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const disableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'prefetch';
-    }
-  }
-  const enableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'stylesheet';
-    }
-  }
-  const manageTransitions = (selector, allowTransitions) => {
-    const els = window.document.querySelectorAll(selector);
-    for (let i=0; i < els.length; i++) {
-      const el = els[i];
-      if (allowTransitions) {
-        el.classList.remove('notransition');
-      } else {
-        el.classList.add('notransition');
-      }
-    }
-  }
-  const toggleColorMode = (alternate) => {
-    // Switch the stylesheets
-    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('#quarto-margin-sidebar .nav-link', false);
-    if (alternate) {
-      enableStylesheet(alternateStylesheets);
-      for (const sheetNode of alternateStylesheets) {
-        if (sheetNode.id === "quarto-bootstrap") {
-          toggleBodyColorMode(sheetNode);
-        }
-      }
-    } else {
-      disableStylesheet(alternateStylesheets);
-      toggleBodyColorPrimary();
-    }
-    manageTransitions('#quarto-margin-sidebar .nav-link', true);
-    // Switch the toggles
-    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-    for (let i=0; i < toggles.length; i++) {
-      const toggle = toggles[i];
-      if (toggle) {
-        if (alternate) {
-          toggle.classList.add("alternate");     
-        } else {
-          toggle.classList.remove("alternate");
-        }
-      }
-    }
-    // Hack to workaround the fact that safari doesn't
-    // properly recolor the scrollbar when toggling (#1455)
-    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-      manageTransitions("body", false);
-      window.scrollTo(0, 1);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        manageTransitions("body", true);
-      }, 40);  
-    }
-  }
-  const isFileUrl = () => { 
-    return window.location.protocol === 'file:';
-  }
-  const hasAlternateSentinel = () => {  
-    let styleSentinel = getColorSchemeSentinel();
-    if (styleSentinel !== null) {
-      return styleSentinel === "alternate";
-    } else {
-      return false;
-    }
-  }
-  const setStyleSentinel = (alternate) => {
-    const value = alternate ? "alternate" : "default";
-    if (!isFileUrl()) {
-      window.localStorage.setItem("quarto-color-scheme", value);
-    } else {
-      localAlternateSentinel = value;
-    }
-  }
-  const getColorSchemeSentinel = () => {
-    if (!isFileUrl()) {
-      const storageValue = window.localStorage.getItem("quarto-color-scheme");
-      return storageValue != null ? storageValue : localAlternateSentinel;
-    } else {
-      return localAlternateSentinel;
-    }
-  }
-  let localAlternateSentinel = 'alternate';
-  // Dark / light mode switch
-  window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value 
-    let toAlternate = !hasAlternateSentinel();
-    toggleColorMode(toAlternate);
-    setStyleSentinel(toAlternate);
-  };
-  // Ensure there is a toggle, if there isn't float one in the top right
-  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-    const a = window.document.createElement('a');
-    a.classList.add('top-right');
-    a.classList.add('quarto-color-scheme-toggle');
-    a.href = "";
-    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-    const i = window.document.createElement("i");
-    i.classList.add('bi');
-    a.appendChild(i);
-    window.document.body.appendChild(a);
-  }
-  // Switch to dark mode if need be
-  if (hasAlternateSentinel()) {
-    toggleColorMode(true);
-  } else {
-    toggleColorMode(false);
-  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -1354,8 +1246,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../macro/intro.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Présentation</span>
+      <a href="../R.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Stata et R</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

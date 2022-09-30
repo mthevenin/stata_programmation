@@ -8,7 +8,7 @@ website:
   page-navigation: true
   page-footer: 
     center: "Marc Thévenin - Ined-Sms - Août 2022" 
-    background: light
+    background: dark
   navbar:
     collapse-below: lg
     left:
@@ -28,7 +28,7 @@ website:
   sidebar:
     style: "docked"
     align: left
-    background: "#6B92B2"
+#    background: "#6B92B2"
     collapse-level: 1    
     contents:
       - section: "Formation introductive"
@@ -54,6 +54,8 @@ website:
         contents:
           - macro/intro.qmd        
       - section: "C'est dans l'R"
+        contents:
+          - R.qmd   
       - section: "De beaux tableaux ?"
         contents:
           - tableaux/intro.qmd        
@@ -62,14 +64,13 @@ website:
 format:
   html:
     theme: 
-      dark:   [superhero, theme-light.scss]  
-      light:  [superhero, theme-dark.scss]          
+      light:  [yeti, theme-light.scss]          
     code-background: true
     code-copy: true
     toc: true
     toc-depth: 3
     toc-title: Sections
-    highlight-style: monochrome
-
+    highlight-style: zenburn
+number-sections: true
 
 

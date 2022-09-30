@@ -2,8 +2,15 @@
 title: "Exemple profile.do"
 ---
 
+```{r, include=FALSE}
+options(Encoding="UTF-8")
+library(Statamarkdown)
+stataexe <- "C:/Program Files/Stata17/StataSE-64.exe"
+knitr::opts_chunk$set(engine.path=list(stata=stataexe))
+```
 
-```{r eval=FALSE}
+
+```{stata, eval=FALSE}
 
 **************************
 * profile.do Ined        *
@@ -62,7 +69,7 @@ title: "Exemple profile.do"
 /* changer le chemin à l'avant dernière ligne: log using.... */
 
 * capture log close statalog
-*  local cdt = "`c(current_date)'"
+* local cdt = "`c(current_date)'"
 * local cdt: subinstr local cdt " " "-", all
 * local cti = "`c(current_time)'"
 * local cti: subinstr local cti ":" ".", all

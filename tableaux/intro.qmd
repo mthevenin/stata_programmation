@@ -2,6 +2,13 @@
 title: "Intro - Collect"
 ---
 
+```{r, include=FALSE}
+options(Encoding="UTF-8")
+library(Statamarkdown)
+stataexe <- "C:/Program Files/Stata17/StataSE-64.exe"
+knitr::opts_chunk$set(engine.path=list(stata=stataexe))
+```
+
 La suite **`collect`** introduite avec le version 17 va t-elle remplacer `outreg2` et autres commandes de mise en forme et d'exportation de tableaux.... cela se pourrait bien.
 
 **08-09-2022**: Merci à Marion pour m'avoir donné l'idée de me pencher rapidement sur cette suite.
@@ -24,7 +31,7 @@ A partir de la base *nanhes21*:
 
 **Rappel**: un tuto plus complet viendra ultérieurement (s'il y a une demande)
 
-```{r, eval=FALSE}
+```{stata, eval=FALSE}
 collect style row split, dups(first)  // ajoute le label de la variable à gauche comme nom de variable
 collect style column,    dups(center) // permet de ne pas multiplier le nombre de cellule sur la première ligne
 collect style cell result[_r_b _r_se _r_p], nformat(%8.3f)   // décimales des valeurs (ici idem)
@@ -38,7 +45,7 @@ collect save multimod , replace   // sauvegarde dans repertoire temporaire du st
 
 Ouverture de la base
 
-```{r, eval=FALSE}
+```{stata, eval=FALSE}
 use https://www.stata-press.com/data/r17/nhanes2l, clear
 ```
 
@@ -47,7 +54,7 @@ use https://www.stata-press.com/data/r17/nhanes2l, clear
 ::: callout-warning
 Lorsqu'on génère un tableau avec `collect` avec un même style il me semble préférable d'exécuter systématiquement:
 
-```{r, eval=FALSE}
+```{stata, eval=FALSE}
 collect clear
 collect use nom_style, replace
 ```
@@ -55,14 +62,14 @@ collect use nom_style, replace
 
 **Estimation du modèle avec `collect`**
 
-```{r, eval=FALSE}
+```{stata, eval=FALSE}
 quietly: collect _r_b _r_se _r_p: regress bpsystol i.agegrp i.region
 quietly: collect _r_b _r_se _r_p: regress bpsystol i.agegrp i.region i.sex
 ```
 
 **Modification du style pour ajouter le nom des modèles**
 
-```{r, eval=FALSE}
+```{stata, eval=FALSE}
 collect label values cmdset 1 "Modèle 1" 2 "Modèle 2" 
 ```
 
@@ -70,7 +77,7 @@ On peut également ajouter un titre, modifier les labels des variables, je pense
 
 **Prévisualisation du tableau**
 
-```{r, eval=FALSE}
+```{stata, eval=FALSE}
 collect preview
 
 /*
@@ -102,7 +109,7 @@ Intercept            117.632      0.589   0.000     119.672      0.621   0.000
 **Exportations**\
 J'ai vu large pour l'exemple
 
-```{r, eval=FALSE}
+```{stata, eval=FALSE}
 collect export ex1, as(docx)     replace
 collect export ex1, as(xls)      replace
 collect export ex1, as(tex)      replace
@@ -112,7 +119,7 @@ collect export ex1, as(markdown) replace
 
 Ensemble du programme (sauf la création du style multimod et les exportations)
 
-```{r, eval=FALSE}
+```{stata, eval=FALSE}
 collect clear
 collect use multimod
 
@@ -360,7 +367,7 @@ Pour la sortie, j'ai fait également quelques modifs au niveau du texte et chang
 
 *Rappel*: j'ai seulement reporté les AME pour seulement deux catégories *excellent* et *poor*
 
-```{r, eval=FALSE}
+```{stata, eval=FALSE}
 collect clear
 collect use multimod
 
@@ -440,7 +447,7 @@ Il est bien évidemment de programmer et d'utiliser les styles à la volée. A m
 
 Pour un simple modèle (exemple1 Ols), sans style.
 
-```{r, eval=FALSE}
+```{stata, eval=FALSE}
 collect clear
 quietly: collect _r_b _r_se _r_p: regress bpsystol i.agegrp i.region i.sex
 collect preview

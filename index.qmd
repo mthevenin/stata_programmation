@@ -7,6 +7,16 @@ options(Encoding="UTF-8")
 library(fontawesome)
 ```
 
+
+::: callout-note
+
+## 30 septembre 2022
+
+Une présentation du package **Statamarkdown** de ***Doug Hemken***. La durée d'exécution n'est pas optimale, mais ce package permet d'exécuter des programmes Stata dans *RStudio* tout en éditant un 
+document (article, rapport, ouvrage).  
+[Lien](R/statamarkdown/statamarkdown_html.html)
+:::
+
 ::: callout-note
 
 ## 08 Septembre 2022

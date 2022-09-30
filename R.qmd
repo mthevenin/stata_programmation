@@ -1,0 +1,9 @@
+---
+title: "Stata et R"
+listing:
+  id: topics
+  type: table
+  contents:
+    - "R/statamarkdown/statamarkdown_html.qmd"
+---
+

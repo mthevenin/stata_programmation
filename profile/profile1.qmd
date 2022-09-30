@@ -4,6 +4,9 @@ title: "Principe"
 
 ```{r, include=FALSE}
 options(Encoding="UTF-8")
+library(Statamarkdown)
+stataexe <- "C:/Program Files/Stata17/StataSE-64.exe"
+knitr::opts_chunk$set(engine.path=list(stata=stataexe))
 ```
 
 <br>
@@ -33,12 +36,12 @@ Une fois le programme enregistré, son effet n'est pris en compte que pour les s
 Pour faciliter l'ouverture et l'enregistrement du fichier sous windows sans avoir à se promener dans l'explorateur de fichiers, on peut enregistrer la localisation du répertoire user avec une macro de type `global`, ici appelée *user*, et l'ouvrir rapidement avec l'invite de commande windows sous Stata (`!` ou `shell`).
 
 Affectation du répertoire user dans une macro:
-```{r eval=FALSE}
+```{stata, eval=FALSE}
 global user "C:/Users/nom_user/"
 ```
 
 Ouverture du fichier profile.do avec l'invite de commande: 
-```{r eval=FALSE}
+```{stata, eval=FALSE}
 ! $user/profile.do
 ```
 
@@ -53,7 +56,7 @@ Les quelques exemples de configurations qui suivent sont forcément orientés ve
 
 Changement de la localisation du répertoire où sont enregistrées les commandes externes. Il est préférable de les localiser dans un lecteur autre que le lecteur C:
 
-```{r eval=FALSE}
+```{stata, eval=FALSE}
 sysdir set PLUS "D:/D/ado/plus"
 sysdir set PERSONAL "D:/D/ado/personal"
 ```
@@ -63,14 +66,14 @@ sysdir set PERSONAL "D:/D/ado/personal"
 
 On peut créer un répertoire qui fera office de répertoire d'enregistrement par défaut des fichiers, et affecter les opérations d'ouvertures et de sauvegardes dans ce répertoire.
 
-```{r eval=FALSE}
+```{stata, eval=FALSE}
 * Après création du répertoire stata_temp
 cd "D:\D\stata_temp\"
 ```
 
 C'est très optionnel: on peut demander à Stata d'afficher à l'ouverture le contenu de ce répertoire
 
-```{r eval=FALSE}
+```{stata, eval=FALSE}
 noisily display as txt    "------------------------------------"
 noisily display as result "  Contenu du repertoire stata_temp  "
 noisily display as txt    "------------------------------------"
@@ -88,11 +91,11 @@ noisily dir "D:/D/stata_temp/"
 Si on change dans un programme le répertoire d'affectation par défaut avec `cd`, ce répertoire  *stata_temp* ne sera plus reconnu comme répertoire par défaut.   
 Pour palier ce problème on peut affecter une macro à la localisation de ce répertoire.
 
-```{r eval=FALSE}
+```{stata, eval=FALSE}
 global tmp "D:/D/stata_temp/"
 ```
 
-```{r eval=FALSE}
+```{stata, eval=FALSE}
 cd "path/mon_projet"  
 
 use base, clear
@@ -109,7 +112,7 @@ La plus utile de toutes les configurations décrites ici.
 Au préalable, je conseille de créer un répertoire d'enregistrement pour ces fichiers logs. Je les enregistre dans un sous répertoire de *stat_temp* appelé tout simplement **log**.   
 
 
-```{r eval=FALSE}
+```{stata, eval=FALSE}
 capture log close statalog
 local cdt = "`c(current_date)'"
 local cdt: subinstr local cdt " " "-", all
@@ -138,7 +141,7 @@ nombre de décimales reportées dans l'output d'une régression avec **`set cfor
 
 Si on souhaite fixer le nombre de décimale pour l'ensemble des statistiques à 2
 
-```{r eval=FALSE}
+```{stata, eval=FALSE}
 set cformats %9.2f   // max longueur =9
 set sformats %9.2f   // max longueur =8
 set pformats %9.2f   // max longueur =5
@@ -146,7 +149,7 @@ set pformats %9.2f   // max longueur =5
 
 **Exemple 2**: déblocage du défilement de l'output
 
-```{r eval=FALSE}
+```{stata, eval=FALSE}
 set more off
 ``` 
 
@@ -159,7 +162,7 @@ De nouveau avec une commande de type `set` on peut dans son fichier *profile.do*
 J'ai maintenant pour (bonne) habitude d'utiliser **`grstyle`** de Ben Jann (présentation dans la formation dédiée aux graphiques: <https://mthevenin.github.io/stata_graphiques/formation32.html#grstyle-de-b.jann>).   
 Selon l'humeur du moment, on peut générer un thème graphique visuellement bien plus qualitatif que les thèmes usines de Stata, avec seulement quelques arguments.  
 
-```{R eval=FALSE}
+```{stata, eval=FALSE}
 grstyle init
 grstyle set imesh
 grstyle set legend 11, nobox
@@ -171,24 +174,6 @@ grstyle set color tableau
 
 ## **Python**
 
-**Chargement de l'installation python** 
-
-De nouveau on retrouve une commande de type `set` qui permet d'indiquer la localisation de l'exécutable *python*. J'ai par exemple deux installations de Python, une standard et une avec **conda**:  
-
-```{r eval=FALSE}
-python search
-
-/*
- C:\Users\thevenin_m\AppData\Local\Programs\Python\Python310\python.exe
- C:\Users\thevenin_m\Miniconda3\python.exe
-*/
-```
-
-On déclare l'exécutable python à Stata avec la commande **`set python_exec`**. Si on souhaite le modifier, la présence de la commande dans le fichier *profile.do* s'avère plutôt utile.
-
-```{r eval=FALSE}
-C:/Users/thevenin_m/AppData/Local/Programs/Python/Python310/python.exe
-```
 
 
 

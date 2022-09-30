@@ -1,0 +1,239 @@
+---
+title: "Statamarkdown [RStudio]"
+author: "Marc Thevenin"
+format:
+  html: 
+    code-tools:
+      source: true
+---
+
+```{r, echo=FALSE, , message=FALSE}
+library(Statamarkdown)
+stataexe <- "C:/Program Files/Stata17/StataSE-64.exe"
+knitr::opts_chunk$set(engine.path=list(stata=stataexe))
+```
+
+# Introduction: Markdown et Statamarkdown dans RStudio 
+
+-   **Markdown**.
+    -   Ce n'est vraiment pas très compliqué, le but, mais il faut un minimum de pratique en édition avec **markdown** (md). Il y a pléthore de tutoriels (un exemple: <https://www.markdownguide.org/cheat-sheet/>)
+    -   Stata permet d'exécuter dans un .do un programme documenté en md depuis de nombreuses années: se reporter par exemple à [markstat](https://data.princeton.edu/stata/markdown) de *Germán Rodríguez*, de loin la solution la plus stisfaisante. C'est mon avis, mais les solutions dans l'environnement Stata sont et je pense resteront largement en deçà de celles proposée dans un environnement R (*Rmarkdown*, *Bookdown*).
+    -   La dernière évolution en date,[**Quarto**](https://quarto.org/), continue de creuser le fossé, en particulier pour générer des documents nativement en Latex. Ce document, diffusé en html, est également mis à disposition en format pdf [Lien](statamarkdown_pdf.pdf). Le code source est disponible en cliquant sur \</\> en haut à droite de la page pour le html, et son variant en pdf est déposé sur github [lien]() 
+-   **La durée d'exécution**  
+    - Cette présentation montre rapidement comment dans *Rstudio* on peut éditer un document en exécutant simulanément *Stata*. Les durée d'exécution ne sont malheureusement pas optimales malgré les améliorations récentes du logiciel. L'auteur du package Statamarkdown *Doug Hemken* l'indique clairement. Stata est exécuté en mode batch en s'ouvrant et se fermant systématiquement à chaque bloc de commandes. Cette durée d'exécution est encore plus élevée lorsqu'on compile un document en format pdf, donc nativement en *Latex*. Même si `Statamarkdown` présente un intérêt, je pense que l'ensemble du matériel d'analyse, comme les tableaux et graphiques, devrait resté produit sous environnement Stata, et dans un deuxième temps intégré au document.
+
+::: callout-note
+## Markdown versus Markup
+
+Le markdown est langage d'édition à balisage léger créer en 2002. **Markdown** parce qu'il existe du **Markup**, le plus célèbre étant le HTML (c'est le M), et avec Stata on a le très pénible *SMCL* (Stata Markup Control Langage).  
+Le *Latex* n'est pas officiellement il me semble un langage d'édition de type Markup, mais il reste très gourmand en balises. Tel qu'il est intégré à **Rmarkdown** mais plus encore avec **Quarto**, le balisage Latex devient minimal pour ne pas dire inéxistant (\newpage et \input reste très utile).
+:::
+
+**Bloc de code**
+
+-   Dans ce document les lignes de commandes seront bien évidemment reportées, ce qui n'est pas le cas si on souhaite par exemple éditer un article, un rapport, une thèse ou un ouvrage. Un bloc de codes ou un fragment de programme est ouvert avec **`{nom_langage, options}** et fermé par **`**. Les option **`echo=FALSE`**, **`warning=FALSE`** et **`message=FALSE`** permettent de ne pas afficher le programme et les messages qui peuvent être affichés dans l'output. 
+-   Si on souhaite cacher intégralement les résultats, on peut ajouter l'option (normalement `quielty` doit suffire ) **`results=FALSE`**.
+
+````{verbatim}
+```{stata}
+di  "{bf: *******AU SECOURS LE SMCL*******}"
+```
+````
+
+Affichage dans le document:
+
+```{stata}
+di  "{bf: *******AU SECOURS LE SMCL*******}"
+```
+
+**Sans affichage du programme: `echo=FALSE`**
+
+````{verbatim}
+```{stata, echo=FALSE, warning=FALSE, message=FALSE}
+di  "{bf: *******AU SECOURS LE SMCL*******}"
+```
+````
+
+Affichage dans le document :
+
+```{stata, echo=FALSE, warning=FALSE, message=FALSE}
+di  "{bf: *******AU SECOURS LE SMCL*******}"
+```
+
+**Cacher les résultats: `result=FALSE`**
+
+````{verbatim}
+```{stata, echo=FALSE, warning=FALSE, message=FALSE, results=FALSE}
+di  "{bf: *******AU SECOURS LE SMCL*******}"
+```
+````
+
+Pas d'affichage dans le document
+
+Dans la suite du document, les informations qui ouvrent le bloc de codes seront reportées sous forme de titre de cette zône, par exemple : 
+
+```{stata filename="```{stata, warning=FALSE, message=FALSE, results=FALSE}" , warning=FALSE, message=FALSE, results=FALSE}
+di  "{bf: *******AU SECOURS LE SMCL*******}"
+```
+
+
+::: callout-important
+## profile.do  
+Si vous avez des paramètres de session dans un fichier *profile.do* ([tutoriel](https://mthevenin.github.io/stata_programmation/profile/profile1.html)), je conseille très vivement de mettre ce fichier dans le répertoire où se trouve le fichier que vous éditer avec *Rmarkdown*, *Bookdown* ou comme ici *Quarto*.  
+Par exemple, si comme moi le répertoire **adoplus** des commandes externes a été déplacé et son emplacement chargé dans un fichier *profile*, Statamarkdown ne pourra pas chercher ces commandes et les exécuter. 
+:::
+
+# Statmarkdown de Doug Hemken
+
+## Ressources
+
+-   [Doug Hemken](https://cde.wisc.edu/staff/hemken-douglas/)
+-   [Site tutoriel](https://www.ssc.wisc.edu/~hemken/Stataworkshops/Statamarkdown/stata-and-r-markdown.html)
+-   [Dépôt github](https://github.com/Hemken/Statamarkdown)
+
+## Installation
+
+**Installation du package**
+
+```{r, eval=FALSE}
+library(devtools)
+install_github("hemken/Statamarkdown")
+```
+
+**Chargement de l'exécutable Stata**
+
+Le code `R` qui suis est à utiliser systématiquement dans chaque document.
+
+````{verbatim}
+```{r, echo=FALSE, message=FALSE}
+library(Statamarkdown)
+stataexe <- "C:/Program Files/Stata17/StataSE-64.exe"
+knitr::opts_chunk$set(engine.path=list(stata=stataexe))
+```
+````
+
+## Exemple
+
+### Suite de commandes dans un bloc
+
+```{stata filename="```{Stata}"}
+sysuse auto, clear
+describe
+sum price, d
+```
+
+### Suite de commandes dans plusieurs blocs
+
+Si on exécute la suite du programme dans un autre bloc:
+
+```{stata filename="```{Stata}" }
+regress price mpg turn if foreign==1
+```
+
+Cela ne marche pas.
+
+On doit ajouter **`collectcode=TRUE`** en entrée du premier bloc: **`{Stata, collectcode=TRUE }`**
+
+````{verbatim}
+```{stata,  collectcode=TRUE }
+sysuse auto, clear
+```
+````
+
+```{stata filename="```{Stata, collectcode=TRUE }",  collectcode=TRUE }
+sysuse auto, clear
+```
+
+Puis
+
+```{stata filename="```{Stata}"}
+regress price mpg turn if foreign==1
+```
+
+## Commandes externes
+
+Si vous avez modifié l'emplacement du répertoire *adoplus* et que l'appel à ce répertoire est dans un fichier profile.do ([tutoriel](https://mthevenin.github.io/stata_programmation/profile/profile1.html)), Statamarkdown ne sera pas capable d'exécuter les commande externes.   
+La solution est simple: il suffit de coller votre fichier profile.do, normalement dans votre répertoire user, dans le répertoire du document que vous êtes en train de rédiger.
+
+
+## Inserer un graphique
+
+Le graphique exporter avec  **`graph export`**. Il est conseillé de l'enregistrer dans le même répertoire que le document généré ou dans un sous répertoire. Pour l'insérer, il suffit d'utiliser l'intégration standard avec markdown: **`![nom graph](nom_graph.png){option}`** s'il est dans le même répertoire ou **`![nom graph](img/nom_graph.png){option}`** s'il se trouve dans un sous répertoire, par exemple  *img* 
+
+```{stata filename="```{Stata, message=FALSE}", message=FALSE, warning=FALSE}
+local mopts mc(%80) mlc(black) mlw(*.2) jitter(4)
+
+tw scatter price mpg if !foreign, `mopts' /// 
+|| scatter price mpg if  foreign, `mopts' /// 
+|| , legend(order(1 "Domestic" 2 "foreign") region(color(%0)) pos(11)) /// 
+     ylabel(, angle(0))  ///
+     title("Graphique avec Statamarkown" "dans un document Quarto", pos(11))
+
+qui graph export "D:\D\Marc\SMS\STATA INED\Programmation\R\statamarkdown\g1.png", replace 
+
+```
+
+```{r filename="Directement dans le document", eval=FALSE}
+![titre graph](g1.png){width=80%}{fig-align="left"}
+```
+
+
+![](g1.png){width=80%}
+
+
+## Résultat de régression avec **`collect`**
+
+* Se reporter à la courte présention de **`collect`** ([lien](https://mthevenin.github.io/stata_programmation/tableaux/intro.html)) introduite avec la version 17 de Stata. On prendra le premier exemple.
+* Pour ce document html on utilisera le package R **`htmltools`** pour insérer un tableau générer avec **`collect`** et exporter avec **`collect export`** en html. Pour la version pdf, le tableau sera de type *Latex*.  
+
+
+**Installation de htmltools (R)**  
+
+```{r filename="```{r}" , eval=FALSE}
+install.packages("htmltools")
+```
+
+**Chargement de htmltools (R)** 
+
+```{r filename="```{r, message=FALSE}", message=FALSE}
+library(htmltools)
+```
+
+### Programme Stata
+
+```{stata filename="```{Stata, message=FALSE, warning=FALSE}", message=FALSE, warning=FALSE}
+
+qui use https://www.stata-press.com/data/r17/nhanes2l, clear
+
+qui collect clear
+qui collect use multimod, replace
+
+qui: collect _r_b _r_se _r_p: regress bpsystol i.agegrp i.region
+qui: collect _r_b _r_se _r_p: regress bpsystol i.agegrp i.region i.sex
+
+qui collect label values cmdset 1 "Modèle 1" 2 "Modèle 2" 
+
+qui collect export "D:/D/Marc/SMS/STATA INED/Programmation/R/statamarkdown/ex1", as(html)     replace
+```
+
+### Insertion du tableau avec htmltools
+
+Directement dans un bloc de code de code: 
+
+````{verbatim}
+```{r}
+#| tbl-cap: "Régression générée avec collect"
+htmltools::includeHTML("D:/D/Marc/SMS/STATA INED/Programmation/R/statamarkdown/ex1.html")
+```
+````
+
+```{r filename="```{r}", echo=FALSE}
+#| tbl-cap: "Régression générée avec collect"
+htmltools::includeHTML("D:/D/Marc/SMS/STATA INED/Programmation/R/statamarkdown/ex1.html")
+```
+
+
+Un titre à été ajouté avec **`#| tbl-cap: "Régression générée avec collect"`**
+
+
+
