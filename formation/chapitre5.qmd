@@ -1,6 +1,5 @@
 ---
 title: "Les variables"
-freeze: auto 
 ---
 
 ```{r, echo=FALSE, , message=FALSE}
@@ -8,8 +7,6 @@ library(Statamarkdown)
 stataexe <- "C:/Program Files/Stata17/StataSE-64.exe"
 knitr::opts_chunk$set(engine.path=list(stata=stataexe))
 ```
-
-
 
 
 [**Programme du chapitre**](https://github.com/mthevenin/formation_stata/blob/master/programmes/chapitre5.md)
