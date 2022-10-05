@@ -9,11 +9,11 @@ stataexe <- "C:/Program Files/Stata17/StataSE-64.exe"
 knitr::opts_chunk$set(engine.path=list(stata=stataexe))
 ```
 
-La suite **`collect`** introduite avec le version 17 va t-elle remplacer `outreg2` et autres commandes de mise en forme et d'exportation de tableaux.... cela se pourrait bien.
+La suite **`collect`** introduite avec le version 17 va t-elle remplacer `outreg2` et autres commandes de mise en forme et d'exportation de tableaux.....
 
 **08-09-2022**: Merci à Marion pour m'avoir donné l'idée de me pencher rapidement sur cette suite.
 
-Pas encore un tutoriel, dès éléments sont encore obscurs, mais avec quelques copier-coller issus des fichiers d'aide je présente juste deux exemples avec des régressions.
+Pas encore un tutoriel, dès éléments sont encore obscurs, mais avec quelques copier-coller issus des fichiers d'aides je présente juste deux exemples avec des régressions.
 
 **Principe de la suite `collect`**:
 
@@ -46,7 +46,8 @@ collect save multimod , replace   // sauvegarde dans repertoire temporaire du st
 Ouverture de la base
 
 ```{stata, eval=FALSE}
-use https://www.stata-press.com/data/r17/nhanes2l, clear
+qui use https://www.stata-press.com/data/r17/nhanes2l, clear
+qui save nhanes, replace
 ```
 
 ## **Ols**
@@ -54,7 +55,7 @@ use https://www.stata-press.com/data/r17/nhanes2l, clear
 ::: callout-warning
 Lorsqu'on génère un tableau avec `collect` avec un même style il me semble préférable d'exécuter systématiquement:
 
-```{stata, eval=FALSE}
+```{stata filename="Syntaxe", eval=FALSE}
 collect clear
 collect use nom_style, replace
 ```
@@ -63,8 +64,9 @@ collect use nom_style, replace
 **Estimation du modèle avec `collect`**
 
 ```{stata, eval=FALSE}
-quietly: collect _r_b _r_se _r_p: regress bpsystol i.agegrp i.region
-quietly: collect _r_b _r_se _r_p: regress bpsystol i.agegrp i.region i.sex
+
+qui: collect _r_b _r_se _r_p: regress bpsystol i.agegrp i.region
+qui: collect _r_b _r_se _r_p: regress bpsystol i.agegrp i.region i.sex
 ```
 
 **Modification du style pour ajouter le nom des modèles**
@@ -109,10 +111,16 @@ Intercept            117.632      0.589   0.000     119.672      0.621   0.000
 **Exportations**\
 J'ai vu large pour l'exemple
 
+::: callout-important
+## Exportation latex
+
+Mettre l'option **`tableonly`** pour que la balise d'ouverture soit celle d'un tableau et non d'un document.
+:::
+
 ```{stata, eval=FALSE}
 collect export ex1, as(docx)     replace
 collect export ex1, as(xls)      replace
-collect export ex1, as(tex)      replace
+collect export ex1, as(tex)      replace tableonly
 collect export ex1, as(html)     replace
 collect export ex1, as(markdown) replace
 ```
@@ -146,146 +154,11 @@ collect preview
 
 ![](tex1.PNG)
 
--   Le tableau a été compilé avec **`overleaf`** (https://fr.overleaf.com), éditeur Latex en ligne.
--   le fichier tex1.tex généré avec `collect export` donne le tableau brut balisé. Le fichier peut être appelé t inséré dans un document Latex avec `\estauto{nom_fichier.tex}`
+-   
+-   le fichier tex1.tex généré avec `collect export` donne le tableau brut balisé. Le fichier peut être  inséré dans un document Latex avec `\estauto{nom_fichier.tex}` ou `\input{nom_fichier.tex}`
 
-***Fichier ex1.tex***
 
-```{r, eval=FALSE}
-\documentclass{article}
-\usepackage{multirow}
-\usepackage{amsmath}
-\usepackage{ulem}
-\usepackage[table]{xcolor}
-\begin{document}
-\begin{table}[!h]
-\centering
-\begin{tabular}{llllllll}
-\cline{1-8}
-\multicolumn{1}{c}{} &
-  \multicolumn{1}{c}{} &
-  \multicolumn{3}{c}{Modèle 1} &
-  \multicolumn{3}{c}{Modèle 2} \\
-\multicolumn{1}{c}{} &
-  \multicolumn{1}{c}{} &
-  \multicolumn{1}{r}{Coefficient} &
-  \multicolumn{1}{r}{Std. error} &
-  \multicolumn{1}{r}{p-value} &
-  \multicolumn{1}{r}{Coefficient} &
-  \multicolumn{1}{r}{Std. error} &
-  \multicolumn{1}{r}{p-value} \\
-\cline{1-8}
-\multicolumn{1}{l}{Age group} &
-  \multicolumn{1}{l}{20–29} &
-  \multicolumn{1}{r}{0.000} &
-  \multicolumn{1}{r}{0.000} &
-  \multicolumn{1}{r}{} &
-  \multicolumn{1}{r}{0.000} &
-  \multicolumn{1}{r}{0.000} &
-  \multicolumn{1}{r}{} \\
-\multicolumn{1}{l}{} &
-  \multicolumn{1}{l}{30–39} &
-  \multicolumn{1}{r}{2.891} &
-  \multicolumn{1}{r}{0.664} &
-  \multicolumn{1}{r}{0.000} &
-  \multicolumn{1}{r}{2.917} &
-  \multicolumn{1}{r}{0.661} &
-  \multicolumn{1}{r}{0.000} \\
-\multicolumn{1}{l}{} &
-  \multicolumn{1}{l}{40–49} &
-  \multicolumn{1}{r}{9.580} &
-  \multicolumn{1}{r}{0.716} &
-  \multicolumn{1}{r}{0.000} &
-  \multicolumn{1}{r}{9.584} &
-  \multicolumn{1}{r}{0.713} &
-  \multicolumn{1}{r}{0.000} \\
-\multicolumn{1}{l}{} &
-  \multicolumn{1}{l}{50–59} &
-  \multicolumn{1}{r}{18.324} &
-  \multicolumn{1}{r}{0.713} &
-  \multicolumn{1}{r}{0.000} &
-  \multicolumn{1}{r}{18.384} &
-  \multicolumn{1}{r}{0.710} &
-  \multicolumn{1}{r}{0.000} \\
-\multicolumn{1}{l}{} &
-  \multicolumn{1}{l}{60–69} &
-  \multicolumn{1}{r}{24.184} &
-  \multicolumn{1}{r}{0.574} &
-  \multicolumn{1}{r}{0.000} &
-  \multicolumn{1}{r}{24.193} &
-  \multicolumn{1}{r}{0.571} &
-  \multicolumn{1}{r}{0.000} \\
-\multicolumn{1}{l}{} &
-  \multicolumn{1}{l}{70+} &
-  \multicolumn{1}{r}{30.851} &
-  \multicolumn{1}{r}{0.780} &
-  \multicolumn{1}{r}{0.000} &
-  \multicolumn{1}{r}{30.958} &
-  \multicolumn{1}{r}{0.777} &
-  \multicolumn{1}{r}{0.000} \\
-\multicolumn{1}{l}{Region} &
-  \multicolumn{1}{l}{NE} &
-  \multicolumn{1}{r}{0.000} &
-  \multicolumn{1}{r}{0.000} &
-  \multicolumn{1}{r}{} &
-  \multicolumn{1}{r}{0.000} &
-  \multicolumn{1}{r}{0.000} &
-  \multicolumn{1}{r}{} \\
-\multicolumn{1}{l}{} &
-  \multicolumn{1}{l}{MW} &
-  \multicolumn{1}{r}{-0.023} &
-  \multicolumn{1}{r}{0.595} &
-  \multicolumn{1}{r}{0.969} &
-  \multicolumn{1}{r}{0.033} &
-  \multicolumn{1}{r}{0.592} &
-  \multicolumn{1}{r}{0.956} \\
-\multicolumn{1}{l}{} &
-  \multicolumn{1}{l}{S} &
-  \multicolumn{1}{r}{-0.303} &
-  \multicolumn{1}{r}{0.591} &
-  \multicolumn{1}{r}{0.608} &
-  \multicolumn{1}{r}{-0.227} &
-  \multicolumn{1}{r}{0.588} &
-  \multicolumn{1}{r}{0.699} \\
-\multicolumn{1}{l}{} &
-  \multicolumn{1}{l}{W} &
-  \multicolumn{1}{r}{-0.777} &
-  \multicolumn{1}{r}{0.601} &
-  \multicolumn{1}{r}{0.196} &
-  \multicolumn{1}{r}{-0.745} &
-  \multicolumn{1}{r}{0.599} &
-  \multicolumn{1}{r}{0.213} \\
-\multicolumn{1}{l}{Sex} &
-  \multicolumn{1}{l}{Male} &
-  \multicolumn{1}{r}{} &
-  \multicolumn{1}{r}{} &
-  \multicolumn{1}{r}{} &
-  \multicolumn{1}{r}{0.000} &
-  \multicolumn{1}{r}{0.000} &
-  \multicolumn{1}{r}{} \\
-\multicolumn{1}{l}{} &
-  \multicolumn{1}{l}{Female} &
-  \multicolumn{1}{r}{} &
-  \multicolumn{1}{r}{} &
-  \multicolumn{1}{r}{} &
-  \multicolumn{1}{r}{-4.015} &
-  \multicolumn{1}{r}{0.402} &
-  \multicolumn{1}{r}{0.000} \\
-\multicolumn{2}{l}{Intercept} &
-  \multicolumn{1}{r}{117.632} &
-  \multicolumn{1}{r}{0.589} &
-  \multicolumn{1}{r}{0.000} &
-  \multicolumn{1}{r}{119.672} &
-  \multicolumn{1}{r}{0.621} &
-  \multicolumn{1}{r}{0.000} \\
-\cline{1-8}
-\end{tabular}
-\end{table}
-\end{document}
-
-```
-
-Juste une petite remarque sur les **notes** de bas de tableau. `collect` gère également leur présence et leur mise en forme, mais le code généré semble systématiquement les aligner au centre. A creuser, sinon il faut modifier le code Latex pour les aligner à gauche. Par exemple:
+Juste une petite remarque sur les **notes** de bas de tableau. `collect` gère également leur présence et leur mise en forme, mais le code généré semble systématiquement les aligner au centre. A creuser, sinon il faut modifier le code *Latex* pour les aligner à gauche. Par exemple:
 
 ```{r, eval=FALSE}
 \multicolumn{3}{l}{\footnotesize Note 1: blablabla}\\
