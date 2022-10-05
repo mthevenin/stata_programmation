@@ -65,6 +65,7 @@ format:
   html:
     theme: 
       light:  [yeti, theme-light.scss]          
+    css: styles.css
     code-background: true
     code-copy: true
     toc: true
