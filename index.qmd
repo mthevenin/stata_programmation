@@ -9,7 +9,7 @@ library(fontawesome)
 ```
 
 ::: callout-note 
-## 09 octobre 2022
+## 07 octobre 2022
 
 Un premier petit topo sur le calcul des effets marginaux avec R, avec un package récent **`marginaleffects`**.  
 [Lien](R/marginaleffect/marginaleffect.html)
