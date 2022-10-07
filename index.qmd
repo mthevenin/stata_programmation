@@ -12,8 +12,6 @@ library(fontawesome)
 ```
 
 
-![](about.jpg){width=20%}
-
 
 ::: callout-note 
 ## 07 octobre 2022
