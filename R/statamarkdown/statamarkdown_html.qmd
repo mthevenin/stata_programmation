@@ -5,6 +5,10 @@ format:
   html: 
     code-tools:
       source: true
+categories: 
+  - Statamarkdown
+  - RStudio
+date: "09-30-2022"
 ---
 
 ```{r, echo=FALSE, , message=FALSE}

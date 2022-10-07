@@ -2,6 +2,7 @@
   {
     "listing": "/R.html",
     "items": [
+      "/R/marginaleffect/marginaleffect.html",
       "/R/statamarkdown/statamarkdown_html.html"
     ]
   }
