@@ -532,7 +532,7 @@ La commande doit être installée, elle est externe à Stata (`ssc install mlang
 
 ::: callout_note
 ## TODO
-Faire un topo sur les variables dates
+Faire un rapide topo sur les variables de type dates
 
 :::
 

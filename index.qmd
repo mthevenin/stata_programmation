@@ -1,12 +1,19 @@
 ---
 title: "Programmation"
 css: styles.css
+filters:
+   - lightbox
+lightbox: auto
 ---
 
 ```{r setup, include=FALSE}
 options(Encoding="UTF-8")
 library(fontawesome)
 ```
+
+
+![](about.jpg){width=20%}
+
 
 ::: callout-note 
 ## 07 octobre 2022
@@ -40,10 +47,6 @@ La version 17 de Stata a introduit une suite nommée `collect` permettant de par
 
 :::
 :::
-
-
-
-
 
 
 ::: callout-note

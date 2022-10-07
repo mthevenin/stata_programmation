@@ -23,10 +23,12 @@ library(fontawesome)
 * Un document pdf sera mis à disposition au fil des maj
 * La fin de la maj de la formation est programmée pour la fin 2022 (donc prévoir un dépassement), cela devrait (pourrait) aller assez vite
 
-* Début Maj (28/07) : chapitre 5 (variables) => commande `sencode` (hélas découverte récemment), ajout d'une  section sur les variables de type date 
+* Maj dela formation:
+  * 28/07 : **Les variables**. Chapitre 5 [todo: un topo sur les formats date] 
+  * 07/10 : **Introduction**.  Chapitre 1
 
 * Programmes des chapitres:  
-  - [chapitre5](https://github.com/mthevenin/formation_stata/blob/master/programmes/chapitre5.md)
+  - [Chapitre5](https://github.com/mthevenin/formation_stata/blob/master/programmes/chapitre5.md)
 
 
 
