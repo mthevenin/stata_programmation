@@ -1,0 +1,233 @@
+---
+title: "Environnement"
+
+filters:
+   - lightbox
+lightbox: auto
+---
+
+```{r, echo=FALSE, , message=FALSE}
+library(Statamarkdown)
+stataexe <- "C:/Program Files/Stata17/StataSE-64.exe"
+knitr::opts_chunk$set(engine.path=list(stata=stataexe))
+```
+
+**Commandes et fonction introduites**  
+*En italique, commandes externes*
+
+| Sections                   | Commandes                               |
+|----------------------------|-----------------------------------------|
+| **Menus et raccourcis**    |  **`db`**                               |
+| **L'éditeur de programme** | **`run`** **`do`** **`#delimit`** **`log`** ***`log2do2`***   |
+
+
+# Les (principaux) types de fichier 
+
+* Les bases de données: **.dta**
+
+* L'éditeur de programme : **.do** (**.ado** pour la programmation de commandes)
+
+* Le log de session : **.smcl** ou **.log** (conversion possible en **.txt**, **.doc** ou **.pdf**)
+
+* Les graphiques : **.gph** (+ enregistrement en format image: png, jpg, svf...)
+
+* Les fichiers d'aides: **.sthlp**
+
+  
+
+# Où  passer ses instructions ?
+
+* Dans l'éditeur de programme (.do ou .ado ou écritue d'un fichier d'aide)
+
+* Dans la fenêtre "Command" de l'environnement principal
+
+* Par les menus (ouverture d'une boîte de dialogue). On récupéré la syntaxe de l'instruction directement dans l'interface principale, et par copier-coller dans l'éditeur de programme. Plutôt pratique.
+
+
+# L'interface principale
+
+![](img2/g1.png){width=50% fig-align="left"}
+
+
+**Boite output**
+
+Affiche les commandes exécutées et les résultats
+
+**Boite review**  
+
+* C'est un log de toutes les instructions passées par la fenêtre command 
+
+* En cliquant de dessus, l'instruction est de nouveau affichée dans la fenêtre command  
+
+* Avec un clic-droit on peut copier, supprimer les instructions. Les instructions en rouge déclarent celles avec une erreur
+
+* Les instructions passée par l'éditeur de programme ne sont reportée   
+
+**Boite variables**  
+
+* Liste les variables présentent dans la base chargée avec éventuellement leur label
+
+* En cliquant dessus, là ou les variables sont affichées dans la fenêtre command
+
+* Avec un cliqu-droit, une ou plusieurs variables peuvent être copiées, conservées ou supprimées  
+
+
+**Boite properties**  
+
+* Pour les variables affiche leurs propriétés: nom, label, format, type....
+
+* Si le cadenat est délocké, on peut modifier ces propriétés (voir variable manager). Le code qui exécute la modification est affichée dans la fenêtre command et la boîte review
+
+
+# Menus et raccourcis
+
+![](img2/g2.png){width=50% fig-align="left"}
+
+**Menus (boîtes de dialogue)**  
+
+* File: gestion des fichiers => création, ouverture, import/export...
+* Edit: utile pour la modification des préférences (couleurs interface, thèmes graphique)
+* Data: manipulation des données 
+* Graphics: création de graphiques
+* Statistics: instructions stat: descriptifs, modèles
+* User: accès à vos boîtes de dialogue programmée en java
+* Windows: activation des boîtes de l'interface principale
+* help: infos sur le logiciel et accès à des ressources (internes et liens)  
+<br>
+On peut accéder directement à une boîte de dialogue avec la commande `db nom_commande`
+
+```{stata filename="Syntaxe", eval=F}
+db logit
+```
+
+
+**Raccourcis (dans l'ordre de gauche à droite)**
+
+* Ouverture d'un fichier
+* Enregistrement de la base de données active
+* Impression de la fenêtre output
+* Ouverture d'un log
+* Ouverture de la fenêtre d'aide
+* Ouverture de l'éditeur de graphique (modification d'un graphique créé)
+* Création ou ouverture de l'éditeur de programme (.do .ado . sthlp)
+* Ouvre la base de données active en mode édition
+* Ouvre la base de données active en mode lecture
+* Ouvre le variable manager
+* Déblocage du défilement de l'output pendant l'exécution
+* Arrête l'exécution d'un programme
+
+# L'éditeur de programme
+
+![](img2/g3.png){width=50% fig-align="left"}
+
+## Soumettre un programme ou un bloc de programme 
+
+* On ne sélectionne aucune ligne: tout le programme est exécuté
+* On sélectionne une partie du programme: seul le bloc est exécuté
+
+![](img2/g4.png){width=50% fig-align="left"}
+
+*  **execute (do)**: les commandes et les résultats sont affichés dans l'output de l'interface principale
+*  **execute quietly (run)**: les commandes et les résultats ne sont pas affichés dans l'output de l'interface principale
+
+::: callout-tip
+
+## `do` et `run` dans un programme
+
+On peut exécuter un ou plusieurs programme  enregistré  dans un programme
+
+```{stata, eval=F}
+do "path/nom_prog.do"  // avec affichage de l'output
+run "path/nom_prog.do" // sans affichage de l'output
+```
+
+:::
+
+
+## delimiter  
+
+Par défaut une ligne = une instruction (**`#delimit cr`**).     
+
+Stata ne comprend pas la deuxième ligne de:
+
+```{stata, eval=F}
+keep  X1 X2 
+      X3 X4
+```      
+
+On peut contourner cela dans un programme pour écrire des instructions longue sur plusieurs lignes avec l'instruction **`#delimit ;`** 
+
+```{stata, eval=F}
+#delimit ;
+keep  X1 X2  
+      X3 X4;
+      
+tabulate X1;
+``` 
+
+Le délimiteur s'appliquera tant qu'on ne repasse pas à ```#delimit cr```  
+
+```{stata, eval=F}
+#delimit ;
+keep  X1 X2  
+      X3 X4;
+      
+#delimit cr      
+tabulate X1
+``` 
+
+
+Le délimiteur `;` est sourtout utilisé pour les graphiques qui peuvent âtre assez gourmants en options (je le conseille).
+
+La solution la plus utilisée est  ```///``` à la fin d'une ligne, à l'exception de la dernière de la commande  
+
+```{stata, eval=F}
+keep  X1 X2 /// 
+      X3    /// 
+      X4
+
+tabulate X1
+``` 
+
+
+## Les commentaires 
+
+Si le commentaire est sur une seule ligne
+```{stata, eval=F}
+* Commentaire
+```
+
+Si le commentaire est sur une ligne et suit une instruction
+```{stata, eval=F}
+instruction  // Commentaire 
+```
+
+Si le commentaire est sur plusieurs lignes
+```{stata, eval=F}
+/* commentaire 1
+   commentaire 2 */
+```
+
+::: callout-warning
+
+## Pas d'autosave T_T
+
+Il n'y a pas d'autosave avec Stata contrairement à d'autres applications comme R. C'est très regrettable, car un plantage 
+n'arrive pas toujours aux autres, et oublier de sauvegarder un programme n'est pas un évènement d'une extrême rareté.  
+On peut sauver les meubles en générant un log de session en tête de programme ou mieux en générant un log à chaque ouverture de session dans un fichier profile [[marche à suivre](https://mthevenin.github.io/stata_programmation/profile/profile1.html#exemples)].  
+
+* Pour générer un log de session qui enregistrera en continu l'output de l'interface, et donc les lignes de commandes exécutée (sauf si exécution en mode `run`):
+  * **file** => **log** => **begin**, puis choisir un emplacement pour l'enregistrement du fichier *log*.
+  * **`log using "path/nom_log.smcl"`**
+* commande externe **`log2do2`**: à partir d'un fichier log, permet de conserver seulement les lignes de programmes en supprimant les éléments de l'output. Attention les lignes comportant des erreurs seront également conservée.  
+  **`ssc install log2do2`**
+  
+:::
+
+### Interactions entre l'interface principale, les boîtes de dialogue et l'éditeur de programme
+
+
+**DEMONSTRATION PENDANT LA FORMATION** 
+
+
+

@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="M.Thevenin">
 
-<title>Introduction</title>
+<title>Environnement</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -94,8 +93,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../formation/chapitre2.html" rel="next">
-<link href="../formation/chapitre0.html" rel="prev">
+<link href="../formation/chapitre5.html" rel="next">
+<link href="../formation/chapitre1.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -105,6 +104,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -175,7 +177,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Introduction</h1>
+      <h1 class="quarto-secondary-nav-title">Environnement</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -208,12 +210,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../formation/chapitre1.html" class="sidebar-item-text sidebar-link active">Introduction</a>
+  <a href="../formation/chapitre1.html" class="sidebar-item-text sidebar-link">Introduction</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../formation/chapitre2.html" class="sidebar-item-text sidebar-link">Environnement</a>
+  <a href="../formation/chapitre2.html" class="sidebar-item-text sidebar-link active">Environnement</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -331,14 +333,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Sections</h2>
    
   <ul>
-  <li><a href="#historique-de-stata" id="toc-historique-de-stata" class="nav-link active" data-scroll-target="#historique-de-stata"><span class="toc-section-number">1</span>  <strong>Historique de Stata</strong></a></li>
-  <li><a href="#stata-à-lined" id="toc-stata-à-lined" class="nav-link" data-scroll-target="#stata-à-lined"><span class="toc-section-number">2</span>  <strong>Stata à l’Ined</strong></a></li>
-  <li><a href="#les-ressources" id="toc-les-ressources" class="nav-link" data-scroll-target="#les-ressources"><span class="toc-section-number">3</span>  <strong>Les ressources</strong></a>
+  <li><a href="#les-principaux-types-de-fichier" id="toc-les-principaux-types-de-fichier" class="nav-link active" data-scroll-target="#les-principaux-types-de-fichier"><span class="toc-section-number">1</span>  Les (principaux) types de fichier</a></li>
+  <li><a href="#où-passer-ses-instructions" id="toc-où-passer-ses-instructions" class="nav-link" data-scroll-target="#où-passer-ses-instructions"><span class="toc-section-number">2</span>  Où passer ses instructions ?</a></li>
+  <li><a href="#linterface-principale" id="toc-linterface-principale" class="nav-link" data-scroll-target="#linterface-principale"><span class="toc-section-number">3</span>  L’interface principale</a></li>
+  <li><a href="#menus-et-raccourcis" id="toc-menus-et-raccourcis" class="nav-link" data-scroll-target="#menus-et-raccourcis"><span class="toc-section-number">4</span>  Menus et raccourcis</a></li>
+  <li><a href="#léditeur-de-programme" id="toc-léditeur-de-programme" class="nav-link" data-scroll-target="#léditeur-de-programme"><span class="toc-section-number">5</span>  L’éditeur de programme</a>
   <ul class="collapse">
-  <li><a href="#les-ressources-externes" id="toc-les-ressources-externes" class="nav-link" data-scroll-target="#les-ressources-externes"><span class="toc-section-number">3.1</span>  Les ressources externes</a></li>
-  <li><a href="#les-ressources-internes" id="toc-les-ressources-internes" class="nav-link" data-scroll-target="#les-ressources-internes"><span class="toc-section-number">3.2</span>  Les ressources internes</a></li>
+  <li><a href="#soumettre-un-programme-ou-un-bloc-de-programme" id="toc-soumettre-un-programme-ou-un-bloc-de-programme" class="nav-link" data-scroll-target="#soumettre-un-programme-ou-un-bloc-de-programme"><span class="toc-section-number">5.1</span>  Soumettre un programme ou un bloc de programme</a></li>
+  <li><a href="#delimiter" id="toc-delimiter" class="nav-link" data-scroll-target="#delimiter"><span class="toc-section-number">5.2</span>  delimiter</a></li>
+  <li><a href="#les-commentaires" id="toc-les-commentaires" class="nav-link" data-scroll-target="#les-commentaires"><span class="toc-section-number">5.3</span>  Les commentaires</a>
+  <ul class="collapse">
+  <li><a href="#interactions-entre-linterface-principale-les-boîtes-de-dialogue-et-léditeur-de-programme" id="toc-interactions-entre-linterface-principale-les-boîtes-de-dialogue-et-léditeur-de-programme" class="nav-link" data-scroll-target="#interactions-entre-linterface-principale-les-boîtes-de-dialogue-et-léditeur-de-programme"><span class="toc-section-number">5.3.1</span>  Interactions entre l’interface principale, les boîtes de dialogue et l’éditeur de programme</a></li>
   </ul></li>
-  <li><a href="#les-users-packages" id="toc-les-users-packages" class="nav-link" data-scroll-target="#les-users-packages"><span class="toc-section-number">4</span>  <strong>Les users packages</strong></a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -347,19 +354,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Introduction</h1>
+<h1 class="title d-none d-lg-block">Environnement</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>M.Thevenin </p>
-          </div>
-  </div>
     
   
     
@@ -371,147 +372,140 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 
 </div>
-<section id="historique-de-stata" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> <strong>Historique de Stata</strong></h1>
-<p>L’entreprise <strong>Stata Corp Lp</strong> a été fondée par William Gould. Il est toujours à la tête de l’entreprise.</p>
+<p><strong>Commandes et fonction introduites</strong><br>
+<em>En italique, commandes externes</em></p>
+<table class="table">
+<colgroup>
+<col style="width: 40%">
+<col style="width: 59%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Sections</th>
+<th>Commandes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Menus et raccourcis</strong></td>
+<td><strong><code>db</code></strong></td>
+</tr>
+<tr class="even">
+<td><strong>L’éditeur de programme</strong></td>
+<td><strong><code>run</code></strong> <strong><code>do</code></strong> <strong><code>#delimit</code></strong> <strong><code>log</code></strong> <strong><em><code>log2do2</code></em></strong></td>
+</tr>
+</tbody>
+</table>
+<section id="les-principaux-types-de-fichier" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Les (principaux) types de fichier</h1>
 <ul>
-<li>Première version (sous MS Dos) en janvier 1985.<br>
-</li>
-<li>Première version Windows en 1995 (Stata 4).<br>
-</li>
-<li>La version la plus récente est la 17 [printemps 2021].</li>
-<li>Le rythme de changement de version est de 2 ans. La version 18 devrait donc sortir au printemps 2023. Attention tout de même, il s’agit plutôt de grosses mises à jour, dont l’acquisition systématique s’avère généralement dispensable.</li>
-</ul>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Version 17
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><a href="https://www.stata.com/new-in-stata/">Présentation</a></p>
-<p>A noter:</p>
-<ul>
-<li>Amélioration de la vitesse d’exécution (je confirme)</li>
-<li>Suite <strong><code>collect</code></strong> pour gérer et générer les outputs des commandes statistiques. Rapidement testé pour des régressions, et cela me semble plutôt prometteur <a href="https://mthevenin.github.io/stata_programmation/tableaux/intro.html">rapide présentation</a></li>
-</ul>
-</div>
-</div>
-</section>
-<section id="stata-à-lined" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> <strong>Stata à l’Ined</strong></h1>
-<p>Version 17 Windows SE déployée au printemps 2022.<br>
-Version 17 SE sous Linux (serveur margaux).</p>
-<p>Petit rappel pour l’Ined: Quel que soit le logiciel choisi sous environnement Windows (SAS v9.4 ou Stata) vous avez accès à une version de l’autre application sous Linux via le serveur Margaux (SAS Studio ou STATA v17 SE).</p>
-<p><strong>Version SE: Standard Edition</strong></p>
-<ul>
-<li>Nombre d’observations: 2.14 milliards</li>
-<li>Nombre de variables dans les bases: 32 767</li>
-<li>Nombre de variables RHS (limite nombre de colonnes des matrices: 10998)</li>
-</ul>
-<p>Il existe également des versions dites MP (Multiple Process), dont la plus puissante gère 120000 variables et 20 milliards d’observations).</p>
-</section>
-<section id="les-ressources" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> <strong>Les ressources</strong></h1>
-<section id="les-ressources-externes" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="les-ressources-externes"><span class="header-section-number">3.1</span> Les ressources externes</h2>
-<ul>
-<li><p>Les manuels édités par STATA. Certains sont disponibles au GED [http://www.stata.com/bookstore/books-on-stata]</p></li>
-<li><p>*<strong>Stata Journal</strong>, la revue trimestrielle éditée par Stata [http://www.stata-journal.com ]. Depuis 2015 accès total aux versions PDF (via portail GED maintenant). L’accès et le sommaire des 4 derniers numéro est disponible ici: <a href="https://mthevenin.github.io/stata_fr/Stata_journal.html">Lien</a></p></li>
-<li><p>Une chaîne Youtube [http://www.youtube.com/user/statacorp/videos?view=0] qui propose des tutoriels via les manips par les boites de dialogue.</p></li>
-<li><p>Un forum particulièrement actif (<a href="https://www.statalist.org/" class="uri">https://www.statalist.org/</a>)</p></li>
-<li><p>Auto-promo: le support que j’ai mis en place à l’été 2022 et qui héberge cette formation introductive <a href="https://mthevenin.github.io/stata_fr/">Lien</a></p></li>
+<li><p>Les bases de données: <strong>.dta</strong></p></li>
+<li><p>L’éditeur de programme : <strong>.do</strong> (<strong>.ado</strong> pour la programmation de commandes)</p></li>
+<li><p>Le log de session : <strong>.smcl</strong> ou <strong>.log</strong> (conversion possible en <strong>.txt</strong>, <strong>.doc</strong> ou <strong>.pdf</strong>)</p></li>
+<li><p>Les graphiques : <strong>.gph</strong> (+ enregistrement en format image: png, jpg, svf…)</p></li>
+<li><p>Les fichiers d’aides: <strong>.sthlp</strong></p></li>
 </ul>
 </section>
-<section id="les-ressources-internes" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="les-ressources-internes"><span class="header-section-number">3.2</span> Les ressources internes</h2>
+<section id="où-passer-ses-instructions" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Où passer ses instructions ?</h1>
 <ul>
-<li><p>Le manuel de Stata est directement intégré au logiciel. Pour y accéder à partir du menu : <code>help =&gt; PDF documentation</code>. <strong><em>Il est vraiement de très bonne qualité</em></strong>.</p></li>
-<li><p>Pour une instruction, on peut obtenir son aide en tapant dans la fenêtre <em>command</em> de l’environnement principal <strong><code>help nom_commande</code></strong>.</p>
+<li><p>Dans l’éditeur de programme (.do ou .ado ou écritue d’un fichier d’aide)</p></li>
+<li><p>Dans la fenêtre “Command” de l’environnement principal</p></li>
+<li><p>Par les menus (ouverture d’une boîte de dialogue). On récupéré la syntaxe de l’instruction directement dans l’interface principale, et par copier-coller dans l’éditeur de programme. Plutôt pratique.</p></li>
+</ul>
+</section>
+<section id="linterface-principale" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> L’interface principale</h1>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><a href="img2/g1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="img2/g1.png" class="img-fluid figure-img" style="width:50.0%"></a></p>
+</figure>
+</div>
+<p><strong>Boite output</strong></p>
+<p>Affiche les commandes exécutées et les résultats</p>
+<p><strong>Boite review</strong></p>
 <ul>
-<li>Pour les commandes internes, un lien permet d’accéder à l’entrée du manuel officiel, plus riche.<br>
-</li>
-<li>Dans les fenêtre de dialogue, on peut accéder directement au fichier d’aide en cliquant sur le point d’interrogation.</li>
-</ul></li>
+<li><p>C’est un log de toutes les instructions passées par la fenêtre command</p></li>
+<li><p>En cliquant de dessus, l’instruction est de nouveau affichée dans la fenêtre command</p></li>
+<li><p>Avec un clic-droit on peut copier, supprimer les instructions. Les instructions en rouge déclarent celles avec une erreur</p></li>
+<li><p>Les instructions passée par l’éditeur de programme ne sont reportée</p></li>
+</ul>
+<p><strong>Boite variables</strong></p>
+<ul>
+<li><p>Liste les variables présentent dans la base chargée avec éventuellement leur label</p></li>
+<li><p>En cliquant dessus, là ou les variables sont affichées dans la fenêtre command</p></li>
+<li><p>Avec un cliqu-droit, une ou plusieurs variables peuvent être copiées, conservées ou supprimées</p></li>
+</ul>
+<p><strong>Boite properties</strong></p>
+<ul>
+<li><p>Pour les variables affiche leurs propriétés: nom, label, format, type….</p></li>
+<li><p>Si le cadenat est délocké, on peut modifier ces propriétés (voir variable manager). Le code qui exécute la modification est affichée dans la fenêtre command et la boîte review</p></li>
+</ul>
+</section>
+<section id="menus-et-raccourcis" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Menus et raccourcis</h1>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><a href="img2/g2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="img2/g2.png" class="img-fluid figure-img" style="width:50.0%"></a></p>
+</figure>
+</div>
+<p><strong>Menus (boîtes de dialogue)</strong></p>
+<ul>
+<li>File: gestion des fichiers =&gt; création, ouverture, import/export…</li>
+<li>Edit: utile pour la modification des préférences (couleurs interface, thèmes graphique)</li>
+<li>Data: manipulation des données</li>
+<li>Graphics: création de graphiques</li>
+<li>Statistics: instructions stat: descriptifs, modèles</li>
+<li>User: accès à vos boîtes de dialogue programmée en java</li>
+<li>Windows: activation des boîtes de l’interface principale</li>
+<li>help: infos sur le logiciel et accès à des ressources (internes et liens)<br>
+<br> On peut accéder directement à une boîte de dialogue avec la commande <code>db nom_commande</code></li>
 </ul>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>Utiliser l'aide interne</strong></pre>
+<pre><strong>Syntaxe</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">help</span> <span class="kw">generate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">db</span> <span class="kw">logit</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<p>L’aide comprend généralement:</p>
+<p><strong>Raccourcis (dans l’ordre de gauche à droite)</strong></p>
 <ul>
-<li><p>Le nom de la commande</p></li>
-<li><p>Le lien vers l’entrée du manuel si commande officielle. Pour les commandes externes, un lien vers le sitee support peut-être proposé.</p></li>
-<li><p>La description de la syntaxe</p></li>
-<li><p>Le détail des options</p></li>
-<li><p>Des exemples avec éventuellement une exécution directe (voir avec <code>help tw</code>)</p></li>
-<li><p>Les informations sauvegardées temporairement (jusqu’à l’exécution d’une autre commande) =&gt; <em>stored results</em>.</p></li>
-<li><p>L’instruction <code>findit nom_command</code> permet d’obtenir la liste de toutes les ressources disponibles d’une commande, internes ou externes. Exemple: <code>findit fitstat</code></p></li>
+<li>Ouverture d’un fichier</li>
+<li>Enregistrement de la base de données active</li>
+<li>Impression de la fenêtre output</li>
+<li>Ouverture d’un log</li>
+<li>Ouverture de la fenêtre d’aide</li>
+<li>Ouverture de l’éditeur de graphique (modification d’un graphique créé)</li>
+<li>Création ou ouverture de l’éditeur de programme (.do .ado . sthlp)</li>
+<li>Ouvre la base de données active en mode édition</li>
+<li>Ouvre la base de données active en mode lecture</li>
+<li>Ouvre le variable manager</li>
+<li>Déblocage du défilement de l’output pendant l’exécution</li>
+<li>Arrête l’exécution d’un programme</li>
 </ul>
-<div class="callout-warning callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Warning: compatibilité entre les versions
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Des problèmes de compatibilité entre les versions de Stata se sont posés. Cela affecte la lecture des bases entre les différentes versions du logiciel. C’est le cas entre la version 14 et les versions antérieures (dont la version 13 qui date de 2012).</p>
-<p>Version 14 (idem 15,16): refonte total du système d’encodage vers le standard UTF8.<br>
-Les versions inférieures ne peuvent pas ouvrir les bases au format actuel, qui doivent être enregistrées avec une commande particulière (<code>saveold</code>) sous Stata 14 à 17. Les accents ne sont pas lu après cette conversion, et ce qui nécessite d’exécuter un programme pour les convertir (au secours!!!!).<br>
-<br> A l’Ined, depuis le déploiement de la version 14 et le passage à la version 15 Linux, il n’y a plus de problème. Attention toutefois pour les collaborations avec l’extérieur.</p>
-</div>
-</div>
 </section>
-</section>
-<section id="les-users-packages" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> <strong>Les users packages</strong></h1>
-<p>Stata fonctionne avec un système hybride de commandes officielles ou usines et de commandes externes (idem R, Python…).<br>
-Commandes externes ou <em>user package</em>:</p>
+<section id="léditeur-de-programme" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> L’éditeur de programme</h1>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><a href="img2/g3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="img2/g3.png" class="img-fluid figure-img" style="width:50.0%"></a></p>
+</figure>
+</div>
+<section id="soumettre-un-programme-ou-un-bloc-de-programme" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="soumettre-un-programme-ou-un-bloc-de-programme"><span class="header-section-number">5.1</span> Soumettre un programme ou un bloc de programme</h2>
 <ul>
-<li><p>Il s’agit d’instructions créees par les utilisateurs</p></li>
-<li><p>Ces instructions couvrent le data management et l’analyse statistique (descriptive, modélisation, graphiques)</p></li>
-<li><p>Même syntaxe que les instructions officielles</p></li>
-<li><p>La liste (triée par année) de ces instructions se trouve à cette adresse [http://ideas.repec.org/s/boc/bocode.html]. Elle n’est pas exhaustive, seulement celles sur le dépôt de Stata. Les dépôts dans les gits, en particulier <em>Github</em> tendent à se développer. Tout comme R, les dépôts usines ne sont pas forcément les plus à jour.</p></li>
+<li>On ne sélectionne aucune ligne: tout le programme est exécuté</li>
+<li>On sélectionne une partie du programme: seul le bloc est exécuté</li>
 </ul>
-<p><strong>Installation directe d’une commande externe</strong><br>
-Pour télécharger un package, on peut utiliser la ligne de commande:</p>
-<div class="cell">
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Installation d'une commande</strong></pre>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><a href="img2/g4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="img2/g4.png" class="img-fluid figure-img" style="width:50.0%"></a></p>
+</figure>
 </div>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">ssc</span> install nom_commande, <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-<p>Il est possible d’installer un package après avoir consulté les fichiers avec la commande <code>findit</code> (on peut donc consulter l’aide en amont)</p>
-<p>Les programmes des packages externes se trouve dans un répertoire spécifique <strong>plus/ado</strong>, souvent installé dans la racine du lecteur <code>C:</code>. On peut déplacer ce répertoire, et c’est conseillé si on dispose, comme à l’Ined, d’une sauvergarde régulière sur un lecteur. On peut vérifier la localisation de ce répertoire avec la commande <code>sysdir</code>, et plus généralement la localisation des répertoires d’utilisation de Stata.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ot">sysdir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre class="result"><code>   STATA:  C:\PROGRA~1\Stata17\
-    BASE:  C:\PROGRA~1\Stata17\ado\base\
-    SITE:  C:\PROGRA~1\Stata17\ado\site\
-    PLUS:  C:\Users\thevenin_m\ado\plus\
-PERSONAL:  C:\Users\thevenin_m\ado\personal\
-OLDPLACE:  c:\ado\</code></pre>
-</div>
-</div>
-<p><strong>Exercice</strong></p>
-<p>Ouvrir la base d’exemple <em>auto</em><br>
-Dans la fenêtre <em>Command</em>: <strong><code>sysuse auto, clear</code></strong></p>
 <ul>
-<li>[1] Accéder à l’aide (pdf) de l’instruction <code>tabulate</code>. Faire un tableau croisé entre la variable <em>foreign</em> et <em>rep78</em></li>
-<li>[2] Installer le package externe <code>findname</code>, exécuter <code>findname t*</code> et chercher les variables de type chaine de caractère (string)</li>
+<li><strong>execute (do)</strong>: les commandes et les résultats sont affichés dans l’output de l’interface principale</li>
+<li><strong>execute quietly (run)</strong>: les commandes et les résultats ne sont pas affichés dans l’output de l’interface principale</li>
 </ul>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -519,17 +513,98 @@ Dans la fenêtre <em>Command</em>: <strong><code>sysuse auto, clear</code></stro
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-profile.do
+<code>do</code> et <code>run</code> dans un programme
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Paramétrer vos sessions avec un fichier <strong><em>profile.do</em></strong> [<a href="https://mthevenin.github.io/stata_programmation/profile/profile1.html">Lien</a>]</p>
-<p>Sur ce chapitre introductif: déplacer le répertoire où sont stocker les commandes externes dans un lecteur faisant l’objet de sauvergardes régulières sur un réseau.<br>
-C’est une opération rarement effectué, dans ce fichier, on utilise donc un certains nombre de commandes qu’on aura pas besoin de rechercher le nom, dans le manuel ou sur internet par exemples.</p>
+<p>On peut exécuter un ou plusieurs programme enregistré dans un programme</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">do</span> <span class="st">"path/nom_prog.do"</span>  <span class="co">// avec affichage de l'output</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">run</span> <span class="st">"path/nom_prog.do"</span> <span class="co">// sans affichage de l'output</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
+</div>
+</section>
+<section id="delimiter" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="delimiter"><span class="header-section-number">5.2</span> delimiter</h2>
+<p>Par défaut une ligne = une instruction (<strong><code>#delimit cr</code></strong>).</p>
+<p>Stata ne comprend pas la deuxième ligne de:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">keep</span>  X1 X2 </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>      X3 X4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>On peut contourner cela dans un programme pour écrire des instructions longue sur plusieurs lignes avec l’instruction <strong><code>#delimit ;</code></strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>#delimit ;</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">keep</span>  X1 X2  </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>      X3 X4;</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="kw">tabulate</span> X1;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Le délimiteur s’appliquera tant qu’on ne repasse pas à <code>#delimit cr</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>#delimit ;</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">keep</span>  X1 X2  </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>      X3 X4;</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>#delimit <span class="kw">cr</span>      </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="kw">tabulate</span> X1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Le délimiteur <code>;</code> est sourtout utilisé pour les graphiques qui peuvent âtre assez gourmants en options (je le conseille).</p>
+<p>La solution la plus utilisée est <code>///</code> à la fin d’une ligne, à l’exception de la dernière de la commande</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">keep</span>  X1 X2 <span class="co">/// </span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>      X3    <span class="co">/// </span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>      X4</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="kw">tabulate</span> X1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="les-commentaires" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="les-commentaires"><span class="header-section-number">5.3</span> Les commentaires</h2>
+<p>Si le commentaire est sur une seule ligne</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>* Commentaire</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Si le commentaire est sur une ligne et suit une instruction</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>instruction  <span class="co">// Commentaire </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Si le commentaire est sur plusieurs lignes</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* commentaire 1</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">   commentaire 2 */</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Pas d’autosave T_T
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Il n’y a pas d’autosave avec Stata contrairement à d’autres applications comme R. C’est très regrettable, car un plantage n’arrive pas toujours aux autres, et oublier de sauvegarder un programme n’est pas un évènement d’une extrême rareté.<br>
+On peut sauver les meubles en générant un log de session en tête de programme ou mieux en générant un log à chaque ouverture de session dans un fichier profile [<a href="https://mthevenin.github.io/stata_programmation/profile/profile1.html#exemples">marche à suivre</a>].</p>
+<ul>
+<li>Pour générer un log de session qui enregistrera en continu l’output de l’interface, et donc les lignes de commandes exécutée (sauf si exécution en mode <code>run</code>):
+<ul>
+<li><strong>file</strong> =&gt; <strong>log</strong> =&gt; <strong>begin</strong>, puis choisir un emplacement pour l’enregistrement du fichier <em>log</em>.</li>
+<li><strong><code>log using "path/nom_log.smcl"</code></strong></li>
+</ul></li>
+<li>commande externe <strong><code>log2do2</code></strong>: à partir d’un fichier log, permet de conserver seulement les lignes de programmes en supprimant les éléments de l’output. Attention les lignes comportant des erreurs seront également conservée.<br>
+<strong><code>ssc install log2do2</code></strong></li>
+</ul>
+</div>
+</div>
+<section id="interactions-entre-linterface-principale-les-boîtes-de-dialogue-et-léditeur-de-programme" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="interactions-entre-linterface-principale-les-boîtes-de-dialogue-et-léditeur-de-programme"><span class="header-section-number">5.3.1</span> Interactions entre l’interface principale, les boîtes de dialogue et l’éditeur de programme</h3>
+<p><strong>DEMONSTRATION PENDANT LA FORMATION</strong></p>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -668,13 +743,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../formation/chapitre0.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Présentation</span>
+      <a href="../formation/chapitre1.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Introduction</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../formation/chapitre2.html" class="pagination-link">
-        <span class="nav-page-text">Environnement</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../formation/chapitre5.html" class="pagination-link">
+        <span class="nav-page-text">Les variables</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -684,6 +759,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       <div class="nav-footer-center">Marc Thévenin - Ined-Sms - Août 2022</div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":true,"openEffect":"zoom"});</script>
 
 
 

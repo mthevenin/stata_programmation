@@ -26,6 +26,7 @@ library(fontawesome)
 * Maj dela formation:
   * 28/07 : **Les variables**. Chapitre 5 [todo: un topo sur les formats date] 
   * 07/10 : **Introduction**.  Chapitre 1
+  * 07/10 : **L'environnement**.  Chapitre 2
 
 * Programmes des chapitres:  
   - [Chapitre5](https://github.com/mthevenin/formation_stata/blob/master/programmes/chapitre5.md)

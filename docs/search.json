@@ -11,7 +11,7 @@
     "href": "formation/chapitre0.html",
     "title": "Présentation",
     "section": "",
-    "text": "MAJ EN COURS DE LA VERSION 2018 [nouvelle version fin 2022…au mieux]\n\nN’intéressera sûrement pas les utilisatrices et utilisateurs aguerri.e.s à Stata…. quoique, on trouve toujours des années plus tard des nouvelles commandes qui facilite vraiment les choses, par exemple sur la rapide reprise du chapitre 5, la commande sencode (s pour super).\nUn document pdf sera mis à disposition au fil des maj\nLa fin de la maj de la formation est programmée pour la fin 2022 (donc prévoir un dépassement), cela devrait (pourrait) aller assez vite\nMaj dela formation:\n\n28/07 : Les variables. Chapitre 5 [todo: un topo sur les formats date]\n07/10 : Introduction. Chapitre 1\n\nProgrammes des chapitres:\n\nChapitre5"
+    "text": "MAJ EN COURS DE LA VERSION 2018 [nouvelle version fin 2022…au mieux]\n\nN’intéressera sûrement pas les utilisatrices et utilisateurs aguerri.e.s à Stata…. quoique, on trouve toujours des années plus tard des nouvelles commandes qui facilite vraiment les choses, par exemple sur la rapide reprise du chapitre 5, la commande sencode (s pour super).\nUn document pdf sera mis à disposition au fil des maj\nLa fin de la maj de la formation est programmée pour la fin 2022 (donc prévoir un dépassement), cela devrait (pourrait) aller assez vite\nMaj dela formation:\n\n28/07 : Les variables. Chapitre 5 [todo: un topo sur les formats date]\n07/10 : Introduction. Chapitre 1\n07/10 : L’environnement. Chapitre 2\n\nProgrammes des chapitres:\n\nChapitre5"
   },
   {
     "objectID": "formation/chapitre1.html#les-ressources-externes",
@@ -28,11 +28,39 @@
     "text": "3.2 Les ressources internes\n\nLe manuel de Stata est directement intégré au logiciel. Pour y accéder à partir du menu : help => PDF documentation. Il est vraiement de très bonne qualité.\nPour une instruction, on peut obtenir son aide en tapant dans la fenêtre command de l’environnement principal help nom_commande.\n\nPour les commandes internes, un lien permet d’accéder à l’entrée du manuel officiel, plus riche.\n\nDans les fenêtre de dialogue, on peut accéder directement au fichier d’aide en cliquant sur le point d’interrogation.\n\n\n\n\n\nUtiliser l'aide interne\n\nhelp generate\n\n\nL’aide comprend généralement:\n\nLe nom de la commande\nLe lien vers l’entrée du manuel si commande officielle. Pour les commandes externes, un lien vers le sitee support peut-être proposé.\nLa description de la syntaxe\nLe détail des options\nDes exemples avec éventuellement une exécution directe (voir avec help tw)\nLes informations sauvegardées temporairement (jusqu’à l’exécution d’une autre commande) => stored results.\nL’instruction findit nom_command permet d’obtenir la liste de toutes les ressources disponibles d’une commande, internes ou externes. Exemple: findit fitstat\n\n\n\n\n\n\n\nWarning: compatibilité entre les versions\n\n\n\nDes problèmes de compatibilité entre les versions de Stata se sont posés. Cela affecte la lecture des bases entre les différentes versions du logiciel. C’est le cas entre la version 14 et les versions antérieures (dont la version 13 qui date de 2012).\nVersion 14 (idem 15,16): refonte total du système d’encodage vers le standard UTF8.\nLes versions inférieures ne peuvent pas ouvrir les bases au format actuel, qui doivent être enregistrées avec une commande particulière (saveold) sous Stata 14 à 17. Les accents ne sont pas lu après cette conversion, et ce qui nécessite d’exécuter un programme pour les convertir (au secours!!!!).\n A l’Ined, depuis le déploiement de la version 14 et le passage à la version 15 Linux, il n’y a plus de problème. Attention toutefois pour les collaborations avec l’extérieur."
   },
   {
+    "objectID": "formation/chapitre2.html",
+    "href": "formation/chapitre2.html",
+    "title": "Environnement",
+    "section": "",
+    "text": "Commandes et fonction introduites\nEn italique, commandes externes"
+  },
+  {
+    "objectID": "formation/chapitre2.html#soumettre-un-programme-ou-un-bloc-de-programme",
+    "href": "formation/chapitre2.html#soumettre-un-programme-ou-un-bloc-de-programme",
+    "title": "Environnement",
+    "section": "5.1 Soumettre un programme ou un bloc de programme",
+    "text": "5.1 Soumettre un programme ou un bloc de programme\n\nOn ne sélectionne aucune ligne: tout le programme est exécuté\nOn sélectionne une partie du programme: seul le bloc est exécuté\n\n\n\n\n\n\n\nexecute (do): les commandes et les résultats sont affichés dans l’output de l’interface principale\nexecute quietly (run): les commandes et les résultats ne sont pas affichés dans l’output de l’interface principale\n\n\n\n\n\n\n\ndo et run dans un programme\n\n\n\nOn peut exécuter un ou plusieurs programme enregistré dans un programme\n\ndo \"path/nom_prog.do\"  // avec affichage de l'output\nrun \"path/nom_prog.do\" // sans affichage de l'output"
+  },
+  {
+    "objectID": "formation/chapitre2.html#delimiter",
+    "href": "formation/chapitre2.html#delimiter",
+    "title": "Environnement",
+    "section": "5.2 delimiter",
+    "text": "5.2 delimiter\nPar défaut une ligne = une instruction (#delimit cr).\nStata ne comprend pas la deuxième ligne de:\n\nkeep  X1 X2 \n      X3 X4\n\nOn peut contourner cela dans un programme pour écrire des instructions longue sur plusieurs lignes avec l’instruction #delimit ;\n\n#delimit ;\nkeep  X1 X2  \n      X3 X4;\n      \ntabulate X1;\n\nLe délimiteur s’appliquera tant qu’on ne repasse pas à #delimit cr\n\n#delimit ;\nkeep  X1 X2  \n      X3 X4;\n      \n#delimit cr      \ntabulate X1\n\nLe délimiteur ; est sourtout utilisé pour les graphiques qui peuvent âtre assez gourmants en options (je le conseille).\nLa solution la plus utilisée est /// à la fin d’une ligne, à l’exception de la dernière de la commande\n\nkeep  X1 X2 /// \n      X3    /// \n      X4\n\ntabulate X1"
+  },
+  {
+    "objectID": "formation/chapitre2.html#les-commentaires",
+    "href": "formation/chapitre2.html#les-commentaires",
+    "title": "Environnement",
+    "section": "5.3 Les commentaires",
+    "text": "5.3 Les commentaires\nSi le commentaire est sur une seule ligne\n\n* Commentaire\n\nSi le commentaire est sur une ligne et suit une instruction\n\ninstruction  // Commentaire \n\nSi le commentaire est sur plusieurs lignes\n\n/* commentaire 1\n   commentaire 2 */\n\n\n\n\n\n\n\nPas d’autosave T_T\n\n\n\nIl n’y a pas d’autosave avec Stata contrairement à d’autres applications comme R. C’est très regrettable, car un plantage n’arrive pas toujours aux autres, et oublier de sauvegarder un programme n’est pas un évènement d’une extrême rareté.\nOn peut sauver les meubles en générant un log de session en tête de programme ou mieux en générant un log à chaque ouverture de session dans un fichier profile [marche à suivre].\n\nPour générer un log de session qui enregistrera en continu l’output de l’interface, et donc les lignes de commandes exécutée (sauf si exécution en mode run):\n\nfile => log => begin, puis choisir un emplacement pour l’enregistrement du fichier log.\nlog using \"path/nom_log.smcl\"\n\ncommande externe log2do2: à partir d’un fichier log, permet de conserver seulement les lignes de programmes en supprimant les éléments de l’output. Attention les lignes comportant des erreurs seront également conservée.\nssc install log2do2\n\n\n\n\n5.3.1 Interactions entre l’interface principale, les boîtes de dialogue et l’éditeur de programme\nDEMONSTRATION PENDANT LA FORMATION"
+  },
+  {
     "objectID": "formation/chapitre5.html",
     "href": "formation/chapitre5.html",
     "title": "Les variables",
     "section": "",
-    "text": "Programme du chapitre\nCommandes et fonction introduites\nEn italique, commandes externes\nEn italiques, commandes externe Pour accéder aux infomations sur les variables d’une base:\nVariables manager\nFenêtre properties à droite de l’interface principale (mode dévérouillé)\nCommande describe"
+    "text": "Programme du chapitre\nCommandes et commandes introduites\nEn italique, commandes externes\nPour accéder aux infomations sur les variables d’une base:\nVariables manager\nFenêtre properties à droite de l’interface principale (mode dévérouillé)\nCommande describe"
   },
   {
     "objectID": "formation/chapitre5.html#types",

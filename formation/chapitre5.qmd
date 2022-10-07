@@ -1,5 +1,9 @@
 ---
 title: "Les variables"
+
+filters:
+   - lightbox
+lightbox: auto
 ---
 
 ```{r, echo=FALSE, , message=FALSE}
@@ -12,7 +16,7 @@ knitr::opts_chunk$set(engine.path=list(stata=stataexe))
 [**Programme du chapitre**](https://github.com/mthevenin/formation_stata/blob/master/programmes/chapitre5.md)
 
 
-**Commandes et fonction introduites**  
+**Commandes et commandes introduites**  
 *En italique, commandes externes*
 
 SECTION                    | COMMANDES
@@ -23,7 +27,8 @@ SECTION                    | COMMANDES
 **Sélection et recodage**  | `inlist` - `inrange` - `recode`
 **labels**                 | `label variable` - `label define` - `label value` - `label list` - `label drop` - **`xaxis`**
 
-En italiques, commandes externe
+
+
 Pour accéder aux infomations sur les variables d'une base:  
 
 * Utiliser le  **variables manager** ou la fenêtre d'information **variables properties** si elle est ancrée à l'interface. Ces deux outils permettent de faire des modifications et de récupérer la ligne de commande dans la fenêtre *command*. Le verrou de la fenêtre **variables properties** doit-être retiré .
@@ -31,11 +36,11 @@ Pour accéder aux infomations sur les variables d'une base:
 
 
 ***Variables manager***   
-![](img5/g1.PNG){width=60%}
+![](img5/g1.PNG){width=50%}
 <br>
 
 ***Fenêtre properties à droite de l'interface principale (mode dévérouillé)***   
-![](img5/g2.PNG){width=60%}
+![](img5/g2.PNG){width=50%}
 
 **Commande describe**
 

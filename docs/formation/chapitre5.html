@@ -94,7 +94,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../profile/profile1.html" rel="next">
-<link href="../formation/chapitre1.html" rel="prev">
+<link href="../formation/chapitre2.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -104,6 +104,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -212,8 +215,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </div>
 </li>
           <li class="sidebar-item">
-  formation/chapitre2.qmd
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../formation/chapitre2.html" class="sidebar-item-text sidebar-link">Environnement</a>
+  </div>
+</li>
           <li class="sidebar-item">
   formation/chapitre3.qmd
   </li>
@@ -373,7 +378,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </div>
 <p><a href="https://github.com/mthevenin/formation_stata/blob/master/programmes/chapitre5.md"><strong>Programme du chapitre</strong></a></p>
-<p><strong>Commandes et fonction introduites</strong><br>
+<p><strong>Commandes et commandes introduites</strong><br>
 <em>En italique, commandes externes</em></p>
 <table class="table">
 <colgroup>
@@ -409,15 +414,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<p>En italiques, commandes externe Pour accéder aux infomations sur les variables d’une base:</p>
+<p>Pour accéder aux infomations sur les variables d’une base:</p>
 <ul>
 <li>Utiliser le <strong>variables manager</strong> ou la fenêtre d’information <strong>variables properties</strong> si elle est ancrée à l’interface. Ces deux outils permettent de faire des modifications et de récupérer la ligne de commande dans la fenêtre <em>command</em>. Le verrou de la fenêtre <strong>variables properties</strong> doit-être retiré .</li>
 <li>Utiliser la commande <code>describe</code> [<code>des</code>] ou la commande <code>ds</code> pour un usage plus avancé (sélection de variables selon leur type par exemple).</li>
 </ul>
 <p><strong><em>Variables manager</em></strong><br>
-<img src="img5/g1.PNG" class="img-fluid" style="width:60.0%"> <br></p>
+<a href="img5/g1.PNG" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="img5/g1.PNG" class="img-fluid" style="width:50.0%"></a> <br></p>
 <p><strong><em>Fenêtre properties à droite de l’interface principale (mode dévérouillé)</em></strong><br>
-<img src="img5/g2.PNG" class="img-fluid" style="width:60.0%"></p>
+<a href="img5/g2.PNG" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="img5/g2.PNG" class="img-fluid" style="width:50.0%"></a></p>
 <p><strong>Commande describe</strong></p>
 <div class="cell" data-collectcode="true">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sysuse</span> auto, <span class="kw">clear</span></span>
@@ -1374,8 +1379,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../formation/chapitre1.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Introduction</span>
+      <a href="../formation/chapitre2.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Environnement</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
@@ -1390,6 +1395,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       <div class="nav-footer-center">Marc Thévenin - Ined-Sms - Août 2022</div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom","selector":".lightbox","loop":true});</script>
 
 
 
