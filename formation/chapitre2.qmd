@@ -44,6 +44,7 @@ knitr::opts_chunk$set(engine.path=list(stata=stataexe))
 * Par les menus (ouverture d'une boîte de dialogue). On récupéré la syntaxe de l'instruction directement dans l'interface principale, et par copier-coller dans l'éditeur de programme. Plutôt pratique.
 
 
+
 # L'interface principale
 
 ![](img2/g1.png){width=50% fig-align="left"}

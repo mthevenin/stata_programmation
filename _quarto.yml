@@ -56,7 +56,7 @@ website:
       - section: "C'est dans l'R"
         contents:
           - R.qmd   
-      - section: "De beaux tableaux ?"
+      - section: "Edition des outputs"
         contents:
           - tableaux/intro.qmd        
 

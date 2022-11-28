@@ -42,9 +42,7 @@ install.packages("margins")
 
 ```{r filename="marginalffects", eval=F}
 install.packages("marginseffects")
-
 # ou 
-
 remotes::install_github("vincentarelbundock/marginaleffects")
 ```
 
@@ -73,7 +71,6 @@ Base: petit extrait de la bases *nhanes2* (épidemio)
 
 ```{r, message=F, warning=F}
 df <- read.csv("D:/D/Marc/SMS/STATA INED/Programmation/R/marginaleffect/nhanes.csv")
-
 df$hlthstat = as.factor(df$hlthstat)  
 ```
 
@@ -141,9 +138,7 @@ J'utilise la fonction **`clm`** du package `ordinal` pour estimer le modèle.
 
 
 ```{r,  message=F, warning=F}
-
 fit = clm(hlthstat ~ female + black + bmi, family=binomial, data=df)
-
 ame = marginaleffects(fit)
 summary(ame)
 ```
@@ -179,21 +174,12 @@ margins, dydx(*)
 
 
 ```{r,  message=F, warning=F}
-
 fit = multinom(hlthstat ~ female + black + bmi,  data=df)
-
 ame = marginaleffects(fit)
 summary(ame)
 ```
 
 :::
-
-
-
-
-
-
-
 
 
 
