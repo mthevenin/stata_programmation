@@ -221,8 +221,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </div>
 </li>
           <li class="sidebar-item">
-  formation/chapitre4.qmd
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../../formation/chapitre4.html" class="sidebar-item-text sidebar-link">Les bases de données</a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../formation/chapitre5.html" class="sidebar-item-text sidebar-link">Les variables</a>
@@ -454,24 +456,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">qui</span> <span class="kw">logit</span> highbp female <span class="bn">black</span> bmi </span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>margins, <span class="kw">dydx</span>(*) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>&gt; , clear
+<pre><code>&gt; n\R\marginaleffect\nhanes.dta" , clear
 
 
 
-Average marginal effects                                Number of obs = 10,335
+Average marginal effects                        
+&gt;         Number of obs                         
+&gt;                       = 10,335
 Model VCE: OIM
 
 Expression: Pr(highbp), predict()
 dy/dx wrt:  female black bmi
 
-------------------------------------------------------------------------------
+------------------------------------------------
+&gt; ------------------------------
              |            Delta-method
-             |      dy/dx   std. err.      z    P&gt;|z|     [95% conf. interval]
--------------+----------------------------------------------------------------
-      female |     -0.087      0.009    -9.65   0.000       -0.105      -0.069
-       black |      0.045      0.015     3.02   0.003        0.016       0.074
-         bmi |      0.032      0.001    36.31   0.000        0.030       0.034
-------------------------------------------------------------------------------</code></pre>
+             |      dy/dx   std. err.      z    
+&gt; P&gt;|z|                                         
+&gt;           [95% con                            
+&gt;                   f. interval]
+-------------+----------------------------------
+&gt; ------------------------------
+      female |     -0.087      0.009    -9.65   
+&gt; 0.000                                         
+&gt;             -0.105                            
+&gt;                         -0.069
+       black |      0.045      0.015     3.02   
+&gt; 0.003                                         
+&gt;              0.016                            
+&gt;                          0.074
+         bmi |      0.032      0.001    36.31   
+&gt; 0.000                                         
+&gt;              0.030                            
+&gt;                          0.034
+------------------------------------------------
+&gt; ------------------------------</code></pre>
 </div>
 </div>
 </div>

@@ -9,7 +9,7 @@ knitr::opts_chunk$set(engine.path=list(stata=stataexe))
 ```
 
 
-# La syntaxe générique
+# **La syntaxe générique**
 
 **Remarque sur les crochets**  
 
@@ -18,7 +18,6 @@ knitr::opts_chunk$set(engine.path=list(stata=stataexe))
 
 ## [...] dans les commandes et les fichiers d'aide 
 A ma connaissance, à l'exception des pondérations il n'y a pas d'utilisation de crochets dans la syntaxe des commandes usines. Dans les fichiers d'aide et pour cette formation, ils indiquent les expressions optionnelles d'une ligne d'instruction.
-
 
 :::
 
@@ -62,8 +61,7 @@ command using nom_base [,options]
 ```
 
 
-# Autres langages pris en charge 
-<br>
+# **Autres langages pris en charge** 
 
 *interne*  
 
@@ -88,7 +86,7 @@ END_OF_R
 ```
 
 
-* Dépuis la version 16 on peut programmer intéractivement en Python avec Stata. Cette intégration permet à Python de reconnaitre les macros stata dans son code...c'est très utile. Python doit néanmoins être installé manuellement.
+* Depuis la version 16 on peut programmer intéractivement en Python avec Stata. Cette intégration permet à Python de reconnaitre les macros stata dans son code...c'est très utile. Python doit néanmoins être installé manuellement.
 
 
 *Vérification de l'installation*
@@ -112,7 +110,7 @@ end
 * Intégration de l'édition en  *markdown* pour produire des rapports en html ou pdf. Egalement possibilité de générer des documents word ou excel avec des commandes dédiées. L'intégration de *latex* est également possible via une commande externe. Toutes ces possibilité me semble néanmoins nettement en deçà de ce qui est réalisable avec **RStudio** en particulier avec le nouvel outil `Quarto` associé à `Statamarkdown`... utilisés pour faire ce support.
 
 
-# Les opérateurs
+# **Les opérateurs**
 
  
 | **Opérateurs**                                     |  
@@ -156,13 +154,13 @@ On peut rendre la valeur manquante informative en lui ajoutant une lettre:  **.a
 Exemple: *.a* = Ne sait pas, *.b*=Refus , *.c*=Pas de réponse.
 
 
-# Casse et troncature
+# **Casse et troncature**
 
-## Sensibilité à la casse 
+## **Sensibilité à la casse** 
 Comme R ou Python, Stata est intégralement  sensible à la casse pour les instructions, seulement en minuscules. Par exemple  `TABULATE X` renverra un message d'erreur.  
 
 
-## Troncature des instructions et des options
+## **Troncature des instructions et des options**
 
 Dans le fichier d'aire d'une commande usine ou externe, le niveau de troncature est indiqué par un soulignement dans l'instruction: par exemple **`tabulate`** est souligné au niveau de  **ta** : **tabulate** = **tabulat** = **tabula** = **tabul** = **tabu** = **tab** = **ta**. On utilise généralement ```tabulate``` ou ```tab```.  
 
@@ -178,8 +176,9 @@ ta var1 var2, nof r m
 ```
 
 
-# quietly et display 
-**En silence.... quietly (qui)**      
+# **`quietly` et `display`**   
+
+
 On peut rendre le résultat d'une commande invisible dans la fenêtre output avec `quietly` (`qui`).    
 
 ```{stata, class.output="result"}
@@ -213,9 +212,9 @@ Si on souhaite supprimer *television* et *telephone* seulement :  `drop tele*`.
 Si on  veut sélectionner des variables occurencées ou dans comme la base *auto*  les 5 variables qui se suivent [headroom, trunk, weight, length, turn]:  `keep headroom-turn` . Pour des variables occurencées de x1 à x5: `keep x1-x5`.    
 
 
-# Macros et répétition
+# **Macros et répétition**
 
-## Introduction au macros
+## **Introduction au macros**
 
 Juste une introduction...Vu la simplicité du langage Stata, il est conseiller de se mettre rapidement à la manipulation des expressions dites `macro`.  
 
@@ -254,7 +253,7 @@ On en voit tout de suite l'utilité: si je veux changer la liste de variables po
 
 Avec Stata peut définir également des macros dites *global* qui  sont sauvegardées et s'appliqueront à tous les programmes (on peut les supprimer). Leur utilisation est moins courante: `global nom_macro expression`, le nom de la macro dans l'expression s'écrira `$nom_macro`.   
 
-```{stata, class.output="result", , collectcode=T}
+```{stata, class.output="result",  collectcode=T}
 sysuse auto.dta
 
 global x mpg weight length turn
@@ -268,7 +267,7 @@ macro drop x
 La liste des macro enregistrée est donnée par l'instruction: `macro dir`
 
 
-## Objets sauvegardés à l'exécution d'une commande
+## **Objets sauvegardés à l'exécution d'une commande**
 
 - Ces objets de type macro ne sont conservés en mémoire qu'entre 2 commandes exécutés
 - On peut donc les manipuler qu'à ce moment là, en particulier les enregistrer sous forme de macro standard pour les utiliser ultérieurement. 
@@ -285,7 +284,7 @@ local mprice = r(mean)
 ```
 
 
-## Répétition avec des boucles
+## **Répétition avec des boucles**
 
 
 * **`forvalues**: valeurs occurencées, compteur  

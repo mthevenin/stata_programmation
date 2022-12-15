@@ -10,7 +10,7 @@ knitr::opts_chunk$set(engine.path=list(stata=stataexe))
 
 
 
-# Affectation du répertoire de travail
+# **Affectation du répertoire de travail**
 
 La commande ```cd``` (Current Directory), permet d'indiquer le chemin d'accès du répertoire où se trouve la base à ouvrir ou à  enregistrer.   Si aucun chemin d'accès n'est spécifié, Stata ira chercher la base dans le répertoire par défaut (normalement C: ou D:).
 
@@ -55,7 +55,7 @@ sysuse auto, clear
 
 :::  callout-note
 
-## Ouverture d'une base stockée sur un git [github, gitlab ...]
+## **Ouverture d'une base stockée sur un git [github, gitlab ...]**
 
 Dans un premier temps, comme pour `cd` il faut charger le répertoire où se trouve localisé la base, avec la commande **`webuse set`**. Par exemple sur mon dépôt git, une base d'exemple (*logement.dta*) pour une commande se trouve à cette adresse: <https://github.com/mthevenin/stata_graphiques/tree/main/programmation/gjoint>  
 
@@ -77,14 +77,12 @@ des
 
 On revient au dépôt officiel de stata avec `webuse set`
 
-```{r, eval=F}
-webuse logement.dta, clear
-```
 
 En résumé avec un seul bloc d'instructions:  
 
-```{stata}
+```{stata, class.output="result"}
 webuse set  "https://raw.githubusercontent.com//mthevenin/stata_graphiques/master/ressources/gjoint"
+
 webuse "logement.dta", clear
 
 webuse set
@@ -93,12 +91,12 @@ webuse set
 :::
 
 
-# Sauvegarde d'une base 
+# **Sauvegarde d'une base** 
 
 **Commandes** ```save``` ou ```saveold```  
 
-Syntaxe
-```{}
+
+```{stata filename="Syntaxe", eval=F}
 save "path/nom_base.dta" [, replace]     
 ```
 
@@ -106,60 +104,40 @@ L'option `replace` permet d'écraser une version antérieure de la base. Obligat
 
 ```saveold``` permettra d'ouvrir une bases avec une version ancienne de Stata non compatibles avec la version courante. Cela commence à devenir moins critique, mais avec `save` il ne sera plus possible d'ouvrir une base avec une version inférieure à la 13 ou inférieur à la 13 (passage à l'encodage Utf8 avec la version 14).
 
-Syntaxe
-```{}
+
+```{stata filename="Syntaxe", eval=F}
  saveold "path/nom_base.dta", [replace] [version(#)] // # = numéro de la version de Stata: 
 ```
  
 Remarques: 
 
 * Ecrire l'extension .dta n'est pas obligatoire
-* Les doubles quotes ne sont obligatoires que si il y a un espace dans le chemin d'accès et/ou dans le nom de la base 
+* Les doubles quotes ne sont obligatoires que s'il y a un espace dans le chemin d'accès et/ou dans le nom de la base 
 
 
-```{}
+```{stata filename="Syntaxe", eval=F}
 use "ma base", clear 
 save ma_base, clear 
 ```
 
 
-# Décrire le contenu d'une base
+# **Décrire le contenu d'une base**
 
 Commande ```describe```
 
-Syntaxe
-```{}
+
+```{stata filename="Syntaxe", eval=F}
 describe [varlist , short]
 ```
 
 - La commande est régulièrement tronquée  jusqu'à ```des```
 
-Exemple
-```{}
-sysuse auto.dta
-des
+Exemple 
 
-Contains data from C:\Program Files\Stata16\ado\base/a/auto.dta
-  obs:            74                          1978 Automobile Data
- vars:            12                          13 Apr 2018 17:45
-                                              (_dta has notes)
--------------------------------------------------------------------------------------------------------------
-              storage   display    value
-variable name   type    format     label      variable label
--------------------------------------------------------------------------------------------------------------
-make            str18   %-18s                 Make and Model
-price           int     %8.0gc                Price
-mpg             int     %8.0g                 Mileage (mpg)
-rep78           int     %8.0g                 Repair Record 1978
-headroom        float   %6.1f                 Headroom (in.)
-trunk           int     %8.0g                 Trunk space (cu. ft.)
-weight          int     %8.0gc                Weight (lbs.)
-length          int     %8.0g                 Length (in.)
-turn            int     %8.0g                 Turn Circle (ft.)
-displacement    int     %8.0g                 Displacement (cu. in.)
-gear_ratio      float   %6.2f                 Gear Ratio
-foreign         byte    %8.0g      origin     Car type
--------------------------------------------------------------------------------------------------------------
+```{stata, class.output="result", collectcode=T}
+sysuse auto.dta, clear
+
+des
 
 ```
 
@@ -169,175 +147,81 @@ foreign         byte    %8.0g      origin     Car type
 
 Commande ```list```  
 
-Syntaxe
-```{}
+
+```{stata filename="Syntaxe", eval=F}
  list [varlist] [expression]
 ```
 
-Exemple  
-```{}
-sysuse auto.dta, clear
-. list price mpg turn foreign in 1/10
 
-     +--------------------------------+
-     |  price   mpg   turn    foreign |
-     |--------------------------------|
-  1. |  4,099    22     40   Domestic |
-  2. |  4,749    17     40   Domestic |
-  3. |  3,799    22     35   Domestic |
-  4. |  4,816    20     40   Domestic |
-  5. |  7,827    15     43   Domestic |
-     |--------------------------------|
-  6. |  5,788    18     43   Domestic |
-  7. |  4,453    26     34   Domestic |
-  8. |  5,189    20     42   Domestic |
-  9. | 10,372    16     43   Domestic |
- 10. |  4,082    19     42   Domestic |
-     +--------------------------------+
+```{stata, class.output="result"}
+list price mpg turn foreign in 1/10
 ```
 
 
 
-# Autres commandes
+# **Autres commandes**
 
 **labelbook et label list**  
 
 Commande ```labelbook```: affiche les informations sur les labels affectés aux modalités des variables. Peu utilisé.
 
-Syntaxe  
-```{}
-labelbook [varlist]
+ 
+```{stata filename="Syntaxe", eval=F}
+labelbook [nom_label]
 ```
+
+```{stata, class.output="result"}
+labelbook origin
+```
+
 
 On peut également utiliser la commande ```label list [nom_label]``` si on connait le nom du label. Le nom du label peut-être récupéré dans describe ou dans le fenêtre properties (voir plus loin également dans le variable manager)
 
-Exemple
-
-```{}
-labelbook
-
--------------------------------------------------------------------------------------------------------------
-value label origin 
--------------------------------------------------------------------------------------------------------------
-
-      values                                    labels
-       range:  [0,1]                     string length:  [7,8]
-           N:  2                 unique at full length:  yes
-        gaps:  no                  unique at length 12:  yes
-  missing .*:  0                           null string:  no
-                               leading/trailing blanks:  no
-                                    numeric -> numeric:  no
-  definition
-           0   Domestic
-           1   Foreign
-
-   variables:  foreign
-
-
+```{stata, class.output="result"}
 label list origin
-origin:
-           0 Domestic
-           1 Foreign
 ```
 
 
-# Description statistique des variables
+# **Description statistique des variables**
 
 Dans les menus de l'interface principale: **Statistics** => **Summaries, tables & tests**
 
-## Variables continues
+## **Variables continues**
 
-**Commande summarize** 
+**Commande `summarize`** 
 
-Avec l'option ```detail``` (```d```) on obtient la moyenne, la variance, les quantiles, la symétrie...). La commande peut-être tronquée jusqu'? ```sum``` (warning: il existe également une fonction ```sum``` pour générer des cumuls lors d'une cr"ation de variable).  
+Avec l'option `detail` (`d`) on obtient la moyenne, la variance, les quantiles, la symétrie...). La commande peut-être tronquée jusqu'à `sum`.     
 
-Syntaxe
-```{}
+**Warning**: il existe également une fonction `sum` pour générer des cumuls lors d'une création de variable [voir chapitre 5].  
+
+```{stata filename="Syntaxe", eval=F}
 summarize varlist [, detail]
 ```
 
-A voir également:  les commandes ```mean``` ou ```tabstat```. Egalement la commande `table` permet de calculer des quantités de type moyenne, médiane, variance.... pour les différentes valeurs d'une variable catégorielle (j'avoue ne jamais l'avoir utilisé).
+A voir également:  les commandes `mean` ou `tabstat`. Mais également la commande `table` permet de calculer des quantités de type moyenne, médiane, variance.... pour les différentes valeurs d'une variable catégorielle, et qui intègre des éléments pour exporter les résultats dans plusieurs format (je ne suis pas très à jour sur ce point).
 
-Exemples
-```{}
+
+```{stata, class.output="result"}
 sum price length, d
-                            Price
--------------------------------------------------------------
-      Percentiles      Smallest
- 1%         3291           3291
- 5%         3748           3299
-10%         3895           3667       Obs                  74
-25%         4195           3748       Sum of Wgt.          74
-
-50%       5006.5                      Mean           6165.257
-                        Largest       Std. Dev.      2949.496
-75%         6342          13466
-90%        11385          13594       Variance        8699526
-95%        13466          14500       Skewness       1.653434
-99%        15906          15906       Kurtosis       4.819188
-
-                        Length (in.)
--------------------------------------------------------------
-      Percentiles      Smallest
- 1%          142            142
- 5%          154            147
-10%          157            149       Obs                  74
-25%          170            154       Sum of Wgt.          74
-
-50%        192.5                      Mean           187.9324
-                        Largest       Std. Dev.      22.26634
-75%          204            221
-90%          218            222       Variance       495.7899
-95%          221            230       Skewness      -.0409746
-99%          233            233       Kurtosis        2.04156
-
 ```
 
 
-```{}
+```{stata, class.output="result"}
 bysort foreign: sum price, d
--------------------------------------------------------------------------------------------------------------
--> foreign = Domestic
-
-                            Price
--------------------------------------------------------------
-      Percentiles      Smallest
- 1%         3291           3291
- 5%         3667           3299
-10%         3955           3667       Obs                  52
-25%         4184           3799       Sum of Wgt.          52
-
-50%       4782.5                      Mean           6072.423
-                        Largest       Std. Dev.      3097.104
-75%         6234          13466
-90%        11385          13594       Variance        9592055
-95%        13594          14500       Skewness       1.777939
-99%        15906          15906       Kurtosis       5.090316
-
--------------------------------------------------------------------------------------------------------------
--> foreign = Foreign
-
-                            Price
--------------------------------------------------------------
-      Percentiles      Smallest
- 1%         3748           3748
- 5%         3798           3798
-10%         3895           3895       Obs                  22
-25%         4499           3995       Sum of Wgt.          22
-
-50%         5759                      Mean           6384.682
-                        Largest       Std. Dev.      2621.915
-75%         7140           9690
-90%         9735           9735       Variance        6874439
-95%        11995          11995       Skewness       1.215236
-99%        12990          12990       Kurtosis       3.555178
 ```    
 
 
-**Pour aller plus loin**  
+**Pour aller plus loin (voir introduction aux macro dans le chapitre précédent**   
+
 En bas de l'aide d'une commande, **stored result** indique les informations enregistrées temporairement.  
-Pour la commande `summarize`:
+Pour la commande `summarize`:  
+
 ```{}
+
+*Extrait de l'aide de summarize
+
+* help summarize
+
     summarize stores the following in r():
 
     Scalars   
@@ -363,54 +247,28 @@ Pour la commande `summarize`:
 
 ```
 
-On peut afficher ces informations avec la commande `return list` (`ereturn list pour les estimations de modèles`)
+On peut afficher ces informations avec la commande `return list` (`ereturn list` pour les estimations de modèles)
 
-```{}
+```{stata, class.output="result"}
 qui sum price, d
 return list
-scalars:
-                  r(N) =  74
-              r(sum_w) =  74
-               r(mean) =  6165.256756756757
-                r(Var) =  8699525.97426879
-                 r(sd) =  2949.495884768919
-           r(skewness) =  1.653433511704859
-           r(kurtosis) =  4.819187528464004
-                r(sum) =  456229
-                r(min) =  3291
-                r(max) =  15906
-                 r(p1) =  3291
-                 r(p5) =  3748
-                r(p10) =  3895
-                r(p25) =  4195
-                r(p50) =  5006.5
-                r(p75) =  6342
-                r(p90) =  11385
-                r(p95) =  13466
-                r(p99) =  15906
-
 ```
 
 Si l'on souhaite afficher seulement les valeurs de la médiane pour plusieurs variables de la base:
 
-```{}
+```{stata, class.output="result"}
 
-local x price mpg rep78 headroom trunk
+local var  price mpg rep78 headroom trunk
 
-foreach i of local x {
-qui sum `i', d
-di as text "la valeur de la médiane de la variable `i' est:" as result `r(p50)'
+foreach x of local var {
+qui sum `x', d
+di as text "La valeur  médiane de la variable `x' est:" as result `r(p50)'
 }
 
-La valeur de la médiane de la variable price est:5006.5
-La valeur de la médiane de la variable mpg est:20
-La valeur de la médiane de la variable rep78 est:3
-La valeur de la médiane de la variable headroom est:3
-La valeur de la médiane de la variable trunk est:14
 ```
 
-* Ici r(p50) joue le rôle d'une macro, ici de type *scalaire*
-* Ces informations sont utilisables lorsqu'on créer des variables
+* Ici **`r(p50)`** joue le rôle d'une macro,
+* Ces informations peuvent être utilisées pour générer une variable
 
 **Graphiques**  
 

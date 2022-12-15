@@ -102,6 +102,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -219,8 +222,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </div>
 </li>
           <li class="sidebar-item">
-  formation/chapitre4.qmd
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./formation/chapitre4.html" class="sidebar-item-text sidebar-link">Les bases de données</a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./formation/chapitre5.html" class="sidebar-item-text sidebar-link">Les variables</a>
@@ -392,7 +397,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </blockquote>
 <p>Une fois le programme enregistré, son effet n’est pris en compte que pour les sessions qui seront ouvertes ultérieurement et non pour celles en cours. Le programme est chargé uniquement à l’ouverture d’une session, un message apparait dans l’output:</p>
-<p><img src="img1/g1.png" class="img-fluid" style="width:70.0%"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img1/g1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="img1/g1.png" class="img-fluid figure-img" style="width:70.0%"></a></p>
+</figure>
+</div>
 <p>Pour facilité l’ouverture et l’enregistrement du fichier sous windows sans avoir à se promener dans l’explorateur de fichier, on peut enregistrer la localisation du répertoire user une fois pour toute dans une macro de type <code>global</code>, ici appelé <em>user</em>, et l’ouvrir rapidement avec l’invite de commande windows sous Stata (<code>!</code> ou <code>shell</code>)</p>
 <p>Affectation du répertoire user dans une macro:</p>
 <div class="cell">
@@ -611,6 +620,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       <div class="nav-footer-center">Marc Thévenin - Ined-Sms - Août 2022</div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","loop":true,"closeEffect":"zoom","selector":".lightbox","openEffect":"zoom"});</script>
 
 
 

@@ -104,6 +104,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -221,8 +224,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </div>
 </li>
           <li class="sidebar-item">
-  formation/chapitre4.qmd
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../../formation/chapitre4.html" class="sidebar-item-text sidebar-link">Les bases de données</a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../formation/chapitre5.html" class="sidebar-item-text sidebar-link">Les variables</a>
@@ -661,7 +666,11 @@ La solution est simple: il suffit de coller votre fichier profile.do, normalemen
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>[titre graph](g1.png){width<span class="ot">=</span><span class="dv">80</span>%}{fig<span class="sc">-</span>align<span class="ot">=</span><span class="st">"left"</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<p><img src="g1.png" class="img-fluid" style="width:80.0%"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="g1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="g1.png" class="img-fluid figure-img" style="width:80.0%"></a></p>
+</figure>
+</div>
 </section>
 <section id="résultat-de-régression-avec-collect" class="level2" data-number="2.6">
 <h2 data-number="2.6" class="anchored" data-anchor-id="résultat-de-régression-avec-collect"><span class="header-section-number">2.6</span> Résultat de régression avec <strong><code>collect</code></strong></h2>
@@ -2947,6 +2956,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       <div class="nav-footer-center">Marc Thévenin - Ined-Sms - Août 2022</div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","loop":true,"selector":".lightbox","descPosition":"bottom"});</script>
 
 
 
