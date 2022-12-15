@@ -73,5 +73,7 @@ format:
     toc-title: Sections
     highlight-style: zenburn
 number-sections: true
-
+filters:
+   - lightbox
+lightbox: auto
 

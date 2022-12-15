@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Les bases de données</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../formation/chapitre5.html" rel="next">
+<link href="../formation/chapitre3.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://mthevenin.github.io/stata_fr/" rel="">
+ <span class="menu-text">Stata Ined</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://mthevenin.github.io/stata_graphiques/" rel="">
+ <span class="menu-text">Graphiques</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://mthevenin.github.io/stata_programmation/" rel="">
+ <span class="menu-text">Programmation</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/mthevenin" rel=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:marc.thevenin@ined.fr" rel=""><i class="bi bi-envelope" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html" rel="">
+ <span class="menu-text">A propos</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Les bases de données</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Formation introductive</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../formation/chapitre0.html" class="sidebar-item-text sidebar-link">Présentation</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../formation/chapitre1.html" class="sidebar-item-text sidebar-link">Introduction</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../formation/chapitre2.html" class="sidebar-item-text sidebar-link">Environnement</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../formation/chapitre3.html" class="sidebar-item-text sidebar-link">Le langage Stata</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../formation/chapitre4.html" class="sidebar-item-text sidebar-link active">Les bases de données</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../formation/chapitre5.html" class="sidebar-item-text sidebar-link">Les variables</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  formation/chapitre6.qmd
+  </li>
+          <li class="sidebar-item">
+  formation/chapitre7.qmd
+  </li>
+          <li class="sidebar-item">
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">Fichier profile</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../profile/profile1.html" class="sidebar-item-text sidebar-link">Principe</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../profile/profile2.html" class="sidebar-item-text sidebar-link">Exemple profile.do</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">Need for speed</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../speedup/intro.html" class="sidebar-item-text sidebar-link">Introduction</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../speedup/gtools.html" class="sidebar-item-text sidebar-link">Gtools</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">Super Macro World</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../macro/intro.html" class="sidebar-item-text sidebar-link">Présentation</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">C’est dans l’R</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../R.html" class="sidebar-item-text sidebar-link">Stata et R</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">Edition des outputs</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tableaux/intro.html" class="sidebar-item-text sidebar-link">Intro - Collect</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Sections</h2>
+   
+  <ul>
+  <li><a href="#affectation-du-répertoire-de-travail" id="toc-affectation-du-répertoire-de-travail" class="nav-link active" data-scroll-target="#affectation-du-répertoire-de-travail"><span class="toc-section-number">1</span>  Affectation du répertoire de travail</a></li>
+  <li><a href="#ouverture-dune-base" id="toc-ouverture-dune-base" class="nav-link" data-scroll-target="#ouverture-dune-base"><span class="toc-section-number">2</span>  Ouverture d’une base</a></li>
+  <li><a href="#sauvegarde-dune-base" id="toc-sauvegarde-dune-base" class="nav-link" data-scroll-target="#sauvegarde-dune-base"><span class="toc-section-number">3</span>  Sauvegarde d’une base</a></li>
+  <li><a href="#décrire-le-contenu-dune-base" id="toc-décrire-le-contenu-dune-base" class="nav-link" data-scroll-target="#décrire-le-contenu-dune-base"><span class="toc-section-number">4</span>  Décrire le contenu d’une base</a></li>
+  <li><a href="#affichage-de-la-base-dans-loutput" id="toc-affichage-de-la-base-dans-loutput" class="nav-link" data-scroll-target="#affichage-de-la-base-dans-loutput"><span class="toc-section-number">5</span>  Affichage de la base dans l’output</a></li>
+  <li><a href="#autres-commandes" id="toc-autres-commandes" class="nav-link" data-scroll-target="#autres-commandes"><span class="toc-section-number">6</span>  Autres commandes</a></li>
+  <li><a href="#description-statistique-des-variables" id="toc-description-statistique-des-variables" class="nav-link" data-scroll-target="#description-statistique-des-variables"><span class="toc-section-number">7</span>  Description statistique des variables</a>
+  <ul class="collapse">
+  <li><a href="#variables-continues" id="toc-variables-continues" class="nav-link" data-scroll-target="#variables-continues"><span class="toc-section-number">7.1</span>  Variables continues</a></li>
+  <li><a href="#variables-catégorielles" id="toc-variables-catégorielles" class="nav-link" data-scroll-target="#variables-catégorielles"><span class="toc-section-number">7.2</span>  Variables catégorielles</a></li>
+  </ul></li>
+  <li><a href="#la-boîte-à-outils" id="toc-la-boîte-à-outils" class="nav-link" data-scroll-target="#la-boîte-à-outils"><span class="toc-section-number">8</span>  La boîte à outils</a>
+  <ul class="collapse">
+  <li><a href="#tri-dune-base" id="toc-tri-dune-base" class="nav-link" data-scroll-target="#tri-dune-base"><span class="toc-section-number">8.1</span>  Tri d’une base</a></li>
+  <li><a href="#repérage-et-suppression-des-doublons" id="toc-repérage-et-suppression-des-doublons" class="nav-link" data-scroll-target="#repérage-et-suppression-des-doublons"><span class="toc-section-number">8.2</span>  Repérage et suppression des doublons</a></li>
+  <li><a href="#modifier-la-place-des-variables-dans-la-base" id="toc-modifier-la-place-des-variables-dans-la-base" class="nav-link" data-scroll-target="#modifier-la-place-des-variables-dans-la-base"><span class="toc-section-number">8.3</span>  Modifier la place des variables dans la base</a></li>
+  <li><a href="#importationexportation" id="toc-importationexportation" class="nav-link" data-scroll-target="#importationexportation"><span class="toc-section-number">8.4</span>  Importation/Exportation</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Les bases de données</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="cell">
+
+</div>
+<section id="affectation-du-répertoire-de-travail" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Affectation du répertoire de travail</h1>
+<p>La commande <code>cd</code> (Current Directory), permet d’indiquer le chemin d’accès du répertoire où se trouve la base à ouvrir ou à enregistrer. Si aucun chemin d’accès n’est spécifié, Stata ira chercher la base dans le répertoire par défaut (normalement C: ou D:).</p>
+<p>Syntaxe</p>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Syntaxe</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"path"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p><strong>Remarque</strong><br>
+Avec cette commande, un seul repertoire de travail est actif. On peut élargir les possibilités en affectant des répertoires avec des macros variables locales ou globales</p>
+</section>
+<section id="ouverture-dune-base" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Ouverture d’une base</h1>
+<p><strong>Commande</strong> <code>use</code><br>
+<br> Sans chargement d’un répertoire</p>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Syntaxe</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>use <span class="st">"path/nom_base.dta"</span> [,clear]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p>L’option <code>clear</code> permet d’effacer une base en cours d’utilisation. Il est conseillé de mettre cette option systématiquement. On peut également utiliser <code>clear</code> comme instruction avant d’ouvrir une base. on ne supprime pas la base du répertoire (commande <code>erase</code>), elle est juste écrasée dans la session.</p>
+<p>Syntaxe avec affectation d’un répertoire:</p>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Syntaxe</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"path"</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>use <span class="st">"nom_base.dta"</span>, clear </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p>ou</p>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Syntaxe</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"path"</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>clear</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>use <span class="st">"nom_base.dta"</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p>Remarque: pour les bases d’exemples préinstallées, on utilise la commande <code>sysuse</code>. Dans les fichiers d’aide, des exemples font également appels a des bases localisées sur des serveurs qui s’ouvrent avec la commande <code>webuse</code>.</p>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Syntaxe</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sysuse auto, clear</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Ouverture d’une base stockée sur un git [github, gitlab …]
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Dans un premier temps, comme pour <code>cd</code> il faut charger le répertoire où se trouve localisé la base, avec la commande <strong><code>webuse set</code></strong>. Par exemple sur mon dépôt git, une base d’exemple (<em>logement.dta</em>) pour une commande se trouve à cette adresse: <a href="https://github.com/mthevenin/stata_graphiques/tree/main/programmation/gjoint" class="uri">https://github.com/mthevenin/stata_graphiques/tree/main/programmation/gjoint</a></p>
+<p>Pour charger ce répertoire à distance:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>webuse set  <span class="st">"https://raw.githubusercontent.com//mthevenin/stata_graphiques/master/ressources/gjoint"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>On remarque que le chemin n’est pas identique au simple lien (spécificité des dépôt de type git).</p>
+<p>Il suffit ensuite de charger la base avec <code>webuse</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>webuse logement.dta, clear</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>des</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>On revient au dépôt officiel de stata avec <code>webuse set</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>webuse logement.dta, clear</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>En résumé avec un seul bloc d’instructions:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">webuse</span> <span class="kw">set</span>  <span class="st">"https://raw.githubusercontent.com//mthevenin/stata_graphiques/master/ressources/gjoint"</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">webuse</span> <span class="st">"logement.dta"</span>, <span class="kw">clear</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="kw">webuse</span> <span class="kw">set</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&gt; ster/ressources/gjoint"
+(prefix now "https://raw.githubusercontent.com//mthevenin/stata_graphiques/mast
+&gt; er/ressources/gjoint")
+
+
+(prefix now "https://www.stata-press.com/data/r17")</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="sauvegarde-dune-base" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Sauvegarde d’une base</h1>
+<p><strong>Commandes</strong> <code>save</code> ou <code>saveold</code></p>
+<p>Syntaxe</p>
+<pre><code>save "path/nom_base.dta" [, replace]     </code></pre>
+<p>L’option <code>replace</code> permet d’écraser une version antérieure de la base. Obligatoire à partir de la 2ème sauvegarde, mais on peut l’utiliser dès la première sauvegarde (un message d’avertissement s’affiche).</p>
+<p><code>saveold</code> permettra d’ouvrir une bases avec une version ancienne de Stata non compatibles avec la version courante. Cela commence à devenir moins critique, mais avec <code>save</code> il ne sera plus possible d’ouvrir une base avec une version inférieure à la 13 ou inférieur à la 13 (passage à l’encodage Utf8 avec la version 14).</p>
+<p>Syntaxe</p>
+<pre><code> saveold "path/nom_base.dta", [replace] [version(#)] // # = numéro de la version de Stata: </code></pre>
+<p>Remarques:</p>
+<ul>
+<li>Ecrire l’extension .dta n’est pas obligatoire</li>
+<li>Les doubles quotes ne sont obligatoires que si il y a un espace dans le chemin d’accès et/ou dans le nom de la base</li>
+</ul>
+<pre><code>use "ma base", clear 
+save ma_base, clear </code></pre>
+</section>
+<section id="décrire-le-contenu-dune-base" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Décrire le contenu d’une base</h1>
+<p>Commande <code>describe</code></p>
+<p>Syntaxe</p>
+<pre><code>describe [varlist , short]</code></pre>
+<ul>
+<li>La commande est régulièrement tronquée jusqu’à <code>des</code></li>
+</ul>
+<p>Exemple</p>
+<pre><code>sysuse auto.dta
+des
+
+Contains data from C:\Program Files\Stata16\ado\base/a/auto.dta
+  obs:            74                          1978 Automobile Data
+ vars:            12                          13 Apr 2018 17:45
+                                              (_dta has notes)
+-------------------------------------------------------------------------------------------------------------
+              storage   display    value
+variable name   type    format     label      variable label
+-------------------------------------------------------------------------------------------------------------
+make            str18   %-18s                 Make and Model
+price           int     %8.0gc                Price
+mpg             int     %8.0g                 Mileage (mpg)
+rep78           int     %8.0g                 Repair Record 1978
+headroom        float   %6.1f                 Headroom (in.)
+trunk           int     %8.0g                 Trunk space (cu. ft.)
+weight          int     %8.0gc                Weight (lbs.)
+length          int     %8.0g                 Length (in.)
+turn            int     %8.0g                 Turn Circle (ft.)
+displacement    int     %8.0g                 Displacement (cu. in.)
+gear_ratio      float   %6.2f                 Gear Ratio
+foreign         byte    %8.0g      origin     Car type
+-------------------------------------------------------------------------------------------------------------
+</code></pre>
+</section>
+<section id="affichage-de-la-base-dans-loutput" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Affichage de la base dans l’output</h1>
+<p>Commande <code>list</code></p>
+<p>Syntaxe</p>
+<pre><code> list [varlist] [expression]</code></pre>
+<p>Exemple</p>
+<pre><code>sysuse auto.dta, clear
+. list price mpg turn foreign in 1/10
+
+     +--------------------------------+
+     |  price   mpg   turn    foreign |
+     |--------------------------------|
+  1. |  4,099    22     40   Domestic |
+  2. |  4,749    17     40   Domestic |
+  3. |  3,799    22     35   Domestic |
+  4. |  4,816    20     40   Domestic |
+  5. |  7,827    15     43   Domestic |
+     |--------------------------------|
+  6. |  5,788    18     43   Domestic |
+  7. |  4,453    26     34   Domestic |
+  8. |  5,189    20     42   Domestic |
+  9. | 10,372    16     43   Domestic |
+ 10. |  4,082    19     42   Domestic |
+     +--------------------------------+</code></pre>
+</section>
+<section id="autres-commandes" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Autres commandes</h1>
+<p><strong>labelbook et label list</strong></p>
+<p>Commande <code>labelbook</code>: affiche les informations sur les labels affectés aux modalités des variables. Peu utilisé.</p>
+<p>Syntaxe</p>
+<pre><code>labelbook [varlist]</code></pre>
+<p>On peut également utiliser la commande <code>label list [nom_label]</code> si on connait le nom du label. Le nom du label peut-être récupéré dans describe ou dans le fenêtre properties (voir plus loin également dans le variable manager)</p>
+<p>Exemple</p>
+<pre><code>labelbook
+
+-------------------------------------------------------------------------------------------------------------
+value label origin 
+-------------------------------------------------------------------------------------------------------------
+
+      values                                    labels
+       range:  [0,1]                     string length:  [7,8]
+           N:  2                 unique at full length:  yes
+        gaps:  no                  unique at length 12:  yes
+  missing .*:  0                           null string:  no
+                               leading/trailing blanks:  no
+                                    numeric -&gt; numeric:  no
+  definition
+           0   Domestic
+           1   Foreign
+
+   variables:  foreign
+
+
+label list origin
+origin:
+           0 Domestic
+           1 Foreign</code></pre>
+</section>
+<section id="description-statistique-des-variables" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Description statistique des variables</h1>
+<p>Dans les menus de l’interface principale: <strong>Statistics</strong> =&gt; <strong>Summaries, tables &amp; tests</strong></p>
+<section id="variables-continues" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="variables-continues"><span class="header-section-number">7.1</span> Variables continues</h2>
+<p><strong>Commande summarize</strong></p>
+<p>Avec l’option <code>detail</code> (<code>d</code>) on obtient la moyenne, la variance, les quantiles, la symétrie…). La commande peut-être tronquée jusqu’? <code>sum</code> (warning: il existe également une fonction <code>sum</code> pour générer des cumuls lors d’une cr”ation de variable).</p>
+<p>Syntaxe</p>
+<pre><code>summarize varlist [, detail]</code></pre>
+<p>A voir également: les commandes <code>mean</code> ou <code>tabstat</code>. Egalement la commande <code>table</code> permet de calculer des quantités de type moyenne, médiane, variance…. pour les différentes valeurs d’une variable catégorielle (j’avoue ne jamais l’avoir utilisé).</p>
+<p>Exemples</p>
+<pre><code>sum price length, d
+                            Price
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%         3291           3291
+ 5%         3748           3299
+10%         3895           3667       Obs                  74
+25%         4195           3748       Sum of Wgt.          74
+
+50%       5006.5                      Mean           6165.257
+                        Largest       Std. Dev.      2949.496
+75%         6342          13466
+90%        11385          13594       Variance        8699526
+95%        13466          14500       Skewness       1.653434
+99%        15906          15906       Kurtosis       4.819188
+
+                        Length (in.)
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%          142            142
+ 5%          154            147
+10%          157            149       Obs                  74
+25%          170            154       Sum of Wgt.          74
+
+50%        192.5                      Mean           187.9324
+                        Largest       Std. Dev.      22.26634
+75%          204            221
+90%          218            222       Variance       495.7899
+95%          221            230       Skewness      -.0409746
+99%          233            233       Kurtosis        2.04156
+</code></pre>
+<pre><code>bysort foreign: sum price, d
+-------------------------------------------------------------------------------------------------------------
+-&gt; foreign = Domestic
+
+                            Price
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%         3291           3291
+ 5%         3667           3299
+10%         3955           3667       Obs                  52
+25%         4184           3799       Sum of Wgt.          52
+
+50%       4782.5                      Mean           6072.423
+                        Largest       Std. Dev.      3097.104
+75%         6234          13466
+90%        11385          13594       Variance        9592055
+95%        13594          14500       Skewness       1.777939
+99%        15906          15906       Kurtosis       5.090316
+
+-------------------------------------------------------------------------------------------------------------
+-&gt; foreign = Foreign
+
+                            Price
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%         3748           3748
+ 5%         3798           3798
+10%         3895           3895       Obs                  22
+25%         4499           3995       Sum of Wgt.          22
+
+50%         5759                      Mean           6384.682
+                        Largest       Std. Dev.      2621.915
+75%         7140           9690
+90%         9735           9735       Variance        6874439
+95%        11995          11995       Skewness       1.215236
+99%        12990          12990       Kurtosis       3.555178</code></pre>
+<p><strong>Pour aller plus loin</strong><br>
+En bas de l’aide d’une commande, <strong>stored result</strong> indique les informations enregistrées temporairement.<br>
+Pour la commande <code>summarize</code>:</p>
+<pre><code>    summarize stores the following in r():
+
+    Scalars   
+      r(N)           number of observations
+      r(mean)        mean
+      r(skewness)    skewness (detail only)
+      r(min)         minimum
+      r(max)         maximum
+      r(sum_w)       sum of the weights
+      r(p1)          1st percentile (detail only)
+      r(p5)          5th percentile (detail only)
+      r(p10)         10th percentile (detail only)
+      r(p25)         25th percentile (detail only)
+      r(p50)         50th percentile (detail only)
+      r(p75)         75th percentile (detail only)
+      r(p90)         90th percentile (detail only)
+      r(p95)         95th percentile (detail only)
+      r(p99)         99th percentile (detail only)
+      r(Var)         variance
+      r(kurtosis)    kurtosis (detail only)
+      r(sum)         sum of variable
+      r(sd)          standard deviation
+</code></pre>
+<p>On peut afficher ces informations avec la commande <code>return list</code> (<code>ereturn list pour les estimations de modèles</code>)</p>
+<pre><code>qui sum price, d
+return list
+scalars:
+                  r(N) =  74
+              r(sum_w) =  74
+               r(mean) =  6165.256756756757
+                r(Var) =  8699525.97426879
+                 r(sd) =  2949.495884768919
+           r(skewness) =  1.653433511704859
+           r(kurtosis) =  4.819187528464004
+                r(sum) =  456229
+                r(min) =  3291
+                r(max) =  15906
+                 r(p1) =  3291
+                 r(p5) =  3748
+                r(p10) =  3895
+                r(p25) =  4195
+                r(p50) =  5006.5
+                r(p75) =  6342
+                r(p90) =  11385
+                r(p95) =  13466
+                r(p99) =  15906
+</code></pre>
+<p>Si l’on souhaite afficher seulement les valeurs de la médiane pour plusieurs variables de la base:</p>
+<pre><code>
+local x price mpg rep78 headroom trunk
+
+foreach i of local x {
+qui sum `i', d
+di as text "la valeur de la médiane de la variable `i' est:" as result `r(p50)'
+}
+
+La valeur de la médiane de la variable price est:5006.5
+La valeur de la médiane de la variable mpg est:20
+La valeur de la médiane de la variable rep78 est:3
+La valeur de la médiane de la variable headroom est:3
+La valeur de la médiane de la variable trunk est:14</code></pre>
+<ul>
+<li>Ici r(p50) joue le rôle d’une macro, ici de type <em>scalaire</em></li>
+<li>Ces informations sont utilisables lorsqu’on créer des variables</li>
+</ul>
+<p><strong>Graphiques</strong></p>
+<p>Commandes <strong>boxplot</strong> et <strong>histogram</strong></p>
+<p>Par les menus: <strong>Graphics</strong> =&gt; <strong>Distributional graphs</strong></p>
+<p>Syntaxe</p>
+<pre><code>* Boxplot
+graph box varlist [, over(var)...]
+* Histogramme
+histogram varname [, by(var)...]</code></pre>
+<pre><code>histogram length, by(foreign)
+graph box length, over(foreign)    </code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img4/g1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="img4/g1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>Les graphiques de type <em>violin</em> qui réunie les informations issues des boxplots et histogrammes ne sont pas implémentés dans Stata (possible via Python à partir de la v16 de Stata).</p>
+<p>Bien évidemment, d’autres types de graphiques sont possibles, en particulier via des commandes externes. Pour analyses des distributions de deux variables continues, on se reportera par exemple à la commande <code>heatplot</code> de <strong>Ben Jann</strong>.</p>
+<p>Exemples <a href="img4/g2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="img4/g2.png" class="img-fluid"></a></p>
+</section>
+<section id="variables-catégorielles" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="variables-catégorielles"><span class="header-section-number">7.2</span> Variables catégorielles</h2>
+<p>La principale commande est <code>tabulate</code> (<code>tab</code>)</p>
+<p>Syntaxe (tableau croisé)</p>
+<pre><code>tab var1 var2 [, mis nofreq row col chi2 ......]</code></pre>
+<pre><code>tab rep78 foreign, mis
+
+    Repair |
+    Record |    Origine voiture
+      1978 |  Domestic    Foreign |     Total
+-----------+----------------------+----------
+         1 |         2          0 |         2 
+         2 |         8          0 |         8 
+         3 |        27          3 |        30 
+         4 |         9          9 |        18 
+         5 |         2          9 |        11 
+         . |         4          1 |         5 
+-----------+----------------------+----------
+     Total |        52         22 |        74 
+
+tab rep78 foreign,  nofreq col
+
+    Repair |
+    Record |    Origine voiture
+      1978 |  Domestic    Foreign |     Total
+-----------+----------------------+----------
+         1 |      4.17       0.00 |      2.90 
+         2 |     16.67       0.00 |     11.59 
+         3 |     56.25      14.29 |     43.48 
+         4 |     18.75      42.86 |     26.09 
+         5 |      4.17      42.86 |     15.94 
+-----------+----------------------+----------
+     Total |    100.00     100.00 |    100.00 
+</code></pre>
+<ul>
+<li>On peut également utiliser la commande <code>table</code> pour afficher des effectifs croisés</li>
+<li>La commande externe <code>tab3way</code> permet d’afficher des tables pour 3 variables catégorielles</li>
+<li>Une option interessante est <code>nolabel</code>. Si une variable catégorielle a des labels sur les modalités, le tableau ne les affiche pas</li>
+</ul>
+<pre><code>tab rep78 foreign,  nofreq col nolab
+
+    Repair |
+    Record |    Origine voiture
+      1978 |         0          1 |     Total
+-----------+----------------------+----------
+         1 |      4.17       0.00 |      2.90 
+         2 |     16.67       0.00 |     11.59 
+         3 |     56.25      14.29 |     43.48 
+         4 |     18.75      42.86 |     26.09 
+         5 |      4.17      42.86 |     15.94 
+-----------+----------------------+----------
+     Total |    100.00     100.00 |    100.00 
+</code></pre>
+<p><strong>Graphiques</strong></p>
+<p>On privilégiera des commandes externes, en particulier celles de <strong>NJ.Cox</strong> <code>catplot</code> et <code>spineplot</code></p>
+<pre><code>ssc install catplot 
+
+* tableau: tab rep78 foreign,  nofreq col
+catplot rep78, by(foreign) percent(foreign)
+* tableau: tab rep78 foreign,  nofreq row
+catplot rep78, by(foreign) percent(foreign)
+spineplot foreign rep78</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img4/g3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="img4/g3.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<pre><code>ssc install spineplot
+spineplot foreign rep78</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img4/g4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="img4/g4.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="la-boîte-à-outils" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> La boîte à outils</h1>
+<section id="tri-dune-base" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="tri-dune-base"><span class="header-section-number">8.1</span> Tri d’une base</h2>
+<p>Commande <code>sort</code><br>
+<br></p>
+<pre><code>sort varlist</code></pre>
+<ul>
+<li>La commande <code>sort</code> n’effectue que des tris croissants. Pour faire un tri décroissant, on peut utiliser la commande externe <code>gsort</code></li>
+<li>Le tri d’une peut (voire doit) être effectué lorsqu’on veut répéter une instruction avec le préfixe <code>bysort</code>: <code>bysort varlist: instruction</code>. Il est également obligatoire lorsqu’on veut apparié des bases</li>
+</ul>
+</section>
+<section id="repérage-et-suppression-des-doublons" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="repérage-et-suppression-des-doublons"><span class="header-section-number">8.2</span> Repérage et suppression des doublons</h2>
+<p><strong>Repérage des doublons</strong></p>
+<p>Commande <code>duplicates tag</code><br>
+<br> Syntaxe</p>
+<pre><code>duplicates tag [varlist], gen(var)</code></pre>
+<p>Si varlist n’est pas renseigné, l’analyse des réplications se fait sur toutes les variables de la base. La variable créée (<code>gen(var)</code>) compte le nombre de doublons.</p>
+<p>Commande <code>duplicates drop</code></p>
+<p>Syntaxe</p>
+<pre><code>duplicates drop [varlist]</code></pre>
+</section>
+<section id="modifier-la-place-des-variables-dans-la-base" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="modifier-la-place-des-variables-dans-la-base"><span class="header-section-number">8.3</span> Modifier la place des variables dans la base</h2>
+<p>Commande <code>order</code></p>
+<pre><code>order varlist, [first/last] [after/before(varname)]</code></pre>
+<p>Exemple</p>
+<pre><code>order foreign, first
+order price, last
+order foreign, after(rep78)</code></pre>
+</section>
+<section id="importationexportation" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="importationexportation"><span class="header-section-number">8.4</span> Importation/Exportation</h2>
+<p><strong>Excel et fichiers textes (.txt, .csv)</strong><br>
+<br></p>
+<ul>
+<li>Le plus simple est passer parle menu: fichiers =&gt; <strong>Import</strong> ou <strong>Export</strong></li>
+<li>Pour excel les commandes sont <code>import excel</code> et <code>export excel</code></li>
+<li>Pour des fichiers textes type csv (R), les commandes sont <code>import delimited</code> et <code>export delimited</code></li>
+</ul>
+<p><strong>SAS</strong><br>
+<br></p>
+<ul>
+<li>Depuis la dernière version de Stata (16), il est possible d’importer directement des formats <code>sas7bdat</code>. Pas d’exportation possible.</li>
+<li>Pour les versions antérieure, la solution install?e via sasxport n’est pas terrible, la solution est d’utiliser le package externe <code>savasas</code>
+<ul>
+<li>Sas =&gt; Stata (importation): commande <code>usesas</code><br>
+</li>
+<li>Stata =&gt; Sas (exportation) : commande <code>savasas</code></li>
+<li>Il faut diter un .do file dont le lien est donn? dans l’aide si le bon chemin d’accès à SAS Windows n’est pas spécifié . Demander à MT si problème. Avec <code>savasas</code>, on peut créer un catalogue de format (en dur) avec l’option format.<br>
+</li>
+<li>A l’Ined, si on ne dispose de Stata et Sas sur son poste, la solution Linux fonctionne sur le serveur Margaux.</li>
+</ul></li>
+</ul>
+<p><strong>SPSS</strong><br>
+<br></p>
+<ul>
+<li>Depuis la dernière version de Stata (16), il est possible d’importer directement des bases en format <em>spss</em></li>
+<li>Pas de possibilité d’exportation</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../formation/chapitre3.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Le langage Stata</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../formation/chapitre5.html" class="pagination-link">
+        <span class="nav-page-text">Les variables</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+      <div class="nav-footer-center">Marc Thévenin - Ined-Sms - Août 2022</div>
+  </div>
+</footer>
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","closeEffect":"zoom","loop":true,"selector":".lightbox","openEffect":"zoom"});</script>
+
+
+
+</body></html>

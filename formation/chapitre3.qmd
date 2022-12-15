@@ -1,6 +1,5 @@
 ---
 title: "Le langage Stata"
-author: "M.Thevenin"
 ---
 
 ```{r, echo=FALSE, , message=FALSE}
@@ -49,7 +48,7 @@ tabulate rep78 foreign, nofreq row
 
 Expression conditionnelle (sélection): `if` (sélection de valeurs) ou `in` (sélection d'observations)  
 
-Exemple : **`bysort var2: summarize var1 if var4!=1, detail**  
+Exemple : **`bysort var2: summarize var1 if var4!=1, detail`**  
 Ce qui ce traduit par: pour chaque valeur de *var2*, des statistiques descriptives détaillées pour la variable *var1* si la valeur de *var3* est différente de 1. 
 
 ```{stata, class.output="result"}
@@ -68,14 +67,14 @@ command using nom_base [,options]
 
 *interne*  
 
-* Programmation d'une commande (création d'un .ado) avec certains des éléments de langage dédié
 * Langage matriciel (MATA)
 * Editeur de texte (SMCL) pour rédiger les aides ou paramétrer la forme des outputs (c'est une une horreur)
 * Création de boites de dialogue (proche du Java)
+* La programmation de commande dispose d'un certain nombre d'éléments de langage dédié. Pour une réutilisation ultérieure automatisée, le programme est enregistré dans un fichier *.ado*  
 
 *Externe*  
 
-* Via une commande externe (`rsource`), on peut exécuté du R.
+* Via une commande externe (`rsource`), on peut exécuté du R. R doit ête bien évidemment installé.
 
 
 ```{stata, echo=F, collectcode=T}
@@ -91,20 +90,26 @@ END_OF_R
 
 * Dépuis la version 16 on peut programmer intéractivement en Python avec Stata. Cette intégration permet à Python de reconnaitre les macros stata dans son code...c'est très utile. Python doit néanmoins être installé manuellement.
 
+
+*Vérification de l'installation*
 ```{stata, class.output="result"}
-* Vérification de l'installation
 python query
-
-* utilisation de python
-
-python: 
-1+1
-end
-
 ```
 
+*Utilisation de python*
+```{stata, class.output="result"}
+python: 
 
-* Intégration de l'édition en  markdown pour produire des rapports en html ou pdf. Egalement possibilité de générer des documents word ou excel avec des commandes dédiées. L'intégration de latex est également possible via une commande externe. Toutes ces possibilité me semble néanmoins nettement en deçà de ce qui est réalisable avec **RStudio** en particulier avec le nouvel outil `Quarto` associé à `Statamarkdown`... utilisé pour faire ce support.
+a = 4
+b = 2
+a*b
+ 
+end
+```
+
+* Depuis la version 17 de Stata, on peut également programmer intéractivement en *Java*... mais là je n'y connais absolument rien.
+
+* Intégration de l'édition en  *markdown* pour produire des rapports en html ou pdf. Egalement possibilité de générer des documents word ou excel avec des commandes dédiées. L'intégration de *latex* est également possible via une commande externe. Toutes ces possibilité me semble néanmoins nettement en deçà de ce qui est réalisable avec **RStudio** en particulier avec le nouvel outil `Quarto` associé à `Statamarkdown`... utilisés pour faire ce support.
 
 
 # Les opérateurs
@@ -129,13 +134,17 @@ end
 | `+`       |  concaténation [1]                     |
 
 
-`+`  concatène des variables caractères qui n'ont pas de valeur manquante. Sinon utiliser la focntion **`concat`** associée à la fonctio n **`egen`** (voir chapitre sur la création de variables).  
+[1] *`+`*  concatène des variables caractères qui n'ont pas de valeur manquante. Sinon utiliser  **`concat`** associée à la commande **`egen`** (voir chapitre sur la création de variables).  
 
 # Les valeurs manquantes  
 
-**Statut des valeurs manquantes (très important)**:   
+
+::: callout-important
+## Statut des valeurs manquantes (très important)**
+
 Elles prennent la plus grande valeur possible, aucune valeur de la base de données d'une variable ne peut-être plus élevée.     Ceci doit être pris en compte dans les expressions conditionnelles impliquant par exemple des regroupement  de variables ordinales ou quantitatives:   
-Si une variable numérique $x$ a des valeurs manquantes, la condition `if X>valeur` conservera ces informations manquantes. 
+Si une variable numérique $x$ a des valeurs manquantes, la condition `if X>valeur` conservera ces informations manquantes.  
+:::
 
 Si $X=(1, 2, 3, 4, 5, 6, .)$:  
 
@@ -150,16 +159,15 @@ Exemple: *.a* = Ne sait pas, *.b*=Refus , *.c*=Pas de réponse.
 # Casse et troncature
 
 ## Sensibilité à la casse 
-Comme R ou Python Stata est intégralement  sensible à la casse pour les instructionsoù il ne comprend que les minuscules. Par exemple  `TABULATE X` renverra un  message d'erreur.  
+Comme R ou Python, Stata est intégralement  sensible à la casse pour les instructions, seulement en minuscules. Par exemple  `TABULATE X` renverra un message d'erreur.  
 
 
 ## Troncature des instructions et des options
 
-Dans l'aide interne, le niveau de troncature est indiqué par un soulignement dans l'instruction: par exemple **`tabulate`** est souligné au niveau de  **ta** : **tabulate** = **tabulat** = **tabula** = **tabul** = **tabu** = **tab** = **ta**. On utilise généralement ```tabulate``` ou ```tab```.  
+Dans le fichier d'aire d'une commande usine ou externe, le niveau de troncature est indiqué par un soulignement dans l'instruction: par exemple **`tabulate`** est souligné au niveau de  **ta** : **tabulate** = **tabulat** = **tabula** = **tabul** = **tabu** = **tab** = **ta**. On utilise généralement ```tabulate``` ou ```tab```.  
 
-Remarque: les commandes externes peuvent également paramétrer le degré de troncature de la syntaxe.
 
-A manier avec une certaine précaution car le programme peut devenir rapidement incompréhensible, surtout s'il est partagé:  
+A manier avec une certaine précaution car le programme peut devenir rapidement incompréhensible, surtout s'il est partagé entre personnes dont la pratique diffère à ce niveau:  
 
 ```{stata, eval=FALSE}
 tabulate var1 var2, nofreq row miss  
@@ -172,8 +180,8 @@ ta var1 var2, nof r m
 
 # quietly et display 
 **En silence.... quietly (qui)**      
-On peut rendre le résultat d'une commande invisible dans la fenêtre output avec `quietly` (`qui`).  
-<br>
+On peut rendre le résultat d'une commande invisible dans la fenêtre output avec `quietly` (`qui`).    
+
 ```{stata, class.output="result"}
 sysuse auto.dta
     tab rep78
@@ -182,7 +190,7 @@ qui tab rep78
 
 Remarque: ne fonctionne pas avec les graphiques où l'on doit utiliser l'option `nodraw`
 
-**displa (di)**     
+**display (di)**     
 
 Ce n'est pas une commande à  proprement parler, mais l'instruction ```display``` (```di```) permet d'afficher dans l'output, entres autres, des opérations arithmétiques (c'est donc une calculatrice. 
 
@@ -191,18 +199,18 @@ di exp(1)/(1+exp(1))
 di "SALUT!!!!"
 ```
 
-Elle est également utilisé pour vérifier le contenu d'une macro variable, de préférence lorsque cette macro implique des valeurs
+Elle est également utilisé pour vérifier le contenu d'une macro variable, de préférence lorsque cette macro implique des valeurs.  
 
 
 # Sélection de variables
 
 
 On peut sélectionner un ensemble de variables qui ont une racine commune, par exemple **c**,  en écrivant : `*c*`.   
-Exemple:    
-television, telephone, table ont comme racine **t**. Pour supprimer ces variables, on peut exécuter ```drop t*``` au lieu de ```drop television telephone table```.  
-Si on veut supprimer television et telephone seulement :  `drop tele*`.  
+Exemple:        
+television, telephone, table ont comme racine **t**. Pour supprimer ces variables, on peut exécuter `drop t*` au lieu de `drop television telephone table`.  
+Si on souhaite supprimer *television* et *telephone* seulement :  `drop tele*`.    
 
-Si on  veut sélectionner des variables occurencées ou dans comme la base *auto*  les 5 variables qui se suivent [headroom, trunk, weight, length, turn]:  ```keep headroom-turn``` . Pour des variables occurencées de x1 à x5: ```keep x1-x5```.  
+Si on  veut sélectionner des variables occurencées ou dans comme la base *auto*  les 5 variables qui se suivent [headroom, trunk, weight, length, turn]:  `keep headroom-turn` . Pour des variables occurencées de x1 à x5: `keep x1-x5`.    
 
 
 # Macros et répétition
@@ -212,8 +220,8 @@ Si on  veut sélectionner des variables occurencées ou dans comme la base *auto
 Juste une introduction...Vu la simplicité du langage Stata, il est conseiller de se mettre rapidement à la manipulation des expressions dites `macro`.  
 
 * Une macro, dans sa version la plus simple, est une expression qui est utilisée une ou plusieurs fois dans un programme. Elle sont de type temporaire (`local`) ou enregistré en dur (`global`). 
-* Les commandes, en particulier sur les opérations statistiques enregistré un certains nombre d'objet de type macro qui peuvent être utilisés ultérieurement.    
-* Un autre type d'objets, appelé **`scalar`** ressemble à des macros mais n'en sont pas. Il s'agit de pseudo variables. Ils ne seront pas traités.
+* Les commandes, en particulier sur les opérations statistiques, enregistre un certains nombre d'objet de type macro qui peuvent être utilisés ultérieurement. On peut récupérer leur liste à la fin du fichier d'aide, et les visualiser les valeurs enregistrées après avoir exécuté une commande avec `return list`, `ereturn list`...    
+* Un autre type d'objet, appelé **`scalar`** ressemble à une macro mais n'en est pas. Il s'agit de pseudo variables. Ils ne seront pas traités.
 * Le contenu d'une macro peut être affiché avec `display` ou `macro list` (`mac list`)
   - privilégier `display` pour afficher le contenu d'une macro de type valeur
   - privilégier `mac list` pour afficher le contenu d'une macro de type chaîne de caractère lorsque des doubles quotes (") doivent rester apparentes. La gestion des " dans les macros peut s'avérer particulièrement retord.
@@ -241,179 +249,96 @@ sum `var'
 ```
 
 
+On en voit tout de suite l'utilité: si je veux changer la liste de variables pour les instructions `sum` (troncature de `summarize`) et pour `regress`, je le fais une fois (dans la définition de la macro) au lieu de deux.  
 
 
-On en voit tout de suite l'utilité: si je veux changer la liste de variable pour les instructions `sum` (troncature de `summarize`) et pour `regress`, je le fais une fois (dans la définition de la macro) au lieu de deux.
+Avec Stata peut définir également des macros dites *global* qui  sont sauvegardées et s'appliqueront à tous les programmes (on peut les supprimer). Leur utilisation est moins courante: `global nom_macro expression`, le nom de la macro dans l'expression s'écrira `$nom_macro`.   
 
-
-Avec Stata peut définir égalementdes macros dites *global* qui  sont sauvegardées et s'appliqueront à tous les programmes (on peut les supprimer). Leur utilisation est moins courante: `global nom_macro expression`, le nom de la macro dans l'expression s'écrira `$nom_macro` 
-
-```{}
+```{stata, class.output="result", , collectcode=T}
 sysuse auto.dta
-global x mpg weight length turn headroom trunk
+
+global x mpg weight length turn
+
 sum $x
 reg price $x
 macro drop x
 ```
 
+
 La liste des macro enregistrée est donnée par l'instruction: `macro dir`
 
 
-## Répétition: les boucles
+## Objets sauvegardés à l'exécution d'une commande
 
-Petite introduction au boucles pour des variables occurencées.
+- Ces objets de type macro ne sont conservés en mémoire qu'entre 2 commandes exécutés
+- On peut donc les manipuler qu'à ce moment là, en particulier les enregistrer sous forme de macro standard pour les utiliser ultérieurement. 
 
 
-**forvalues**  
-```for num 1/n:``` est de plus en plus abandonnée (aide Stata supprim?e). On lui préfère maintenant l'instruction ```forvalues```  pour effectuer des boucles numériques.  
-Avec l'exemple précédent:  
-```{}
-forvalues i=1/9 {
-rename var`i' q`i' 
-}
+```{stata, class.output="result", , collectcode=T}
+qui sum price
+
+return list
+
+local mprice = r(mean)
+
+
 ```
 
 
-## Répétition d'une instruction avec foreach
+## Répétition avec des boucles
 
-Par l'exemple. On veut faire une régression linéaire entre la variable price (Y) et la variable foreign + une seule autre variable dans cette liste: mpg, headroom, trunk, weight, length, turn.
+
+* **`forvalues**: valeurs occurencées, compteur  
+
+`for num 1/n: commande` est de plus en plus abandonnée (aide Stata supprimée). On lui préfère maintenant l'instruction ```forvalues```  pour effectuer des boucles sur des occurences numériques.    
+
+Si l'on souhaite par exemple changer le nom des variables x1 à x9 en var1, var2,...., var9: 
+```{stata, eval=FALSE}
+forvalues i=1/9 {
+  
+rename x`i' var`i' 
+  
+}
+```
+
+* **`foreach`**: termes d'une expression enregistrée sous la forme d'une macro
+
+Par l'exemple, et juste une petite introduction. On veut faire une régression linéaire entre la variable *price* et la variable *foreign* en ajoutant une seule autre variable dans cette liste: *mpg*, *headroom*, *trunk*.  
+
+
 Au lieu d'exécuter:
-```{}
+```{stata, eval=F}
 regress price foreign mpg      
 regress price foreign headroom 
 regress price foreign trunk    
-regress price foreign weight   
-regress price foreign length   
-regress price foreign turn     
 ```
 
-On génère une macro variable locale, et on exécute une boucle avec l'instruction ```foreach```
+On génère une macro variable temporaire qui liste ces 3 variables , et on exécute une boucle avec l'instruction `foreach`.  
 
-```{}
-sysuse auto.dta
-local x mpg weight length turn headroom trunk
-foreach i of local x {
-regress price foreign `i', noheader
+```{stata, class.output="result"}
+
+local var mpg weight length turn headroom trunk
+
+foreach x of local var {
+
+regress price foreign `x', noheader
 }
-
-------------------------------------------------------------------------------
-       price |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
--------------+----------------------------------------------------------------
-     foreign |  1767.2922   700.1580     2.52   0.014     371.2169   3163.3676
-         mpg |  -294.1955    55.6917    -5.28   0.000    -405.2417   -183.1494
-       _cons |   1.19e+04  1158.6345    10.28   0.000    9595.1638    1.42e+04
-------------------------------------------------------------------------------
-------------------------------------------------------------------------------
-       price |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
--------------+----------------------------------------------------------------
-     foreign |  3637.0013   668.5830     5.44   0.000    2303.8848   4970.1178
-      weight |     3.3207     0.3959     8.39   0.000       2.5314      4.1101
-       _cons |  -4.94e+03  1345.5909    -3.67   0.000    -7.63e+03   -2.26e+03
-------------------------------------------------------------------------------
-------------------------------------------------------------------------------
-       price |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
--------------+----------------------------------------------------------------
-     foreign |  2801.1429   766.1170     3.66   0.000    1273.5489   4328.7369
-      length |    90.2124    15.8337     5.70   0.000      58.6409    121.7839
-       _cons |  -1.16e+04  3124.4362    -3.72   0.000    -1.79e+04   -5.39e+03
-------------------------------------------------------------------------------
-------------------------------------------------------------------------------
-       price |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
--------------+----------------------------------------------------------------
-     foreign |  2600.2753   879.8548     2.96   0.004     845.8946   4354.6560
-        turn |   379.2366    92.0360     4.12   0.000     195.7220    562.7512
-       _cons |  -9.64e+03  3832.2964    -2.52   0.014    -1.73e+04   -2.00e+03
-------------------------------------------------------------------------------
-------------------------------------------------------------------------------
-       price |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
--------------+----------------------------------------------------------------
-     foreign |   577.8125   787.5659     0.73   0.466    -992.5493   2148.1743
-    headroom |   491.5752   428.4054     1.15   0.255    -362.6409   1345.7913
-       _cons |  4522.0705  1412.0966     3.20   0.002    1706.4299   7337.7111
-------------------------------------------------------------------------------
-------------------------------------------------------------------------------
-       price |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
--------------+----------------------------------------------------------------
-     foreign |  1190.1550   760.8049     1.56   0.122    -326.8468   2707.1568
-       trunk |   262.7717    81.8519     3.21   0.002      99.5636    425.9797
-       _cons |  2196.5410  1267.8569     1.73   0.088    -331.4939   4724.5760
-------------------------------------------------------------------------------
-
-
-
 ```
 
 
-....et on peut aller plus loin (je me lache un peu): on ajoute une variable à chaque modèle
+....et on peut aller plus loin... Juste pour information, avec une technique de macro empilée, on ajoute les les variables une à une au modèle.  
 
-```{}
-local x mpg weight length turn headroom trunk
-foreach i of local x {
-local j `j' `i'
-di "`j'"  // pour afficher ce qui est lu dans la macro
-regress price foreign `j', noheader
+```{stata, class.output="result"}
+local j mpg weight length turn headroom trunk
+
+foreach j2 of local j {
+local x `x' `j2'
+  
+di  "covariables introduites = `x'"  // pour afficher ce qui est lu dans la macro
+  
+regress price `x' , noheader
 }
-mpg
-------------------------------------------------------------------------------
-       price |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
--------------+----------------------------------------------------------------
-     foreign |  1767.2922   700.1580     2.52   0.014     371.2169   3163.3676
-         mpg |  -294.1955    55.6917    -5.28   0.000    -405.2417   -183.1494
-       _cons |   1.19e+04  1158.6345    10.28   0.000    9595.1638    1.42e+04
-------------------------------------------------------------------------------
-mpg weight
-------------------------------------------------------------------------------
-       price |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
--------------+----------------------------------------------------------------
-     foreign |  3673.0604   683.9783     5.37   0.000    2308.9087   5037.2120
-         mpg |    21.8536    74.2211     0.29   0.769    -126.1758    169.8830
-      weight |     3.4647     0.6307     5.49   0.000       2.2067      4.7227
-       _cons |  -5.85e+03  3376.9874    -1.73   0.087    -1.26e+04    881.4934
-------------------------------------------------------------------------------
-mpg weight length
-------------------------------------------------------------------------------
-       price |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
--------------+----------------------------------------------------------------
-     foreign |  3550.1937   655.4564     5.42   0.000    2242.5940   4857.7934
-         mpg |   -13.4072    72.1076    -0.19   0.853    -157.2579    130.4436
-      weight |     5.7162     1.0161     5.63   0.000       3.6891      7.7432
-      length |   -92.4802    33.5912    -2.75   0.008    -159.4928    -25.4676
-       _cons |  5515.5801  5241.9413     1.05   0.296    -4.94e+03    1.60e+04
-------------------------------------------------------------------------------
-mpg weight length turn
-------------------------------------------------------------------------------
-       price |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
--------------+----------------------------------------------------------------
-     foreign |  3273.4076   687.0594     4.76   0.000    1902.4019   4644.4132
-         mpg |   -22.7625    72.1391    -0.32   0.753    -166.7138    121.1888
-      weight |     5.9182     1.0235     5.78   0.000       3.8758      7.9605
-      length |   -78.7834    35.0935    -2.24   0.028    -148.8113     -8.7554
-        turn |  -149.7014   116.5489    -1.28   0.203    -382.2711     82.8683
-       _cons |  8548.5680  5726.8988     1.49   0.140    -2.88e+03    2.00e+04
-------------------------------------------------------------------------------
-mpg weight length turn headroom
-------------------------------------------------------------------------------
-       price |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
--------------+----------------------------------------------------------------
-     foreign |  3250.9587   680.1387     4.78   0.000    1893.3962   4608.5213
-         mpg |   -24.6578    71.4068    -0.35   0.731    -167.1863    117.8706
-      weight |     5.8983     1.0130     5.82   0.000       3.8763      7.9203
-      length |   -67.2666    35.5118    -1.89   0.063    -138.1483      3.6152
-        turn |  -159.0932   115.5067    -1.38   0.173    -389.6456     71.4591
-    headroom |  -505.3365   324.7006    -1.56   0.124    -1.15e+03    142.7685
-       _cons |  8376.2453  5669.0187     1.48   0.144    -2.94e+03    1.97e+04
-------------------------------------------------------------------------------
-mpg weight length turn headroom trunk
-------------------------------------------------------------------------------
-       price |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
--------------+----------------------------------------------------------------
-     foreign |  3212.1455   685.5784     4.69   0.000    1843.3439   4580.9470
-         mpg |   -24.2206    71.7140    -0.34   0.737    -167.4021    118.9610
-      weight |     5.9276     1.0183     5.82   0.000       3.8944      7.9608
-      length |   -74.9821    37.5416    -2.00   0.050    -149.9362     -0.0279
-        turn |  -157.7407   116.0169    -1.36   0.179    -389.3759     73.8945
-    headroom |  -625.4248   373.6911    -1.67   0.099    -1.37e+03    120.6736
-       trunk |    60.9357    92.6166     0.66   0.513    -123.9792    245.8507
-       _cons |  9207.5123  5831.6742     1.58   0.119    -2.44e+03    2.09e+04
-------------------------------------------------------------------------------
+  
 ```
+
+
