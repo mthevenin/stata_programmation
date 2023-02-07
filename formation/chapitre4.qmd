@@ -22,7 +22,9 @@ cd "path"
 **Remarque**  
 Avec cette commande, un seul repertoire de travail est actif. On peut élargir les possibilités en affectant des répertoires avec des macros variables locales ou globales
 
-# Ouverture d'une base
+# **Ouverture et sauvegarde d'une base**
+
+## Ouverture
 
 **Commande** ```use```  
 <br>
@@ -55,7 +57,8 @@ sysuse auto, clear
 
 :::  callout-note
 
-## **Ouverture d'une base stockée sur un git [github, gitlab ...]**
+
+**Ouverture d'une base stockée sur un git [github, gitlab ...]**
 
 Dans un premier temps, comme pour `cd` il faut charger le répertoire où se trouve localisé la base, avec la commande **`webuse set`**. Par exemple sur mon dépôt git, une base d'exemple (*logement.dta*) pour une commande se trouve à cette adresse: <https://github.com/mthevenin/stata_graphiques/tree/main/programmation/gjoint>  
 
@@ -91,10 +94,9 @@ webuse set
 :::
 
 
-# **Sauvegarde d'une base** 
+## Sauvegarde
 
 **Commandes** ```save``` ou ```saveold```  
-
 
 ```{stata filename="Syntaxe", eval=F}
 save "path/nom_base.dta" [, replace]     
@@ -114,11 +116,38 @@ Remarques:
 * Ecrire l'extension .dta n'est pas obligatoire
 * Les doubles quotes ne sont obligatoires que s'il y a un espace dans le chemin d'accès et/ou dans le nom de la base 
 
-
 ```{stata filename="Syntaxe", eval=F}
 use "ma base", clear 
 save ma_base, clear 
 ```
+
+## Autres formats
+
+## Importation/Exportation
+
+**Excel et fichiers textes (.txt, .csv)**    
+<br>
+
+* Le plus simple est passer par le menu: files + [*Import* ou *Export*] qui dispose d'une fenêtre de prévisualisation.
+  * Pour excel les commandes sont `import excel` et `export excel`
+  * Pour des fichiers textes type csv (R), les commandes sont `import delimited` et `export delimited`
+
+**SAS**    
+<br>
+
+* Depuis la version 16 de Stata il est possible d'importer directement des formats `sas7bdat`. Pas d'exportation possible.
+* Pour les versions antérieure, la solution installée via *sasxport* n'est pas satisfaisante. Il est alors conseillé  d'utiliser le package externe  `savasas`
+  * Sas   => Stata [importation]: commande `usesas`  
+  * Stata => Sas [exportation]  : commande `savasas`
+  * Si le chemin d'accès à l'exécutable de SAS Windows n'est pas reconnu, il faut récupérer et éditer le fichier sasexe.do (à partir de la ligne 169), dont l'accès est donné dans le fichier d'aide.  
+  * Pour l'exportation, on peut générer un catalogue de format,en dur, avec l'option `format`.  
+
+
+**SPSS**  
+<br>
+
+* Depuis la dernière version de Stata (16), il est possible d'importer directement des bases de ce format.
+* Pas de possibilité d'exportation directe.
 
 
 # **Décrire le contenu d'une base**
@@ -130,7 +159,7 @@ Commande ```describe```
 describe [varlist , short]
 ```
 
-- La commande est régulièrement tronquée  jusqu'à ```des```
+- La commande est régulièrement tronquée jusqu'à `des`
 
 Exemple 
 
@@ -142,8 +171,9 @@ des
 ```
 
 
-# Affichage de la base dans l'output
+# **Autres commandes**
 
+## Affichage de la base dans l'output
 
 Commande ```list```  
 
@@ -158,12 +188,9 @@ list price mpg turn foreign in 1/10
 ```
 
 
+## labelbook et label list   
 
-# **Autres commandes**
-
-**labelbook et label list**  
-
-Commande ```labelbook```: affiche les informations sur les labels affectés aux modalités des variables. Peu utilisé.
+Commande `labelbook`: affiche les informations sur les labels affectés aux modalités des variables. Peu utilisé.
 
  
 ```{stata filename="Syntaxe", eval=F}
@@ -175,7 +202,7 @@ labelbook origin
 ```
 
 
-On peut également utiliser la commande ```label list [nom_label]``` si on connait le nom du label. Le nom du label peut-être récupéré dans describe ou dans le fenêtre properties (voir plus loin également dans le variable manager)
+On peut également utiliser la commande `label list [nom_label]` si on connait le nom du label. Le nom du label peut-être récupéré dans describe ou dans le fenêtre properties (voir plus loin également dans le variable manager)
 
 ```{stata, class.output="result"}
 label list origin
@@ -184,43 +211,51 @@ label list origin
 
 # **Description statistique des variables**
 
+
 Dans les menus de l'interface principale: **Statistics** => **Summaries, tables & tests**
 
-## **Variables continues**
+## Variables quantitatives
+
+::: callout-note
+Les commandes qui sont rapidement décrites vont affichés des indicateurs communs, typiquement une moyenne, mais vont se distinguées par la forme de l'output, les possibilités dans l'introduction de pondérations, et sur la réutilisation des résultats sous forme de macro.
+:::
+
+### Tableaux d'indicateurs
 
 **Commande `summarize`** 
 
-Avec l'option `detail` (`d`) on obtient la moyenne, la variance, les quantiles, la symétrie...). La commande peut-être tronquée jusqu'à `sum`.     
-
-**Warning**: il existe également une fonction `sum` pour générer des cumuls lors d'une création de variable [voir chapitre 5].  
+Comme son nom l'indique la commande `summarize`, avec l'option  `detail` (`d`) donne un résumé complet de la distribution d'une variable quantitative:  moyenne, variance, quantiles, symétrie, applatissement ...)
 
 ```{stata filename="Syntaxe", eval=F}
 summarize varlist [, detail]
 ```
 
-A voir également:  les commandes `mean` ou `tabstat`. Mais également la commande `table` permet de calculer des quantités de type moyenne, médiane, variance.... pour les différentes valeurs d'une variable catégorielle, et qui intègre des éléments pour exporter les résultats dans plusieurs format (je ne suis pas très à jour sur ce point).
+Si on indique pas le nom d'au moins une variable, toutes les variables de la base seront sélectionnées.
 
+La commande peut-être tronquée jusqu'à `sum` [**Warning**: il existe également une fonction `sum` pour générer des cumuls lors d'une création de variable  - voir chapitre 5].  
+
+```{stata, class.output="result"}
+sum price
+
+sum 
+```
 
 ```{stata, class.output="result"}
 sum price length, d
 ```
 
-
 ```{stata, class.output="result"}
 bysort foreign: sum price, d
 ```    
 
+* ***Avantage***: récupération des résultats sous forme de macro rapide.
+* ***Inconvénients***: pas de sélection des indicateurs avec l'option `detail`, output pas adapté aux comparaisons.
 
-**Pour aller plus loin (voir introduction aux macro dans le chapitre précédent**   
-
-En bas de l'aide d'une commande, **stored result** indique les informations enregistrées temporairement.  
-Pour la commande `summarize`:  
-
-```{}
+```{stata filename="return list: macros associées aux indicateurs", class.output="result", eval=F }
 
 *Extrait de l'aide de summarize
 
-* help summarize
+/* help summarize
 
     summarize stores the following in r():
 
@@ -244,33 +279,85 @@ Pour la commande `summarize`:
       r(kurtosis)    kurtosis (detail only)
       r(sum)         sum of variable
       r(sd)          standard deviation
-
+*/
 ```
-
-On peut afficher ces informations avec la commande `return list` (`ereturn list` pour les estimations de modèles)
 
 ```{stata, class.output="result"}
 qui sum price, d
+
 return list
+
 ```
 
-Si l'on souhaite afficher seulement les valeurs de la médiane pour plusieurs variables de la base:
+
+**`mean`**  
+
+Comme son nom l'indique, n'affiche que la moyenne et ses statistiques associées. L'option `over` permet des comparaison la valeur moyenne d'un groupe ou un croisement de groupes 
 
 ```{stata, class.output="result"}
-
-local var  price mpg rep78 headroom trunk
-
-foreach x of local var {
-qui sum `x', d
-di as text "La valeur  médiane de la variable `x' est:" as result `r(p50)'
-}
-
+mean price  
+mean price, over(foreign)
+mean price, over(foreign rep78)
 ```
 
-* Ici **`r(p50)`** joue le rôle d'une macro,
-* Ces informations peuvent être utilisées pour générer une variable
+* **Avantage**: output synthétique si la moyenne de plusieurs groupes comparées
+* **Inconvénients**: récupération des résultats via une matrice (on oublie)
 
-**Graphiques**  
+
+**`tabstat`**
+
+Permet de sélectionner les indicateurs avec l'option `stat()` (par défaut la moyenne). L'option `by()` permet de comparer le ou les indicateurs pour chaque niveau d'une variable catégorielle. Dans ce cas `tabstat` affiche également les résultats sur l'ensemble des observations (sinon ajouter l'option `nototal`).
+
+```{stata, class.output="result"}
+tabstat price  
+tabstat price mpg, by(foreign)
+```
+
+```{stata filename="liste des indicateurs", class.output="result", eval=F }
+
+*Extrait de l'aide de summarize
+
+/* help tabstat
+
+        mean            mean
+        count           count of nonmissing observations
+        n               same as count
+        sum             sum
+        max             maximum
+        min             minimum
+        range           range = max - min
+        sd              standard deviation
+        variance        variance
+        cv              coefficient of variation (sd/mean)
+        semean          standard error of mean (sd/sqrt(n))
+        skewness        skewness
+        kurtosis        kurtosis
+        p1              1st percentile
+        p5              5th percentile
+        p10             10th percentile
+        p25             25th percentile
+        median          median (same as p50)
+        p50             50th percentile (same as median)
+        p75             75th percentile
+        p90             90th percentile
+        p95             95th percentile
+        p99             99th percentile
+        iqr             interquartile range = p75 - p25
+        q               equivalent to specifying p25 p50 p75
+*/
+```
+
+
+Si on veut ajouter la médiane
+
+```{stata, class.output="result"}
+tabstat price mpg, by(foreign) stat(mean median)
+```
+
+
+### Graphiques  
+
+
 
 Commandes **boxplot** et **histogram**  
 
@@ -342,9 +429,9 @@ tab rep78 foreign,  nofreq col
 
 ```
 
-* On peut également utiliser la commande `table` pour afficher des effectifs croisés
-* La commande externe `tab3way` permet d'afficher des tables pour 3 variables catégorielles
-* Une option interessante est `nolabel`. Si une variable catégorielle a des labels sur les modalités, le tableau ne les affiche pas
+* On peut également utiliser la commande `table` pour afficher des effectifs croisés.
+* La commande externe `tab3way` permet d'afficher des tables pour 3 variables catégorielles.
+* Une option intéressante est `nolabel`. Si les modalités ont des libellés, le tableau ne les affiche pas (utile pour du recodage - voir chapitre suivant).
 
 
 ```{}
@@ -390,7 +477,7 @@ spineplot foreign rep78
 ![](img4/g4.png)
 
 
-# La boîte à outils
+# **La boîte à outils**
 
 ## Tri d'une base
 
@@ -401,12 +488,13 @@ Commande `sort`
 sort varlist
 ```  
 
-* La commande ```sort``` n'effectue que des tris croissants.  Pour faire un tri décroissant, on peut utiliser la commande externe  ```gsort```
+* La commande `sort` n'effectue que des tris croissants.  Pour faire un tri décroissant, on peut utiliser la commande   `gsort`
 * Le tri d'une peut (voire doit)  être effectué lorsqu'on veut répéter une instruction avec le préfixe ```bysort```: ```bysort varlist: instruction```.  Il est également obligatoire lorsqu'on veut apparié des bases
 
 ## Repérage et suppression des doublons
 
-**Repérage des doublons**  
+
+**Repérage et suppression des doublons**  
 
 Commande `duplicates tag`  
 <br>
@@ -440,29 +528,4 @@ order foreign, after(rep78)
 ```
 
 
-## Importation/Exportation
-
-**Excel et fichiers textes (.txt, .csv)**    
-<br>
-
-* Le plus simple est passer parle menu: fichiers => **Import** ou **Export**
-* Pour excel les commandes sont ```import excel``` et ```export excel```
-* Pour des fichiers textes type csv (R), les commandes sont ```import delimited``` et ```export delimited```
-
-**SAS**    
-<br>
-
-* Depuis la dernière version de Stata (16), il est possible d'importer directement des formats `sas7bdat`. Pas d'exportation possible.
-* Pour les versions antérieure, la solution install?e via sasxport n'est pas terrible, la solution est d'utiliser le package externe  `savasas`
-  * Sas   => Stata (importation): commande `usesas`  
-  * Stata => Sas (exportation)  : commande `savasas`
-  * Il faut diter un .do file dont le lien est donn? dans l'aide si le bon chemin d'accès à SAS Windows n'est pas spécifié . Demander à MT si problème.  Avec ```savasas```, on peut créer un catalogue de format (en dur) avec l'option format.  
-  * A l'Ined, si on ne dispose de Stata et Sas sur son poste, la solution Linux fonctionne sur le serveur Margaux.
-
-
-**SPSS**  
-<br>
-
-* Depuis la dernière version de Stata (16), il est possible d'importer directement des bases en format *spss*
-* Pas de possibilité d'exportation
 

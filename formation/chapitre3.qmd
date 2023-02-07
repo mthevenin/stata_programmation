@@ -134,33 +134,44 @@ end
 
 [1] *`+`*  concatène des variables caractères qui n'ont pas de valeur manquante. Sinon utiliser  **`concat`** associée à la commande **`egen`** (voir chapitre sur la création de variables).  
 
-# Les valeurs manquantes  
 
+
+# **Les valeurs manquantes**  
 
 ::: callout-important
-## Statut des valeurs manquantes (très important)**
 
-Elles prennent la plus grande valeur possible, aucune valeur de la base de données d'une variable ne peut-être plus élevée.     Ceci doit être pris en compte dans les expressions conditionnelles impliquant par exemple des regroupement  de variables ordinales ou quantitatives:   
-Si une variable numérique $x$ a des valeurs manquantes, la condition `if X>valeur` conservera ces informations manquantes.  
-:::
+
+## Statut des valeurs manquantes 
+
+
+La valeur d'une observation manquante dépasse la plus grande valeur observée d'une variable.   Ceci doit être pris en compte dans les expressions conditionnelles impliquant par exemple des regroupement de variables ordinales ou mésurées (âge, revenus...):     
+Si une variable numérique $X$ a des observations manquantes, la condition `if X>valeur` conservera ces informations.  
+
 
 Si $X=(1, 2, 3, 4, 5, 6, .)$:  
 
 * `...if x>4` conserve $x=(5,6,.)$    
-* `...if x>4 & x<.$` ou `...if x>4 & x!=.` conserve seulement $x=(5,6)$  
+* `...if x>4 & x<.` ou `...if x>4 & x!=.` regroupe seulement $x=(5,6)$  
+
+:::
 
 **Les valeurs manquantes utilisateurs**  
 On peut rendre la valeur manquante informative en lui ajoutant une lettre:  **.a** , **.b**, **.c**  etc....  
-Exemple: *.a* = Ne sait pas, *.b*=Refus , *.c*=Pas de réponse.
+
+Exemple:  
+
+* *.a* = Ne sait pas.
+* *.b* =Refus.
+* *.c* =Pas de réponse.
 
 
 # **Casse et troncature**
 
-## **Sensibilité à la casse** 
+## Sensibilité à la casse
 Comme R ou Python, Stata est intégralement  sensible à la casse pour les instructions, seulement en minuscules. Par exemple  `TABULATE X` renverra un message d'erreur.  
 
 
-## **Troncature des instructions et des options**
+## Troncature des instructions et des options
 
 Dans le fichier d'aire d'une commande usine ou externe, le niveau de troncature est indiqué par un soulignement dans l'instruction: par exemple **`tabulate`** est souligné au niveau de  **ta** : **tabulate** = **tabulat** = **tabula** = **tabul** = **tabu** = **tab** = **ta**. On utilise généralement ```tabulate``` ou ```tab```.  
 
@@ -201,7 +212,7 @@ di "SALUT!!!!"
 Elle est également utilisé pour vérifier le contenu d'une macro variable, de préférence lorsque cette macro implique des valeurs.  
 
 
-# Sélection de variables
+# **Sélection de variables**
 
 
 On peut sélectionner un ensemble de variables qui ont une racine commune, par exemple **c**,  en écrivant : `*c*`.   
@@ -214,7 +225,7 @@ Si on  veut sélectionner des variables occurencées ou dans comme la base *auto
 
 # **Macros et répétition**
 
-## **Introduction au macros**
+## Introduction au macros
 
 Juste une introduction...Vu la simplicité du langage Stata, il est conseiller de se mettre rapidement à la manipulation des expressions dites `macro`.  
 
@@ -251,7 +262,8 @@ sum `var'
 On en voit tout de suite l'utilité: si je veux changer la liste de variables pour les instructions `sum` (troncature de `summarize`) et pour `regress`, je le fais une fois (dans la définition de la macro) au lieu de deux.  
 
 
-Avec Stata peut définir également des macros dites *global* qui  sont sauvegardées et s'appliqueront à tous les programmes (on peut les supprimer). Leur utilisation est moins courante: `global nom_macro expression`, le nom de la macro dans l'expression s'écrira `$nom_macro`.   
+Avec Stata peut définir également des macros dites *global* qui  sont sauvegardées et s'appliqueront à tous les programmes (on peut les supprimer). Leur utilisation est moins courante: `global nom_macro expression`, le nom de la macro dans l'expression s'écrira `$nom_macro`.  
+Il est conseillé de les supprimer en fin de programme avec `macro drop` + noms des macros.
 
 ```{stata, class.output="result",  collectcode=T}
 sysuse auto.dta
@@ -260,6 +272,7 @@ global x mpg weight length turn
 
 sum $x
 reg price $x
+
 macro drop x
 ```
 
@@ -267,7 +280,7 @@ macro drop x
 La liste des macro enregistrée est donnée par l'instruction: `macro dir`
 
 
-## **Objets sauvegardés à l'exécution d'une commande**
+## Objets sauvegardés à l'exécution d'une commande
 
 - Ces objets de type macro ne sont conservés en mémoire qu'entre 2 commandes exécutés
 - On peut donc les manipuler qu'à ce moment là, en particulier les enregistrer sous forme de macro standard pour les utiliser ultérieurement. 
@@ -284,7 +297,7 @@ local mprice = r(mean)
 ```
 
 
-## **Répétition avec des boucles**
+## Répétition avec des boucles
 
 
 * **`forvalues**: valeurs occurencées, compteur  
@@ -316,7 +329,7 @@ On génère une macro variable temporaire qui liste ces 3 variables , et on exé
 
 ```{stata, class.output="result"}
 
-local var mpg weight length turn headroom trunk
+local var mpg headroom trunk
 
 foreach x of local var {
 
@@ -325,7 +338,7 @@ regress price foreign `x', noheader
 ```
 
 
-....et on peut aller plus loin... Juste pour information, avec une technique de macro empilée, on ajoute les les variables une à une au modèle.  
+....et on peut aller plus loin... Juste pour information car cela se complique, avec une technique de macro empilée, on ajoute les les variables une à une au modèle.  
 
 ```{stata, class.output="result"}
 local j mpg weight length turn headroom trunk

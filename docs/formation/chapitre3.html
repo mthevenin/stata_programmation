@@ -338,19 +338,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#la-syntaxe-générique" id="toc-la-syntaxe-générique" class="nav-link active" data-scroll-target="#la-syntaxe-générique"><span class="toc-section-number">1</span>  <strong>La syntaxe générique</strong></a></li>
   <li><a href="#autres-langages-pris-en-charge" id="toc-autres-langages-pris-en-charge" class="nav-link" data-scroll-target="#autres-langages-pris-en-charge"><span class="toc-section-number">2</span>  <strong>Autres langages pris en charge</strong></a></li>
   <li><a href="#les-opérateurs" id="toc-les-opérateurs" class="nav-link" data-scroll-target="#les-opérateurs"><span class="toc-section-number">3</span>  <strong>Les opérateurs</strong></a></li>
-  <li><a href="#les-valeurs-manquantes" id="toc-les-valeurs-manquantes" class="nav-link" data-scroll-target="#les-valeurs-manquantes"><span class="toc-section-number">4</span>  Les valeurs manquantes</a></li>
+  <li><a href="#les-valeurs-manquantes" id="toc-les-valeurs-manquantes" class="nav-link" data-scroll-target="#les-valeurs-manquantes"><span class="toc-section-number">4</span>  <strong>Les valeurs manquantes</strong></a></li>
   <li><a href="#casse-et-troncature" id="toc-casse-et-troncature" class="nav-link" data-scroll-target="#casse-et-troncature"><span class="toc-section-number">5</span>  <strong>Casse et troncature</strong></a>
   <ul class="collapse">
-  <li><a href="#sensibilité-à-la-casse" id="toc-sensibilité-à-la-casse" class="nav-link" data-scroll-target="#sensibilité-à-la-casse"><span class="toc-section-number">5.1</span>  <strong>Sensibilité à la casse</strong></a></li>
-  <li><a href="#troncature-des-instructions-et-des-options" id="toc-troncature-des-instructions-et-des-options" class="nav-link" data-scroll-target="#troncature-des-instructions-et-des-options"><span class="toc-section-number">5.2</span>  <strong>Troncature des instructions et des options</strong></a></li>
+  <li><a href="#sensibilité-à-la-casse" id="toc-sensibilité-à-la-casse" class="nav-link" data-scroll-target="#sensibilité-à-la-casse"><span class="toc-section-number">5.1</span>  Sensibilité à la casse</a></li>
+  <li><a href="#troncature-des-instructions-et-des-options" id="toc-troncature-des-instructions-et-des-options" class="nav-link" data-scroll-target="#troncature-des-instructions-et-des-options"><span class="toc-section-number">5.2</span>  Troncature des instructions et des options</a></li>
   </ul></li>
   <li><a href="#quietly-et-display" id="toc-quietly-et-display" class="nav-link" data-scroll-target="#quietly-et-display"><span class="toc-section-number">6</span>  <strong><code>quietly</code> et <code>display</code></strong></a></li>
-  <li><a href="#sélection-de-variables" id="toc-sélection-de-variables" class="nav-link" data-scroll-target="#sélection-de-variables"><span class="toc-section-number">7</span>  Sélection de variables</a></li>
+  <li><a href="#sélection-de-variables" id="toc-sélection-de-variables" class="nav-link" data-scroll-target="#sélection-de-variables"><span class="toc-section-number">7</span>  <strong>Sélection de variables</strong></a></li>
   <li><a href="#macros-et-répétition" id="toc-macros-et-répétition" class="nav-link" data-scroll-target="#macros-et-répétition"><span class="toc-section-number">8</span>  <strong>Macros et répétition</strong></a>
   <ul class="collapse">
-  <li><a href="#introduction-au-macros" id="toc-introduction-au-macros" class="nav-link" data-scroll-target="#introduction-au-macros"><span class="toc-section-number">8.1</span>  <strong>Introduction au macros</strong></a></li>
-  <li><a href="#objets-sauvegardés-à-lexécution-dune-commande" id="toc-objets-sauvegardés-à-lexécution-dune-commande" class="nav-link" data-scroll-target="#objets-sauvegardés-à-lexécution-dune-commande"><span class="toc-section-number">8.2</span>  <strong>Objets sauvegardés à l’exécution d’une commande</strong></a></li>
-  <li><a href="#répétition-avec-des-boucles" id="toc-répétition-avec-des-boucles" class="nav-link" data-scroll-target="#répétition-avec-des-boucles"><span class="toc-section-number">8.3</span>  <strong>Répétition avec des boucles</strong></a></li>
+  <li><a href="#introduction-au-macros" id="toc-introduction-au-macros" class="nav-link" data-scroll-target="#introduction-au-macros"><span class="toc-section-number">8.1</span>  Introduction au macros</a></li>
+  <li><a href="#objets-sauvegardés-à-lexécution-dune-commande" id="toc-objets-sauvegardés-à-lexécution-dune-commande" class="nav-link" data-scroll-target="#objets-sauvegardés-à-lexécution-dune-commande"><span class="toc-section-number">8.2</span>  Objets sauvegardés à l’exécution d’une commande</a></li>
+  <li><a href="#répétition-avec-des-boucles" id="toc-répétition-avec-des-boucles" class="nav-link" data-scroll-target="#répétition-avec-des-boucles"><span class="toc-section-number">8.3</span>  Répétition avec des boucles</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -627,39 +627,44 @@ End of R output</code></pre>
 <p>[1] <em><code>+</code></em> concatène des variables caractères qui n’ont pas de valeur manquante. Sinon utiliser <strong><code>concat</code></strong> associée à la commande <strong><code>egen</code></strong> (voir chapitre sur la création de variables).</p>
 </section>
 <section id="les-valeurs-manquantes" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Les valeurs manquantes</h1>
+<h1 data-number="4"><span class="header-section-number">4</span> <strong>Les valeurs manquantes</strong></h1>
 <div class="callout-important callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Statut des valeurs manquantes (très important)**
+Statut des valeurs manquantes
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Elles prennent la plus grande valeur possible, aucune valeur de la base de données d’une variable ne peut-être plus élevée. Ceci doit être pris en compte dans les expressions conditionnelles impliquant par exemple des regroupement de variables ordinales ou quantitatives:<br>
-Si une variable numérique <span class="math inline">\(x\)</span> a des valeurs manquantes, la condition <code>if X&gt;valeur</code> conservera ces informations manquantes.</p>
-</div>
-</div>
+<p>La valeur d’une observation manquante dépasse la plus grande valeur observée d’une variable. Ceci doit être pris en compte dans les expressions conditionnelles impliquant par exemple des regroupement de variables ordinales ou mésurées (âge, revenus…):<br>
+Si une variable numérique <span class="math inline">\(X\)</span> a des observations manquantes, la condition <code>if X&gt;valeur</code> conservera ces informations.</p>
 <p>Si <span class="math inline">\(X=(1, 2, 3, 4, 5, 6, .)\)</span>:</p>
 <ul>
 <li><code>...if x&gt;4</code> conserve <span class="math inline">\(x=(5,6,.)\)</span><br>
 </li>
-<li><code>...if x&gt;4 &amp; x&lt;.$</code> ou <code>...if x&gt;4 &amp; x!=.</code> conserve seulement <span class="math inline">\(x=(5,6)\)</span></li>
+<li><code>...if x&gt;4 &amp; x&lt;.</code> ou <code>...if x&gt;4 &amp; x!=.</code> regroupe seulement <span class="math inline">\(x=(5,6)\)</span></li>
 </ul>
+</div>
+</div>
 <p><strong>Les valeurs manquantes utilisateurs</strong><br>
-On peut rendre la valeur manquante informative en lui ajoutant une lettre: <strong>.a</strong> , <strong>.b</strong>, <strong>.c</strong> etc….<br>
-Exemple: <em>.a</em> = Ne sait pas, <em>.b</em>=Refus , <em>.c</em>=Pas de réponse.</p>
+On peut rendre la valeur manquante informative en lui ajoutant une lettre: <strong>.a</strong> , <strong>.b</strong>, <strong>.c</strong> etc….</p>
+<p>Exemple:</p>
+<ul>
+<li><em>.a</em> = Ne sait pas.</li>
+<li><em>.b</em> =Refus.</li>
+<li><em>.c</em> =Pas de réponse.</li>
+</ul>
 </section>
 <section id="casse-et-troncature" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> <strong>Casse et troncature</strong></h1>
 <section id="sensibilité-à-la-casse" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="sensibilité-à-la-casse"><span class="header-section-number">5.1</span> <strong>Sensibilité à la casse</strong></h2>
+<h2 data-number="5.1" class="anchored" data-anchor-id="sensibilité-à-la-casse"><span class="header-section-number">5.1</span> Sensibilité à la casse</h2>
 <p>Comme R ou Python, Stata est intégralement sensible à la casse pour les instructions, seulement en minuscules. Par exemple <code>TABULATE X</code> renverra un message d’erreur.</p>
 </section>
 <section id="troncature-des-instructions-et-des-options" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="troncature-des-instructions-et-des-options"><span class="header-section-number">5.2</span> <strong>Troncature des instructions et des options</strong></h2>
+<h2 data-number="5.2" class="anchored" data-anchor-id="troncature-des-instructions-et-des-options"><span class="header-section-number">5.2</span> Troncature des instructions et des options</h2>
 <p>Dans le fichier d’aire d’une commande usine ou externe, le niveau de troncature est indiqué par un soulignement dans l’instruction: par exemple <strong><code>tabulate</code></strong> est souligné au niveau de <strong>ta</strong> : <strong>tabulate</strong> = <strong>tabulat</strong> = <strong>tabula</strong> = <strong>tabul</strong> = <strong>tabu</strong> = <strong>tab</strong> = <strong>ta</strong>. On utilise généralement <code>tabulate</code> ou <code>tab</code>.</p>
 <p>A manier avec une certaine précaution car le programme peut devenir rapidement incompréhensible, surtout s’il est partagé entre personnes dont la pratique diffère à ce niveau:</p>
 <div class="cell">
@@ -708,7 +713,7 @@ SALUT!!!!</code></pre>
 <p>Elle est également utilisé pour vérifier le contenu d’une macro variable, de préférence lorsque cette macro implique des valeurs.</p>
 </section>
 <section id="sélection-de-variables" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> Sélection de variables</h1>
+<h1 data-number="7"><span class="header-section-number">7</span> <strong>Sélection de variables</strong></h1>
 <p>On peut sélectionner un ensemble de variables qui ont une racine commune, par exemple <strong>c</strong>, en écrivant : <code>*c*</code>.<br>
 Exemple:<br>
 television, telephone, table ont comme racine <strong>t</strong>. Pour supprimer ces variables, on peut exécuter <code>drop t*</code> au lieu de <code>drop television telephone table</code>.<br>
@@ -718,7 +723,7 @@ Si on souhaite supprimer <em>television</em> et <em>telephone</em> seulement : <
 <section id="macros-et-répétition" class="level1" data-number="8">
 <h1 data-number="8"><span class="header-section-number">8</span> <strong>Macros et répétition</strong></h1>
 <section id="introduction-au-macros" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="introduction-au-macros"><span class="header-section-number">8.1</span> <strong>Introduction au macros</strong></h2>
+<h2 data-number="8.1" class="anchored" data-anchor-id="introduction-au-macros"><span class="header-section-number">8.1</span> Introduction au macros</h2>
 <p>Juste une introduction…Vu la simplicité du langage Stata, il est conseiller de se mettre rapidement à la manipulation des expressions dites <code>macro</code>.</p>
 <ul>
 <li>Une macro, dans sa version la plus simple, est une expression qui est utilisée une ou plusieurs fois dans un programme. Elle sont de type temporaire (<code>local</code>) ou enregistré en dur (<code>global</code>).</li>
@@ -756,7 +761,8 @@ Si on souhaite supprimer <em>television</em> et <em>telephone</em> seulement : <
 </div>
 </div>
 <p>On en voit tout de suite l’utilité: si je veux changer la liste de variables pour les instructions <code>sum</code> (troncature de <code>summarize</code>) et pour <code>regress</code>, je le fais une fois (dans la définition de la macro) au lieu de deux.</p>
-<p>Avec Stata peut définir également des macros dites <em>global</em> qui sont sauvegardées et s’appliqueront à tous les programmes (on peut les supprimer). Leur utilisation est moins courante: <code>global nom_macro expression</code>, le nom de la macro dans l’expression s’écrira <code>$nom_macro</code>.</p>
+<p>Avec Stata peut définir également des macros dites <em>global</em> qui sont sauvegardées et s’appliqueront à tous les programmes (on peut les supprimer). Leur utilisation est moins courante: <code>global nom_macro expression</code>, le nom de la macro dans l’expression s’écrira <code>$nom_macro</code>.<br>
+Il est conseillé de les supprimer en fin de programme avec <code>macro drop</code> + noms des macros.</p>
 <div class="cell" data-collectcode="true">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sysuse</span> auto.dta</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -764,7 +770,8 @@ Si on souhaite supprimer <em>television</em> et <em>telephone</em> seulement : <
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> <span class="ot">$x</span></span>
 <span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="kw">reg</span> price <span class="ot">$x</span></span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="kw">macro</span> <span class="kw">drop</span> x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="kw">macro</span> <span class="kw">drop</span> x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre class="result"><code>(1978 automobile data)
 
@@ -796,7 +803,7 @@ Si on souhaite supprimer <em>television</em> et <em>telephone</em> seulement : <
 <p>La liste des macro enregistrée est donnée par l’instruction: <code>macro dir</code></p>
 </section>
 <section id="objets-sauvegardés-à-lexécution-dune-commande" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="objets-sauvegardés-à-lexécution-dune-commande"><span class="header-section-number">8.2</span> <strong>Objets sauvegardés à l’exécution d’une commande</strong></h2>
+<h2 data-number="8.2" class="anchored" data-anchor-id="objets-sauvegardés-à-lexécution-dune-commande"><span class="header-section-number">8.2</span> Objets sauvegardés à l’exécution d’une commande</h2>
 <ul>
 <li>Ces objets de type macro ne sont conservés en mémoire qu’entre 2 commandes exécutés</li>
 <li>On peut donc les manipuler qu’à ce moment là, en particulier les enregistrer sous forme de macro standard pour les utiliser ultérieurement.</li>
@@ -822,7 +829,7 @@ Si on souhaite supprimer <em>television</em> et <em>telephone</em> seulement : <
 </div>
 </section>
 <section id="répétition-avec-des-boucles" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="répétition-avec-des-boucles"><span class="header-section-number">8.3</span> <strong>Répétition avec des boucles</strong></h2>
+<h2 data-number="8.3" class="anchored" data-anchor-id="répétition-avec-des-boucles"><span class="header-section-number">8.3</span> Répétition avec des boucles</h2>
 <ul>
 <li><strong>`forvalues</strong>: valeurs occurencées, compteur</li>
 </ul>
@@ -848,7 +855,7 @@ Si on souhaite supprimer <em>television</em> et <em>telephone</em> seulement : <
 <p>On génère une macro variable temporaire qui liste ces 3 variables , et on exécute une boucle avec l’instruction <code>foreach</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> <span class="kw">var</span> mpg <span class="kw">weight</span> <span class="fu">length</span> turn headroom trunk</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> <span class="kw">var</span> mpg headroom trunk</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="kw">foreach</span> x <span class="kw">of</span> <span class="kw">local</span> <span class="kw">var</span> {</span>
 <span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
@@ -860,27 +867,6 @@ Si on souhaite supprimer <em>television</em> et <em>telephone</em> seulement : <
      foreign |   1767.292    700.158     2.52   0.014      371.217    3163.368
          mpg |   -294.196     55.692    -5.28   0.000     -405.242    -183.149
        _cons |  11905.415   1158.634    10.28   0.000     9595.164   14215.667
-------------------------------------------------------------------------------
-------------------------------------------------------------------------------
-       price | Coefficient  Std. err.      t    P&gt;|t|     [95% conf. interval]
--------------+----------------------------------------------------------------
-     foreign |   3637.001    668.583     5.44   0.000     2303.885    4970.118
-      weight |      3.321      0.396     8.39   0.000        2.531       4.110
-       _cons |  -4942.844   1345.591    -3.67   0.000    -7625.876   -2259.812
-------------------------------------------------------------------------------
-------------------------------------------------------------------------------
-       price | Coefficient  Std. err.      t    P&gt;|t|     [95% conf. interval]
--------------+----------------------------------------------------------------
-     foreign |   2801.143    766.117     3.66   0.000     1273.549    4328.737
-      length |     90.212     15.834     5.70   0.000       58.641     121.784
-       _cons |  -1.16e+04   3124.436    -3.72   0.000    -1.79e+04   -5391.401
-------------------------------------------------------------------------------
-------------------------------------------------------------------------------
-       price | Coefficient  Std. err.      t    P&gt;|t|     [95% conf. interval]
--------------+----------------------------------------------------------------
-     foreign |   2600.275    879.855     2.96   0.004      845.895    4354.656
-        turn |    379.237     92.036     4.12   0.000      195.722     562.751
-       _cons |  -9644.016   3832.296    -2.52   0.014    -1.73e+04   -2002.634
 ------------------------------------------------------------------------------
 ------------------------------------------------------------------------------
        price | Coefficient  Std. err.      t    P&gt;|t|     [95% conf. interval]
@@ -898,7 +884,7 @@ Si on souhaite supprimer <em>television</em> et <em>telephone</em> seulement : <
 ------------------------------------------------------------------------------</code></pre>
 </div>
 </div>
-<p>….et on peut aller plus loin… Juste pour information, avec une technique de macro empilée, on ajoute les les variables une à une au modèle.</p>
+<p>….et on peut aller plus loin… Juste pour information car cela se complique, avec une technique de macro empilée, on ajoute les les variables une à une au modèle.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> j mpg <span class="kw">weight</span> <span class="fu">length</span> turn headroom trunk</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
