@@ -9,6 +9,20 @@ knitr::opts_chunk$set(engine.path=list(stata=stataexe))
 ```
 
 
+| SECTION                                                    | COMMANDES ET EXPRESSIONS                                                |
+|------------------------------------------------------------|-------------------------------------------------------------------------|
+| **Opérateurs**                                             | `=` `==` `<` `<=` `>` `>=` `!=` `&` `|` `+` `-` `*` `/` `^`             |
+| **Valeurs manquantes**                                     | `.` **`mdesc`** **`mvpatterns`** **`misschk`**                          |
+| **Suppression de l'output, et affichage d'une expression** | `quietly` `display`                                                     |
+| **Sélection groupées**                                     | *`drop`* *`keep`* `*` `-`                                               |
+| **Macros et répétition**                                   | `local` `global` `foreach` `forvalue` `return list` `i` *`regress`*     |
+
+
+ * **En gras, commandes externes**
+ * *En italique, commandes associées à un chapitre ultérieur*
+
+
+
 # **La syntaxe générique**
 
 **Remarque sur les crochets**  
@@ -16,8 +30,8 @@ knitr::opts_chunk$set(engine.path=list(stata=stataexe))
 
 ::: callout-note
 
-## [...] dans les commandes et les fichiers d'aide 
-A ma connaissance, à l'exception des pondérations il n'y a pas d'utilisation de crochets dans la syntaxe des commandes usines. Dans les fichiers d'aide et pour cette formation, ils indiquent les expressions optionnelles d'une ligne d'instruction.
+## [...] expression entre crochets
+A ma connaissance, à l'exception des pondérations il n'y a pas d'utilisation de crochets dans la syntaxe des commandes usines. Dans les fichiers d'aide et pour cette formation, ils indiquent les expressions optionnelles d'une ligne d'instructions.
 
 :::
 
@@ -32,7 +46,7 @@ nom_command varlist [, options ]
 Ce qui ce traduit par: produire un tableau croisé entre  *var1* (en ligne) et la *var2* (en colonne) en affichant la répartition en % de  *var2* pour chaque valeur de *var1* et pour l'ensemble des donnnées renseignées .
 
 ```{stata, echo=F, collectcode=T}
-sysuse auto
+sysuse auto, clear
 ```
 
 ```{stata, class.output="result"}
@@ -79,10 +93,32 @@ command using nom_base [,options]
 run "D:\D\ado\plus\r\rsource.ado"
 ```
 
-```{stata, class.output="result"}
+```{stata, class.output="result", eval=F}
+
 rsource, terminator(END_OF_R) 
-1+1
+
+library(readr)
+trans <- read.csv("https://raw.githubusercontent.com/mthevenin/analyse_duree/master/bases/transplantation.csv")
+
+head(trans)
+table(trans$died)
+
 END_OF_R
+```
+
+```{stata, class.output="result", eval=F}
+  id year age died stime surgery transplant wait mois compet
+1 15   68  53    1     1       0          0    0    1      1
+2 43   70  43    1     2       0          0    0    1      1
+3 61   71  52    1     2       0          0    0    1      1
+4 75   72  52    1     2       0          0    0    1      1
+5  6   68  54    1     3       0          0    0    1      2
+6 42   70  36    1     3       0          0    0    1      1
+
+table(trans$died)
+
+ 0  1 
+28 75 
 ```
 
 
@@ -105,9 +141,21 @@ a*b
 end
 ```
 
+
+```{stata, class.output="result"}
+python:
+import pandas as pd
+trans = pd.read_csv("https://raw.githubusercontent.com/mthevenin/analyse_duree/master/bases/transplantation.csv")
+
+trans.head(10)
+trans.info()
+end
+```
+
+
 * Depuis la version 17 de Stata, on peut également programmer intéractivement en *Java*... mais là je n'y connais absolument rien.
 
-* Intégration de l'édition en  *markdown* pour produire des rapports en html ou pdf. Egalement possibilité de générer des documents word ou excel avec des commandes dédiées. L'intégration de *latex* est également possible via une commande externe. Toutes ces possibilité me semble néanmoins nettement en deçà de ce qui est réalisable avec **RStudio** en particulier avec le nouvel outil `Quarto` associé à `Statamarkdown`... utilisés pour faire ce support.
+* Intégration de l'édition en  *markdown* pour produire des rapports en html ou pdf. Egalement possibilité de générer des documents word ou excel avec des commandes dédiées. L'intégration de *latex* est également possible via une commande externe. Toutes ces possibilité me semble néanmoins nettement en deçà de ce qui est réalisable actuellement avec **RStudio** en particulier avec le nouvel outil `Quarto` associé à `Statamarkdown`...qui sont utilisés pour faire ce support.
 
 
 # **Les opérateurs**
@@ -164,6 +212,36 @@ Exemple:
 * *.b* =Refus.
 * *.c* =Pas de réponse.
 
+**Repérage des valeurs manquantes**  
+
+Des commandes, comme `tabulate` avec l'option `mis` pour les variables catégorielles, permettent de repérer et d'afficher le nombre d'observations manquantes.  
+
+Il y a aussi plusieurs commandes qui permettent d'analyser ce type d'observations observations globalement. 
+
+* Commande externe **`mdesc`**: affiche pour chaque variable de la base ou une sélection de celle, le nombre et le % d'observations manquantes.
+  * installation: `ssc install mdesc`
+  * syntaxe: `mdesc [varlist]`
+
+```{stata, class.output="result", collectcode=T}
+sysuse auto.dta, clear
+
+mdesc
+
+```
+
+
+* commandes externes `mvpatterns` et `misschk` pour analyser les différents patterns de valeurs manquantes (une même observation peut avoir des valeurs manquantes sur plusieurs variables). `misschk` ne scanne que les variables de type numérique, et permet de générer deux variables pour indiquer le nombre et le pattern de valeurs manquantes pour chaque observation. 
+  * installation: `ssc install mvpatterns` et `ssc install misschk` 
+  * syntaxe: `mvpatterns [varlist]` et `misschk [varlist], gen(nom)`
+
+```{stata, class.output="result", collectcode=T}
+mvpatterns
+```
+
+```{stata, class.output="result", collectcode=T}
+misschk
+```
+
 
 # **Casse et troncature**
 
@@ -187,7 +265,7 @@ ta var1 var2, nof r m
 ```
 
 
-# **`quietly` et `display`**   
+# **Suppression de l'output, et affichage d'une expression**    
 
 
 On peut rendre le résultat d'une commande invisible dans la fenêtre output avec `quietly` (`qui`).    
@@ -202,7 +280,7 @@ Remarque: ne fonctionne pas avec les graphiques où l'on doit utiliser l'option 
 
 **display (di)**     
 
-Ce n'est pas une commande à  proprement parler, mais l'instruction ```display``` (```di```) permet d'afficher dans l'output, entres autres, des opérations arithmétiques (c'est donc une calculatrice. 
+Ce n'est pas une commande à  proprement parler, mais l'instruction ```display``` (```di```) permet d'afficher dans l'output, entres autres, des opérations arithmétiques (c'est donc une calculatrice). 
 
 ```{stata, class.output="result"}
 di exp(1)/(1+exp(1))
@@ -212,15 +290,16 @@ di "SALUT!!!!"
 Elle est également utilisé pour vérifier le contenu d'une macro variable, de préférence lorsque cette macro implique des valeurs.  
 
 
-# **Sélection de variables**
+# **Sélection groupées de variables**
 
+Commandes associées pour filtrer: **`keep`**, **`drop`** [pour sélectionner des obseravations: `keep if`, `drop if`]
 
 On peut sélectionner un ensemble de variables qui ont une racine commune, par exemple **c**,  en écrivant : `*c*`.   
 Exemple:        
-television, telephone, table ont comme racine **t**. Pour supprimer ces variables, on peut exécuter `drop t*` au lieu de `drop television telephone table`.  
+*television*, *telephone*, *table* ont comme racine **t**. Pour supprimer ces variables, on peut exécuter `drop t*` au lieu de `drop television telephone table`.  
 Si on souhaite supprimer *television* et *telephone* seulement :  `drop tele*`.    
 
-Si on  veut sélectionner des variables occurencées ou dans comme la base *auto*  les 5 variables qui se suivent [headroom, trunk, weight, length, turn]:  `keep headroom-turn` . Pour des variables occurencées de x1 à x5: `keep x1-x5`.    
+Si on  veut sélectionner des variables occurencées ou comme dans la base *auto*  les 5 variables qui se suivent [*headroom*, *trunk*, *weight*, *length*, *turn*]:  `keep headroom-turn` . Pour des variables occurencées de x1 à x5: `keep x1-x5`.    
 
 
 # **Macros et répétition**

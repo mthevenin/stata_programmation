@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.26">
+<meta name="generator" content="quarto-1.3.179">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -142,31 +142,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://mthevenin.github.io/stata_fr/" rel="">
+    <a class="nav-link" href="https://mthevenin.github.io/stata_fr/" rel="" target="">
  <span class="menu-text">Stata Ined</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://mthevenin.github.io/stata_graphiques/" rel="">
+    <a class="nav-link" href="https://mthevenin.github.io/stata_graphiques/" rel="" target="">
  <span class="menu-text">Graphiques</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://mthevenin.github.io/stata_programmation/" rel="">
+    <a class="nav-link" href="https://mthevenin.github.io/stata_programmation/" rel="" target="">
  <span class="menu-text">Programmation</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/mthevenin" rel=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/mthevenin" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="mailto:marc.thevenin@ined.fr" rel=""><i class="bi bi-envelope" role="img">
+    <a class="nav-link" href="mailto:marc.thevenin@ined.fr" rel="" target=""><i class="bi bi-envelope" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html" rel="">
+    <a class="nav-link" href="../about.html" rel="" target="">
  <span class="menu-text">A propos</span></a>
   </li>  
 </ul>
@@ -344,8 +344,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#sensibilité-à-la-casse" id="toc-sensibilité-à-la-casse" class="nav-link" data-scroll-target="#sensibilité-à-la-casse"><span class="toc-section-number">5.1</span>  Sensibilité à la casse</a></li>
   <li><a href="#troncature-des-instructions-et-des-options" id="toc-troncature-des-instructions-et-des-options" class="nav-link" data-scroll-target="#troncature-des-instructions-et-des-options"><span class="toc-section-number">5.2</span>  Troncature des instructions et des options</a></li>
   </ul></li>
-  <li><a href="#quietly-et-display" id="toc-quietly-et-display" class="nav-link" data-scroll-target="#quietly-et-display"><span class="toc-section-number">6</span>  <strong><code>quietly</code> et <code>display</code></strong></a></li>
-  <li><a href="#sélection-de-variables" id="toc-sélection-de-variables" class="nav-link" data-scroll-target="#sélection-de-variables"><span class="toc-section-number">7</span>  <strong>Sélection de variables</strong></a></li>
+  <li><a href="#suppression-de-loutput-et-affichage-dune-expression" id="toc-suppression-de-loutput-et-affichage-dune-expression" class="nav-link" data-scroll-target="#suppression-de-loutput-et-affichage-dune-expression"><span class="toc-section-number">6</span>  <strong>Suppression de l’output, et affichage d’une expression</strong></a></li>
+  <li><a href="#sélection-groupées-de-variables" id="toc-sélection-groupées-de-variables" class="nav-link" data-scroll-target="#sélection-groupées-de-variables"><span class="toc-section-number">7</span>  <strong>Sélection groupées de variables</strong></a></li>
   <li><a href="#macros-et-répétition" id="toc-macros-et-répétition" class="nav-link" data-scroll-target="#macros-et-répétition"><span class="toc-section-number">8</span>  <strong>Macros et répétition</strong></a>
   <ul class="collapse">
   <li><a href="#introduction-au-macros" id="toc-introduction-au-macros" class="nav-link" data-scroll-target="#introduction-au-macros"><span class="toc-section-number">8.1</span>  Introduction au macros</a></li>
@@ -375,23 +375,58 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<div class="cell">
-
-</div>
+<table class="table">
+<colgroup>
+<col style="width: 45%">
+<col style="width: 54%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>SECTION</th>
+<th>COMMANDES ET EXPRESSIONS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Opérateurs</strong></td>
+<td><code>=</code> <code>==</code> <code>&lt;</code> <code>&lt;=</code> <code>&gt;</code> <code>&gt;=</code> <code>!=</code> <code>&amp;</code> <code>|</code> <code>+</code> <code>-</code> <code>*</code> <code>/</code> <code>^</code></td>
+</tr>
+<tr class="even">
+<td><strong>Valeurs manquantes</strong></td>
+<td><code>.</code> <strong><code>mdesc</code></strong> <strong><code>mvpatterns</code></strong> <strong><code>misschk</code></strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Suppression de l’output, et affichage d’une expression</strong></td>
+<td><code>quietly</code> <code>display</code></td>
+</tr>
+<tr class="even">
+<td><strong>Sélection groupées</strong></td>
+<td><em><code>drop</code></em> <em><code>keep</code></em> <code>*</code> <code>-</code></td>
+</tr>
+<tr class="odd">
+<td><strong>Macros et répétition</strong></td>
+<td><code>local</code> <code>global</code> <code>foreach</code> <code>forvalue</code> <code>return list</code> <code>i</code> <em><code>regress</code></em></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>En gras, commandes externes</strong></li>
+<li><em>En italique, commandes associées à un chapitre ultérieur</em></li>
+</ul>
 <section id="la-syntaxe-générique" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> <strong>La syntaxe générique</strong></h1>
 <p><strong>Remarque sur les crochets</strong></p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-[…] dans les commandes et les fichiers d’aide
+[…] expression entre crochets
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>A ma connaissance, à l’exception des pondérations il n’y a pas d’utilisation de crochets dans la syntaxe des commandes usines. Dans les fichiers d’aide et pour cette formation, ils indiquent les expressions optionnelles d’une ligne d’instruction.</p>
+<p>A ma connaissance, à l’exception des pondérations il n’y a pas d’utilisation de crochets dans la syntaxe des commandes usines. Dans les fichiers d’aide et pour cette formation, ils indiquent les expressions optionnelles d’une ligne d’instructions.</p>
 </div>
 </div>
 <p>Forme concise de la syntaxe STATA pour une instruction portant sur des variables:</p>
@@ -493,34 +528,30 @@ Ce qui ce traduit par: pour chaque valeur de <em>var2</em>, des statistiques des
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>rsource, terminator(END_OF_R) </span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>1+1</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>END_OF_R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre class="result"><code>Assumed R program path: "C:\Program Files\R\R-4.1.2\bin\R.exe"
-Beginning of R output
-
-R version 4.1.2 (2021-11-01) -- "Bird Hippie"
-Copyright (C) 2021 The R Foundation for Statistical Computing
-Platform: x86_64-w64-mingw32/x64 (64-bit)
-
-R est un logiciel libre livr&lt;e9&gt; sans AUCUNE GARANTIE.
-Vous pouvez le redistribuer sous certaines conditions.
-Tapez 'license()' ou 'licence()' pour plus de d&lt;e9&gt;tails.
-
-R est un projet collaboratif avec de nombreux contributeurs.
-Tapez 'contributors()' pour plus d'information et
-'citation()' pour la fa&lt;e7&gt;on de le citer dans les publications.
-
-Tapez 'demo()' pour des d&lt;e9&gt;monstrations, 'help()' pour l'aide
-en ligne ou 'help.start()' pour obtenir l'aide au format HTML.
-Tapez 'q()' pour quitter R.
-
-&gt; 1+1
-[1] 2
-&gt; 
-End of R output</code></pre>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>rsource, terminator(END_OF_R) </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>library(readr)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>trans &lt;- read.csv(<span class="st">"https://raw.githubusercontent.com/mthevenin/analyse_duree/master/bases/transplantation.csv"</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(trans)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="kw">table</span>(trans<span class="ot">$died</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>END_OF_R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>  id <span class="fu">year</span> age died stime surgery transplant wait mois compet</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>1 15   68  53    1     1       0          0    0    1      1</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>2 43   70  43    1     2       0          0    0    1      1</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>3 61   71  52    1     2       0          0    0    1      1</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>4 75   72  52    1     2       0          0    0    1      1</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>5  6   68  54    1     3       0          0    0    1      2</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>6 42   70  36    1     3       0          0    0    1      1</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="kw">table</span>(trans<span class="ot">$died</span>)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a> 0  1 </span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>28 75 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Depuis la version 16 on peut programmer intéractivement en Python avec Stata. Cette intégration permet à Python de reconnaitre les macros stata dans son code…c’est très utile. Python doit néanmoins être installé manuellement.</li>
@@ -563,9 +594,57 @@ End of R output</code></pre>
 -------------------------------------------------------------------------------</code></pre>
 </div>
 </div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>python:</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>import pandas <span class="kw">as</span> pd</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>trans = pd.read_csv(<span class="st">"https://raw.githubusercontent.com/mthevenin/analyse_duree/master/bases/transplantation.csv"</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>trans.<span class="fu">head</span>(10)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>trans.info()</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre class="result"><code>----------------------------------------------- python (type end to exit) -----
+&gt;&gt;&gt; import pandas as pd
+&gt;&gt;&gt; trans = pd.read_csv("https://raw.githubusercontent.com/mthevenin/analyse_du
+&gt; ree/master/bases/transplantation.csv")
+&gt;&gt;&gt; 
+&gt;&gt;&gt; trans.head(10)
+   id  year  age  died  stime  surgery  transplant  wait  mois  compet
+0  15    68   53     1      1        0           0     0     1       1
+1  43    70   43     1      2        0           0     0     1       1
+2  61    71   52     1      2        0           0     0     1       1
+3  75    72   52     1      2        0           0     0     1       1
+4   6    68   54     1      3        0           0     0     1       2
+5  42    70   36     1      3        0           0     0     1       1
+6  54    71   47     1      3        0           0     0     1       1
+7  38    70   41     1      5        0           1     5     1       1
+8  85    73   47     1      5        0           0     0     1       1
+9   2    68   51     1      6        0           0     0     1       1
+&gt;&gt;&gt; trans.info()
+&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 103 entries, 0 to 102
+Data columns (total 10 columns):
+ #   Column      Non-Null Count  Dtype
+---  ------      --------------  -----
+ 0   id          103 non-null    int64
+ 1   year        103 non-null    int64
+ 2   age         103 non-null    int64
+ 3   died        103 non-null    int64
+ 4   stime       103 non-null    int64
+ 5   surgery     103 non-null    int64
+ 6   transplant  103 non-null    int64
+ 7   wait        103 non-null    int64
+ 8   mois        103 non-null    int64
+ 9   compet      103 non-null    int64
+dtypes: int64(10)
+memory usage: 8.2 KB
+&gt;&gt;&gt; end
+-------------------------------------------------------------------------------</code></pre>
+</div>
+</div>
 <ul>
 <li><p>Depuis la version 17 de Stata, on peut également programmer intéractivement en <em>Java</em>… mais là je n’y connais absolument rien.</p></li>
-<li><p>Intégration de l’édition en <em>markdown</em> pour produire des rapports en html ou pdf. Egalement possibilité de générer des documents word ou excel avec des commandes dédiées. L’intégration de <em>latex</em> est également possible via une commande externe. Toutes ces possibilité me semble néanmoins nettement en deçà de ce qui est réalisable avec <strong>RStudio</strong> en particulier avec le nouvel outil <code>Quarto</code> associé à <code>Statamarkdown</code>… utilisés pour faire ce support.</p></li>
+<li><p>Intégration de l’édition en <em>markdown</em> pour produire des rapports en html ou pdf. Egalement possibilité de générer des documents word ou excel avec des commandes dédiées. L’intégration de <em>latex</em> est également possible via une commande externe. Toutes ces possibilité me semble néanmoins nettement en deçà de ce qui est réalisable actuellement avec <strong>RStudio</strong> en particulier avec le nouvel outil <code>Quarto</code> associé à <code>Statamarkdown</code>…qui sont utilisés pour faire ce support.</p></li>
 </ul>
 </section>
 <section id="les-opérateurs" class="level1" data-number="3">
@@ -628,7 +707,7 @@ End of R output</code></pre>
 </section>
 <section id="les-valeurs-manquantes" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> <strong>Les valeurs manquantes</strong></h1>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -656,6 +735,109 @@ On peut rendre la valeur manquante informative en lui ajoutant une lettre: <stro
 <li><em>.b</em> =Refus.</li>
 <li><em>.c</em> =Pas de réponse.</li>
 </ul>
+<p><strong>Repérage des valeurs manquantes</strong></p>
+<p>Des commandes, comme <code>tabulate</code> avec l’option <code>mis</code> pour les variables catégorielles, permettent de repérer et d’afficher le nombre d’observations manquantes.</p>
+<p>Il y a aussi plusieurs commandes qui permettent d’analyser ce type d’observations observations globalement.</p>
+<ul>
+<li>Commande externe <strong><code>mdesc</code></strong>: affiche pour chaque variable de la base ou une sélection de celle, le nombre et le % d’observations manquantes.
+<ul>
+<li>installation: <code>ssc install mdesc</code></li>
+<li>syntaxe: <code>mdesc [varlist]</code></li>
+</ul></li>
+</ul>
+<div class="cell" data-collectcode="true">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sysuse</span> auto.dta, <span class="kw">clear</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>mdesc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre class="result"><code>(1978 automobile data)
+
+    Variable    |     Missing          Total     Percent Missing
+----------------+-----------------------------------------------
+           make |           0             74           0.00
+          price |           0             74           0.00
+            mpg |           0             74           0.00
+          rep78 |           5             74           6.76
+       headroom |           0             74           0.00
+          trunk |           0             74           0.00
+         weight |           0             74           0.00
+         length |           0             74           0.00
+           turn |           0             74           0.00
+   displacement |           0             74           0.00
+     gear_ratio |           0             74           0.00
+        foreign |           0             74           0.00
+----------------+-----------------------------------------------</code></pre>
+</div>
+</div>
+<ul>
+<li>commandes externes <code>mvpatterns</code> et <code>misschk</code> pour analyser les différents patterns de valeurs manquantes (une même observation peut avoir des valeurs manquantes sur plusieurs variables). <code>misschk</code> ne scanne que les variables de type numérique, et permet de générer deux variables pour indiquer le nombre et le pattern de valeurs manquantes pour chaque observation.
+<ul>
+<li>installation: <code>ssc install mvpatterns</code> et <code>ssc install misschk</code></li>
+<li>syntaxe: <code>mvpatterns [varlist]</code> et <code>misschk [varlist], gen(nom)</code></li>
+</ul></li>
+</ul>
+<div class="cell" data-collectcode="true">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>mvpatterns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre class="result"><code>variables with no mv's: make price mpg headroom trunk weight length turn
+                    displacement gear_ratio foreign
+
+Variable     | type     obs   mv   variable label
+-------------+---------------------------------------
+rep78        | int       69    5   Repair record 1978
+-----------------------------------------------------
+
+Patterns of missing values
+
+  +------------------------+
+  | _pattern   _mv   _freq |
+  |------------------------|
+  |        +     0      69 |
+  |        .     1       5 |
+  +------------------------+</code></pre>
+</div>
+</div>
+<div class="cell" data-collectcode="true">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>misschk</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre class="result"><code>Variables examined for missing values
+
+   #  Variable        # Missing   % Missing
+--------------------------------------------
+   1  price                 0         0.0
+   2  mpg                   0         0.0
+   3  rep78                 5         6.8
+   4  headroom              0         0.0
+   5  trunk                 0         0.0
+   6  weight                0         0.0
+   7  length                0         0.0
+   8  turn                  0         0.0
+   9  displacement          0         0.0
+   10 gear_ratio            0         0.0
+   11 foreign               0         0.0
+
+Warning: this output does not differentiate among extended missing.
+To generate patterns for extended missing, use extmiss option.
+
+   Missing for |
+         which |
+    variables? |      Freq.     Percent        Cum.
+---------------+-----------------------------------
+ __3__ _____ _ |          5        6.76        6.76
+ _____ _____ _ |         69       93.24      100.00
+---------------+-----------------------------------
+         Total |         74      100.00
+
+Missing for |
+   how many |
+ variables? |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |         69       93.24       93.24
+          1 |          5        6.76      100.00
+------------+-----------------------------------
+      Total |         74      100.00</code></pre>
+</div>
+</div>
 </section>
 <section id="casse-et-troncature" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> <strong>Casse et troncature</strong></h1>
@@ -668,21 +850,21 @@ On peut rendre la valeur manquante informative en lui ajoutant une lettre: <stro
 <p>Dans le fichier d’aire d’une commande usine ou externe, le niveau de troncature est indiqué par un soulignement dans l’instruction: par exemple <strong><code>tabulate</code></strong> est souligné au niveau de <strong>ta</strong> : <strong>tabulate</strong> = <strong>tabulat</strong> = <strong>tabula</strong> = <strong>tabul</strong> = <strong>tabu</strong> = <strong>tab</strong> = <strong>ta</strong>. On utilise généralement <code>tabulate</code> ou <code>tab</code>.</p>
 <p>A manier avec une certaine précaution car le programme peut devenir rapidement incompréhensible, surtout s’il est partagé entre personnes dont la pratique diffère à ce niveau:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">tabulate</span> var1 var2, nofreq <span class="ot">row</span> miss  </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>* <span class="kw">est</span> équivalent à: </span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>ta var1 var2, nof <span class="fu">r</span> <span class="fu">m</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">tabulate</span> var1 var2, nofreq <span class="ot">row</span> miss  </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>* <span class="kw">est</span> équivalent à: </span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>ta var1 var2, nof <span class="fu">r</span> <span class="fu">m</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
-<section id="quietly-et-display" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> <strong><code>quietly</code> et <code>display</code></strong></h1>
+<section id="suppression-de-loutput-et-affichage-dune-expression" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> <strong>Suppression de l’output, et affichage d’une expression</strong></h1>
 <p>On peut rendre le résultat d’une commande invisible dans la fenêtre output avec <code>quietly</code> (<code>qui</code>).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sysuse</span> auto.dta</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">tab</span> rep78</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="kw">qui</span> <span class="kw">tab</span> rep78</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sysuse</span> auto.dta</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">tab</span> rep78</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="kw">qui</span> <span class="kw">tab</span> rep78</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre class="result"><code>(1978 automobile data)
 
@@ -700,10 +882,10 @@ record 1978 |      Freq.     Percent        Cum.
 </div>
 <p>Remarque: ne fonctionne pas avec les graphiques où l’on doit utiliser l’option <code>nodraw</code></p>
 <p><strong>display (di)</strong></p>
-<p>Ce n’est pas une commande à proprement parler, mais l’instruction <code>display</code> (<code>di</code>) permet d’afficher dans l’output, entres autres, des opérations arithmétiques (c’est donc une calculatrice.</p>
+<p>Ce n’est pas une commande à proprement parler, mais l’instruction <code>display</code> (<code>di</code>) permet d’afficher dans l’output, entres autres, des opérations arithmétiques (c’est donc une calculatrice).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">di</span> <span class="fu">exp</span>(1)/(1+<span class="fu">exp</span>(1))</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="kw">di</span> <span class="st">"SALUT!!!!"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">di</span> <span class="fu">exp</span>(1)/(1+<span class="fu">exp</span>(1))</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="kw">di</span> <span class="st">"SALUT!!!!"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre class="result"><code>.73105858
 
@@ -712,13 +894,14 @@ SALUT!!!!</code></pre>
 </div>
 <p>Elle est également utilisé pour vérifier le contenu d’une macro variable, de préférence lorsque cette macro implique des valeurs.</p>
 </section>
-<section id="sélection-de-variables" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> <strong>Sélection de variables</strong></h1>
+<section id="sélection-groupées-de-variables" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> <strong>Sélection groupées de variables</strong></h1>
+<p>Commandes associées pour filtrer: <strong><code>keep</code></strong>, <strong><code>drop</code></strong> [pour sélectionner des obseravations: <code>keep if</code>, <code>drop if</code>]</p>
 <p>On peut sélectionner un ensemble de variables qui ont une racine commune, par exemple <strong>c</strong>, en écrivant : <code>*c*</code>.<br>
 Exemple:<br>
-television, telephone, table ont comme racine <strong>t</strong>. Pour supprimer ces variables, on peut exécuter <code>drop t*</code> au lieu de <code>drop television telephone table</code>.<br>
+<em>television</em>, <em>telephone</em>, <em>table</em> ont comme racine <strong>t</strong>. Pour supprimer ces variables, on peut exécuter <code>drop t*</code> au lieu de <code>drop television telephone table</code>.<br>
 Si on souhaite supprimer <em>television</em> et <em>telephone</em> seulement : <code>drop tele*</code>.</p>
-<p>Si on veut sélectionner des variables occurencées ou dans comme la base <em>auto</em> les 5 variables qui se suivent [headroom, trunk, weight, length, turn]: <code>keep headroom-turn</code> . Pour des variables occurencées de x1 à x5: <code>keep x1-x5</code>.</p>
+<p>Si on veut sélectionner des variables occurencées ou comme dans la base <em>auto</em> les 5 variables qui se suivent [<em>headroom</em>, <em>trunk</em>, <em>weight</em>, <em>length</em>, <em>turn</em>]: <code>keep headroom-turn</code> . Pour des variables occurencées de x1 à x5: <code>keep x1-x5</code>.</p>
 </section>
 <section id="macros-et-répétition" class="level1" data-number="8">
 <h1 data-number="8"><span class="header-section-number">8</span> <strong>Macros et répétition</strong></h1>
@@ -739,20 +922,20 @@ Si on souhaite supprimer <em>television</em> et <em>telephone</em> seulement : <
 <p><strong>Macro temporaire</strong></p>
 <p>L’instruction <code>local</code> permet de définir des macros variables temporaire (disparaissent après l’exécution du programme):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> nom_macro expression</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> nom_macro expression</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Le nom de la macro dans l’expression sera indiquée dans la suite du programme par `<code>nom_macro'</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> a 2</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="kw">di</span> 5^(<span class="ot">`a'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> a 2</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="kw">di</span> 5^(<span class="ot">`a'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre class="result"><code>25</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> <span class="kw">var</span> price mpg</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> <span class="ot">`var'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> <span class="kw">var</span> price mpg</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> <span class="ot">`var'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre class="result"><code>    Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
@@ -764,14 +947,14 @@ Si on souhaite supprimer <em>television</em> et <em>telephone</em> seulement : <
 <p>Avec Stata peut définir également des macros dites <em>global</em> qui sont sauvegardées et s’appliqueront à tous les programmes (on peut les supprimer). Leur utilisation est moins courante: <code>global nom_macro expression</code>, le nom de la macro dans l’expression s’écrira <code>$nom_macro</code>.<br>
 Il est conseillé de les supprimer en fin de programme avec <code>macro drop</code> + noms des macros.</p>
 <div class="cell" data-collectcode="true">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sysuse</span> auto.dta</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="kw">global</span> x mpg <span class="kw">weight</span> <span class="fu">length</span> turn</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> <span class="ot">$x</span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="kw">reg</span> price <span class="ot">$x</span></span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="kw">macro</span> <span class="kw">drop</span> x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sysuse</span> auto.dta</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="kw">global</span> x mpg <span class="kw">weight</span> <span class="fu">length</span> turn</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> <span class="ot">$x</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="kw">reg</span> price <span class="ot">$x</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="kw">macro</span> <span class="kw">drop</span> x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre class="result"><code>(1978 automobile data)
 
@@ -809,11 +992,11 @@ Il est conseillé de les supprimer en fin de programme avec <code>macro drop</co
 <li>On peut donc les manipuler qu’à ce moment là, en particulier les enregistrer sous forme de macro standard pour les utiliser ultérieurement.</li>
 </ul>
 <div class="cell" data-collectcode="true">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">qui</span> <span class="kw">sum</span> price</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span> <span class="ot">list</span></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> mprice = <span class="fu">r</span>(<span class="kw">mean</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">qui</span> <span class="kw">sum</span> price</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span> <span class="ot">list</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> mprice = <span class="fu">r</span>(<span class="kw">mean</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre class="result"><code>scalars:
                   r(N) =  74
@@ -836,11 +1019,11 @@ Il est conseillé de les supprimer en fin de programme avec <code>macro drop</co
 <p><code>for num 1/n: commande</code> est de plus en plus abandonnée (aide Stata supprimée). On lui préfère maintenant l’instruction <code>forvalues</code> pour effectuer des boucles sur des occurences numériques.</p>
 <p>Si l’on souhaite par exemple changer le nom des variables x1 à x9 en var1, var2,…., var9:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">forvalues</span> i=1/9 {</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="kw">rename</span> x<span class="ot">`i'</span> var<span class="ot">`i'</span> </span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="kw">forvalues</span> i=1/9 {</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="kw">rename</span> x<span class="ot">`i'</span> var<span class="ot">`i'</span> </span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li><strong><code>foreach</code></strong>: termes d’une expression enregistrée sous la forme d’une macro</li>
@@ -848,19 +1031,19 @@ Il est conseillé de les supprimer en fin de programme avec <code>macro drop</co
 <p>Par l’exemple, et juste une petite introduction. On veut faire une régression linéaire entre la variable <em>price</em> et la variable <em>foreign</em> en ajoutant une seule autre variable dans cette liste: <em>mpg</em>, <em>headroom</em>, <em>trunk</em>.</p>
 <p>Au lieu d’exécuter:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">regress</span> price foreign mpg      </span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="kw">regress</span> price foreign headroom </span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="kw">regress</span> price foreign trunk    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">regress</span> price foreign mpg      </span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="kw">regress</span> price foreign headroom </span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="kw">regress</span> price foreign trunk    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>On génère une macro variable temporaire qui liste ces 3 variables , et on exécute une boucle avec l’instruction <code>foreach</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> <span class="kw">var</span> mpg headroom trunk</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="kw">foreach</span> x <span class="kw">of</span> <span class="kw">local</span> <span class="kw">var</span> {</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="kw">regress</span> price foreign <span class="ot">`x'</span>, <span class="kw">noheader</span></span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> <span class="kw">var</span> mpg headroom trunk</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="kw">foreach</span> x <span class="kw">of</span> <span class="kw">local</span> <span class="kw">var</span> {</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="kw">regress</span> price foreign <span class="ot">`x'</span>, <span class="kw">noheader</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre class="result"><code>       price | Coefficient  Std. err.      t    P&gt;|t|     [95% conf. interval]
 -------------+----------------------------------------------------------------
@@ -886,16 +1069,16 @@ Il est conseillé de les supprimer en fin de programme avec <code>macro drop</co
 </div>
 <p>….et on peut aller plus loin… Juste pour information car cela se complique, avec une technique de macro empilée, on ajoute les les variables une à une au modèle.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> j mpg <span class="kw">weight</span> <span class="fu">length</span> turn headroom trunk</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="kw">foreach</span> j2 <span class="kw">of</span> <span class="kw">local</span> j {</span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> x <span class="ot">`x'</span> <span class="ot">`j2'</span></span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="kw">di</span>  <span class="st">"covariables introduites = `x'"</span>  <span class="co">// pour afficher ce qui est lu dans la macro</span></span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="kw">regress</span> price <span class="ot">`x'</span> , <span class="kw">noheader</span></span>
-<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> j mpg <span class="kw">weight</span> <span class="fu">length</span> turn headroom trunk</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="kw">foreach</span> j2 <span class="kw">of</span> <span class="kw">local</span> j {</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> x <span class="ot">`x'</span> <span class="ot">`j2'</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="kw">di</span>  <span class="st">"covariables introduites = `x'"</span>  <span class="co">// pour afficher ce qui est lu dans la macro</span></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a><span class="kw">regress</span> price <span class="ot">`x'</span> , <span class="kw">noheader</span></span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre class="result"><code>  4.   
 covariables introduites = mpg
@@ -1057,6 +1240,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {

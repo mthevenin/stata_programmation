@@ -16,17 +16,17 @@ knitr::opts_chunk$set(engine.path=list(stata=stataexe))
 [**Programme du chapitre**](https://github.com/mthevenin/formation_stata/blob/master/programmes/chapitre5.md)
 
 
-**Commandes et commandes introduites**  
-*En italique, commandes externes*
+*Commandes et expressions introduites*
 
 SECTION                    | COMMANDES
 -------------              | -------------
 **Types-formats**          | `recast` - `format` - `tostring` - `destring` - `decode` - `encode` - **`sencode`**
-**Création variable**      | `generate` - `replace` - `egen` (exemple de fonctions associées)
+**Création variable**      | `generate` - `replace` - `egen` [+ exemples de fonctions associées)
 **Variables de comptage**  | `_n` et `_N`
 **Sélection et recodage**  | `inlist` - `inrange` - `recode`
 **labels**                 | `label variable` - `label define` - `label value` - `label list` - `label drop` - **`xaxis`**
 
+ * **En gras, commandes externes**
 
 
 Pour accéder aux infomations sur les variables d'une base:  

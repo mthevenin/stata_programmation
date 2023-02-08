@@ -137,7 +137,7 @@
     "href": "formation/chapitre5.html",
     "title": "Les variables",
     "section": "",
-    "text": "Programme du chapitre\nCommandes et commandes introduites\nEn italique, commandes externes\nPour accéder aux infomations sur les variables d’une base:\nVariables manager\nFenêtre properties à droite de l’interface principale (mode dévérouillé)\nCommande describe"
+    "text": "Programme du chapitre\nCommandes et expressions introduites\nPour accéder aux infomations sur les variables d’une base:\nVariables manager\nFenêtre properties à droite de l’interface principale (mode dévérouillé)\nCommande describe"
   },
   {
     "objectID": "formation/chapitre5.html#types",
@@ -397,5 +397,12 @@
     "title": "Le langage Stata",
     "section": "4.1 Statut des valeurs manquantes",
     "text": "4.1 Statut des valeurs manquantes\n\n\n\n\n\n\nImportant\n\n\n\nTrès important\nLa valeur d’une observation manquante dépasse la plus grande valeur observée d’une variable. Ceci doit être pris en compte dans les expressions conditionnelles impliquant par exemple des regroupement de variables ordinales ou mésurées (âge, revenus…):\nSi une variable numérique \\(X\\) a des observations manquantes, la condition if X>valeur conservera ces informations.\nSi \\(X=(1, 2, 3, 4, 5, 6, .)\\):\n\n...if x>4 conserve \\(x=(5,6,.)\\)\n\n...if x>4 & x<. ou ...if x>4 & x!=. regroupe seulement \\(x=(5,6)\\)\n\n\n\nLes valeurs manquantes utilisateurs\nOn peut rendre la valeur manquante informative en lui ajoutant une lettre: .a , .b, .c etc….\nExemple: .a = Ne sait pas, .b=Refus , .c=Pas de réponse."
+  },
+  {
+    "objectID": "formation/chapitre3.html",
+    "href": "formation/chapitre3.html",
+    "title": "Le langage Stata",
+    "section": "",
+    "text": "SECTION\nCOMMANDES ET EXPRESSIONS\n\n\n\n\nOpérateurs\n= == < <= > >= != & | + - * / ^\n\n\nValeurs manquantes\n. mdesc mvpatterns misschk\n\n\nSuppression de l’output, et affichage d’une expression\nquietly display\n\n\nSélection groupées\ndrop keep * -\n\n\nMacros et répétition\nlocal global foreach forvalue return list i regress"
   }
 ]
