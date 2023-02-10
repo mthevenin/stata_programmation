@@ -28,7 +28,6 @@ SECTION                    | COMMANDES
 
  * **En gras, commandes externes**
 
-
 Pour accéder aux infomations sur les variables d'une base:  
 
 * Utiliser le  **variables manager** ou la fenêtre d'information **variables properties** si elle est ancrée à l'interface. Ces deux outils permettent de faire des modifications et de récupérer la ligne de commande dans la fenêtre *command*. Le verrou de la fenêtre **variables properties** doit-être retiré .

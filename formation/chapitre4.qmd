@@ -9,6 +9,19 @@ knitr::opts_chunk$set(engine.path=list(stata=stataexe))
 ```
 
 
+| SECTION                                                    | COMMANDES ET EXPRESSIONS                                                                    |
+|------------------------------------------------------------|---------------------------------------------------------------------------------------------|
+| **Affectation d'un répertoire de travail**                 | `cd`                                                                                        |
+| **Ouverture et sauvegarde d'une base**                     | `use` `webuse [set]` `sysuse` `save` `saveold` `import` `export` **`usesas`** **`savasas`** |
+| **Décrire le contenu d'une base**                          | `describe` `list` `codebook` `labelbook` `label list`                                       |
+| **Commandes utiles**                                       | `sort` `gsort` `duplicates` `order`                                                         |
+| **Description statistique d'une base**                     | `summarize` `mean` `tabstat` `tabulate` `fre` `tabm`                                        |
+
+
+
+ * **En gras, commandes externes**
+ * *En italique, commandes associées à un chapitre ultérieur*
+
 
 # **Affectation du répertoire de travail**
 
@@ -79,7 +92,6 @@ des
 ```
 
 On revient au dépôt officiel de stata avec `webuse set`
-
 
 En résumé avec un seul bloc d'instructions:  
 
@@ -192,7 +204,6 @@ list price mpg turn foreign in 1/10
 
 Commande `labelbook`: affiche les informations sur les labels affectés aux modalités des variables. Peu utilisé.
 
- 
 ```{stata filename="Syntaxe", eval=F}
 labelbook [nom_label]
 ```
@@ -201,7 +212,6 @@ labelbook [nom_label]
 labelbook origin
 ```
 
-
 On peut également utiliser la commande `label list [nom_label]` si on connait le nom du label. Le nom du label peut-être récupéré dans describe ou dans le fenêtre properties (voir plus loin également dans le variable manager)
 
 ```{stata, class.output="result"}
@@ -209,22 +219,87 @@ label list origin
 ```
 
 
-# **Description statistique des variables**
+# **Tri, doublon, déplacement des variables**
 
+## Tri d'une base
+
+Commande `sort`   
+<br>
+
+```{}
+sort varlist
+```  
+
+* La commande `sort` n'effectue que des tris croissants.  Pour faire un tri décroissant, on peut utiliser la commande    `gsort`. Tris croissants et décroissant peuvent se succéder dans une logique de cluster.
+  * `sort varlist`  => tri croissant 
+  * `gsort + var1` => croissant   *var1*
+  * `gsort - var1` => décroissant *var1*
+  * `gsort + var1 - var2` => croissant *var1* et décroissant *var2* dans chaque strate de *var1*
+  
+* Le tri d'une peut/doit  être réalisé lorsqu'on veut répéter une instruction avec le préfixe ```bysort```: ```bysort varlist: instruction```.  Il est  imposé lorsqu'on souhaite apparier des bases [voir chapitre 6]
+
+```{Stata filename="Syntaxe", eval=F}
+
+* tri croissant sur la variable price
+sort price tri croissant sur la variable price
+
+* tri décroissant sur la variable prix pour chaque niveau de la variable foreign
+gsort + foreign - price  
+
+```
+
+
+## Repérage et suppression des doublons
+
+**Repérage et suppression des doublons**  
+
+Commande `duplicates list/tag/drop [varlist]  `  
+
+Permet de lister, repérer (avec `gen(varname)` ) ou supprimer des observations répliquées. Si la liste de variables n'est pas renseignée, elles toutes sont utilisées. 
+
+
+Syntaxe
+```{}
+duplicates list [varlist]
+
+duplicates tag [varlist], gen(var)
+
+duplicates drop [varlist]
+```
+
+
+## Modifier la place des variables dans la base
+
+Commande `order`
+
+```{Stata filename="Syntaxe", eval=F}
+order varlist, [first/last] [after/before(varname)]
+```
+
+```{stata,  class.output="result"}  
+order foreign, first
+order rep78, after(foreign)
+
+des
+```
+
+
+# **Description statistique des variables**
 
 Dans les menus de l'interface principale: **Statistics** => **Summaries, tables & tests**
 
 ## Variables quantitatives
 
+### Tableaux d'indicateurs
+
 ::: callout-note
-Les commandes qui sont rapidement décrites vont affichés des indicateurs communs, typiquement une moyenne, mais vont se distinguées par la forme de l'output, les possibilités dans l'introduction de pondérations, et sur la réutilisation des résultats sous forme de macro.
+Les commandes qui sont rapidement décrites afficheront des indicateurs communs, typiquement la moyenne. Elles se distinguent par la forme de leur output facilitant plus ou moins les comparaisons, les possibilités offertes en termes de pondération, et sur la récupération des résultats (macro).
 :::
 
-### Tableaux d'indicateurs
 
 **Commande `summarize`** 
 
-Comme son nom l'indique la commande `summarize`, avec l'option  `detail` (`d`) donne un résumé complet de la distribution d'une variable quantitative:  moyenne, variance, quantiles, symétrie, applatissement ...)
+Comme son l'indique, la commande `summarize`, avec l'option  `detail` (`d`) donne un résumé complet de la distribution d'une variable quantitative:  moyenne, variance, quantiles, symétrie, applatissement ..nom l'indique l.)
 
 ```{stata filename="Syntaxe", eval=F}
 summarize varlist [, detail]
@@ -289,10 +364,9 @@ return list
 
 ```
 
-
 **`mean`**  
 
-Comme son nom l'indique, n'affiche que la moyenne et ses statistiques associées. L'option `over` permet des comparaison la valeur moyenne d'un groupe ou un croisement de groupes 
+N'affiche que la moyenne et ses statistiques associées. L'option `over` permet de comparer les valeurs moyennes des modalités d'une variable catégorielle (`over(varname)`) ou un croisement des modalités de plusieurs variables (`over(varlist)`)  
 
 ```{stata, class.output="result"}
 mean price  
@@ -348,7 +422,7 @@ tabstat price mpg, by(foreign)
 ```
 
 
-Si on veut ajouter la médiane
+Si on souhaite ajouter la médiane
 
 ```{stata, class.output="result"}
 tabstat price mpg, by(foreign) stat(mean median)
@@ -357,16 +431,19 @@ tabstat price mpg, by(foreign) stat(mean median)
 
 ### Graphiques  
 
+Juste une présentation de quelques visualisation permettant d'explorer des distributions.
 
+Une seule distribution:   **boxplot**, **histogram**, **`violinplot`** (externe)  
+Plusieurs distributions: **`violinplot`** (externe)
+Deux distribution croisée: **`hexplot`** (externe), **`gjoint`** (externe) 
 
-Commandes **boxplot** et **histogram**  
-
-Par les menus: **Graphics** => **Distributional graphs**
 
 Syntaxe
 ```{}
 * Boxplot
 graph box varlist [, over(var)...]
+.3
+
 * Histogramme
 histogram varname [, by(var)...]
 ```
@@ -477,55 +554,8 @@ spineplot foreign rep78
 ![](img4/g4.png)
 
 
-# **La boîte à outils**
-
-## Tri d'une base
-
-Commande `sort`   
-<br>
-
-```{}
-sort varlist
-```  
-
-* La commande `sort` n'effectue que des tris croissants.  Pour faire un tri décroissant, on peut utiliser la commande   `gsort`
-* Le tri d'une peut (voire doit)  être effectué lorsqu'on veut répéter une instruction avec le préfixe ```bysort```: ```bysort varlist: instruction```.  Il est également obligatoire lorsqu'on veut apparié des bases
-
-## Repérage et suppression des doublons
 
 
-**Repérage et suppression des doublons**  
-
-Commande `duplicates tag`  
-<br>
-Syntaxe
-```{}
-duplicates tag [varlist], gen(var)
-```
-Si varlist n'est pas renseigné, l'analyse des réplications se fait sur toutes les variables de la base. La variable créée (```gen(var)```) compte le nombre de doublons.
-
-Commande `duplicates drop`
-
-Syntaxe
-```{}
-duplicates drop [varlist]
-```
-
-## Modifier la place des variables dans la base
-
-Commande `order`
-
-
-```{}
-order varlist, [first/last] [after/before(varname)]
-```
-
-Exemple
-```{}  
-order foreign, first
-order price, last
-order foreign, after(rep78)
-```
 
 
 
