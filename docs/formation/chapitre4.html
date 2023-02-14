@@ -1363,14 +1363,54 @@ Plusieurs distributions: <strong><code>violinplot</code></strong> (externe) Deux
 </section>
 <section id="variables-catégorielles" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="variables-catégorielles"><span class="header-section-number">5.2</span> Variables catégorielles</h2>
-<p>La principale commande est <code>tabulate</code> (<code>tab</code>)</p>
+<p>La principale commande est <code>tabulate</code> (<code>tab</code>). On peut l’utiliser avec des variables de type string.</p>
 <p>Syntaxe (tableau croisé)</p>
-<pre><code>tab var1 var2 [, mis nofreq row col chi2 ......]</code></pre>
-<pre><code>tab rep78 foreign, mis
+<pre><code>tab var1 var2 [, mis nofreq row col sort ......]</code></pre>
+<ul>
+<li><p>Par défaut, l’ordre d’affichage suis la valeur de la modalité si la variable est de type numérique et l’ordre alphabétique pour une variable de type caractère. On peut utiliser l’option <code>sort</code> pour afficher par ordre croissant des effectifs observés [ou utiliser la commande externe <strong><code>tabsort</code></strong> qui offre plus de possibilités]</p></li>
+<li><p>Autres commandes (externe): <strong><code>fre</code></strong> [B.Jann], <strong><code>tabm</code></strong> [NJ.Cox], <strong><code>tabsort</code></strong> [NJ.Cox]</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="kw">ssc</span> install fre</span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="kw">ssc</span> install tabsort</span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="kw">ssc</span> install tabm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> rep78, mis</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> rep78, mis <span class="kw">sort</span> </span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> rep78 foreign, nolab mis</span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>fre rep78 </span>
+<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a>tabsort rep78</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre class="result"><code>     Repair |
+record 1978 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          1 |          2        2.70        2.70
+          2 |          8       10.81       13.51
+          3 |         30       40.54       54.05
+          4 |         18       24.32       78.38
+          5 |         11       14.86       93.24
+          . |          5        6.76      100.00
+------------+-----------------------------------
+      Total |         74      100.00
+
+     Repair |
+record 1978 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          3 |         30       40.54       40.54
+          4 |         18       24.32       64.86
+          5 |         11       14.86       79.73
+          2 |          8       10.81       90.54
+          . |          5        6.76       97.30
+          1 |          2        2.70      100.00
+------------+-----------------------------------
+      Total |         74      100.00
 
     Repair |
-    Record |    Origine voiture
-      1978 |  Domestic    Foreign |     Total
+    record |      Car origin
+      1978 |         0          1 |     Total
 -----------+----------------------+----------
          1 |         2          0 |         2 
          2 |         8          0 |         8 
@@ -1381,60 +1421,58 @@ Plusieurs distributions: <strong><code>violinplot</code></strong> (externe) Deux
 -----------+----------------------+----------
      Total |        52         22 |        74 
 
-tab rep78 foreign,  nofreq col
 
-    Repair |
-    Record |    Origine voiture
-      1978 |  Domestic    Foreign |     Total
------------+----------------------+----------
-         1 |      4.17       0.00 |      2.90 
-         2 |     16.67       0.00 |     11.59 
-         3 |     56.25      14.29 |     43.48 
-         4 |     18.75      42.86 |     26.09 
-         5 |      4.17      42.86 |     15.94 
------------+----------------------+----------
-     Total |    100.00     100.00 |    100.00 
-</code></pre>
-<ul>
-<li>On peut également utiliser la commande <code>table</code> pour afficher des effectifs croisés.</li>
-<li>La commande externe <code>tab3way</code> permet d’afficher des tables pour 3 variables catégorielles.</li>
-<li>Une option intéressante est <code>nolabel</code>. Si les modalités ont des libellés, le tableau ne les affiche pas (utile pour du recodage - voir chapitre suivant).</li>
-</ul>
-<pre><code>tab rep78 foreign,  nofreq col nolab
+rep78 -- Repair record 1978
+-----------------------------------------------------------
+              |      Freq.    Percent      Valid       Cum.
+--------------+--------------------------------------------
+Valid   1     |          2       2.70       2.90       2.90
+        2     |          8      10.81      11.59      14.49
+        3     |         30      40.54      43.48      57.97
+        4     |         18      24.32      26.09      84.06
+        5     |         11      14.86      15.94     100.00
+        Total |         69      93.24     100.00           
+Missing .     |          5       6.76                      
+Total         |         74     100.00                      
+-----------------------------------------------------------
 
-    Repair |
-    Record |    Origine voiture
-      1978 |         0          1 |     Total
------------+----------------------+----------
-         1 |      4.17       0.00 |      2.90 
-         2 |     16.67       0.00 |     11.59 
-         3 |     56.25      14.29 |     43.48 
-         4 |     18.75      42.86 |     26.09 
-         5 |      4.17      42.86 |     15.94 
------------+----------------------+----------
-     Total |    100.00     100.00 |    100.00 
-</code></pre>
+     Repair |
+record 1978 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          3 |         30       43.48       43.48
+          4 |         18       26.09       69.57
+          5 |         11       15.94       85.51
+          2 |          8       11.59       97.10
+          1 |          2        2.90      100.00
+------------+-----------------------------------
+      Total |         69      100.00</code></pre>
+</div>
+</div>
 <p><strong>Graphiques</strong></p>
-<p><strong>A Ajouter: pourquoi les camembers sont visualisation de mauvaise qualité (et programmation peu efficace avec Stata)</strong></p>
-<p>On privilégiera ici des commandes externes, en particulier celles de <strong>NJ.Cox</strong> <code>catplot</code> et <code>spineplot</code></p>
-<pre><code>ssc install catplot 
-
-* tableau: tab rep78 foreign,  nofreq col
-catplot rep78, by(foreign) percent(foreign)
-* tableau: tab rep78 foreign,  nofreq row
-catplot rep78, by(foreign) percent(foreign)
-spineplot foreign rep78</code></pre>
-<div class="quarto-figure quarto-figure-center">
+<p>Niveau graphique, les possibilités restent toujours assez limitées pour les variables discrètes (et on abandonne l’idée des horribles camemberts).</p>
+<p>On privilégiera ici la commande de NJ.Cox, <strong><code>catplot</code></strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="kw">ssc</span> install catplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>catplot rep78, <span class="kw">percent</span> </span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>catplot rep78, <span class="kw">percent</span> <span class="bn">over</span>(foreign)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-figure quarto-figure-center" style="flex-basis: 50.0%;justify-content: center;">
 <figure class="figure">
-<p><a href="img4/x3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img src="img4/x3.png" class="img-fluid figure-img"></a></p>
+<p><a href="img4/g11.png" class="lightbox" title="Sans comparaison" data-gallery="quarto-lightbox-gallery-11"><img src="img4/g11.png" class="img-fluid figure-img"></a></p>
+<p></p><figcaption class="figure-caption">Sans comparaison</figcaption><p></p>
 </figure>
 </div>
-<pre><code>ssc install spineplot
-spineplot foreign rep78</code></pre>
-<div class="quarto-figure quarto-figure-center">
+<div class="quarto-figure quarto-figure-center" style="flex-basis: 50.0%;justify-content: center;">
 <figure class="figure">
-<p><a href="img4/x4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img src="img4/x4.png" class="img-fluid figure-img"></a></p>
+<p><a href="img4/g12.png" class="lightbox" title="Avec comparaison" data-gallery="quarto-lightbox-gallery-12"><img src="img4/g12.png" class="img-fluid figure-img"></a></p>
+<p></p><figcaption class="figure-caption">Avec comparaison</figcaption><p></p>
 </figure>
+</div>
+</div>
 </div>
 
 
@@ -1679,7 +1717,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       <div class="nav-footer-center">Marc Thévenin - Ined-Sms - Août 2022</div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","loop":true,"selector":".lightbox","descPosition":"bottom","openEffect":"zoom"});</script>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","loop":true,"descPosition":"bottom","openEffect":"zoom"});</script>
 
 
 
