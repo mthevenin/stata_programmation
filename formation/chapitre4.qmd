@@ -9,13 +9,13 @@ knitr::opts_chunk$set(engine.path=list(stata=stataexe))
 ```
 
 
-| SECTION                                                    | COMMANDES ET EXPRESSIONS                                                                    |
-|------------------------------------------------------------|---------------------------------------------------------------------------------------------|
-| **Affectation d'un répertoire de travail**                 | `cd`                                                                                        |
-| **Ouverture et sauvegarde d'une base**                     | `use` `webuse [set]` `sysuse` `save` `saveold` `import` `export` **`usesas`** **`savasas`** |
-| **Décrire le contenu d'une base**                          | `describe` `list` `codebook` `labelbook` `label list`                                       |
-| **Commandes utiles**                                       | `sort` `gsort` `duplicates` `order`                                                         |
-| **Description statistique d'une base**                     | `summarize` `mean` `tabstat` `tabulate` `fre` `tabm`                                        |
+| SECTION                                                    | COMMANDES ET EXPRESSIONS                                                                                       |
+|------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------|
+| **Affectation d'un répertoire de travail**                 | `cd`                                                                                                           |
+| **Ouverture et sauvegarde d'une base**                     | `use` `webuse [set]` `sysuse` `save` `saveold` `import` `export` **`usesas`** **`savasas`** `set obs` `insobs` |
+| **Décrire le contenu d'une base**                          | `describe` `list` `codebook` `labelbook` `label list`                                                          |
+| **Tri, doublon, position des variables**                   | `sort` `gsort` `duplicates` `order`                                                                            |
+| **Decription statistique des variables**                   | `summarize` `mean` `tabstat` `tabulate` `fre` `tabm`                                                           |
 
 
 
@@ -87,8 +87,6 @@ Il suffit ensuite de charger la base avec `webuse`
 
 ```{r, eval=F}
 webuse logement.dta, clear
-
-des
 ```
 
 On revient au dépôt officiel de stata avec `webuse set`
@@ -116,6 +114,13 @@ save "path/nom_base.dta" [, replace]
 
 L'option `replace` permet d'écraser une version antérieure de la base. Obligatoire à partir de la 2ème sauvegarde, mais on peut l'utiliser dès la première sauvegarde (un message d'avertissement s'affiche).  
 
+```{stata filename="Syntaxe", collectcode=T}
+sysuse auto, clear  
+
+save auto, replace
+```
+
+
 ```saveold``` permettra d'ouvrir une bases avec une version ancienne de Stata non compatibles avec la version courante. Cela commence à devenir moins critique, mais avec `save` il ne sera plus possible d'ouvrir une base avec une version inférieure à la 13 ou inférieur à la 13 (passage à l'encodage Utf8 avec la version 14).
 
 
@@ -123,14 +128,14 @@ L'option `replace` permet d'écraser une version antérieure de la base. Obligat
  saveold "path/nom_base.dta", [replace] [version(#)] // # = numéro de la version de Stata: 
 ```
  
-Remarques: 
+Remarque: 
 
 * Ecrire l'extension .dta n'est pas obligatoire
 * Les doubles quotes ne sont obligatoires que s'il y a un espace dans le chemin d'accès et/ou dans le nom de la base 
 
 ```{stata filename="Syntaxe", eval=F}
 use "ma base", clear 
-save ma_base, clear 
+use ma_base,   clear
 ```
 
 ## Autres formats
@@ -143,6 +148,25 @@ save ma_base, clear
 * Le plus simple est passer par le menu: files + [*Import* ou *Export*] qui dispose d'une fenêtre de prévisualisation.
   * Pour excel les commandes sont `import excel` et `export excel`
   * Pour des fichiers textes type csv (R), les commandes sont `import delimited` et `export delimited`
+
+**Exemples
+
+```{stata, eval=F}
+* exportation csv
+export delimited using "D:\D\stata_temp\export_csv.csv", replace
+
+* exportation xls
+export excel using "D:\D\stata_temp\export_excel.xls", firstrow(variables) replace
+
+* importation cxv
+import delimited "D:\D\stata_temp\export_csv.csv",  clear
+
+
+* importation xls
+import excel "D:\D\stata_temp\export_excel.xls", sheet("Sheet1") firstrow clear
+
+```
+
 
 **SAS**    
 <br>
@@ -162,47 +186,77 @@ save ma_base, clear
 * Pas de possibilité d'exportation directe.
 
 
+::: callout-info
+
+## Création d'une base de donnée, ajout d'observations
+
+On peut créer une base de donnée, "vide", avec la commande **`set obs nbre_observations`**
+
+```{r, eval=F}
+clear 
+set obs 100
+```
+
+A une base existante, on peut ajouter des observations (en valeurs manquante) avec la commande `insobs nbre_observation`. Par défaut ces observations s'ajouteront après la dernière ligne (option `before/after(position)` pour renseigner la position de la première observation ajoutée.  
+
+```{r, eval=F}
+insobs 10  // ajout de 10 observations à la base
+```
+
+:::
+
+
+
 # **Décrire le contenu d'une base**
 
-Commande ```describe```
+## Commande `describe`
 
+Permet, sous forme de tableau, d'avoir des renseignement sur une base de donnée: taille en mémoire, nombre d'observations, descriptif des variables (nom, format, labels). La commande est régulièrement tronquée jusqu'à `des` 
+
+**Base courante (ouverte)** 
 
 ```{stata filename="Syntaxe", eval=F}
 describe [varlist , short]
 ```
 
-- La commande est régulièrement tronquée jusqu'à `des`
-
-Exemple 
 
 ```{stata, class.output="result", collectcode=T}
 sysuse auto.dta, clear
 
-des
+des 
+```
 
+**Base stockée (non ouverte)**  
+
+On peut également décrire le contenu d'une base en format .dta en mémoire et non ouverte avec l'argument `using "path/nombase"`
+
+```{stata, class.output="result"}
+describe using  "https://www.stata-press.com/data/r17/census2.dta"
 ```
 
 
-# **Autres commandes**
+## Autres commandes
 
-## Affichage de la base dans l'output
+* **Affichage de la base dans l'output**
 
-Commande ```list```  
-
+Commande `list`  
 
 ```{stata filename="Syntaxe", eval=F}
  list [varlist] [expression]
 ```
 
-
 ```{stata, class.output="result"}
 list price mpg turn foreign in 1/10
 ```
 
+Sauf exceptions, comme la petite base d'exemple utilisée ici, penser à bien filtrer les informations souhaitées en termes de variables et d'observations.
 
-## labelbook et label list   
 
-Commande `labelbook`: affiche les informations sur les labels affectés aux modalités des variables. Peu utilisé.
+* **Information sur les labels affectés aux variables**
+
+Commande `labelbook` et `label list`   
+
+`labelbook`: affiche les informations sur les labels affectés aux modalités des variables. 
 
 ```{stata filename="Syntaxe", eval=F}
 labelbook [nom_label]
@@ -212,14 +266,14 @@ labelbook [nom_label]
 labelbook origin
 ```
 
-On peut également utiliser la commande `label list [nom_label]` si on connait le nom du label. Le nom du label peut-être récupéré dans describe ou dans le fenêtre properties (voir plus loin également dans le variable manager)
+`label list [nom_label]` donne seulement l'affectation des labels aux valeurs.
 
 ```{stata, class.output="result"}
 label list origin
 ```
 
 
-# **Tri, doublon, déplacement des variables**
+# **Tri, doublon, position des variables**
 
 ## Tri d'une base
 
@@ -241,12 +295,13 @@ sort varlist
 ```{Stata filename="Syntaxe", eval=F}
 
 * tri croissant sur la variable price
-sort price tri croissant sur la variable price
+sort price
 
 * tri décroissant sur la variable prix pour chaque niveau de la variable foreign
 gsort + foreign - price  
 
 ```
+
 
 
 ## Repérage et suppression des doublons
@@ -283,6 +338,7 @@ order rep78, after(foreign)
 des
 ```
 
+Cette opération est particulièrement pour organiser sa base de données après la création de nouvelles variables.
 
 # **Description statistique des variables**
 
@@ -431,131 +487,164 @@ tabstat price mpg, by(foreign) stat(mean median)
 
 ### Graphiques  
 
-Juste une présentation de quelques visualisation permettant d'explorer des distributions.
+**[MAJ EN COURS: bcp de nouveautés]**
 
-Une seule distribution:   **boxplot**, **histogram**, **`violinplot`** (externe)  
+
+Juste une rapide présentation de quelques visualisations permettant d'explorer des distributions.
+
+
+Une seule distribution:   **graph box/hbox** , **histogram**, **`violinplot`** (externe)  
 Plusieurs distributions: **`violinplot`** (externe)
 Deux distribution croisée: **`hexplot`** (externe), **`gjoint`** (externe) 
 
 
-Syntaxe
-```{}
-* Boxplot
-graph box varlist [, over(var)...]
-.3
+**Boxplot**  
 
-* Histogramme
-histogram varname [, by(var)...]
+```{stata, eval=F }
+graph hbox mpg, 
+graph hbox mpg, over(foreign)   
 ```
     
-```{}  
-histogram length, by(foreign)
-graph box length, over(foreign)    
-```    
+::: {layout-ncol=2}
+![Sans comparaison](img4/g1.png)
 
-![](img4/g1.png)
+![Avec comparaison](img4/g2.png)
+:::
 
 
-Les graphiques de type *violin* qui réunie les informations issues des boxplots et histogrammes ne sont pas implémentés dans Stata (possible via Python à partir de la v16 de Stata).
+**Histogramme**
 
-Bien évidemment, d'autres types de graphiques sont possibles, en particulier via des commandes externes. Pour analyses des distributions de deux variables continues, on se reportera par exemple à la commande `heatplot` de **Ben Jann**.  
+```{stata, eval=F }
+histogram mpg, percent 
+histogram mpg, percent by(foreign)
+```
 
-Exemples
-![](img4/g2.png)
+::: {layout-ncol=2}
+![Sans comparaison](img4/g3.png)
 
+![Avec comparaison](img4/g4.png)
+
+:::
+
+* Dans le langage de Stata, ce type de graphique est appelé *oneway*.
+* L'altération de son aspect avec les options n'est pas très flexible, surtout au niveau des couleurs.
+* Pour les histogrammes, il y a une version *twoway* qui permet d'empilé plusieurs histogrammes dans un même graphique, mais généralement la visualisation n'est pas optimale. Préférer en ce cas là une approche par les **densités** (voir `violinplot` - comparaison III).
+* Conseil de sémiologie graphique: garder l'axe quantitatif/continu sur les abcisses .
+
+
+
+**Violinplot (Ben Jann)**
+
+Toujours beaucoup d'options dans les commandes de *magik* B.Jann. Se reporter à son tutoriel sur github pour l'installation (nécessite l'installation de dépendances) [Lien](https://github.com/benjann/violinplot/)  
+
+
+```{stata, eval=F }
+violinplot mpg, fill
+
+violinplot mpg, nobox over(foreign) left overlay nomedian  dscale(.) 
+
+violinplot mpg, fill over(foreign)
+
+violinplot mpg, fill split(foreign) horizontal
+
+```
+
+::: {layout-ncol=2}
+
+![Sans comparaison](img4/g5.png)
+
+![Comparaison I](img4/g7.png)
+
+![Comparaison II ](img4/g6.png)
+
+![Comparaison III ](img4/g8.png)
+
+:::
+
+**Deux variables quantitatives**
+
+* Une nuage de point pêche rapidement lorsque le nombre d'observations augmente, par exemple audelà de 200. 
+* Solutions: 
+  - Courbes de niveaux
+  - `Heatplot`/`hexplot`: l'idée est de visualiser un histogramme "vu du dessuss", la hauteurs des barres étant données par un différentiel de couleur issues d'une palette séquentielle (du clair au foncé par exemple). 
+  
+```{stata filename="Installation heatplot", eval=F }
+ssc install heatplot, replace  
+```
+
+* Il peut-être intéressant d'ajouté les distributions marginales des deux variables. J'ai programmé une petite commande (encore en version très alpha): **`gjoint`**. Tout le mérite revient à B.Jann pour la commande `hexplot` (j'ai juste combiné `hexplot` avec des histogrammes).
+
+```{stata filename="Installation gjoint", eval=F }
+net install gjoint, from("https://raw.githubusercontent.com/mthevenin/stata_graphiques/master/ressources/gjoint/") replace
+```
+
+```{stata, eval=F }
+hexplot price mpg, colors(flare)
+gjoint price mpg, palette(flare)
+```
+
+::: {layout-ncol=2}
+
+![hexplot](img4/g9.png)
+
+![hexplot](img4/g10.png)
+
+:::
 
 ## Variables catégorielles
 
-La principale commande est `tabulate` (`tab`)  
+La principale commande est `tabulate` (`tab`). On peut l'utiliser avec des variables de type string.
 
 Syntaxe (tableau croisé)
 ```{}
-tab var1 var2 [, mis nofreq row col chi2 ......]
+tab var1 var2 [, mis nofreq row col sort ......]
+```
+
+* Par défaut, l'ordre d'affichage suis la valeur de la modalité si la variable est de type numérique et l'ordre alphabétique pour une variable de type caractère. On peut utiliser l'option `sort` pour afficher par ordre croissant des effectifs observés  [ou utiliser la commande externe **`tabsort`** qui offre plus de possibilités]
+
+* Autres commandes (externe): **`fre`** [B.Jann], **`tabm`** [NJ.Cox], **`tabsort`** [NJ.Cox]
+
+```{stata, class.output="result", eval=f}
+ssc install fre
+ssc install tabsort
+ssc install tabm
 ```
 
 
-```{}
-tab rep78 foreign, mis
+```{stata, class.output="result"}
+tab rep78, mis
+tab rep78, mis sort 
+tab rep78 foreign, nolab mis
 
-    Repair |
-    Record |    Origine voiture
-      1978 |  Domestic    Foreign |     Total
------------+----------------------+----------
-         1 |         2          0 |         2 
-         2 |         8          0 |         8 
-         3 |        27          3 |        30 
-         4 |         9          9 |        18 
-         5 |         2          9 |        11 
-         . |         4          1 |         5 
------------+----------------------+----------
-     Total |        52         22 |        74 
+fre rep78 
 
-tab rep78 foreign,  nofreq col
-
-    Repair |
-    Record |    Origine voiture
-      1978 |  Domestic    Foreign |     Total
------------+----------------------+----------
-         1 |      4.17       0.00 |      2.90 
-         2 |     16.67       0.00 |     11.59 
-         3 |     56.25      14.29 |     43.48 
-         4 |     18.75      42.86 |     26.09 
-         5 |      4.17      42.86 |     15.94 
------------+----------------------+----------
-     Total |    100.00     100.00 |    100.00 
-
+tabsort rep78
 ```
 
-* On peut également utiliser la commande `table` pour afficher des effectifs croisés.
-* La commande externe `tab3way` permet d'afficher des tables pour 3 variables catégorielles.
-* Une option intéressante est `nolabel`. Si les modalités ont des libellés, le tableau ne les affiche pas (utile pour du recodage - voir chapitre suivant).
-
-
-```{}
-tab rep78 foreign,  nofreq col nolab
-
-    Repair |
-    Record |    Origine voiture
-      1978 |         0          1 |     Total
------------+----------------------+----------
-         1 |      4.17       0.00 |      2.90 
-         2 |     16.67       0.00 |     11.59 
-         3 |     56.25      14.29 |     43.48 
-         4 |     18.75      42.86 |     26.09 
-         5 |      4.17      42.86 |     15.94 
------------+----------------------+----------
-     Total |    100.00     100.00 |    100.00 
-
-```
 
 **Graphiques**
 
-On privilégiera des commandes externes, en particulier celles de **NJ.Cox** `catplot` et `spineplot` 
+Niveau graphique, les possibilités restent toujours assez limitées pour les variables discrètes (et on abandonne l'idée des horribles camemberts).
 
-```{}
-ssc install catplot 
 
-* tableau: tab rep78 foreign,  nofreq col
-catplot rep78, by(foreign) percent(foreign)
-* tableau: tab rep78 foreign,  nofreq row
-catplot rep78, by(foreign) percent(foreign)
-spineplot foreign rep78
+On privilégiera ici la commande de NJ.Cox, **`catplot`** 
+
+```{stata, class.output="result", eval=f}
+ssc install catplot
 ```
 
-![](img4/g3.png)
-
-
-```{}
-ssc install spineplot
-spineplot foreign rep78
+```{stata, class.output="result"}
+catplot rep78, percent 
+catplot rep78, percent over(foreign)
 ```
 
 
-![](img4/g4.png)
 
+::: {layout-ncol=2}
 
+![Sans comparaison](img4/g11.png)
 
+![Avec comparaison](img4/g12.png)
 
-
-
+:::
 
