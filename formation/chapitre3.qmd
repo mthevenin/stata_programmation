@@ -234,11 +234,11 @@ mdesc
   * installation: `ssc install mvpatterns` et `ssc install misschk` 
   * syntaxe: `mvpatterns [varlist]` et `misschk [varlist], gen(nom)`
 
-```{stata, class.output="result", collectcode=T}
+```{stata, class.output="result"}
 mvpatterns
 ```
 
-```{stata, class.output="result", collectcode=T}
+```{stata, class.output="result"}
 misschk
 ```
 
@@ -271,7 +271,6 @@ ta var1 var2, nof r m
 On peut rendre le résultat d'une commande invisible dans la fenêtre output avec `quietly` (`qui`).    
 
 ```{stata, class.output="result"}
-sysuse auto.dta
     tab rep78
 qui tab rep78
 ```
@@ -301,6 +300,11 @@ Si on souhaite supprimer *television* et *telephone* seulement :  `drop tele*`.
 
 Si on  veut sélectionner des variables occurencées ou comme dans la base *auto*  les 5 variables qui se suivent [*headroom*, *trunk*, *weight*, *length*, *turn*]:  `keep headroom-turn` . Pour des variables occurencées de x1 à x5: `keep x1-x5`.    
 
+```{stata, class.output="result"}
+sum t*
+```
+
+
 
 # **Macros et répétition**
 
@@ -314,6 +318,8 @@ Juste une introduction...Vu la simplicité du langage Stata, il est conseiller d
 * Le contenu d'une macro peut être affiché avec `display` ou `macro list` (`mac list`)
   - privilégier `display` pour afficher le contenu d'une macro de type valeur
   - privilégier `mac list` pour afficher le contenu d'une macro de type chaîne de caractère lorsque des doubles quotes (") doivent rester apparentes. La gestion des " dans les macros peut s'avérer particulièrement retord.
+    * macro *local*:  mac list _macroname   
+    * macro *global*: mac list  macroname 
 
 
 **Macro temporaire**  
@@ -321,20 +327,34 @@ Juste une introduction...Vu la simplicité du langage Stata, il est conseiller d
 L'instruction `local` permet de définir des macros variables temporaire (disparaissent après l'exécution du programme):  
 ```{stata, eval=F}
 local nom_macro expression
+* ou
+local nom_macro = expression numérique
+
+* ou
+
+local nom_macro :  fonction macro // hors contenu de la formation
+
 ``` 
 
-Le nom de la macro dans l'expression sera indiquée dans la suite du programme par ```nom_macro'`` 
 
 ```{stata, class.output="result"}
-local a 2
+local a = 2
+
+di `a'
 
 di 5^(`a')
 ``` 
 
 
 ```{stata, class.output="result"}
-local var price mpg
+local var   mpg foreign
+
+di "`var`"
+mac list _var
+
 sum `var'
+regress price `var`
+
 ```
 
 
@@ -344,22 +364,30 @@ On en voit tout de suite l'utilité: si je veux changer la liste de variables po
 Avec Stata peut définir également des macros dites *global* qui  sont sauvegardées et s'appliqueront à tous les programmes (on peut les supprimer). Leur utilisation est moins courante: `global nom_macro expression`, le nom de la macro dans l'expression s'écrira `$nom_macro`.  
 Il est conseillé de les supprimer en fin de programme avec `macro drop` + noms des macros.
 
-```{stata, class.output="result",  collectcode=T}
-sysuse auto.dta
+```{stata, class.output="result"}
 
-global x mpg weight length turn
+global var mpg weight length turn
 
-sum $x
-reg price $x
+di "$var"
+mac list var
 
-macro drop x
+sum $var
+reg price $var
+
+macro drop var
 ```
 
 
-La liste des macro enregistrée est donnée par l'instruction: `macro dir`
+La liste des macro enregistrées en dur est donnée par l'instruction: `macro dir`
 
 
-## Objets sauvegardés à l'exécution d'une commande
+```{stata, class.output="result"}
+
+mac dir
+```
+
+
+## Objets sauvegardés lors der l'exécution d'une commande
 
 - Ces objets de type macro ne sont conservés en mémoire qu'entre 2 commandes exécutés
 - On peut donc les manipuler qu'à ce moment là, en particulier les enregistrer sous forme de macro standard pour les utiliser ultérieurement. 
@@ -372,9 +400,26 @@ return list
 
 local mprice = r(mean)
 
+di `mprice'
 
 ```
 
+
+::: callout-note
+
+Une application typique est la normalisation d'une pondération brute (somme des poids  = nombre d'observation dans l'échantillon).  
+Si *wb*  est la pondération brute (somme des poids = population cible), et *wn* les poids que l'on souhaite normaliser: 
+
+```{Stata, eval=F}
+qui sum wb
+gen wn = wb/`r(mean)'
+```
+
+Tout changement de la variable *wb* modifiera automatiquement la normalisation. 
+
+Pour la commande **`gen` (ou `generate`) se reporter au chapitre 5.
+
+:::
 
 ## Répétition avec des boucles
 
@@ -417,7 +462,7 @@ regress price foreign `x', noheader
 ```
 
 
-....et on peut aller plus loin... Juste pour information car cela se complique, avec une technique de macro empilée, on ajoute les les variables une à une au modèle.  
+....et on peut aller plus loin... Juste pour information car cela se complique (et pas qu'un peu), avec une technique de macro empilée, on ajoute les les variables une à une au modèle.  
 
 ```{stata, class.output="result"}
 local j mpg weight length turn headroom trunk

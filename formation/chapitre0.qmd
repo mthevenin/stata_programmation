@@ -21,16 +21,19 @@ library(fontawesome)
 
 * N'intéressera sûrement pas les utilisatrices et utilisateurs aguerri.e.s à Stata.... quoique, on trouve toujours des années plus tard des nouvelles commandes qui facilite vraiment les choses, par exemple sur la rapide reprise du chapitre 5, la commande `sencode` (s pour super).
 * Un document pdf sera mis à disposition au fil des maj
-* La fin de la maj de la formation est programmée pour la fin 2022 (donc prévoir un dépassement), cela devrait (pourrait) aller assez vite
+
 
 * Maj dela formation:
-  * 28/07 : **Les variables**. Chapitre 5 [todo: un topo sur les formats date] 
-  * 07/10 : **Introduction**.  Chapitre 1
-  * 07/10 : **L'environnement**.  Chapitre 2
+  * 28/07/22 : **Les variables**. Chapitre 5 [todo: un topo sur les formats date] 
+  * 07/10/22 : **Introduction**.  Chapitre 1
+  * 07/10/22 : **L'environnement**.  Chapitre 2
+  * 22/02/23 : **Le langage Stata**. Chapitre 3
+  * 22/02/23 : **Les bases de données**. Chapitre 4 [courte introduction aux *frame* introduites avec la v16]
 
-* Programmes des chapitres:  
-  - [Chapitre5](https://github.com/mthevenin/formation_stata/blob/master/programmes/chapitre5.md)
-
+* Programmes des chapitres:
+  * - [Chapitre3](programme3.do)
+  * - [Chapitre4](programme4.do)
+  * - [Chapitre5](programme5.do)
 
 
 

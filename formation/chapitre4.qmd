@@ -633,7 +633,7 @@ On privilégiera ici la commande de NJ.Cox, **`catplot`**
 ssc install catplot
 ```
 
-```{stata, , eval=F}
+```{stata, eval=F}
 catplot rep78, percent 
 catplot rep78, percent over(foreign)
 ```
@@ -647,4 +647,160 @@ catplot rep78, percent over(foreign)
 ![Avec comparaison](img4/g12.png)
 
 :::
+
+
+# **Introduction aux frames**
+
+
+
+* Depuis la version 16 (2019)
+* Les frames permettent de travailler en parallèle sur plusieurs bases, sans switcher avec des opérations successives d'enregistrement/ouverture (`save`/`use`).
+   * Sur l'interface principale, le contenu d'une frame (base de données) est affiché de manière traditionnelle. On peut faire des opérations sur les autres frames déclarées simultanément. 
+   * La première base ouverte lors de l'ouverture d'une session est déclarée comme frame par défaut.
+* Les frames peuvent être liées entre elles avec une clé d'identification commune. 
+  * Importations partielles de variables ou d'observations d'une frame à l'autre.
+  * Permet de générer une variable dans une frame en utilisant des variables d'une ou plusieurs autres frames. Il n'est donc pas nécessaire d'apparier les bases entre elles en amont.
+
+
+On ne verra ici que quelques manipulations de bases, la liaison de frames sera traitée dans le chapitre 6.
+
+
+**`frame dir`** ou **`frame mist`**
+
+```{stata}
+frame dir
+frame list
+```
+
+
+```{stata, collectcode=T}
+sysuse auto, clear
+
+frame dir
+```
+
+**`frame rename`**
+
+Comme son nom l'indique on renomme une frame avec `ancien nom` `nouveau nom`
+
+```{stata, collectcode=T}
+frame rename default auto
+
+frame dir
+```
+
+
+**`frame nom_frame:`** ou **`frame nom_frame {}`**
+
+* On peut exécuter une commande en la préfixant par **`frame nom_frame:`**
+* Pour une série de commandes, il suffit d'enchasser cette série dans des crochets
+
+```{stata, collectcode=T}
+frame auto: mean price
+```
+
+
+```{stata, collectcode=T}
+frame auto {
+mean mpg
+table rep78 foreign  
+}
+```
+
+
+**`frame copy`**
+
+Permet de copier à l'idendique une frame **`frame copy nom_frame nouveau_nom`**.  
+
+Dans l'exemple qui suit on va une frame à partir de la base auto, frame *prix*, en conservant avec seulement les variables *foreign* et *price*. 
+
+
+```{stata, collectcode=T}
+frame copy auto prix
+
+frame dir
+```
+
+
+Comme indiqué précédemment, on est pas obligé de charger une base déclarée en frame pour effectuer des opérations dessus. On peut donc conserver les deux seules variables *foreign* et *price* tout en gardant la base *auto* chargée. 
+
+```{stata, collectcode=T}
+frame prix: keep foreign price
+frame dir
+```
+
+La frame *prix* ne comporte donc plus que deux variables.   
+
+On va supprimer la variable *make* de la base/frame *auto*  
+
+```{stata, collectcode=T}
+drop make
+```
+
+
+**`frame change`**  
+
+Permet de switcher d'une frame à une autre. Ici ce sont les informations de la frame *prix* qui seront chargée dans l'interface de Stata
+
+```{stata, collectcode=T}
+frame change prix 
+
+mean price, over(foreign)
+```
+
+Du côté de la frame *auto*, base chargée initialement, on note que la suppression de la  variable *make* a bien été enregistrée malgré le change de frame.
+
+```{stata, collectcode=T}
+frame auto: des
+```
+
+**`frame drop`** et **`frame reset`** 
+
+Permettent de supprimer une ou la totalité des frames
+
+**`frame drop nom_frame`**, permet de supprimer une frame, à l'exception de celle chargée dans l'interface.   
+
+```{stata, collectcode=F}
+frame change auto
+
+frame drop prix
+
+frame dir
+
+```
+
+On a charger dans l'interface la frame *auto*, puis on a supprimé la frame prix.
+
+Par contre il n'est pas possible de supprimer la frame active dans l'interface. 
+
+```{stata, collectcode=T, results=F, echo=F}
+frame reset
+sysuse auto, clear
+frame rename default auto
+```
+
+
+```{stata}
+frame drop auto
+```
+
+**`frame reset`**
+
+On peut supprimer toutes les frames, dont celle chargée dans l'interface avec **`frame reset`**. Dans ce cas il n'y a plus de base chargée dans la session.
+
+```{stata, collectcode=T, results=F, echo=F}
+frame reset
+sysuse auto, clear
+frame rename default auto
+```
+
+```{stata}
+frame reset 
+
+des
+```
+
+
+
+
 
