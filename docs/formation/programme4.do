@@ -69,7 +69,7 @@ tabstat price mpg, by(foreign)
 tabstat price mpg, by(foreign) stat(mean median)
 
 
-********
+*********************
 
 capt ssc install violinplot  
 capt ssc install hexplot
@@ -92,7 +92,7 @@ hexplot price mpg, colors(flare)  p(lc(black) lw(*.5))
 gjoint price mpg, palette(flare)
 
 
-*********
+*********************
 
 capt ssc install catplot
 capt ssc install fre
@@ -114,7 +114,8 @@ catplot rep78, percent over(foreign)
 
 
 **********************
-* intoduction frame
+
+* Intoduction frame
 
 frame dir
 

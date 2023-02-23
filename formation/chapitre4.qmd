@@ -15,7 +15,7 @@ knitr::opts_chunk$set(engine.path=list(stata=stataexe))
 | **Ouverture et sauvegarde d'une base**                     | `use` `webuse [set]` `sysuse` `save` `saveold` `import` `export` **`usesas`** **`savasas`** `set obs` `insobs` |
 | **Décrire le contenu d'une base**                          | `describe` `list` `codebook` `labelbook` `label list`                                                          |
 | **Tri, doublon, position des variables**                   | `sort` `gsort` `duplicates` `order`                                                                            |
-| **Decription statistique des variables**                   | `summarize` `mean` `tabstat` `tabulate` `fre` `tabm`                                                           |
+| **Decription statistique des variables**                   | `summarize` `mean` `tabstat`  **`violinplot`** **`heatplot`** **`gjoint`**  `tabulate` **`fre`** **`tabm`** **`catplot`** |                                                            |
 
 
 

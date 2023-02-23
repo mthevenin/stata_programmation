@@ -48,8 +48,8 @@ website:
           - profile/profile2.qmd
       - section: "Need for speed"
         contents:
-          - speedup/intro.qmd  
-          - speedup/gtools.qmd      
+          - speedup/gtools/gtools.qmd  
+          - speedup/gtools/frame.qmd           
       - section: "Super Macro World"
         contents:
           - macro/intro.qmd        

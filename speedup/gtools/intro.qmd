@@ -16,7 +16,7 @@ title: "Introduction"
 - Configuration PC:  i5-10210U CPU et 16GO de RAM.
 - Volumétries: 10k, 100k, 1M, 10M.
 - Comparaisons avec R si fonctions équivalentes.
-- Programme Stata: <https://github.com/mthevenin/stata_programmation/blob/main/speedup/benchmark.do>
+- Programme Stata: [programme](programme.do)
 - To do: faire les tests sur la version serveur-linux (toujours Stata 17 SE) 
 
 **Sources**:

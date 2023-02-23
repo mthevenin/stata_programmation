@@ -10,6 +10,37 @@ knitr::opts_chunk$set(engine.path=list(stata=stataexe))
 ```
 
 
+![](succssrocket.gif){width="10%"}  Version 1 avec **`gtools`** [Aout 2022]
+
+- Stata 17: grosse amélioration du temps d'exécution de certaines commandes, en particulier **`sort`** et **`collapse`**. 
+- Depuis de nombreuses années des packages ou commandes standalone amélioraientt le temps d'exécution, en particulier les packages **`ftools`** de *Sergio Correa* ou les commandes `fastxtile`/`fastwpctile` d'**`egenmisc`**.
+- Le package **`gtools`** de *Mauricio Caceres Bravo* donne des résultats vraiment très intéressants lorsqu'on atteint un seuil d'un million d'observations pour les commandes suivantes: `greshape`, `gquantiles`, `gegen`, `glevelof` avec une variable caractère, et dans une moindre mesure `gcollapse`.
+- Au delà des durées d'exécution, ces packages et commandes peuvent avoir quelques options propres, par exemple, l'option `by()` de *`gquantiles`* ou la possibilité d'enregistrer les valeurs en ordre décroissant avec `glevelsof`.
+
+
+**Benchmarks**  
+
+- Version Stata 17 SE. Les benchmarks réalisés par *Mauricio Caceres* sont en version MP.
+- Configuration PC:  i5-10210U CPU et 16GO de RAM.
+- Volumétries: 10k, 100k, 1M, 10M.
+- Comparaisons avec R si fonctions équivalentes.
+- Programme Stata: [programme](programme.do)
+- To do: faire les tests sur la version serveur-linux (toujours Stata 17 SE) 
+
+**Sources**:
+
+- **Stata 17 faster**: <https://www.stata.com/new-in-stata/faster-stata-speed-improvements/>
+- **ftools**: <https://github.com/sergiocorreia/ftools>
+- **gtools**: 
+  - <https://gtools.readthedocs.io/en/latest/index.html>
+  - <https://github.com/mcaceresb/stata-gtools>         
+
+
+
+
+
+
+
 # **Le package**
 
 Auteur: ***Mauricio Caceres Bravo***

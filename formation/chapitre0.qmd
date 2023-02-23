@@ -11,8 +11,8 @@ library(haven)
 library(pander)
 library(memisc)
 library(fontawesome)
-```
 
+```
 
 
 
@@ -31,9 +31,9 @@ library(fontawesome)
   * 22/02/23 : **Les bases de données**. Chapitre 4 [courte introduction aux *frame* introduites avec la v16]
 
 * Programmes des chapitres:
-  * - [Chapitre3](programme3.do)
-  * - [Chapitre4](programme4.do)
-  * - [Chapitre5](programme5.do)
+  *  [Chapitre3](programme3.do)
+  *  [Chapitre4](programme4.do)
+  *  [Chapitre5](programme5.do)
 
 
 

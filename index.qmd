@@ -1,9 +1,6 @@
 ---
 title: "Programmation"
 css: styles.css
-filters:
-   - lightbox
-lightbox: auto
 ---
 
 ```{r setup, include=FALSE}
@@ -12,6 +9,12 @@ library(fontawesome)
 ```
 
 
+::: callout-note 
+## 23 février 2023
+
+En cours: introduction aux **frames** (Stata v16 minimum)
+
+:::
 
 ::: callout-note 
 ## 07 octobre 2022
