@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.26">
+<meta name="generator" content="quarto-1.3.179">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -144,31 +144,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://mthevenin.github.io/stata_fr/" rel="">
+    <a class="nav-link" href="https://mthevenin.github.io/stata_fr/" rel="" target="">
  <span class="menu-text">Stata Ined</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://mthevenin.github.io/stata_graphiques/" rel="">
+    <a class="nav-link" href="https://mthevenin.github.io/stata_graphiques/" rel="" target="">
  <span class="menu-text">Graphiques</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://mthevenin.github.io/stata_programmation/" rel="">
+    <a class="nav-link" href="https://mthevenin.github.io/stata_programmation/" rel="" target="">
  <span class="menu-text">Programmation</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/mthevenin" rel=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/mthevenin" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="mailto:marc.thevenin@ined.fr" rel=""><i class="bi bi-envelope" role="img">
+    <a class="nav-link" href="mailto:marc.thevenin@ined.fr" rel="" target=""><i class="bi bi-envelope" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="">
+    <a class="nav-link" href="../../about.html" rel="" target="">
  <span class="menu-text">A propos</span></a>
   </li>  
 </ul>
@@ -273,12 +273,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../speedup/intro.html" class="sidebar-item-text sidebar-link">Introduction</a>
+  <a href="../../speedup/gtools/gtools.html" class="sidebar-item-text sidebar-link">Gtools</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../speedup/gtools.html" class="sidebar-item-text sidebar-link">Gtools</a>
+  <a href="../../speedup/frame/frame.html" class="sidebar-item-text sidebar-link">Frame</a>
   </div>
 </li>
       </ul>
@@ -394,9 +394,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<div class="cell">
-
-</div>
 <section id="introduction-markdown-et-statamarkdown-dans-rstudio" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Introduction: Markdown et Statamarkdown dans RStudio</h1>
 <ul>
@@ -411,7 +408,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Cette présentation montre rapidement comment dans <em>Rstudio</em> on peut éditer un document en exécutant simulanément <em>Stata</em>. Les durée d’exécution ne sont malheureusement pas optimales malgré les améliorations récentes du logiciel. L’auteur du package Statamarkdown <em>Doug Hemken</em> l’indique clairement. Stata est exécuté en mode batch en s’ouvrant et se fermant systématiquement à chaque bloc de commandes. Cette durée d’exécution est encore plus élevée lorsqu’on compile un document en format pdf, donc nativement en <em>Latex</em>. Même si <code>Statamarkdown</code> présente un intérêt, je pense que l’ensemble du matériel d’analyse, comme les tableaux et graphiques, devrait resté produit sous environnement Stata, et dans un deuxième temps intégré au document.</li>
 </ul></li>
 </ul>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -464,7 +461,7 @@ Le <em>Latex</em> n’est pas officiellement il me semble un langage d’éditio
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">di</span>  <span class="st">"{bf: *******AU SECOURS LE SMCL*******}"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -1913,600 +1910,157 @@ table {
 
 
 
-<table class="default1"><caption>Régression générée avec collect</caption>
-  <tbody><tr class="default1_1_x">
-    <td class="default1_x_1 default1_1_1">
-      <span class="default1_1_1_span">
-      &nbsp;
-      </span>
-    </td>
-    <td class="default1_x_2 default1_1_2">
-      <span class="default1_1_2_span">
-      </span>
-    </td>
-    <td colspan="3" class="default1_x_3 default1_1_3">
-      <span class="default1_1_3_span">
-      Modèle 1
-      </span>
-    </td>
-    <td colspan="3" class="default1_x_6 default1_1_6">
-      <span class="default1_1_6_span">
-      Modèle 2
-      </span>
-    </td>
-  </tr>
-  <tr class="default1_2_x">
-    <td class="default1_x_1 default1_2_1">
-      <span class="default1_2_1_span">
-      &nbsp;
-      </span>
-    </td>
-    <td class="default1_x_2 default1_2_2">
-      <span class="default1_2_2_span">
-      </span>
-    </td>
-    <td class="default1_x_3 default1_2_3">
-      <span class="default1_2_3_span">
-      Coefficient
-      </span>
-    </td>
-    <td class="default1_x_4 default1_2_4">
-      <span class="default1_2_4_span">
-      Std. error
-      </span>
-    </td>
-    <td class="default1_x_5 default1_2_5">
-      <span class="default1_2_5_span">
-      p-value
-      </span>
-    </td>
-    <td class="default1_x_6 default1_2_6">
-      <span class="default1_2_6_span">
-      Coefficient
-      </span>
-    </td>
-    <td class="default1_x_7 default1_2_7">
-      <span class="default1_2_7_span">
-      Std. error
-      </span>
-    </td>
-    <td class="default1_x_8 default1_2_8">
-      <span class="default1_2_8_span">
-      p-value
-      </span>
-    </td>
-  </tr>
-  <tr class="default1_3_x">
-    <td class="default1_x_1 default1_3_1">
-      <span class="default1_3_1_span">
-      Age group
-      </span>
-    </td>
-    <td class="default1_x_2 default1_3_2">
-      <span class="default1_3_2_span">
-      20–29
-      </span>
-    </td>
-    <td class="default1_x_3 default1_3_3">
-      <span class="default1_3_3_span">
-      0.000
-      </span>
-    </td>
-    <td class="default1_x_4 default1_3_4">
-      <span class="default1_3_4_span">
-      0.000
-      </span>
-    </td>
-    <td class="default1_x_5 default1_3_5">
-      <span class="default1_3_5_span">
-      </span>
-    </td>
-    <td class="default1_x_6 default1_3_6">
-      <span class="default1_3_6_span">
-      0.000
-      </span>
-    </td>
-    <td class="default1_x_7 default1_3_7">
-      <span class="default1_3_7_span">
-      0.000
-      </span>
-    </td>
-    <td class="default1_x_8 default1_3_8">
-      <span class="default1_3_8_span">
-      </span>
-    </td>
-  </tr>
-  <tr class="default1_4_x">
-    <td class="default1_x_1 default1_4_1">
-      <span class="default1_4_1_span">
-      &nbsp;
-      </span>
-    </td>
-    <td class="default1_x_2 default1_4_2">
-      <span class="default1_4_2_span">
-      30–39
-      </span>
-    </td>
-    <td class="default1_x_3 default1_4_3">
-      <span class="default1_4_3_span">
-      2.891
-      </span>
-    </td>
-    <td class="default1_x_4 default1_4_4">
-      <span class="default1_4_4_span">
-      0.664
-      </span>
-    </td>
-    <td class="default1_x_5 default1_4_5">
-      <span class="default1_4_5_span">
-      0.000
-      </span>
-    </td>
-    <td class="default1_x_6 default1_4_6">
-      <span class="default1_4_6_span">
-      2.917
-      </span>
-    </td>
-    <td class="default1_x_7 default1_4_7">
-      <span class="default1_4_7_span">
-      0.661
-      </span>
-    </td>
-    <td class="default1_x_8 default1_4_8">
-      <span class="default1_4_8_span">
-      0.000
-      </span>
-    </td>
-  </tr>
-  <tr class="default1_5_x">
-    <td class="default1_x_1 default1_5_1">
-      <span class="default1_5_1_span">
-      &nbsp;
-      </span>
-    </td>
-    <td class="default1_x_2 default1_5_2">
-      <span class="default1_5_2_span">
-      40–49
-      </span>
-    </td>
-    <td class="default1_x_3 default1_5_3">
-      <span class="default1_5_3_span">
-      9.580
-      </span>
-    </td>
-    <td class="default1_x_4 default1_5_4">
-      <span class="default1_5_4_span">
-      0.716
-      </span>
-    </td>
-    <td class="default1_x_5 default1_5_5">
-      <span class="default1_5_5_span">
-      0.000
-      </span>
-    </td>
-    <td class="default1_x_6 default1_5_6">
-      <span class="default1_5_6_span">
-      9.584
-      </span>
-    </td>
-    <td class="default1_x_7 default1_5_7">
-      <span class="default1_5_7_span">
-      0.713
-      </span>
-    </td>
-    <td class="default1_x_8 default1_5_8">
-      <span class="default1_5_8_span">
-      0.000
-      </span>
-    </td>
-  </tr>
-  <tr class="default1_6_x">
-    <td class="default1_x_1 default1_6_1">
-      <span class="default1_6_1_span">
-      &nbsp;
-      </span>
-    </td>
-    <td class="default1_x_2 default1_6_2">
-      <span class="default1_6_2_span">
-      50–59
-      </span>
-    </td>
-    <td class="default1_x_3 default1_6_3">
-      <span class="default1_6_3_span">
-      18.324
-      </span>
-    </td>
-    <td class="default1_x_4 default1_6_4">
-      <span class="default1_6_4_span">
-      0.713
-      </span>
-    </td>
-    <td class="default1_x_5 default1_6_5">
-      <span class="default1_6_5_span">
-      0.000
-      </span>
-    </td>
-    <td class="default1_x_6 default1_6_6">
-      <span class="default1_6_6_span">
-      18.384
-      </span>
-    </td>
-    <td class="default1_x_7 default1_6_7">
-      <span class="default1_6_7_span">
-      0.710
-      </span>
-    </td>
-    <td class="default1_x_8 default1_6_8">
-      <span class="default1_6_8_span">
-      0.000
-      </span>
-    </td>
-  </tr>
-  <tr class="default1_7_x">
-    <td class="default1_x_1 default1_7_1">
-      <span class="default1_7_1_span">
-      &nbsp;
-      </span>
-    </td>
-    <td class="default1_x_2 default1_7_2">
-      <span class="default1_7_2_span">
-      60–69
-      </span>
-    </td>
-    <td class="default1_x_3 default1_7_3">
-      <span class="default1_7_3_span">
-      24.184
-      </span>
-    </td>
-    <td class="default1_x_4 default1_7_4">
-      <span class="default1_7_4_span">
-      0.574
-      </span>
-    </td>
-    <td class="default1_x_5 default1_7_5">
-      <span class="default1_7_5_span">
-      0.000
-      </span>
-    </td>
-    <td class="default1_x_6 default1_7_6">
-      <span class="default1_7_6_span">
-      24.193
-      </span>
-    </td>
-    <td class="default1_x_7 default1_7_7">
-      <span class="default1_7_7_span">
-      0.571
-      </span>
-    </td>
-    <td class="default1_x_8 default1_7_8">
-      <span class="default1_7_8_span">
-      0.000
-      </span>
-    </td>
-  </tr>
-  <tr class="default1_8_x">
-    <td class="default1_x_1 default1_8_1">
-      <span class="default1_8_1_span">
-      &nbsp;
-      </span>
-    </td>
-    <td class="default1_x_2 default1_8_2">
-      <span class="default1_8_2_span">
-      70+
-      </span>
-    </td>
-    <td class="default1_x_3 default1_8_3">
-      <span class="default1_8_3_span">
-      30.851
-      </span>
-    </td>
-    <td class="default1_x_4 default1_8_4">
-      <span class="default1_8_4_span">
-      0.780
-      </span>
-    </td>
-    <td class="default1_x_5 default1_8_5">
-      <span class="default1_8_5_span">
-      0.000
-      </span>
-    </td>
-    <td class="default1_x_6 default1_8_6">
-      <span class="default1_8_6_span">
-      30.958
-      </span>
-    </td>
-    <td class="default1_x_7 default1_8_7">
-      <span class="default1_8_7_span">
-      0.777
-      </span>
-    </td>
-    <td class="default1_x_8 default1_8_8">
-      <span class="default1_8_8_span">
-      0.000
-      </span>
-    </td>
-  </tr>
-  <tr class="default1_9_x">
-    <td class="default1_x_1 default1_9_1">
-      <span class="default1_9_1_span">
-      Region
-      </span>
-    </td>
-    <td class="default1_x_2 default1_9_2">
-      <span class="default1_9_2_span">
-      NE
-      </span>
-    </td>
-    <td class="default1_x_3 default1_9_3">
-      <span class="default1_9_3_span">
-      0.000
-      </span>
-    </td>
-    <td class="default1_x_4 default1_9_4">
-      <span class="default1_9_4_span">
-      0.000
-      </span>
-    </td>
-    <td class="default1_x_5 default1_9_5">
-      <span class="default1_9_5_span">
-      </span>
-    </td>
-    <td class="default1_x_6 default1_9_6">
-      <span class="default1_9_6_span">
-      0.000
-      </span>
-    </td>
-    <td class="default1_x_7 default1_9_7">
-      <span class="default1_9_7_span">
-      0.000
-      </span>
-    </td>
-    <td class="default1_x_8 default1_9_8">
-      <span class="default1_9_8_span">
-      </span>
-    </td>
-  </tr>
-  <tr class="default1_10_x">
-    <td class="default1_x_1 default1_10_1">
-      <span class="default1_10_1_span">
-      &nbsp;
-      </span>
-    </td>
-    <td class="default1_x_2 default1_10_2">
-      <span class="default1_10_2_span">
-      MW
-      </span>
-    </td>
-    <td class="default1_x_3 default1_10_3">
-      <span class="default1_10_3_span">
-      -0.023
-      </span>
-    </td>
-    <td class="default1_x_4 default1_10_4">
-      <span class="default1_10_4_span">
-      0.595
-      </span>
-    </td>
-    <td class="default1_x_5 default1_10_5">
-      <span class="default1_10_5_span">
-      0.969
-      </span>
-    </td>
-    <td class="default1_x_6 default1_10_6">
-      <span class="default1_10_6_span">
-      0.033
-      </span>
-    </td>
-    <td class="default1_x_7 default1_10_7">
-      <span class="default1_10_7_span">
-      0.592
-      </span>
-    </td>
-    <td class="default1_x_8 default1_10_8">
-      <span class="default1_10_8_span">
-      0.956
-      </span>
-    </td>
-  </tr>
-  <tr class="default1_11_x">
-    <td class="default1_x_1 default1_11_1">
-      <span class="default1_11_1_span">
-      &nbsp;
-      </span>
-    </td>
-    <td class="default1_x_2 default1_11_2">
-      <span class="default1_11_2_span">
-      S
-      </span>
-    </td>
-    <td class="default1_x_3 default1_11_3">
-      <span class="default1_11_3_span">
-      -0.303
-      </span>
-    </td>
-    <td class="default1_x_4 default1_11_4">
-      <span class="default1_11_4_span">
-      0.591
-      </span>
-    </td>
-    <td class="default1_x_5 default1_11_5">
-      <span class="default1_11_5_span">
-      0.608
-      </span>
-    </td>
-    <td class="default1_x_6 default1_11_6">
-      <span class="default1_11_6_span">
-      -0.227
-      </span>
-    </td>
-    <td class="default1_x_7 default1_11_7">
-      <span class="default1_11_7_span">
-      0.588
-      </span>
-    </td>
-    <td class="default1_x_8 default1_11_8">
-      <span class="default1_11_8_span">
-      0.699
-      </span>
-    </td>
-  </tr>
-  <tr class="default1_12_x">
-    <td class="default1_x_1 default1_12_1">
-      <span class="default1_12_1_span">
-      &nbsp;
-      </span>
-    </td>
-    <td class="default1_x_2 default1_12_2">
-      <span class="default1_12_2_span">
-      W
-      </span>
-    </td>
-    <td class="default1_x_3 default1_12_3">
-      <span class="default1_12_3_span">
-      -0.777
-      </span>
-    </td>
-    <td class="default1_x_4 default1_12_4">
-      <span class="default1_12_4_span">
-      0.601
-      </span>
-    </td>
-    <td class="default1_x_5 default1_12_5">
-      <span class="default1_12_5_span">
-      0.196
-      </span>
-    </td>
-    <td class="default1_x_6 default1_12_6">
-      <span class="default1_12_6_span">
-      -0.745
-      </span>
-    </td>
-    <td class="default1_x_7 default1_12_7">
-      <span class="default1_12_7_span">
-      0.599
-      </span>
-    </td>
-    <td class="default1_x_8 default1_12_8">
-      <span class="default1_12_8_span">
-      0.213
-      </span>
-    </td>
-  </tr>
-  <tr class="default1_13_x">
-    <td class="default1_x_1 default1_13_1">
-      <span class="default1_13_1_span">
-      Sex
-      </span>
-    </td>
-    <td class="default1_x_2 default1_13_2">
-      <span class="default1_13_2_span">
-      Male
-      </span>
-    </td>
-    <td class="default1_x_3 default1_13_3">
-      <span class="default1_13_3_span">
-      </span>
-    </td>
-    <td class="default1_x_4 default1_13_4">
-      <span class="default1_13_4_span">
-      </span>
-    </td>
-    <td class="default1_x_5 default1_13_5">
-      <span class="default1_13_5_span">
-      </span>
-    </td>
-    <td class="default1_x_6 default1_13_6">
-      <span class="default1_13_6_span">
-      0.000
-      </span>
-    </td>
-    <td class="default1_x_7 default1_13_7">
-      <span class="default1_13_7_span">
-      0.000
-      </span>
-    </td>
-    <td class="default1_x_8 default1_13_8">
-      <span class="default1_13_8_span">
-      </span>
-    </td>
-  </tr>
-  <tr class="default1_14_x">
-    <td class="default1_x_1 default1_14_1">
-      <span class="default1_14_1_span">
-      &nbsp;
-      </span>
-    </td>
-    <td class="default1_x_2 default1_14_2">
-      <span class="default1_14_2_span">
-      Female
-      </span>
-    </td>
-    <td class="default1_x_3 default1_14_3">
-      <span class="default1_14_3_span">
-      </span>
-    </td>
-    <td class="default1_x_4 default1_14_4">
-      <span class="default1_14_4_span">
-      </span>
-    </td>
-    <td class="default1_x_5 default1_14_5">
-      <span class="default1_14_5_span">
-      </span>
-    </td>
-    <td class="default1_x_6 default1_14_6">
-      <span class="default1_14_6_span">
-      -4.015
-      </span>
-    </td>
-    <td class="default1_x_7 default1_14_7">
-      <span class="default1_14_7_span">
-      0.402
-      </span>
-    </td>
-    <td class="default1_x_8 default1_14_8">
-      <span class="default1_14_8_span">
-      0.000
-      </span>
-    </td>
-  </tr>
-  <tr class="default1_15_x">
-    <td colspan="2" class="default1_x_1 default1_15_1">
-      <span class="default1_15_1_span">
-      Intercept
-      </span>
-    </td>
-    <td class="default1_x_3 default1_15_3">
-      <span class="default1_15_3_span">
-      117.632
-      </span>
-    </td>
-    <td class="default1_x_4 default1_15_4">
-      <span class="default1_15_4_span">
-      0.589
-      </span>
-    </td>
-    <td class="default1_x_5 default1_15_5">
-      <span class="default1_15_5_span">
-      0.000
-      </span>
-    </td>
-    <td class="default1_x_6 default1_15_6">
-      <span class="default1_15_6_span">
-      119.672
-      </span>
-    </td>
-    <td class="default1_x_7 default1_15_7">
-      <span class="default1_15_7_span">
-      0.621
-      </span>
-    </td>
-    <td class="default1_x_8 default1_15_8">
-      <span class="default1_15_8_span">
-      0.000
-      </span>
-    </td>
-  </tr>
-</tbody></table>
+
+<table class="default1 table table-sm table-striped">
+<tbody>
+<tr class="odd default1_1_x">
+<td class="default1_x_1 default1_1_1"><span class="default1_1_1_span"> &nbsp; </span></td>
+<td class="default1_x_2 default1_1_2"><span class="default1_1_2_span"> </span></td>
+<td colspan="3" class="default1_x_3 default1_1_3"><span class="default1_1_3_span"> Modèle 1 </span></td>
+<td colspan="3" class="default1_x_6 default1_1_6"><span class="default1_1_6_span"> Modèle 2 </span></td>
+</tr>
+<tr class="even default1_2_x">
+<td class="default1_x_1 default1_2_1"><span class="default1_2_1_span"> &nbsp; </span></td>
+<td class="default1_x_2 default1_2_2"><span class="default1_2_2_span"> </span></td>
+<td class="default1_x_3 default1_2_3"><span class="default1_2_3_span"> Coefficient </span></td>
+<td class="default1_x_4 default1_2_4"><span class="default1_2_4_span"> Std. error </span></td>
+<td class="default1_x_5 default1_2_5"><span class="default1_2_5_span"> p-value </span></td>
+<td class="default1_x_6 default1_2_6"><span class="default1_2_6_span"> Coefficient </span></td>
+<td class="default1_x_7 default1_2_7"><span class="default1_2_7_span"> Std. error </span></td>
+<td class="default1_x_8 default1_2_8"><span class="default1_2_8_span"> p-value </span></td>
+</tr>
+<tr class="odd default1_3_x">
+<td class="default1_x_1 default1_3_1"><span class="default1_3_1_span"> Age group </span></td>
+<td class="default1_x_2 default1_3_2"><span class="default1_3_2_span"> 20–29 </span></td>
+<td class="default1_x_3 default1_3_3"><span class="default1_3_3_span"> 0.000 </span></td>
+<td class="default1_x_4 default1_3_4"><span class="default1_3_4_span"> 0.000 </span></td>
+<td class="default1_x_5 default1_3_5"><span class="default1_3_5_span"> </span></td>
+<td class="default1_x_6 default1_3_6"><span class="default1_3_6_span"> 0.000 </span></td>
+<td class="default1_x_7 default1_3_7"><span class="default1_3_7_span"> 0.000 </span></td>
+<td class="default1_x_8 default1_3_8"><span class="default1_3_8_span"> </span></td>
+</tr>
+<tr class="even default1_4_x">
+<td class="default1_x_1 default1_4_1"><span class="default1_4_1_span"> &nbsp; </span></td>
+<td class="default1_x_2 default1_4_2"><span class="default1_4_2_span"> 30–39 </span></td>
+<td class="default1_x_3 default1_4_3"><span class="default1_4_3_span"> 2.891 </span></td>
+<td class="default1_x_4 default1_4_4"><span class="default1_4_4_span"> 0.664 </span></td>
+<td class="default1_x_5 default1_4_5"><span class="default1_4_5_span"> 0.000 </span></td>
+<td class="default1_x_6 default1_4_6"><span class="default1_4_6_span"> 2.917 </span></td>
+<td class="default1_x_7 default1_4_7"><span class="default1_4_7_span"> 0.661 </span></td>
+<td class="default1_x_8 default1_4_8"><span class="default1_4_8_span"> 0.000 </span></td>
+</tr>
+<tr class="odd default1_5_x">
+<td class="default1_x_1 default1_5_1"><span class="default1_5_1_span"> &nbsp; </span></td>
+<td class="default1_x_2 default1_5_2"><span class="default1_5_2_span"> 40–49 </span></td>
+<td class="default1_x_3 default1_5_3"><span class="default1_5_3_span"> 9.580 </span></td>
+<td class="default1_x_4 default1_5_4"><span class="default1_5_4_span"> 0.716 </span></td>
+<td class="default1_x_5 default1_5_5"><span class="default1_5_5_span"> 0.000 </span></td>
+<td class="default1_x_6 default1_5_6"><span class="default1_5_6_span"> 9.584 </span></td>
+<td class="default1_x_7 default1_5_7"><span class="default1_5_7_span"> 0.713 </span></td>
+<td class="default1_x_8 default1_5_8"><span class="default1_5_8_span"> 0.000 </span></td>
+</tr>
+<tr class="even default1_6_x">
+<td class="default1_x_1 default1_6_1"><span class="default1_6_1_span"> &nbsp; </span></td>
+<td class="default1_x_2 default1_6_2"><span class="default1_6_2_span"> 50–59 </span></td>
+<td class="default1_x_3 default1_6_3"><span class="default1_6_3_span"> 18.324 </span></td>
+<td class="default1_x_4 default1_6_4"><span class="default1_6_4_span"> 0.713 </span></td>
+<td class="default1_x_5 default1_6_5"><span class="default1_6_5_span"> 0.000 </span></td>
+<td class="default1_x_6 default1_6_6"><span class="default1_6_6_span"> 18.384 </span></td>
+<td class="default1_x_7 default1_6_7"><span class="default1_6_7_span"> 0.710 </span></td>
+<td class="default1_x_8 default1_6_8"><span class="default1_6_8_span"> 0.000 </span></td>
+</tr>
+<tr class="odd default1_7_x">
+<td class="default1_x_1 default1_7_1"><span class="default1_7_1_span"> &nbsp; </span></td>
+<td class="default1_x_2 default1_7_2"><span class="default1_7_2_span"> 60–69 </span></td>
+<td class="default1_x_3 default1_7_3"><span class="default1_7_3_span"> 24.184 </span></td>
+<td class="default1_x_4 default1_7_4"><span class="default1_7_4_span"> 0.574 </span></td>
+<td class="default1_x_5 default1_7_5"><span class="default1_7_5_span"> 0.000 </span></td>
+<td class="default1_x_6 default1_7_6"><span class="default1_7_6_span"> 24.193 </span></td>
+<td class="default1_x_7 default1_7_7"><span class="default1_7_7_span"> 0.571 </span></td>
+<td class="default1_x_8 default1_7_8"><span class="default1_7_8_span"> 0.000 </span></td>
+</tr>
+<tr class="even default1_8_x">
+<td class="default1_x_1 default1_8_1"><span class="default1_8_1_span"> &nbsp; </span></td>
+<td class="default1_x_2 default1_8_2"><span class="default1_8_2_span"> 70+ </span></td>
+<td class="default1_x_3 default1_8_3"><span class="default1_8_3_span"> 30.851 </span></td>
+<td class="default1_x_4 default1_8_4"><span class="default1_8_4_span"> 0.780 </span></td>
+<td class="default1_x_5 default1_8_5"><span class="default1_8_5_span"> 0.000 </span></td>
+<td class="default1_x_6 default1_8_6"><span class="default1_8_6_span"> 30.958 </span></td>
+<td class="default1_x_7 default1_8_7"><span class="default1_8_7_span"> 0.777 </span></td>
+<td class="default1_x_8 default1_8_8"><span class="default1_8_8_span"> 0.000 </span></td>
+</tr>
+<tr class="odd default1_9_x">
+<td class="default1_x_1 default1_9_1"><span class="default1_9_1_span"> Region </span></td>
+<td class="default1_x_2 default1_9_2"><span class="default1_9_2_span"> NE </span></td>
+<td class="default1_x_3 default1_9_3"><span class="default1_9_3_span"> 0.000 </span></td>
+<td class="default1_x_4 default1_9_4"><span class="default1_9_4_span"> 0.000 </span></td>
+<td class="default1_x_5 default1_9_5"><span class="default1_9_5_span"> </span></td>
+<td class="default1_x_6 default1_9_6"><span class="default1_9_6_span"> 0.000 </span></td>
+<td class="default1_x_7 default1_9_7"><span class="default1_9_7_span"> 0.000 </span></td>
+<td class="default1_x_8 default1_9_8"><span class="default1_9_8_span"> </span></td>
+</tr>
+<tr class="even default1_10_x">
+<td class="default1_x_1 default1_10_1"><span class="default1_10_1_span"> &nbsp; </span></td>
+<td class="default1_x_2 default1_10_2"><span class="default1_10_2_span"> MW </span></td>
+<td class="default1_x_3 default1_10_3"><span class="default1_10_3_span"> -0.023 </span></td>
+<td class="default1_x_4 default1_10_4"><span class="default1_10_4_span"> 0.595 </span></td>
+<td class="default1_x_5 default1_10_5"><span class="default1_10_5_span"> 0.969 </span></td>
+<td class="default1_x_6 default1_10_6"><span class="default1_10_6_span"> 0.033 </span></td>
+<td class="default1_x_7 default1_10_7"><span class="default1_10_7_span"> 0.592 </span></td>
+<td class="default1_x_8 default1_10_8"><span class="default1_10_8_span"> 0.956 </span></td>
+</tr>
+<tr class="odd default1_11_x">
+<td class="default1_x_1 default1_11_1"><span class="default1_11_1_span"> &nbsp; </span></td>
+<td class="default1_x_2 default1_11_2"><span class="default1_11_2_span"> S </span></td>
+<td class="default1_x_3 default1_11_3"><span class="default1_11_3_span"> -0.303 </span></td>
+<td class="default1_x_4 default1_11_4"><span class="default1_11_4_span"> 0.591 </span></td>
+<td class="default1_x_5 default1_11_5"><span class="default1_11_5_span"> 0.608 </span></td>
+<td class="default1_x_6 default1_11_6"><span class="default1_11_6_span"> -0.227 </span></td>
+<td class="default1_x_7 default1_11_7"><span class="default1_11_7_span"> 0.588 </span></td>
+<td class="default1_x_8 default1_11_8"><span class="default1_11_8_span"> 0.699 </span></td>
+</tr>
+<tr class="even default1_12_x">
+<td class="default1_x_1 default1_12_1"><span class="default1_12_1_span"> &nbsp; </span></td>
+<td class="default1_x_2 default1_12_2"><span class="default1_12_2_span"> W </span></td>
+<td class="default1_x_3 default1_12_3"><span class="default1_12_3_span"> -0.777 </span></td>
+<td class="default1_x_4 default1_12_4"><span class="default1_12_4_span"> 0.601 </span></td>
+<td class="default1_x_5 default1_12_5"><span class="default1_12_5_span"> 0.196 </span></td>
+<td class="default1_x_6 default1_12_6"><span class="default1_12_6_span"> -0.745 </span></td>
+<td class="default1_x_7 default1_12_7"><span class="default1_12_7_span"> 0.599 </span></td>
+<td class="default1_x_8 default1_12_8"><span class="default1_12_8_span"> 0.213 </span></td>
+</tr>
+<tr class="odd default1_13_x">
+<td class="default1_x_1 default1_13_1"><span class="default1_13_1_span"> Sex </span></td>
+<td class="default1_x_2 default1_13_2"><span class="default1_13_2_span"> Male </span></td>
+<td class="default1_x_3 default1_13_3"><span class="default1_13_3_span"> </span></td>
+<td class="default1_x_4 default1_13_4"><span class="default1_13_4_span"> </span></td>
+<td class="default1_x_5 default1_13_5"><span class="default1_13_5_span"> </span></td>
+<td class="default1_x_6 default1_13_6"><span class="default1_13_6_span"> 0.000 </span></td>
+<td class="default1_x_7 default1_13_7"><span class="default1_13_7_span"> 0.000 </span></td>
+<td class="default1_x_8 default1_13_8"><span class="default1_13_8_span"> </span></td>
+</tr>
+<tr class="even default1_14_x">
+<td class="default1_x_1 default1_14_1"><span class="default1_14_1_span"> &nbsp; </span></td>
+<td class="default1_x_2 default1_14_2"><span class="default1_14_2_span"> Female </span></td>
+<td class="default1_x_3 default1_14_3"><span class="default1_14_3_span"> </span></td>
+<td class="default1_x_4 default1_14_4"><span class="default1_14_4_span"> </span></td>
+<td class="default1_x_5 default1_14_5"><span class="default1_14_5_span"> </span></td>
+<td class="default1_x_6 default1_14_6"><span class="default1_14_6_span"> -4.015 </span></td>
+<td class="default1_x_7 default1_14_7"><span class="default1_14_7_span"> 0.402 </span></td>
+<td class="default1_x_8 default1_14_8"><span class="default1_14_8_span"> 0.000 </span></td>
+</tr>
+<tr class="odd default1_15_x">
+<td colspan="2" class="default1_x_1 default1_15_1"><span class="default1_15_1_span"> Intercept </span></td>
+<td class="default1_x_3 default1_15_3"><span class="default1_15_3_span"> 117.632 </span></td>
+<td class="default1_x_4 default1_15_4"><span class="default1_15_4_span"> 0.589 </span></td>
+<td class="default1_x_5 default1_15_5"><span class="default1_15_5_span"> 0.000 </span></td>
+<td class="default1_x_6 default1_15_6"><span class="default1_15_6_span"> 119.672 </span></td>
+<td class="default1_x_7 default1_15_7"><span class="default1_15_7_span"> 0.621 </span></td>
+<td class="default1_x_8 default1_15_8"><span class="default1_15_8_span"> 0.000 </span></td>
+</tr>
+</tbody>
+</table>
+
 
 
 
@@ -2667,6 +2221,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -2956,7 +2596,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       <div class="nav-footer-center">Marc Thévenin - Ined-Sms - Août 2022</div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","loop":true,"descPosition":"bottom","openEffect":"zoom","selector":".lightbox"});</script>
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","openEffect":"zoom","closeEffect":"zoom","loop":true});</script>
 
 
 

@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -30,6 +93,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../macro/intro.html" rel="next">
+<link href="../../speedup/gtools/gtools.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -197,20 +262,22 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">Need for speed</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Need for speed</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../speedup/gtools/gtools.html" class="sidebar-item-text sidebar-link">Gtools</a>
   </div>
 </li>
           <li class="sidebar-item">
-  speedup/gtools/frame.qmd
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../../speedup/frame/frame.html" class="sidebar-item-text sidebar-link active">Frame</a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -263,7 +330,16 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Sections</h2>
+   
+  <ul>
+  <li><a href="#création-dune-frame" id="toc-création-dune-frame" class="nav-link active" data-scroll-target="#création-dune-frame"><span class="toc-section-number">1</span>  <strong>Création d’une frame</strong></a></li>
+  <li><a href="#opérations-en-parallèle" id="toc-opérations-en-parallèle" class="nav-link" data-scroll-target="#opérations-en-parallèle"><span class="toc-section-number">2</span>  <strong>Opérations en parallèle</strong></a></li>
+  <li><a href="#liaison-entre-frames" id="toc-liaison-entre-frames" class="nav-link" data-scroll-target="#liaison-entre-frames"><span class="toc-section-number">3</span>  <strong>Liaison entre frames</strong></a></li>
+  <li><a href="#autres-opérations" id="toc-autres-opérations" class="nav-link" data-scroll-target="#autres-opérations"><span class="toc-section-number">4</span>  <strong>Autres opérations</strong></a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -285,11 +361,403 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<p>Les <strong>frames</strong> on été implémentées à Stata à partir de la version 16 (2019). Elles n’améliorent pas directement les durées d’éxécution. C’est indirectement, en donnant la possibiliter de travailler simultanément sur plusieurs en parallèle sans multiplier les opérations d’ouverture ou de sauvegarde qu’elles permettent de “gagner du temps”. Mieux encore, elles ont été pensées pour faciliter les fusions et les manipulations d’informations entre bases de données en implémentant une alternative aux <em><code>merge</code></em> via une logique de liaison.<br>
+<strong><em>Les frames ont été pensées pour faciliter le travail de programmation entre bases individuelles et bases contextuelles</em></strong>.</p>
+<p>La présentation des <strong>frames</strong> se fera par l’exemple, avec la base nhanes2:</p>
 <ul>
-<li>En cours [23 février 2023]</li>
+<li>créer plusieurs frames à partir d’une base source (<em>nhanes2</em>).</li>
+<li><em>collapser</em> des informations dans une frame</li>
+<li>lier deux frames et importer des variables d’une frame à une autre .<br>
+</li>
+<li>générer des variables dans une frame en utilisant des informations issues d’une ou plusieurs autres <em>frame</em>.</li>
 </ul>
+<p>Depuis Stata 16, à chaque base active est associée une <em>frame</em> nommée <em>default</em>. On peut récupérer l’information sur les frames créées lors d’une session avec les instruction <strong><code>frame dir</code></strong> ou <strong><code>frame list</code></strong>. Le nombre de lignes (observations) et colonnes (variables) sont indiquées.</p>
+<p>On ouvre une session avec Stata, la frame * default* avec 0 ligne et 0 colonnes est indiquée avec <code>frame dir</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>frame <span class="ot">dir</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  default  0 x 0</code></pre>
+</div>
+</div>
+<p>On ouvre une base, et de nouveau avec <code>frame dir</code>:</p>
+<div class="cell" data-collectcode="true">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">webuse</span> nhanes2</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>frame <span class="ot">dir</span> </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="kw">des</span>, <span class="fu">s</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre class="result"><code>  default  10351 x 58; nhanes2.dta
 
 
+Contains data from https://www.stata-press.com/data/r17/nhanes2.dta
+ Observations:        10,351                  
+    Variables:            58                  20 Dec 2020 10:07
+Sorted by: </code></pre>
+</div>
+</div>
+<p>On souhaite renommer cette frame <em>default</em>, par exemple <em>nhanes</em>: <em><code>frame rename</code></em></p>
+<div class="cell" data-collectcode="true">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>frame <span class="kw">rename</span> <span class="kw">default</span> nhanes</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>frame <span class="ot">dir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre class="result"><code>  nhanes  10351 x 58; nhanes2.dta</code></pre>
+</div>
+</div>
+<section id="création-dune-frame" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> <strong>Création d’une frame</strong></h1>
+<p>On souhaite, par exemple, créer des bases d’indicateurs en collapsant des informations issues de la base/frame <em>nhanes</em>, sur la tension artérielle (<em>bpsystol</em>) et sur l’IMC (<em>bmi</em>), tout en gardant les informations sur le sexe (<em>sex</em>). On va générer deux frames avec <strong><code>frame put</code></strong>.</p>
+<p>On indique simplement la sélection de variables et avec l’option <strong><code>into()</code></strong> le nom de la nouvelle frame.</p>
+<div class="cell" data-collectcode="true">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>frame put sex bpsystol, into(tension)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>frame put sex bmi,      into(imc)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>frame <span class="ot">dir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre class="result"><code>* imc      10351 x 2
+  nhanes   10351 x 58; nhanes2.dta
+* tension  10351 x 2
+
+Note: Frames marked with * contain unsaved data.</code></pre>
+</div>
+</div>
+<p><em>Remarques</em></p>
+<ul>
+<li>pas de préserve/restore et aucune opération de sauvegarde n’ont été nécessaire.</li>
+<li><code>frame dir</code> indique les frames qui ne sont pas enregistrées en dur (.dta).</li>
+<li>On peut utiliser les arguments <code>if</code> <code>in</code> pour sélectionner des observations</li>
+</ul>
+</section>
+<section id="opérations-en-parallèle" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> <strong>Opérations en parallèle</strong></h1>
+<p>On a maintenant 3 frames dans la session: la frame active <em>nhanes</em> (chargée dans l’interface), et en arrière plan <em>tension</em> et <em>imc</em>.<br>
+On peut continuer à travailler sur la base <em>nhanes</em>, mais aussi simultanément sur les deux nouvelles frames.</p>
+<p>Une seule ligne de commande:</p>
+<pre><code>frame nom_frame: command</code></pre>
+<p>Plusieurs lignes de commandes:</p>
+<pre><code>frame nom_frame {
+command1
+command2
+.
+.
+.
+} </code></pre>
+<div class="cell" data-collectcode="true">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>* frame active (nhanes2)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> agegrp</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>frame tension: <span class="kw">rename</span> bpsystol tension</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>frame tension: <span class="kw">mean</span>   tension, <span class="bn">over</span>(sex)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>frame imc: <span class="kw">rename</span> bmi imc</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>frame imc: <span class="kw">mean</span>   imc, <span class="bn">over</span>(sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre class="result"><code>  Age group |      Freq.     Percent        Cum.
+------------+-----------------------------------
+      20–29 |      2,320       22.41       22.41
+      30–39 |      1,622       15.67       38.08
+      40–49 |      1,272       12.29       50.37
+      50–59 |      1,291       12.47       62.84
+      60–69 |      2,860       27.63       90.47
+        70+ |        986        9.53      100.00
+------------+-----------------------------------
+      Total |     10,351      100.00
+
+
+
+Mean estimation                          Number of obs = 10,351
+
+---------------------------------------------------------------
+              |       Mean   Std. err.     [95% conf. interval]
+--------------+------------------------------------------------
+c.tension@sex |
+        Male  |   132.8877   .2994383      132.3007    133.4746
+      Female  |   129.0679   .3407989      128.3998    129.7359
+---------------------------------------------------------------
+
+
+
+Mean estimation                         Number of obs = 10,351
+
+--------------------------------------------------------------
+             |       Mean   Std. err.     [95% conf. interval]
+-------------+------------------------------------------------
+   c.imc@sex |
+       Male  |   25.50999   .0573945      25.39749     25.6225
+     Female  |   25.56256   .0759569      25.41367    25.71145
+--------------------------------------------------------------</code></pre>
+</div>
+</div>
+<p>Sur le même principe, on va collapser les frames et <em>tension</em> et <em>imcs</em> (moyennes de <em>tension</em> et <em>imc</em> par sexe)</p>
+<div class="cell" data-collectcode="true">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>frame tension {</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">collapse</span> tension, <span class="kw">by</span>(sex)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>frame imc {</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="kw">collapse</span> imc, <span class="kw">by</span>(sex)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre class="result"><code>     |    sex    tension |
+     |-------------------|
+  1. |   Male   132.8877 |
+  2. | Female   129.0679 |
+     +-------------------+
+
+     +-------------------+
+     |    sex        imc |
+     |-------------------|
+  1. |   Male   25.50999 |
+  2. | Female   25.56256 |
+     +-------------------+</code></pre>
+</div>
+</div>
+<div class="cell" data-collectcode="true">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>frame <span class="ot">dir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre class="result"><code>* imc      2 x 2
+  nhanes   10351 x 58; nhanes2.dta
+* tension  2 x 2
+
+Note: Frames marked with * contain unsaved data.</code></pre>
+</div>
+</div>
+<p>Remarque: la frame/base <em>nhanes</em> et toujours celle qui est chargée dans l’interface. On peut changer à tout instant de frame chargée dans l’interface avec <strong><code>frame change nom_frame</code></strong></p>
+</section>
+<section id="liaison-entre-frames" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> <strong>Liaison entre frames</strong></h1>
+<p>L’autre nouveauté est le système de liaison: - Il permet d’apparier des informations entre bases - Il permet de faire des opérations entre frames sans avoir à apparier des bases</p>
+<p>Pour lier deux frames on utilise la commande <strong><code>frlink</code></strong>:<br>
+- Nécessite une clé d’appariement, comme pour <code>merge</code> une ou plusieurs variables - On doit indiquer le type de liaison: <strong>1:1</strong> ou <strong>m:1</strong> - Stata génère une variable de liaison, on peut lui donner un nom - Petit regret: on ne peut lier que deux frames à la fois. Dans notre exemple, on aurait par exemple aimer lier la frame <em>nhanes</em> aux frames <em>tension</em> et <em>imc</em> en une ligne. On devra le faire deux fois, avec deux variables de liaison identiques.</p>
+<pre><code>frlink varlist, frame(nom_frame) gen(link_name)</code></pre>
+<p>Ici la clé d’appariement est la variable <em>sex</em>, la liaison est de type <strong>m:1</strong></p>
+<div class="cell" data-collectcode="true">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>frlink <span class="fu">m</span>:1 sex, frame(tension) <span class="kw">gen</span>(l1)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>frlink <span class="fu">m</span>:1 sex, frame(imc)     <span class="kw">gen</span>(l2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre class="result"><code>  (all observations in frame nhanes matched)
+
+  (all observations in frame nhanes matched)</code></pre>
+</div>
+</div>
+<p>on souhaite apparier les variables <em>tension</em> et <em>inc</em> à la base/frame <em>nhanes</em>: <strong><code>frget</code></strong>. La variable de liaison joue le rôle de la clé d’identification.</p>
+<p>Avantage:</p>
+<ul>
+<li>on merge des variables et non des bases. On sélectionne donc les variables que l’on juge utile</li>
+<li>on peut renommer les variables avec <strong><code>frget</code></strong>, ici <em>mtension</em> pour <em>tension</em> et <em>mimc</em> pour <em>imc</em>. Attention aux habitudes, ici pour renommer c’est nouveau_nom=ancien_nom.</li>
+</ul>
+<div class="cell" data-collectcode="true">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>frget mtension=tension, from(l1)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>frget mimc=imc,     from(l2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre class="result"><code>  (1 variable copied from linked frame)
+
+  (1 variable copied from linked frame)</code></pre>
+</div>
+</div>
+<p>Les variables <em>mtension</em> et <em>minc</em> sont maintenant dans la base/frame <em>nhanes</em></p>
+<div class="cell" data-collectcode="true">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">mean</span> mtension mimc, <span class="bn">over</span>(sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre class="result"><code>Mean estimation                           Number of obs = 10,351
+
+----------------------------------------------------------------
+               |       Mean   Std. err.     [95% conf. interval]
+---------------+------------------------------------------------
+c.mtension@sex |
+         Male  |   132.8877          0             .           .
+       Female  |   129.0679          0             .           .
+               |
+    c.mimc@sex |
+         Male  |   25.50999          0             .           .
+       Female  |   25.56256          0             .           .
+----------------------------------------------------------------</code></pre>
+</div>
+</div>
+<p>Imaginons que nous ne souhaitions pas importer les variables <em>mtension</em> <em>minc</em> qui joueraient ici le rôle de variables contextuelles, mais mesurer simplement un écart entre les observations individuelles et les moyennes, en tenant compte du sexe de la personnes. On peut générer des variables sans appariement préalable avec une nouvelle fonction, ajoutée à <strong><code>gen</code></strong> et <strong><code>replace</code></strong>, <strong><code>frval</code></strong>.</p>
+<p><strong>syntaxe</strong> : <strong><code>frval(variable_liaison, nom_variable)</code></strong></p>
+<p>En amont je supprime les variables mtension et mimc de la frame <em>nhanes</em> (inutiles) et renomme les variables tension et imc dans leur frame respective (pour facilité la lecture de <code>frval</code>)</p>
+<div class="cell" data-collectcode="true">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> mtension mimc</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>frame tension: <span class="kw">rename</span> tension mean_tension</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>frame imc:     <span class="kw">rename</span> imc     mean_imc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre class="result"><code></code></pre>
+</div>
+</div>
+<p>Création des variables <em>diff_tens</em> et <em>diff_imc</em></p>
+<div class="cell" data-collectcode="true">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> diff_tens = bpsystol - frval(l1, mean_tension)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> diff_imc =  bmi      - frval(l2, mean_imc)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span>  diff_tens diff_imc <span class="kw">in</span> 1/10</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre class="result"><code>     | diff_tens    diff_imc |
+     |-----------------------|
+  1. |  -26.8877   -5.014309 |
+  2. | -21.06789    -4.54022 |
+  3. | -31.06789   -.5886974 |
+  4. |  50.93211    10.16616 |
+  5. | -9.067886    2.361246 |
+     |-----------------------|
+  6. |  50.93211    4.939587 |
+  7. | -29.06789   -2.530706 |
+  8. |  24.93211   -2.527401 |
+  9. | -9.067886    .0732231 |
+ 10. |  -28.8877   -4.530003 |
+     +-----------------------+</code></pre>
+</div>
+</div>
+<p>Dans une même création de variable, on peut utiliser <strong><code>frval</code></strong> pour plusieurs liaisons, et dans des expression conditionnelles. Si on souhaite ici créer une indicatrice qui repère les personnes dont la tension et l’imc sont supérieurs à la moyenne. Les variables <em>diff_tens</em> et <em>diff_imc</em> étant inutiles.</p>
+<div class="cell" data-collectcode="true">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> diff_tens diff_imc</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> sup_tens_imc = bpsystol&gt; frval(l1, mean_tens) &amp; bmi &gt; frval(l2, mean_imc)</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span> sup_tens_imc <span class="kw">in</span> 1/10</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre class="result"><code>     | sup_te~c |
+     |----------|
+  1. |        0 |
+  2. |        0 |
+  3. |        0 |
+  4. |        1 |
+  5. |        0 |
+     |----------|
+  6. |        1 |
+  7. |        0 |
+  8. |        0 |
+  9. |        0 |
+ 10. |        0 |
+     +----------+</code></pre>
+</div>
+</div>
+</section>
+<section id="autres-opérations" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> <strong>Autres opérations</strong></h1>
+<p><strong>Vérifier la frame chargée dans l’interface</strong></p>
+<p><strong><code>frame pwf</code></strong> ou plus rapidement <strong><code>pwf</code></strong></p>
+<div class="cell" data-collectcode="true">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>pwf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre class="result"><code>  (current frame is nhanes)</code></pre>
+</div>
+</div>
+<p><strong>Changer de frame chargée dans l’interface</strong></p>
+<p>Depuis le début, seule la frame <em>nhanes</em> était chargée dans l’interface. On peut à tout moment changer la frame chargée avec <em><code>frame change nom_frame</code></em>.</p>
+<div class="cell" data-collectcode="true">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>frame change tension</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="kw">des</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>frame nhanes:  <span class="kw">des</span>, <span class="fu">s</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>frame change nhanes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre class="result"><code>Contains data
+ Observations:             2                  
+    Variables:             2                  
+-------------------------------------------------------------------------------
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+-------------------------------------------------------------------------------
+sex             byte    %9.0g      sex        Sex
+mean_tension    float   %9.0g                 (mean) tension
+-------------------------------------------------------------------------------
+Sorted by: sex
+     Note: Dataset has changed since last saved.
+
+
+Contains data from https://www.stata-press.com/data/r17/nhanes2.dta
+ Observations:        10,351                  
+    Variables:            61                  20 Dec 2020 10:07
+Sorted by: 
+     Note: Dataset has changed since last saved.
+</code></pre>
+</div>
+</div>
+<p><strong>Supprimer des frames</strong></p>
+<ul>
+<li>On peut supprimer à tout moment une frame qui n’est pas chargée dans l’interface avec <strong><code>frame drop nom_frame</code></strong>. Si on applique cette commande à la frame chargée, Stata renvoie un message d’erreur.</li>
+<li>On peut supprimer toutes les frames avec <strong><code>frame reset</code></strong>. Dans ce cas plus aucune base ne sera chargée dans l’interface.</li>
+</ul>
+<div class="cell" data-collectcode="true">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>frame <span class="kw">drop</span> tension</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>frame <span class="ot">dir</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>frame <span class="kw">reset</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>frame <span class="ot">dir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre class="result"><code>* imc     2 x 2
+* nhanes  10351 x 61; nhanes2.dta
+
+Note: Frames marked with * contain unsaved data.
+
+
+  default  0 x 0</code></pre>
+</div>
+</div>
+<p>Il reste la frame “vide” <em>default</em> générée autotmatiquement par Stata.</p>
+<p><strong>Création d’une frame</strong></p>
+<p>On peut créer une frame <em>vide</em> à tout moment avec <strong><code>frame create nom_frame</code></strong>. On peut également ajouter une liste de nom de variables: <strong><code>frame create nom_frame varlist</code></strong></p>
+<div class="cell" data-collectcode="true">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>frame create <span class="kw">new</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>frame <span class="ot">dir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre class="result"><code>  default  0 x 0
+  new      0 x 0</code></pre>
+</div>
+</div>
+<div class="cell" data-collectcode="true">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>frame create new2 x</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>frame <span class="ot">dir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre class="result"><code>  default  0 x 0
+  new      0 x 0
+* new2     0 x 1
+
+Note: Frames marked with * contain unsaved data.</code></pre>
+</div>
+</div>
+<p>La frame <em>new2</em> à une colonne, mais aucune observation</p>
+<div class="cell" data-collectcode="true">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>frame new2 {</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span> <span class="kw">obs</span> 1000</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> x = rnormal()</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">variable</span> x <span class="st">"x = random normal (0,1)"</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="kw">des</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>frame <span class="ot">dir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre class="result"><code>Number of observations (_N) was 0, now 1,000.
+(1,000 real changes made)
+
+Contains data
+ Observations:         1,000                  
+    Variables:             1                  
+-------------------------------------------------------------------------------
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+-------------------------------------------------------------------------------
+x               float   %9.0g                 x = random normal (0,1)
+-------------------------------------------------------------------------------
+Sorted by: 
+     Note: Dataset has changed since last saved.
+
+  default  0 x 0
+  new      0 x 0
+* new2     1000 x 1
+
+Note: Frames marked with * contain unsaved data.</code></pre>
+</div>
+</div>
+
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -511,6 +979,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../speedup/gtools/gtools.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Gtools</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../macro/intro.html" class="pagination-link">
+        <span class="nav-page-text">Présentation</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
