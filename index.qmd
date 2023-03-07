@@ -10,6 +10,27 @@ library(fontawesome)
 
 
 ::: callout-note 
+## 07 mars 2023: **`nbstata`**. Stata sous Jupyter.
+
+Depuis plusieurs années, il est possible d'utiliser le note *jupyter* avec Stata, en particulier avec la libraire de K.Barron [**`stata_kernel`**](https://kylebarron.dev/stata_kernel/). Suite à l'intégration de *Python* avec la version 16 de Stata, la librairie officielle [**`pystata`**](https://www.stata.com/python/pystata/index.html) a été proposée avec la version 17. Plus rapide (aucune latence ou presque), elle pêche néanmoins par l'obligation d'insérer le *magic* `%%stata` à chaque bloc de code et, il me semble, par l'absence de prise en charge de la couleur syntaxique.   
+Récemment une nouvelle librairie a été mise à disposition: [**`nbstata`**](https://github.com/hugetim/nbstata), qui améliore nettement la librairie usine: pas de magig en entrée de chaque bloc de codes, couleurs syntaxique, exportation du programme en .do.  Elle nécessite néanmoins la version 17 de Stata au minumum (la 18 sortant ce printemps).  
+
+Je ne reviendrai pas sur les questions d'installation, assez souvent sportive avec Python. Penser néanmoins à installer **miniconda**, que je ne recommande pas par ailleurs pour utiliser Python sous Stata. J'utilise deux installations de Python: la classique pour l'interface Stata, et conda lorsque j'utilise le notebook.  
+
+
+  <iframe id="inlineFrameExample"
+      title="Inline Frame Example"
+      width="1000"
+      height="500"
+      src="divers/nbstata.htm">
+  </iframe>
+
+
+
+:::
+
+
+::: callout-note 
 ## 27 février 2023
 
 Les  **frames**, introduites avec la version 16, permettent entres autres de travailler simultanément sur plusieurs bases de données sans avoir à multiplier les opérations  d'enregistrement/ouvrerture ou des preserve/restore. Elles introduisent, en plus, un système de liaison entre bases qui peuvent se substituer aux appariements classiques. Ces nouveautés permettent indirectement d'améliorement la durées d'éxécution des programmes, et de les simplifier. J'avais pris beaucoup de retard là-dessus.Le voilà partiellement comblé.
