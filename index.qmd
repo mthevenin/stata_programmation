@@ -33,7 +33,7 @@ Je ne reviendrai pas sur les questions d'installation, assez souvent sportive av
 ::: callout-note 
 ## 27 février 2023
 
-Les  **frames**, introduites avec la version 16, permettent entres autres de travailler simultanément sur plusieurs bases de données sans avoir à multiplier les opérations  d'enregistrement/ouvrerture ou des preserve/restore. Elles introduisent, en plus, un système de liaison entre bases qui peuvent se substituer aux appariements classiques. Ces nouveautés permettent indirectement d'améliorement la durées d'éxécution des programmes, et de les simplifier. J'avais pris beaucoup de retard là-dessus.Le voilà partiellement comblé.
+Les  **frames**, introduites avec la version 16, permettent entres autres de travailler simultanément sur plusieurs bases de données sans avoir à multiplier les opérations  d'enregistrement/ouvrerture ou des preserve/restore. Elles introduisent, en plus, un système de liaison entre bases qui peuvent se substituer aux appariements classiques. Ces nouveautés permettent indirectement d'améliorement la durées d'éxécution des programmes, et de les simplifier. J'avais pris beaucoup de retard là-dessus.Le voilà partiellement comblé: [lien](/speedup/frame/frame.html)
 
 :::
 
