@@ -7,7 +7,7 @@ website:
     location: sidebar
   page-navigation: true
   page-footer: 
-    center: "Marc Thévenin - Ined-Sms - Août 2022" 
+    center: "Marc Thévenin - Ined-Sms - Mars 2022" 
     background: dark
   navbar:
     collapse-below: lg

@@ -1,7 +1,12 @@
 ---
 title: "Frame"
----
 
+format: 
+  html: default
+  docx:
+    toc: true
+    number-sections: true
+---
 
 ```{r, include=FALSE}
 options(Encoding="UTF-8")

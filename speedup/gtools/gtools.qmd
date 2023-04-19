@@ -1,5 +1,11 @@
 ---
 title: "Gtools"
+
+format: 
+  html: default
+  docx:
+    toc: true
+    number-sections: true
 ---
 
 ```{r, include=FALSE}
@@ -34,8 +40,6 @@ knitr::opts_chunk$set(engine.path=list(stata=stataexe))
 - **gtools**: 
   - <https://gtools.readthedocs.io/en/latest/index.html>
   - <https://github.com/mcaceresb/stata-gtools>         
-
-
 
 
 
@@ -166,6 +170,8 @@ di  "GQUANTILES runtime =" `rt2'
 | quantcut | 0.04 | 0.24 | 2.38 | 29.11 |
 | ntile    | 0.06 | 0.16 | 1.54 | 15.51 |
 
+  
+
 ::: {.callout-note icon="false"}
 ## Fonctions R
 
@@ -177,6 +183,8 @@ di  "GQUANTILES runtime =" `rt2'
     -   Syntaxe pour la variable y1: **`df=df %>% mutate(gy1 = ntile(y1, 10))`**
 :::
 
+  
+  
 # **greshape**
 
 * Niveau syntaxe peu de différence avec la commande usine, si ce n'est pour les arguments `i()` et `j()`

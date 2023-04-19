@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.179">
+<meta name="generator" content="quarto-1.3.330">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,9 +17,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -46,43 +47,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -169,14 +140,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  <span class="menu-text">A propos</span></a>
   </li>  
 </ul>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Frame</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../speedup/gtools/gtools.html">Need for speed</a></li><li class="breadcrumb-item"><a href="../../speedup/frame/frame.html">Frame</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -184,143 +162,166 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
-      <div class="mt-2 flex-shrink-0 align-items-center">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">Formation introductive</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+ <span class="menu-text">Formation introductive</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../formation/chapitre0.html" class="sidebar-item-text sidebar-link">Présentation</a>
+  <a href="../../formation/chapitre0.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Présentation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../formation/chapitre1.html" class="sidebar-item-text sidebar-link">Introduction</a>
+  <a href="../../formation/chapitre1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../formation/chapitre2.html" class="sidebar-item-text sidebar-link">Environnement</a>
+  <a href="../../formation/chapitre2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Environnement</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../formation/chapitre3.html" class="sidebar-item-text sidebar-link">Le langage Stata</a>
+  <a href="../../formation/chapitre3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Le langage Stata</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../formation/chapitre4.html" class="sidebar-item-text sidebar-link">Les bases de données</a>
+  <a href="../../formation/chapitre4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Les bases de données</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../formation/chapitre5.html" class="sidebar-item-text sidebar-link">Les variables</a>
+  <a href="../../formation/chapitre5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Les variables</span></a>
   </div>
 </li>
           <li class="sidebar-item">
-  formation/chapitre6.qmd
+  <div class="sidebar-item-container"> 
+  <a href="../../formation/chapitre6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Opérations sur les bases</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+ <span class="menu-text">formation/chapitre7.qmd</span>
   </li>
           <li class="sidebar-item">
-  formation/chapitre7.qmd
-  </li>
-          <li class="sidebar-item">
+ <span class="menu-text">  </span>
   </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">Fichier profile</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+ <span class="menu-text">Fichier profile</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../profile/profile1.html" class="sidebar-item-text sidebar-link">Principe</a>
+  <a href="../../profile/profile1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Principe</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../profile/profile2.html" class="sidebar-item-text sidebar-link">Exemple profile.do</a>
+  <a href="../../profile/profile2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exemple profile.do</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Need for speed</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Need for speed</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../speedup/gtools/gtools.html" class="sidebar-item-text sidebar-link">Gtools</a>
+  <a href="../../speedup/gtools/gtools.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Gtools</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../speedup/frame/frame.html" class="sidebar-item-text sidebar-link active">Frame</a>
+  <a href="../../speedup/frame/frame.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Frame</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">Super Macro World</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+ <span class="menu-text">Super Macro World</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../macro/intro.html" class="sidebar-item-text sidebar-link">Présentation</a>
+  <a href="../../macro/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Présentation</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">C’est dans l’R</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+ <span class="menu-text">C’est dans l’R</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../R.html" class="sidebar-item-text sidebar-link">Stata et R</a>
+  <a href="../../R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Stata et R</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">Edition des outputs</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+ <span class="menu-text">Edition des outputs</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../tableaux/intro.html" class="sidebar-item-text sidebar-link">Intro - Collect</a>
+  <a href="../../tableaux/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Intro - Collect</span></a>
   </div>
 </li>
       </ul>
@@ -328,25 +329,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Sections</h2>
    
   <ul>
-  <li><a href="#création-dune-frame" id="toc-création-dune-frame" class="nav-link active" data-scroll-target="#création-dune-frame"><span class="toc-section-number">1</span>  <strong>Création d’une frame</strong></a></li>
-  <li><a href="#opérations-en-parallèle" id="toc-opérations-en-parallèle" class="nav-link" data-scroll-target="#opérations-en-parallèle"><span class="toc-section-number">2</span>  <strong>Opérations en parallèle</strong></a></li>
-  <li><a href="#liaison-entre-frames" id="toc-liaison-entre-frames" class="nav-link" data-scroll-target="#liaison-entre-frames"><span class="toc-section-number">3</span>  <strong>Liaison entre frames</strong></a></li>
-  <li><a href="#autres-opérations" id="toc-autres-opérations" class="nav-link" data-scroll-target="#autres-opérations"><span class="toc-section-number">4</span>  <strong>Autres opérations</strong></a></li>
+  <li><a href="#création-dune-frame" id="toc-création-dune-frame" class="nav-link active" data-scroll-target="#création-dune-frame"><span class="header-section-number">1</span> <strong>Création d’une frame</strong></a></li>
+  <li><a href="#opérations-en-parallèle" id="toc-opérations-en-parallèle" class="nav-link" data-scroll-target="#opérations-en-parallèle"><span class="header-section-number">2</span> <strong>Opérations en parallèle</strong></a></li>
+  <li><a href="#liaison-entre-frames" id="toc-liaison-entre-frames" class="nav-link" data-scroll-target="#liaison-entre-frames"><span class="header-section-number">3</span> <strong>Liaison entre frames</strong></a></li>
+  <li><a href="#autres-opérations" id="toc-autres-opérations" class="nav-link" data-scroll-target="#autres-opérations"><span class="header-section-number">4</span> <strong>Autres opérations</strong></a></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="frame.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Frame</h1>
+<h1 class="title">Frame</h1>
 </div>
 
 
@@ -376,7 +378,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>frame <span class="ot">dir</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  default  0 x 0</code></pre>
+<pre><code>* imc      2 x 2
+* nhanes   10351 x 60; nhanes2.dta
+* tension  2 x 2
+
+Note: Frames marked with * contain unsaved data.</code></pre>
 </div>
 </div>
 <p>On ouvre une base, et de nouveau avec <code>frame dir</code>:</p>
@@ -387,13 +393,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="kw">des</span>, <span class="fu">s</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="result"><code>  default  10351 x 58; nhanes2.dta
+<pre class="result"><code>no; dataset in memory has changed since last saved
+r(4);
 
-
-Contains data from https://www.stata-press.com/data/r17/nhanes2.dta
- Observations:        10,351                  
-    Variables:            58                  20 Dec 2020 10:07
-Sorted by: </code></pre>
+end of do-file
+r(4);</code></pre>
 </div>
 </div>
 <p>On souhaite renommer cette frame <em>default</em>, par exemple <em>nhanes</em>: <em><code>frame rename</code></em></p>
@@ -402,7 +406,15 @@ Sorted by: </code></pre>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>frame <span class="ot">dir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="result"><code>  nhanes  10351 x 58; nhanes2.dta</code></pre>
+<pre class="result"><code> no; dataset in memory has changed since last saved
+r(4);
+
+
+frame default not found
+r(111);
+
+end of do-file
+r(111);</code></pre>
 </div>
 </div>
 <section id="création-dune-frame" class="level1" data-number="1">
@@ -415,11 +427,15 @@ Sorted by: </code></pre>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>frame <span class="ot">dir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="result"><code>* imc      10351 x 2
-  nhanes   10351 x 58; nhanes2.dta
-* tension  10351 x 2
+<pre class="result"><code> no; dataset in memory has changed since last saved
+r(4);
 
-Note: Frames marked with * contain unsaved data.</code></pre>
+
+frame tension already defined
+r(110);
+
+end of do-file
+r(110);</code></pre>
 </div>
 </div>
 <p><em>Remarques</em></p>
@@ -453,7 +469,12 @@ command2
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>frame imc: <span class="kw">rename</span> bmi imc</span>
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>frame imc: <span class="kw">mean</span>   imc, <span class="bn">over</span>(sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="result"><code>  Age group |      Freq.     Percent        Cum.
+<pre class="result"><code> no; dataset in memory has changed since last saved
+r(4);
+
+
+
+  Age group |      Freq.     Percent        Cum.
 ------------+-----------------------------------
       20–29 |      2,320       22.41       22.41
       30–39 |      1,622       15.67       38.08
@@ -464,29 +485,11 @@ command2
 ------------+-----------------------------------
       Total |     10,351      100.00
 
+variable bpsystol not found
+r(111);
 
-
-Mean estimation                          Number of obs = 10,351
-
----------------------------------------------------------------
-              |       Mean   Std. err.     [95% conf. interval]
---------------+------------------------------------------------
-c.tension@sex |
-        Male  |   132.8877   .2994383      132.3007    133.4746
-      Female  |   129.0679   .3407989      128.3998    129.7359
----------------------------------------------------------------
-
-
-
-Mean estimation                         Number of obs = 10,351
-
---------------------------------------------------------------
-             |       Mean   Std. err.     [95% conf. interval]
--------------+------------------------------------------------
-   c.imc@sex |
-       Male  |   25.50999   .0573945      25.39749     25.6225
-     Female  |   25.56256   .0759569      25.41367    25.71145
---------------------------------------------------------------</code></pre>
+end of do-file
+r(111);</code></pre>
 </div>
 </div>
 <p>Sur le même principe, on va collapser les frames et <em>tension</em> et <em>imcs</em> (moyennes de <em>tension</em> et <em>imc</em> par sexe)</p>
@@ -501,7 +504,11 @@ Mean estimation                         Number of obs = 10,351
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span></span>
 <span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="result"><code>     |    sex    tension |
+<pre class="result"><code> no; dataset in memory has changed since last saved
+r(4);
+
+     +-------------------+
+     |    sex    tension |
      |-------------------|
   1. |   Male   132.8877 |
   2. | Female   129.0679 |
@@ -518,8 +525,12 @@ Mean estimation                         Number of obs = 10,351
 <div class="cell" data-collectcode="true">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>frame <span class="ot">dir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="result"><code>* imc      2 x 2
-  nhanes   10351 x 58; nhanes2.dta
+<pre class="result"><code> no; dataset in memory has changed since last saved
+r(4);
+
+
+* imc      2 x 2
+* nhanes   10351 x 60; nhanes2.dta
 * tension  2 x 2
 
 Note: Frames marked with * contain unsaved data.</code></pre>
@@ -538,9 +549,15 @@ Note: Frames marked with * contain unsaved data.</code></pre>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>frlink <span class="fu">m</span>:1 sex, frame(tension) <span class="kw">gen</span>(l1)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>frlink <span class="fu">m</span>:1 sex, frame(imc)     <span class="kw">gen</span>(l2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="result"><code>  (all observations in frame nhanes matched)
+<pre class="result"><code> no; dataset in memory has changed since last saved
+r(4);
 
-  (all observations in frame nhanes matched)</code></pre>
+
+variable l1 already exists
+r(110);
+
+end of do-file
+r(110);</code></pre>
 </div>
 </div>
 <p>on souhaite apparier les variables <em>tension</em> et <em>inc</em> à la base/frame <em>nhanes</em>: <strong><code>frget</code></strong>. La variable de liaison joue le rôle de la clé d’identification.</p>
@@ -553,7 +570,11 @@ Note: Frames marked with * contain unsaved data.</code></pre>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>frget mtension=tension, from(l1)</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>frget mimc=imc,     from(l2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="result"><code>  (1 variable copied from linked frame)
+<pre class="result"><code> no; dataset in memory has changed since last saved
+r(4);
+
+
+  (1 variable copied from linked frame)
 
   (1 variable copied from linked frame)</code></pre>
 </div>
@@ -562,19 +583,15 @@ Note: Frames marked with * contain unsaved data.</code></pre>
 <div class="cell" data-collectcode="true">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">mean</span> mtension mimc, <span class="bn">over</span>(sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="result"><code>Mean estimation                           Number of obs = 10,351
+<pre class="result"><code> no; dataset in memory has changed since last saved
+r(4);
 
-----------------------------------------------------------------
-               |       Mean   Std. err.     [95% conf. interval]
----------------+------------------------------------------------
-c.mtension@sex |
-         Male  |   132.8877          0             .           .
-       Female  |   129.0679          0             .           .
-               |
-    c.mimc@sex |
-         Male  |   25.50999          0             .           .
-       Female  |   25.56256          0             .           .
-----------------------------------------------------------------</code></pre>
+
+variable mtension not found
+r(111);
+
+end of do-file
+r(111);</code></pre>
 </div>
 </div>
 <p>Imaginons que nous ne souhaitions pas importer les variables <em>mtension</em> <em>minc</em> qui joueraient ici le rôle de variables contextuelles, mais mesurer simplement un écart entre les observations individuelles et les moyennes, en tenant compte du sexe de la personnes. On peut générer des variables sans appariement préalable avec une nouvelle fonction, ajoutée à <strong><code>gen</code></strong> et <strong><code>replace</code></strong>, <strong><code>frval</code></strong>.</p>
@@ -586,7 +603,15 @@ c.mtension@sex |
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>frame tension: <span class="kw">rename</span> tension mean_tension</span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>frame imc:     <span class="kw">rename</span> imc     mean_imc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="result"><code></code></pre>
+<pre class="result"><code> no; dataset in memory has changed since last saved
+r(4);
+
+
+variable mtension not found
+r(111);
+
+end of do-file
+r(111);</code></pre>
 </div>
 </div>
 <p>Création des variables <em>diff_tens</em> et <em>diff_imc</em></p>
@@ -596,20 +621,15 @@ c.mtension@sex |
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span>  diff_tens diff_imc <span class="kw">in</span> 1/10</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="result"><code>     | diff_tens    diff_imc |
-     |-----------------------|
-  1. |  -26.8877   -5.014309 |
-  2. | -21.06789    -4.54022 |
-  3. | -31.06789   -.5886974 |
-  4. |  50.93211    10.16616 |
-  5. | -9.067886    2.361246 |
-     |-----------------------|
-  6. |  50.93211    4.939587 |
-  7. | -29.06789   -2.530706 |
-  8. |  24.93211   -2.527401 |
-  9. | -9.067886    .0732231 |
- 10. |  -28.8877   -4.530003 |
-     +-----------------------+</code></pre>
+<pre class="result"><code> no; dataset in memory has changed since last saved
+r(4);
+
+
+variable mean_tension not found
+r(111);
+
+end of do-file
+r(111);</code></pre>
 </div>
 </div>
 <p>Dans une même création de variable, on peut utiliser <strong><code>frval</code></strong> pour plusieurs liaisons, et dans des expression conditionnelles. Si on souhaite ici créer une indicatrice qui repère les personnes dont la tension et l’imc sont supérieurs à la moyenne. Les variables <em>diff_tens</em> et <em>diff_imc</em> étant inutiles.</p>
@@ -620,20 +640,15 @@ c.mtension@sex |
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span> sup_tens_imc <span class="kw">in</span> 1/10</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="result"><code>     | sup_te~c |
-     |----------|
-  1. |        0 |
-  2. |        0 |
-  3. |        0 |
-  4. |        1 |
-  5. |        0 |
-     |----------|
-  6. |        1 |
-  7. |        0 |
-  8. |        0 |
-  9. |        0 |
- 10. |        0 |
-     +----------+</code></pre>
+<pre class="result"><code> no; dataset in memory has changed since last saved
+r(4);
+
+
+variable diff_tens not found
+r(111);
+
+end of do-file
+r(111);</code></pre>
 </div>
 </div>
 </section>
@@ -644,7 +659,11 @@ c.mtension@sex |
 <div class="cell" data-collectcode="true">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>pwf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="result"><code>  (current frame is nhanes)</code></pre>
+<pre class="result"><code> no; dataset in memory has changed since last saved
+r(4);
+
+
+  (current frame is nhanes)</code></pre>
 </div>
 </div>
 <p><strong>Changer de frame chargée dans l’interface</strong></p>
@@ -657,7 +676,13 @@ c.mtension@sex |
 <span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>frame change nhanes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="result"><code>Contains data
+<pre class="result"><code> no; dataset in memory has changed since last saved
+r(4);
+
+
+
+
+Contains data
  Observations:             2                  
     Variables:             2                  
 -------------------------------------------------------------------------------
@@ -665,7 +690,7 @@ Variable      Storage   Display    Value
     name         type    format    label      Variable label
 -------------------------------------------------------------------------------
 sex             byte    %9.0g      sex        Sex
-mean_tension    float   %9.0g                 (mean) tension
+tension         float   %9.0g                 (mean) tension
 -------------------------------------------------------------------------------
 Sorted by: sex
      Note: Dataset has changed since last saved.
@@ -673,7 +698,7 @@ Sorted by: sex
 
 Contains data from https://www.stata-press.com/data/r17/nhanes2.dta
  Observations:        10,351                  
-    Variables:            61                  20 Dec 2020 10:07
+    Variables:            60                  20 Dec 2020 10:07
 Sorted by: 
      Note: Dataset has changed since last saved.
 </code></pre>
@@ -691,8 +716,13 @@ Sorted by:
 <span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>frame <span class="kw">reset</span></span>
 <span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>frame <span class="ot">dir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="result"><code>* imc     2 x 2
-* nhanes  10351 x 61; nhanes2.dta
+<pre class="result"><code> no; dataset in memory has changed since last saved
+r(4);
+
+
+
+* imc     2 x 2
+* nhanes  10351 x 60; nhanes2.dta
 
 Note: Frames marked with * contain unsaved data.
 
@@ -707,17 +737,32 @@ Note: Frames marked with * contain unsaved data.
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>frame create <span class="kw">new</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>frame <span class="ot">dir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="result"><code>  default  0 x 0
-  new      0 x 0</code></pre>
+<pre class="result"><code> no; dataset in memory has changed since last saved
+r(4);
+
+
+
+* imc      2 x 2
+  new      0 x 0
+* nhanes   10351 x 60; nhanes2.dta
+* tension  2 x 2
+
+Note: Frames marked with * contain unsaved data.</code></pre>
 </div>
 </div>
 <div class="cell" data-collectcode="true">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>frame create new2 x</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>frame <span class="ot">dir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="result"><code>  default  0 x 0
-  new      0 x 0
+<pre class="result"><code> no; dataset in memory has changed since last saved
+r(4);
+
+
+
+* imc      2 x 2
 * new2     0 x 1
+* nhanes   10351 x 60; nhanes2.dta
+* tension  2 x 2
 
 Note: Frames marked with * contain unsaved data.</code></pre>
 </div>
@@ -733,26 +778,15 @@ Note: Frames marked with * contain unsaved data.</code></pre>
 <span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>frame <span class="ot">dir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="result"><code>Number of observations (_N) was 0, now 1,000.
-(1,000 real changes made)
+<pre class="result"><code> no; dataset in memory has changed since last saved
+r(4);
 
-Contains data
- Observations:         1,000                  
-    Variables:             1                  
--------------------------------------------------------------------------------
-Variable      Storage   Display    Value
-    name         type    format    label      Variable label
--------------------------------------------------------------------------------
-x               float   %9.0g                 x = random normal (0,1)
--------------------------------------------------------------------------------
-Sorted by: 
-     Note: Dataset has changed since last saved.
 
-  default  0 x 0
-  new      0 x 0
-* new2     1000 x 1
+frame new2 not found 
+r(111);
 
-Note: Frames marked with * contain unsaved data.</code></pre>
+end of do-file
+r(111);</code></pre>
 </div>
 </div>
 <p><strong>Ensemble du programme</strong></p>
@@ -878,9 +912,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1085,7 +1133,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-      <div class="nav-footer-center">Marc Thévenin - Ined-Sms - Août 2022</div>
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">Marc Thévenin - Ined-Sms - Mars 2022</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
   </div>
 </footer>
 

@@ -301,8 +301,9 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-body-container callout-body">
 <p>Depuis plusieurs années, il est possible d’utiliser le note <em>jupyter</em> avec Stata, en particulier avec la libraire de K.Barron <a href="https://kylebarron.dev/stata_kernel/"><strong><code>stata_kernel</code></strong></a>. Suite à l’intégration de <em>Python</em> avec la version 16 de Stata, la librairie officielle <a href="https://www.stata.com/python/pystata/index.html"><strong><code>pystata</code></strong></a> a été proposée avec la version 17. Plus rapide (aucune latence ou presque), elle pêche néanmoins par l’obligation d’insérer le <em>magic</em> <code>%%stata</code> à chaque bloc de code et, il me semble, par l’absence de prise en charge de la couleur syntaxique.<br>
-Récemment une nouvelle librairie a été mise à disposition: <a href="https://github.com/hugetim/nbstata"><strong><code>nbstata</code></strong></a>, qui améliore nettement la librairie usine: pas de magig en entrée de chaque bloc de codes, couleurs syntaxique, exportation du programme en .do. Elle nécessite néanmoins la version 17 de Stata au minumum (la 18 sortant ce printemps).</p>
-<p>Je ne reviendrai pas sur les questions d’installation, assez souvent sportive avec Python. Penser néanmoins à installer <strong>miniconda</strong>, que je ne recommande pas par ailleurs pour utiliser Python sous Stata. J’utilise deux installations de Python: la classique pour l’interface Stata, et conda lorsque j’utilise le notebook.</p>
+Récemment<br>
+T.Huegerich a mis à disposition une nouvelle librairie <a href="https://github.com/hugetim/nbstata"><strong><code>nbstata</code></strong></a>, qui améliore nettement la librairie usine: pas de magic en entrée de chaque bloc de codes, couleurs syntaxique, exportation du programme en .do. Elle nécessite néanmoins la version 17 de Stata au minumum (la 18 sortant ce printemps).</p>
+<p>Je ne reviendrai pas sur la question de l’installation, assez souvent sportive avec Python. Penser néanmoins à installer <strong>miniconda</strong>, que je ne recommande pas par ailleurs pour utiliser Python sous Stata. J’utilise deux installations de Python: la classique pour une utilisation avec l’interface Stata, et conda lorsque j’utilise le notebook.</p>
 <p><iframe id="inlineFrameExample" title="Inline Frame Example" width="1000" height="500" src="divers/nbstata.htm"> </iframe></p>
 </div>
 </div>
@@ -629,7 +630,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       <div class="nav-footer-center">Marc Thévenin - Ined-Sms - Août 2022</div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","loop":true,"closeEffect":"zoom","openEffect":"zoom"});</script>
+<script>var lightboxQuarto = GLightbox({"loop":true,"selector":".lightbox","descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom"});</script>
 
 
 
