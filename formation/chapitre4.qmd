@@ -1,12 +1,22 @@
 ---
 title: "Les bases de données"
+format: 
+  html: default
+  docx:
+    toc: true
+    number-sections: true
+filters:
+   - lightbox
+lightbox: auto
 ---
 
-```{r, echo=FALSE, , message=FALSE}
+
+```{r, include=FALSE}
 library(Statamarkdown)
 stataexe <- "C:/Program Files/Stata17/StataSE-64.exe"
 knitr::opts_chunk$set(engine.path=list(stata=stataexe))
 ```
+
 
 
 | SECTION                                                    | COMMANDES ET EXPRESSIONS                                                                                       |
