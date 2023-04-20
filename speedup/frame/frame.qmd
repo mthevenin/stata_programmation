@@ -39,6 +39,7 @@ frame dir
 On ouvre une base, et de nouveau avec `frame dir`: 
 
 ```{stata, collectcode=TRUE, class.output="result"}
+clear
 webuse nhanes2
 
 frame dir 
@@ -247,7 +248,7 @@ frame reset
 frame dir
 ```
 
-Il reste la frame "vide" *default* générée autotmatiquement par Stata.
+Il reste la frame "vide" *default* générée automatiquement par Stata.
 
 **Création d'une frame**
 

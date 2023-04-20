@@ -1,0 +1,35 @@
+---
+title: "Opérations sur les bases"
+---
+
+
+
+# Fusion
+
+## Append
+
+
+## Merge
+
+### Classique
+
+### Avec gtools
+
+
+## Avec des frames
+
+
+# Transposition (reshape)
+
+
+## large à long
+
+
+## long à large
+ 
+ 
+# Allonger une base (expand)
+ 
+ 
+ 
+ 

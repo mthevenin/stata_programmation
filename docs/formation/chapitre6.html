@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.330">
+<meta name="generator" content="quarto-1.3.179">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Présentation</title>
+<title>Opérations sur les bases</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -17,7 +17,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
 </style>
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../R.html" rel="next">
-<link href="../speedup/frame/frame.html" rel="prev">
+<link href="../profile/profile1.html" rel="next">
+<link href="../formation/chapitre5.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -41,9 +41,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -109,21 +106,14 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">A propos</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../macro/intro.html">Super Macro World</a></li><li class="breadcrumb-item"><a href="../macro/intro.html">Présentation</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Opérations sur les bases</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
       </button>
     </div>
   </nav>
@@ -131,166 +121,145 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
-        <div class="mt-2 flex-shrink-0 align-items-center">
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+      <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-        </div>
+      </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
- <span class="menu-text">Formation introductive</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Formation introductive</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../formation/chapitre0.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Présentation</span></a>
+  <a href="../formation/chapitre0.html" class="sidebar-item-text sidebar-link">Présentation</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../formation/chapitre1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Introduction</span></a>
+  <a href="../formation/chapitre1.html" class="sidebar-item-text sidebar-link">Introduction</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../formation/chapitre2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Environnement</span></a>
+  <a href="../formation/chapitre2.html" class="sidebar-item-text sidebar-link">Environnement</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../formation/chapitre3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Le langage Stata</span></a>
+  <a href="../formation/chapitre3.html" class="sidebar-item-text sidebar-link">Le langage Stata</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../formation/chapitre4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Les bases de données</span></a>
+  <a href="../formation/chapitre4.html" class="sidebar-item-text sidebar-link">Les bases de données</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../formation/chapitre5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Les variables</span></a>
+  <a href="../formation/chapitre5.html" class="sidebar-item-text sidebar-link">Les variables</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../formation/chapitre6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Opérations sur les bases</span></a>
+  <a href="../formation/chapitre6.html" class="sidebar-item-text sidebar-link active">Opérations sur les bases</a>
   </div>
 </li>
           <li class="sidebar-item">
- <span class="menu-text">formation/chapitre7.qmd</span>
+  formation/chapitre7.qmd
   </li>
           <li class="sidebar-item">
- <span class="menu-text">  </span>
   </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
- <span class="menu-text">Fichier profile</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">Fichier profile</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../profile/profile1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Principe</span></a>
+  <a href="../profile/profile1.html" class="sidebar-item-text sidebar-link">Principe</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../profile/profile2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Exemple profile.do</span></a>
+  <a href="../profile/profile2.html" class="sidebar-item-text sidebar-link">Exemple profile.do</a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
- <span class="menu-text">Need for speed</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">Need for speed</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../speedup/gtools/gtools.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Gtools</span></a>
+  <a href="../speedup/gtools/gtools.html" class="sidebar-item-text sidebar-link">Gtools</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../speedup/frame/frame.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Frame</span></a>
+  <a href="../speedup/frame/frame.html" class="sidebar-item-text sidebar-link">Frame</a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
- <span class="menu-text">Super Macro World</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">Super Macro World</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../macro/intro.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Présentation</span></a>
+  <a href="../macro/intro.html" class="sidebar-item-text sidebar-link">Présentation</a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
- <span class="menu-text">C’est dans l’R</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">C’est dans l’R</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../R.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Stata et R</span></a>
+  <a href="../R.html" class="sidebar-item-text sidebar-link">Stata et R</a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
- <span class="menu-text">Edition des outputs</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">Edition des outputs</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tableaux/intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Intro - Collect</span></a>
+  <a href="../tableaux/intro.html" class="sidebar-item-text sidebar-link">Intro - Collect</a>
   </div>
 </li>
       </ul>
@@ -298,17 +267,37 @@ ul.task-list li input[type="checkbox"] {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Sections</h2>
+   
+  <ul>
+  <li><a href="#fusion" id="toc-fusion" class="nav-link active" data-scroll-target="#fusion"><span class="toc-section-number">1</span>  Fusion</a>
+  <ul class="collapse">
+  <li><a href="#append" id="toc-append" class="nav-link" data-scroll-target="#append"><span class="toc-section-number">1.1</span>  Append</a></li>
+  <li><a href="#merge" id="toc-merge" class="nav-link" data-scroll-target="#merge"><span class="toc-section-number">1.2</span>  Merge</a>
+  <ul class="collapse">
+  <li><a href="#classique" id="toc-classique" class="nav-link" data-scroll-target="#classique"><span class="toc-section-number">1.2.1</span>  Classique</a></li>
+  <li><a href="#avec-gtools" id="toc-avec-gtools" class="nav-link" data-scroll-target="#avec-gtools"><span class="toc-section-number">1.2.2</span>  Avec gtools</a></li>
+  </ul></li>
+  <li><a href="#avec-des-frames" id="toc-avec-des-frames" class="nav-link" data-scroll-target="#avec-des-frames"><span class="toc-section-number">1.3</span>  Avec des frames</a></li>
+  </ul></li>
+  <li><a href="#transposition-reshape" id="toc-transposition-reshape" class="nav-link" data-scroll-target="#transposition-reshape"><span class="toc-section-number">2</span>  Transposition (reshape)</a>
+  <ul class="collapse">
+  <li><a href="#large-à-long" id="toc-large-à-long" class="nav-link" data-scroll-target="#large-à-long"><span class="toc-section-number">2.1</span>  large à long</a></li>
+  <li><a href="#long-à-large" id="toc-long-à-large" class="nav-link" data-scroll-target="#long-à-large"><span class="toc-section-number">2.2</span>  long à large</a></li>
+  </ul></li>
+  <li><a href="#allonger-une-base-expand" id="toc-allonger-une-base-expand" class="nav-link" data-scroll-target="#allonger-une-base-expand"><span class="toc-section-number">3</span>  Allonger une base (expand)</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Présentation</h1>
+<h1 class="title d-none d-lg-block">Opérations sur les bases</h1>
 </div>
 
 
@@ -323,18 +312,38 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p><a href="donkeykong.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="donkeykong.gif" class="img-fluid" style="width:5.0%"></a> <strong>26 AOUT 2022</strong></p>
-<ul>
-<li><p>Vraisemblablement la section qui sera la plus dense, avec également des éléments de programmation d’algorithme.</p></li>
-<li><p>Pas de contenu en mis à disposition mais on peut déjà se diriger vers le chapitre sur macros dans la formation sur les graphiques: <a href="https://mthevenin.github.io/stata_graphiques/formation/formation21.html">lien</a></p></li>
-<li><p>La première contribution sera surement sur les objets <strong><code>scalar</code></strong>. Il y a souvent des confusions entre ce type d’objets qui ne sont pas justement pas des macros mais des <strong>pseudo variables</strong>, mais dont l’utilisation peut dans certains contextes s’avérer être un bon substitut aux macros de type <code>local</code> dans les programmes:</p>
-<ul>
-<li>pas d’appel par des côtes</li>
-<li>enregistrement sur la session et non sur le temps d’exécution</li>
-</ul></li>
-</ul>
+<section id="fusion" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Fusion</h1>
+<section id="append" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="append"><span class="header-section-number">1.1</span> Append</h2>
+</section>
+<section id="merge" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="merge"><span class="header-section-number">1.2</span> Merge</h2>
+<section id="classique" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="classique"><span class="header-section-number">1.2.1</span> Classique</h3>
+</section>
+<section id="avec-gtools" class="level3" data-number="1.2.2">
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="avec-gtools"><span class="header-section-number">1.2.2</span> Avec gtools</h3>
+</section>
+</section>
+<section id="avec-des-frames" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="avec-des-frames"><span class="header-section-number">1.3</span> Avec des frames</h2>
+</section>
+</section>
+<section id="transposition-reshape" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Transposition (reshape)</h1>
+<section id="large-à-long" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="large-à-long"><span class="header-section-number">2.1</span> large à long</h2>
+</section>
+<section id="long-à-large" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="long-à-large"><span class="header-section-number">2.2</span> long à large</h2>
+</section>
+</section>
+<section id="allonger-une-base-expand" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Allonger une base (expand)</h1>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -364,23 +373,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
+    target: function(trigger) {
+      return trigger.previousElementSibling;
     }
   });
   clipboard.on('success', function(e) {
@@ -572,29 +567,22 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../speedup/frame/frame.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Frame</span>
+      <a href="../formation/chapitre5.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Les variables</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../R.html" class="pagination-link">
-        <span class="nav-page-text">Stata et R</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../profile/profile1.html" class="pagination-link">
+        <span class="nav-page-text">Principe</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">
-      &nbsp;
-    </div>   
-    <div class="nav-footer-center">Marc Thévenin - Ined-Sms - Mars 2022</div>
-    <div class="nav-footer-right">
-      &nbsp;
-    </div>
+      <div class="nav-footer-center">Marc Thévenin - Ined-Sms - Mars 2022</div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":true,"descPosition":"bottom","openEffect":"zoom","closeEffect":"zoom"});</script>
 
 
 

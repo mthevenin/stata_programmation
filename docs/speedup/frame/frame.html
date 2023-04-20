@@ -378,26 +378,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>frame <span class="ot">dir</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>* imc      2 x 2
-* nhanes   10351 x 60; nhanes2.dta
-* tension  2 x 2
-
-Note: Frames marked with * contain unsaved data.</code></pre>
+<pre><code>  default  0 x 0</code></pre>
 </div>
 </div>
 <p>On ouvre une base, et de nouveau avec <code>frame dir</code>:</p>
 <div class="cell" data-collectcode="true">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">webuse</span> nhanes2</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>frame <span class="ot">dir</span> </span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="kw">des</span>, <span class="fu">s</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">clear</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">webuse</span> nhanes2</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>frame <span class="ot">dir</span> </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="kw">des</span>, <span class="fu">s</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="result"><code>no; dataset in memory has changed since last saved
-r(4);
+<pre class="result"><code>  default  10351 x 58; nhanes2.dta
 
-end of do-file
-r(4);</code></pre>
+
+Contains data from https://www.stata-press.com/data/r17/nhanes2.dta
+ Observations:        10,351                  
+    Variables:            58                  20 Dec 2020 10:07
+Sorted by: </code></pre>
 </div>
 </div>
 <p>On souhaite renommer cette frame <em>default</em>, par exemple <em>nhanes</em>: <em><code>frame rename</code></em></p>
@@ -406,15 +405,7 @@ r(4);</code></pre>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>frame <span class="ot">dir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="result"><code> no; dataset in memory has changed since last saved
-r(4);
-
-
-frame default not found
-r(111);
-
-end of do-file
-r(111);</code></pre>
+<pre class="result"><code>  nhanes  10351 x 58; nhanes2.dta</code></pre>
 </div>
 </div>
 <section id="création-dune-frame" class="level1" data-number="1">
@@ -427,15 +418,11 @@ r(111);</code></pre>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>frame <span class="ot">dir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="result"><code> no; dataset in memory has changed since last saved
-r(4);
+<pre class="result"><code>* imc      10351 x 2
+  nhanes   10351 x 58; nhanes2.dta
+* tension  10351 x 2
 
-
-frame tension already defined
-r(110);
-
-end of do-file
-r(110);</code></pre>
+Note: Frames marked with * contain unsaved data.</code></pre>
 </div>
 </div>
 <p><em>Remarques</em></p>
@@ -469,12 +456,7 @@ command2
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>frame imc: <span class="kw">rename</span> bmi imc</span>
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>frame imc: <span class="kw">mean</span>   imc, <span class="bn">over</span>(sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="result"><code> no; dataset in memory has changed since last saved
-r(4);
-
-
-
-  Age group |      Freq.     Percent        Cum.
+<pre class="result"><code>  Age group |      Freq.     Percent        Cum.
 ------------+-----------------------------------
       20–29 |      2,320       22.41       22.41
       30–39 |      1,622       15.67       38.08
@@ -485,11 +467,29 @@ r(4);
 ------------+-----------------------------------
       Total |     10,351      100.00
 
-variable bpsystol not found
-r(111);
 
-end of do-file
-r(111);</code></pre>
+
+Mean estimation                          Number of obs = 10,351
+
+---------------------------------------------------------------
+              |       Mean   Std. err.     [95% conf. interval]
+--------------+------------------------------------------------
+c.tension@sex |
+        Male  |   132.8877   .2994383      132.3007    133.4746
+      Female  |   129.0679   .3407989      128.3998    129.7359
+---------------------------------------------------------------
+
+
+
+Mean estimation                         Number of obs = 10,351
+
+--------------------------------------------------------------
+             |       Mean   Std. err.     [95% conf. interval]
+-------------+------------------------------------------------
+   c.imc@sex |
+       Male  |   25.50999   .0573945      25.39749     25.6225
+     Female  |   25.56256   .0759569      25.41367    25.71145
+--------------------------------------------------------------</code></pre>
 </div>
 </div>
 <p>Sur le même principe, on va collapser les frames et <em>tension</em> et <em>imcs</em> (moyennes de <em>tension</em> et <em>imc</em> par sexe)</p>
@@ -504,11 +504,7 @@ r(111);</code></pre>
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span></span>
 <span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="result"><code> no; dataset in memory has changed since last saved
-r(4);
-
-     +-------------------+
-     |    sex    tension |
+<pre class="result"><code>     |    sex    tension |
      |-------------------|
   1. |   Male   132.8877 |
   2. | Female   129.0679 |
@@ -525,12 +521,8 @@ r(4);
 <div class="cell" data-collectcode="true">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>frame <span class="ot">dir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="result"><code> no; dataset in memory has changed since last saved
-r(4);
-
-
-* imc      2 x 2
-* nhanes   10351 x 60; nhanes2.dta
+<pre class="result"><code>* imc      2 x 2
+  nhanes   10351 x 58; nhanes2.dta
 * tension  2 x 2
 
 Note: Frames marked with * contain unsaved data.</code></pre>
@@ -549,15 +541,9 @@ Note: Frames marked with * contain unsaved data.</code></pre>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>frlink <span class="fu">m</span>:1 sex, frame(tension) <span class="kw">gen</span>(l1)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>frlink <span class="fu">m</span>:1 sex, frame(imc)     <span class="kw">gen</span>(l2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="result"><code> no; dataset in memory has changed since last saved
-r(4);
+<pre class="result"><code>  (all observations in frame nhanes matched)
 
-
-variable l1 already exists
-r(110);
-
-end of do-file
-r(110);</code></pre>
+  (all observations in frame nhanes matched)</code></pre>
 </div>
 </div>
 <p>on souhaite apparier les variables <em>tension</em> et <em>inc</em> à la base/frame <em>nhanes</em>: <strong><code>frget</code></strong>. La variable de liaison joue le rôle de la clé d’identification.</p>
@@ -570,11 +556,7 @@ r(110);</code></pre>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>frget mtension=tension, from(l1)</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>frget mimc=imc,     from(l2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="result"><code> no; dataset in memory has changed since last saved
-r(4);
-
-
-  (1 variable copied from linked frame)
+<pre class="result"><code>  (1 variable copied from linked frame)
 
   (1 variable copied from linked frame)</code></pre>
 </div>
@@ -583,15 +565,19 @@ r(4);
 <div class="cell" data-collectcode="true">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">mean</span> mtension mimc, <span class="bn">over</span>(sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="result"><code> no; dataset in memory has changed since last saved
-r(4);
+<pre class="result"><code>Mean estimation                           Number of obs = 10,351
 
-
-variable mtension not found
-r(111);
-
-end of do-file
-r(111);</code></pre>
+----------------------------------------------------------------
+               |       Mean   Std. err.     [95% conf. interval]
+---------------+------------------------------------------------
+c.mtension@sex |
+         Male  |   132.8877          0             .           .
+       Female  |   129.0679          0             .           .
+               |
+    c.mimc@sex |
+         Male  |   25.50999          0             .           .
+       Female  |   25.56256          0             .           .
+----------------------------------------------------------------</code></pre>
 </div>
 </div>
 <p>Imaginons que nous ne souhaitions pas importer les variables <em>mtension</em> <em>minc</em> qui joueraient ici le rôle de variables contextuelles, mais mesurer simplement un écart entre les observations individuelles et les moyennes, en tenant compte du sexe de la personnes. On peut générer des variables sans appariement préalable avec une nouvelle fonction, ajoutée à <strong><code>gen</code></strong> et <strong><code>replace</code></strong>, <strong><code>frval</code></strong>.</p>
@@ -603,15 +589,7 @@ r(111);</code></pre>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>frame tension: <span class="kw">rename</span> tension mean_tension</span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>frame imc:     <span class="kw">rename</span> imc     mean_imc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="result"><code> no; dataset in memory has changed since last saved
-r(4);
-
-
-variable mtension not found
-r(111);
-
-end of do-file
-r(111);</code></pre>
+<pre class="result"><code></code></pre>
 </div>
 </div>
 <p>Création des variables <em>diff_tens</em> et <em>diff_imc</em></p>
@@ -621,15 +599,20 @@ r(111);</code></pre>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span>  diff_tens diff_imc <span class="kw">in</span> 1/10</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="result"><code> no; dataset in memory has changed since last saved
-r(4);
-
-
-variable mean_tension not found
-r(111);
-
-end of do-file
-r(111);</code></pre>
+<pre class="result"><code>     | diff_tens    diff_imc |
+     |-----------------------|
+  1. |  -26.8877   -5.014309 |
+  2. | -21.06789    -4.54022 |
+  3. | -31.06789   -.5886974 |
+  4. |  50.93211    10.16616 |
+  5. | -9.067886    2.361246 |
+     |-----------------------|
+  6. |  50.93211    4.939587 |
+  7. | -29.06789   -2.530706 |
+  8. |  24.93211   -2.527401 |
+  9. | -9.067886    .0732231 |
+ 10. |  -28.8877   -4.530003 |
+     +-----------------------+</code></pre>
 </div>
 </div>
 <p>Dans une même création de variable, on peut utiliser <strong><code>frval</code></strong> pour plusieurs liaisons, et dans des expression conditionnelles. Si on souhaite ici créer une indicatrice qui repère les personnes dont la tension et l’imc sont supérieurs à la moyenne. Les variables <em>diff_tens</em> et <em>diff_imc</em> étant inutiles.</p>
@@ -640,15 +623,20 @@ r(111);</code></pre>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span> sup_tens_imc <span class="kw">in</span> 1/10</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="result"><code> no; dataset in memory has changed since last saved
-r(4);
-
-
-variable diff_tens not found
-r(111);
-
-end of do-file
-r(111);</code></pre>
+<pre class="result"><code>     | sup_te~c |
+     |----------|
+  1. |        0 |
+  2. |        0 |
+  3. |        0 |
+  4. |        1 |
+  5. |        0 |
+     |----------|
+  6. |        1 |
+  7. |        0 |
+  8. |        0 |
+  9. |        0 |
+ 10. |        0 |
+     +----------+</code></pre>
 </div>
 </div>
 </section>
@@ -659,11 +647,7 @@ r(111);</code></pre>
 <div class="cell" data-collectcode="true">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>pwf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="result"><code> no; dataset in memory has changed since last saved
-r(4);
-
-
-  (current frame is nhanes)</code></pre>
+<pre class="result"><code>  (current frame is nhanes)</code></pre>
 </div>
 </div>
 <p><strong>Changer de frame chargée dans l’interface</strong></p>
@@ -676,13 +660,7 @@ r(4);
 <span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>frame change nhanes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="result"><code> no; dataset in memory has changed since last saved
-r(4);
-
-
-
-
-Contains data
+<pre class="result"><code>Contains data
  Observations:             2                  
     Variables:             2                  
 -------------------------------------------------------------------------------
@@ -690,7 +668,7 @@ Variable      Storage   Display    Value
     name         type    format    label      Variable label
 -------------------------------------------------------------------------------
 sex             byte    %9.0g      sex        Sex
-tension         float   %9.0g                 (mean) tension
+mean_tension    float   %9.0g                 (mean) tension
 -------------------------------------------------------------------------------
 Sorted by: sex
      Note: Dataset has changed since last saved.
@@ -698,7 +676,7 @@ Sorted by: sex
 
 Contains data from https://www.stata-press.com/data/r17/nhanes2.dta
  Observations:        10,351                  
-    Variables:            60                  20 Dec 2020 10:07
+    Variables:            61                  20 Dec 2020 10:07
 Sorted by: 
      Note: Dataset has changed since last saved.
 </code></pre>
@@ -716,13 +694,8 @@ Sorted by:
 <span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>frame <span class="kw">reset</span></span>
 <span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>frame <span class="ot">dir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="result"><code> no; dataset in memory has changed since last saved
-r(4);
-
-
-
-* imc     2 x 2
-* nhanes  10351 x 60; nhanes2.dta
+<pre class="result"><code>* imc     2 x 2
+* nhanes  10351 x 61; nhanes2.dta
 
 Note: Frames marked with * contain unsaved data.
 
@@ -730,39 +703,24 @@ Note: Frames marked with * contain unsaved data.
   default  0 x 0</code></pre>
 </div>
 </div>
-<p>Il reste la frame “vide” <em>default</em> générée autotmatiquement par Stata.</p>
+<p>Il reste la frame “vide” <em>default</em> générée automatiquement par Stata.</p>
 <p><strong>Création d’une frame</strong></p>
 <p>On peut créer une frame <em>vide</em> à tout moment avec <strong><code>frame create nom_frame</code></strong>. On peut également ajouter une liste de nom de variables: <strong><code>frame create nom_frame varlist</code></strong></p>
 <div class="cell" data-collectcode="true">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>frame create <span class="kw">new</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>frame <span class="ot">dir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="result"><code> no; dataset in memory has changed since last saved
-r(4);
-
-
-
-* imc      2 x 2
-  new      0 x 0
-* nhanes   10351 x 60; nhanes2.dta
-* tension  2 x 2
-
-Note: Frames marked with * contain unsaved data.</code></pre>
+<pre class="result"><code>  default  0 x 0
+  new      0 x 0</code></pre>
 </div>
 </div>
 <div class="cell" data-collectcode="true">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>frame create new2 x</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>frame <span class="ot">dir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="result"><code> no; dataset in memory has changed since last saved
-r(4);
-
-
-
-* imc      2 x 2
+<pre class="result"><code>  default  0 x 0
+  new      0 x 0
 * new2     0 x 1
-* nhanes   10351 x 60; nhanes2.dta
-* tension  2 x 2
 
 Note: Frames marked with * contain unsaved data.</code></pre>
 </div>
@@ -778,15 +736,26 @@ Note: Frames marked with * contain unsaved data.</code></pre>
 <span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>frame <span class="ot">dir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="result"><code> no; dataset in memory has changed since last saved
-r(4);
+<pre class="result"><code>Number of observations (_N) was 0, now 1,000.
+(1,000 real changes made)
 
+Contains data
+ Observations:         1,000                  
+    Variables:             1                  
+-------------------------------------------------------------------------------
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+-------------------------------------------------------------------------------
+x               float   %9.0g                 x = random normal (0,1)
+-------------------------------------------------------------------------------
+Sorted by: 
+     Note: Dataset has changed since last saved.
 
-frame new2 not found 
-r(111);
+  default  0 x 0
+  new      0 x 0
+* new2     1000 x 1
 
-end of do-file
-r(111);</code></pre>
+Note: Frames marked with * contain unsaved data.</code></pre>
 </div>
 </div>
 <p><strong>Ensemble du programme</strong></p>
