@@ -2,19 +2,23 @@
 title: "Effets marginaux"
 author: "Marc Thevenin"
 date: "10-07-2022"
+format: 
+  html: default
+  docx:
+    toc: true
+    number-sections: true
 categories:
   - Regression
   - Marginal effect
 ---
 
-```{r, echo=FALSE, , message=FALSE}
+```{r, , class.output="result", include=FALSE}
 library(Statamarkdown)
 stataexe <- "C:/Program Files/Stata17/StataSE-64.exe"
 knitr::opts_chunk$set(engine.path=list(stata=stataexe))
 ```
 
 # **margins** et  **marginaleffects**
-
 
 **Package `margins` (2015? -)**
 
@@ -69,7 +73,7 @@ library(Statamarkdown) # pour comparaison avec Stata
 
 Base: petit extrait de la bases *nhanes2* (épidemio)
 
-```{r, message=F, warning=F}
+```{r, , class.output="result", message=F, warning=F}
 df <- read.csv("D:/D/Marc/SMS/STATA INED/Programmation/R/marginaleffect/nhanes.csv")
 df$hlthstat = as.factor(df$hlthstat)  
 ```
@@ -78,7 +82,7 @@ df$hlthstat = as.factor(df$hlthstat)
 ## Modèle logit (binaire) 
 
 **Estimation du modèle**
-```{r, message=F, warning=F}
+```{r, , class.output="result", message=F, warning=F}
 fit = glm(highbp ~ female + black + bmi, family=binomial, data=df)
 ```
 
@@ -88,7 +92,7 @@ fit = glm(highbp ~ female + black + bmi, family=binomial, data=df)
 
 ## Stata - margins
 
-```{stata, collectcode=T}
+```{stata, , class.output="result", collectcode=T}
 qui use "D:\D\Marc\SMS\STATA INED\Programmation\R\marginaleffect\nhanes.dta" , clear
 qui logit highbp female black bmi 
 margins, dydx(*) 
@@ -97,7 +101,7 @@ margins, dydx(*)
 
 ## R - margins
 
-```{r, message=F, warning=F}
+```{r, , class.output="result", message=F, warning=F}
 ame = margins(fit)
 summary(ame)
 ```
@@ -105,7 +109,7 @@ summary(ame)
 
 ## R - marginaleffects
 
-```{r, message=F, warning=F}
+```{r, , class.output="result", message=F, warning=F}
 ame = marginaleffects(fit)
 summary(ame)
 ```
@@ -127,17 +131,17 @@ qui use "D:\D\Marc\SMS\STATA INED\Programmation\R\marginaleffect\nhanes.dta"
 ```
 
 
-```{stata}
+```{stata, , class.output="result"}
 qui ologit hlthstat female black bmi 
 margins, dydx(*) 
 ```
 
-## R - margineffects
+## R - marginaleffects
 
 J'utilise la fonction **`clm`** du package `ordinal` pour estimer le modèle.  
 
 
-```{r,  message=F, warning=F}
+```{r, , class.output="result",  message=F, warning=F}
 fit = clm(hlthstat ~ female + black + bmi, family=binomial, data=df)
 ame = marginaleffects(fit)
 summary(ame)
@@ -157,13 +161,13 @@ Niveau output cela se complique pour sélectionner un ou un sous ensemble d'outc
 
 ## Stata - margins
 
-```{stata, echo=F, collectcode=TRUE, cleanlog=T}
+```{stata, ,  echo=F, collectcode=TRUE, cleanlog=T}
 clear
 qui use "D:\D\Marc\SMS\STATA INED\Programmation\R\marginaleffect\nhanes.dta" 
 ```
 
 
-```{stata}
+```{stata,  class.output="result"}
 qui mlogit hlthstat female black bmi 
 margins, dydx(*) 
 ```
@@ -173,7 +177,7 @@ margins, dydx(*)
 ## R - marginaleffects
 
 
-```{r,  message=F, warning=F}
+```{r, class.output="result",  message=F, warning=F}
 fit = multinom(hlthstat ~ female + black + bmi,  data=df)
 ame = marginaleffects(fit)
 summary(ame)
