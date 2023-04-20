@@ -1,6 +1,10 @@
 ---
 title: "Introduction"
-author: "M.Thevenin"
+format: 
+  html: default
+  docx:
+    toc: true
+    number-sections: true
 ---
 
 ```{r, echo=FALSE, , message=FALSE}

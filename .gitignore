@@ -3,6 +3,6 @@
 .RData
 .Ruserdata
 R/statamarkdown/NUL
-
 /.quarto/
 /_*.local
+nul
