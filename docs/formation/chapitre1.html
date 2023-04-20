@@ -367,11 +367,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: le package 'Statamarkdown' a été compilé avec la version R 4.2.3</code></pre>
-</div>
-</div>
 <section id="historique-de-stata" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> <strong>Historique de Stata</strong></h1>
 <p>L’entreprise <strong>Stata Corp Lp</strong> a été fondée par William Gould. Il est toujours à la tête de l’entreprise.</p>
@@ -443,7 +438,7 @@ Version 17 SE sous Linux (serveur margaux).</p>
 <div class="code-with-filename-file">
 <pre><strong>Utiliser l'aide interne</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">help</span> <span class="kw">generate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">help</span> <span class="kw">generate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <p>L’aide comprend généralement:</p>
@@ -491,13 +486,13 @@ Pour télécharger un package, on peut utiliser la ligne de commande:</p>
 <div class="code-with-filename-file">
 <pre><strong>Installation d'une commande</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">ssc</span> install nom_commande, <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">ssc</span> install nom_commande, <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <p>Il est possible d’installer un package après avoir consulté les fichiers avec la commande <code>findit</code> (on peut donc consulter l’aide en amont)</p>
 <p>Les programmes des packages externes se trouve dans un répertoire spécifique <strong>plus/ado</strong>, souvent installé dans la racine du lecteur <code>C:</code>. On peut déplacer ce répertoire, et c’est conseillé si on dispose, comme à l’Ined, d’une sauvergarde régulière sur un lecteur. On peut vérifier la localisation de ce répertoire avec la commande <code>sysdir</code>, et plus généralement la localisation des répertoires d’utilisation de Stata.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ot">sysdir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ot">sysdir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre class="result"><code>   STATA:  C:\PROGRA~1\Stata17\
     BASE:  C:\PROGRA~1\Stata17\ado\base\
