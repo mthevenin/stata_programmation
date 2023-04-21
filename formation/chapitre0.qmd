@@ -20,7 +20,7 @@ library(fontawesome)
 
 
 * N'intéressera sûrement pas les utilisatrices et utilisateurs aguerri.e.s à Stata.... quoique, on trouve toujours des années plus tard des nouvelles commandes qui facilitent vraiment les choses, par exemple sur la rapide reprise du chapitre 5, la commande `sencode` (s pour super).
-* Un document pdf sera mis à disposition au fil des maj
+* Les chapitres sont téléchargeables en format docx [20604-2023. 
 
 
 * Maj dela formation:

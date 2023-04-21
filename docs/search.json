@@ -11,7 +11,7 @@
     "href": "formation/chapitre0.html",
     "title": "Présentation",
     "section": "",
-    "text": "MAJ EN COURS DE LA VERSION 2018\n\nN’intéressera sûrement pas les utilisatrices et utilisateurs aguerri.e.s à Stata…. quoique, on trouve toujours des années plus tard des nouvelles commandes qui facilitent vraiment les choses, par exemple sur la rapide reprise du chapitre 5, la commande sencode (s pour super).\nUn document pdf sera mis à disposition au fil des maj\nMaj dela formation:\n\n28/07/22 : Les variables. Chapitre 5 [todo: un topo sur les formats date]\n07/10/22 : Introduction. Chapitre 1\n07/10/22 : L’environnement. Chapitre 2\n22/02/23 : Le langage Stata. Chapitre 3\n22/02/23 : Les bases de données. Chapitre 4 [introduction aux frame introduites avec la v16]\n\nProgrammes des chapitres:\n\nChapitre3\nChapitre4\nChapitre5"
+    "text": "MAJ EN COURS DE LA VERSION 2018\n\nN’intéressera sûrement pas les utilisatrices et utilisateurs aguerri.e.s à Stata…. quoique, on trouve toujours des années plus tard des nouvelles commandes qui facilitent vraiment les choses, par exemple sur la rapide reprise du chapitre 5, la commande sencode (s pour super).\nLes chapitres sont téléchargeables en format docx [20604-2023.\nMaj dela formation:\n\n28/07/22 : Les variables. Chapitre 5 [todo: un topo sur les formats date]\n07/10/22 : Introduction. Chapitre 1\n07/10/22 : L’environnement. Chapitre 2\n22/02/23 : Le langage Stata. Chapitre 3\n22/02/23 : Les bases de données. Chapitre 4 [introduction aux frame introduites avec la v16]\n\nProgrammes des chapitres:\n\nChapitre3\nChapitre4\nChapitre5"
   },
   {
     "objectID": "formation/chapitre1.html",
