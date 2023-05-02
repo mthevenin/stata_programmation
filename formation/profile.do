@@ -95,3 +95,17 @@ os.environ['QT_QPA_PLATFORM_PLUGIN_PATH']="C:\\Users\\thevenin_m\\Miniconda3\\Li
 end
 
 sysuse auto
+sysuse auto, clear
+
+describe
+
+
+sysuse auto, clear
+
+
+
+
+
+describe
+
+

@@ -7,7 +7,7 @@ website:
     location: sidebar
   page-navigation: true
   page-footer: 
-    center: "Marc Thévenin - Ined-Sms - Mars 2022" 
+    left: "Marc Thévenin / Ined-Sms / Mai 2023" 
     background: dark
   navbar:
     collapse-below: lg
@@ -18,17 +18,20 @@ website:
         text: "Graphiques"
       - href: https://mthevenin.github.io/stata_programmation/
         text: "Programmation"
-    right:
+
+  sidebar:
+    pinned: true
+    align: center
+    tools: 
+      - href: about.qmd
       - icon: github
-        href: https://github.com/mthevenin 
+        href: https://github.com/mthevenin
       - icon: envelope
         href: mailto:marc.thevenin@ined.fr 
-      - href: about.qmd 
-        text: "A propos"
-  sidebar:
+      - icon: file-person
+        href: about.qmd  
+  
     style: "docked"
-    align: left
-#    background: "#6B92B2"
     collapse-level: 1    
     contents:
       - section: "Formation introductive"
@@ -60,7 +63,6 @@ website:
         contents:
           - tableaux/intro.qmd        
 
-      
 format:
   html:
     theme: 
@@ -71,7 +73,7 @@ format:
     toc: true
     toc-depth: 3
     toc-title: Sections
-    highlight-style: zenburn
+    highlight-style: dracula
 number-sections: true
 filters:
    - lightbox

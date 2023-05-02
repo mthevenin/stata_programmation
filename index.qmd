@@ -10,6 +10,17 @@ library(fontawesome)
 
 
 ::: callout-note 
+
+## 02 mai 2023: Sortie de la version 18
+
+En attendant son installation, à noter:   
+
+- Un système de backup des .do: une autosave ????
+- Un format **.dtas**, on pourrais enregistrer et ouvrir un ensemble de frames liées entre elles.
+
+:::
+
+::: callout-note 
 ## 07 mars 2023: **`nbstata`**. Stata sous Jupyter.
 
 Depuis plusieurs années, il est possible d'utiliser le note *jupyter* avec Stata, en particulier avec la libraire de K.Barron [**`stata_kernel`**](https://kylebarron.dev/stata_kernel/). Suite à l'intégration de *Python* avec la version 16 de Stata, la librairie officielle [**`pystata`**](https://www.stata.com/python/pystata/index.html) a été proposée avec la version 17. Plus rapide (aucune latence ou presque), elle pêche néanmoins par l'obligation d'insérer le *magic* `%%stata` à chaque bloc de code et, il me semble, par l'absence de prise en charge de la couleur syntaxique.   
