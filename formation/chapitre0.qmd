@@ -19,8 +19,8 @@ library(fontawesome)
 **MAJ EN COURS DE LA VERSION 2018**
 
 
-* N'intéressera sûrement pas les utilisatrices et utilisateurs aguerri.e.s à Stata.... quoique, on trouve toujours des années plus tard des nouvelles commandes qui facilitent vraiment les choses, par exemple sur la rapide reprise du chapitre 5, la commande `sencode` (s pour super).
-* Les chapitres sont téléchargeables en format docx [20604-2023. 
+* N'intéressera sûrement pas les utilisatrices et utilisateurs aguerri.e.s à Stata.... quoique, on trouve toujours des années plus tard des nouvelles commandes qui facilitent vraiment les choses, par exemple sur la rapide reprise du chapitre 5, la commande `sencode` (s pour super). Mais également une introduction aux frames, qui revisitent les appariements de bases de manière bien plus flexible.
+* Les chapitres sont téléchargeables en format docx. 
 
 
 * Maj dela formation:
