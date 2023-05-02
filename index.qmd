@@ -7,7 +7,7 @@ css: styles.css
 options(Encoding="UTF-8")
 library(fontawesome)
 ```
-
+    
 
 ::: callout-note 
 
