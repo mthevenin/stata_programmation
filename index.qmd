@@ -11,7 +11,7 @@ library(fontawesome)
 
 ::: callout-note 
 
-## 02 mai 2023: Sortie de la version 18
+## 02 mai 2023: Sortie de la version 18  
 
 En attendant son installation, à noter:   
 
