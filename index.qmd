@@ -3,12 +3,8 @@ title: "Programmation"
 css: styles.css
 ---
 
-```{r setup, include=FALSE}
-options(Encoding="UTF-8")
-library(fontawesome)
-```
-    
 
+  
 ::: callout-note 
 
 ## 02 mai 2023: Sortie de la version 18  
@@ -97,5 +93,6 @@ La version 17 de Stata a introduit une suite nommée `collect` permettant de par
 
 <br>
 
--   `r fa("r-project", fill = "steelblue")` Support réalisé avec [Rstudio](href:https://www.rstudio.com) - [Quarto](https://quarto.org).
--   `r fa("code", fill = "steelblue")` Version Stata: [17-SE](https://www.stata.com/)
+-    Support réalisé avec [Posit-Rstudio](https://posit.co/) - [Quarto](https://quarto.org).
+-    Version Stata: [17-SE](https://www.stata.com/)
+
