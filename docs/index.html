@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Programmation</title>
+<title></title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -38,9 +38,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -68,7 +65,6 @@ ul.task-list li input[type="checkbox"] {
 
 <body class="nav-sidebar docked nav-fixed">
 
-
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
@@ -79,17 +75,28 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://mthevenin.github.io/stata_fr/" rel="" target="">
+    <a class="nav-link" href="https://mthevenin.github.io/stata_fr/index.html" rel="" target="">
  <span class="menu-text">Stata Ined</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://mthevenin.github.io/stata_graphiques/" rel="" target="">
- <span class="menu-text">Graphiques</span></a>
+    <a class="nav-link" href="https://mthevenin.github.io/stata_fr/articles/" rel="" target="">
+ <span class="menu-text">Articles</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="https://mthevenin.github.io/stata_programmation/" rel="" target="">
- <span class="menu-text">Programmation</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-formations" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Formations</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-formations">    
+        <li>
+    <a class="dropdown-item" href="https://mthevenin.github.io/stata_programmation/" rel="" target="">
+ <span class="dropdown-text">Formation initiale</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="https://mthevenin.github.io/stata_graphiques/" rel="" target="">
+ <span class="dropdown-text">Graphiques</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
             <div class="quarto-navbar-tools ms-auto">
 </div>
@@ -101,7 +108,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Programmation</li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -127,161 +134,44 @@ ul.task-list li input[type="checkbox"] {
 </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
- <span class="menu-text">Formation introductive</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./formation/chapitre0.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Présentation</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./formation/chapitre1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./formation/chapitre2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Environnement</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./formation/chapitre3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Le langage Stata</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./formation/chapitre4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Les bases de données</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./formation/chapitre5.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Les variables</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./formation/chapitre6.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Opérations sur les bases</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
  <span class="menu-text">formation/chapitre7.qmd</span>
-  </li>
-          <li class="sidebar-item">
- <span class="menu-text">  </span>
-  </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
- <span class="menu-text">Fichier profile</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./profile/profile1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Principe</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./profile/profile2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Exemple profile.do</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
- <span class="menu-text">Need for speed</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./speedup/gtools/gtools.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Gtools</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./speedup/frame/frame.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Frame</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
- <span class="menu-text">Super Macro World</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./macro/intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Présentation</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
- <span class="menu-text">C’est dans l’R</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./R.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Stata et R</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
- <span class="menu-text">Edition des outputs</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./tableaux/intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Intro - Collect</span></a>
-  </div>
-</li>
-      </ul>
   </li>
     </ul>
     </div>
@@ -294,147 +184,27 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Programmation</h1>
-</div>
 
 
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-</header>
-
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-02 mai 2023: Sortie de la version 18
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>En attendant son installation, à noter:</p>
 <ul>
-<li>Un système de backup des .do: une autosave ????</li>
-<li>Un format <strong>.dtas</strong>, on pourrais enregistrer et ouvrir un ensemble de frames liées entre elles.</li>
-</ul>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-07 mars 2023: <strong><code>nbstata</code></strong>. Stata sous Jupyter.
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Depuis plusieurs années, il est possible d’utiliser le note <em>jupyter</em> avec Stata, en particulier avec la libraire de K.Barron <a href="https://kylebarron.dev/stata_kernel/"><strong><code>stata_kernel</code></strong></a>. Suite à l’intégration de <em>Python</em> avec la version 16 de Stata, la librairie officielle <a href="https://www.stata.com/python/pystata/index.html"><strong><code>pystata</code></strong></a> a été proposée avec la version 17. Plus rapide (aucune latence ou presque), elle pêche néanmoins par l’obligation d’insérer le <em>magic</em> <code>%%stata</code> à chaque bloc de code et, il me semble, par l’absence de prise en charge de la couleur syntaxique.<br>
-Récemment<br>
-T.Huegerich a mis à disposition une nouvelle librairie <a href="https://github.com/hugetim/nbstata"><strong><code>nbstata</code></strong></a>, qui améliore nettement la librairie usine: pas de magic en entrée de chaque bloc de codes, couleurs syntaxique, exportation du programme en .do. Elle nécessite néanmoins la version 17 de Stata au minumum (la 18 sortant ce printemps).</p>
-<p>Je ne reviendrai pas sur la question de l’installation, assez souvent sportive avec Python. Penser néanmoins à installer <strong>miniconda</strong>, que je ne recommande pas par ailleurs pour utiliser Python sous Stata. J’utilise deux installations de Python: la classique pour une utilisation avec l’interface Stata, et conda lorsque j’utilise le notebook.</p>
-<p><iframe id="inlineFrameExample" title="Inline Frame Example" width="1000" height="500" src="divers/nbstata.htm"> </iframe></p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-27 février 2023
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Les <strong>frames</strong>, introduites avec la version 16, permettent entres autres de travailler simultanément sur plusieurs bases de données sans avoir à multiplier les opérations d’enregistrement/ouvrerture ou des preserve/restore. Elles introduisent, en plus, un système de liaison entre bases qui peuvent se substituer aux appariements classiques. Ces nouveautés permettent indirectement d’améliorement la durées d’éxécution des programmes, et de les simplifier. J’avais pris beaucoup de retard là-dessus.Le voilà partiellement comblé: <a href="./speedup/frame/frame.html">lien</a></p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-07 octobre 2022
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Un premier petit topo sur le calcul des effets marginaux avec R, avec un package récent <strong><code>marginaleffects</code></strong>.<br>
-<a href="R/marginaleffect/marginaleffect.html">Lien</a></p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-30 septembre 2022
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Une présentation du package <strong>Statamarkdown</strong> de <strong><em>Doug Hemken</em></strong>. La durée d’exécution n’est pas optimale, mais ce package permet d’exécuter des programmes Stata dans <em>RStudio</em> tout en éditant un document (article, rapport, ouvrage).<br>
-<a href="R/statamarkdown/statamarkdown_html.html">Lien</a></p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-08 Septembre 2022
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<div class="quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><br> <strong><code>collect</code></strong> La version 17 de Stata a introduit une suite nommée <code>collect</code> permettant de paramétrer, enregistrer, et utiliser des styles pour les tableaux. Dans le fichier d’aide, l’idée de remplacer les commandes utilisateurs existantes, en particulier la très populaire <code>outreg2</code>, est assez clairement annoncée. Après quelques heures d’apprentissage, je suis agréablement surpris pour ne pas dire bluffé.<br>
-<a href="tableaux/intro.html">Une première courte présentation pour les régressions</a></p>
-</div>
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 50.0%;justify-content: center;">
-<figure class="figure">
-<p><a href="tableaux/collect.PNG" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="tableaux/collect.PNG" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-26 Août 2022
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<li><p>Cette formation n’intéressera vraisemblablement pas les utilisatrices et utilisateurs aguerri.e.s à Stata…. quoique, on trouve toujours des années plus tard des nouvelles commandes qui facilitent vraiment les choses, par exemple sur la rapide reprise du chapitre 5, la commande <code>sencode</code> (s pour super). Mais également une introduction aux <strong>frames</strong>, qui revisitent les appariements de bases, et permettent de travailler sur plusieurs bases en parallèle.</p></li>
+<li><p>Les chapitres sont téléchargeables en format docx.</p></li>
+<li><p>Maj de la formation de 2018:</p>
 <ul>
-<li>Utilité d’avoir un fichier <em>profile.do</em></li>
-<li>Présentation du package <code>gtools</code> et de plusieurs commandes associées qui améliore de manière impréssionnante le temps d’exécution. Particulièrement utile pour des bases de données volumineuses</li>
-<li>La mise à jour de la formation introductive ne présente pas d’intérêt particulier pour les chercheur.e.s mais je me dois tout de même de la reprendre. Il y a toujours des commandes externes peu connues qui s’avèrent très pratiques: senscode, tabm, fre… Tout le monde connait ????</li>
-<li>Les macros. Déjà une section importante traitée pour les graphiques. Dans un premier temps:
-<ul>
-<li>Différences avec les objets de type <code>scalar</code></li>
-<li>Tour d’horizon plus complet sur les fonctions associées aux macros</li>
+<li>28/07/22 : <strong>Les variables</strong>. Chapitre 5 [todo: un topo sur les formats date]</li>
+<li>07/10/22 : <strong>Introduction</strong>. Chapitre 1</li>
+<li>07/10/22 : <strong>L’environnement</strong>. Chapitre 2</li>
+<li>22/02/23 : <strong>Le langage Stata</strong>. Chapitre 3</li>
+<li>22/02/23 : <strong>Les bases de données</strong>. Chapitre 4 [introduction aux <em>frame</em> introduites avec la v16]</li>
 </ul></li>
-<li>Pour la question Stata=&gt;R je vais surement partir sur des traductions expliquées de programmes. Dans un premier temps je vais mettre à jour avec R le travail effectué avec Cris sur Mafe en 2015 <a href="https://mafeproject.site.ined.fr/en/methodo/methodological_notes/">lien</a> qui consistait à mettre en parallèle, pour une même mise en forme de données biographiques, des programmes en Stata, R et Sas.</li>
+<li><p>Programmes des chapitres:</p>
+<ul>
+<li><a href="formation/programme3.do">Chapitre3</a></li>
+<li><a href="formation/programme4.do">Chapitre4</a></li>
+<li><a href="formation/programme5.do">Chapitre5</a></li>
+</ul></li>
 </ul>
-</div>
-</div>
-<p><br></p>
+<hr>
 <ul>
 <li>Support réalisé avec <a href="https://posit.co/">Posit-Rstudio</a> - <a href="https://quarto.org">Quarto</a>.</li>
 <li>Version Stata: <a href="https://www.stata.com/">17-SE</a></li>
@@ -679,7 +449,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">Marc Thévenin / Ined-Sms / Mai 2023</div>   
+    <div class="nav-footer-left">Marc Thévenin / Ined-Sms / Juin 2023</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
@@ -688,7 +458,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"loop":true,"closeEffect":"zoom","openEffect":"zoom","selector":".lightbox","descPosition":"bottom"});</script>
 
 
 

@@ -7,17 +7,20 @@ website:
     location: sidebar
   page-navigation: true
   page-footer: 
-    left: "Marc Thévenin / Ined-Sms / Mai 2023" 
+    left: "Marc Thévenin / Ined-Sms / Juin 2023" 
     background: dark
   navbar:
-    collapse-below: lg
-    left:
-      - href: https://mthevenin.github.io/stata_fr/
-        text: "Stata Ined"  
-      - href: https://mthevenin.github.io/stata_graphiques/
-        text: "Graphiques"
-      - href: https://mthevenin.github.io/stata_programmation/
-        text: "Programmation"
+    left: 
+      - href: https://mthevenin.github.io/stata_fr/index.html
+        text: "Stata Ined"
+      - href: https://mthevenin.github.io/stata_fr/articles/
+        text: "Articles"
+      - text: Formations
+        menu: 
+          - text: "Formation initiale"
+            href: https://mthevenin.github.io/stata_programmation/
+          - text: "Graphiques"
+            href: https://mthevenin.github.io/stata_graphiques/   
 
   sidebar:
     pinned: true
@@ -30,38 +33,16 @@ website:
         href: mailto:marc.thevenin@ined.fr 
       - icon: file-person
         href: about.qmd  
-  
     style: "docked"
-    collapse-level: 1    
+    search: true
     contents:
-      - section: "Formation introductive"
-        contents:
-          - formation/chapitre0.qmd
-          - formation/chapitre1.qmd
-          - formation/chapitre2.qmd 
-          - formation/chapitre3.qmd
-          - formation/chapitre4.qmd
-          - formation/chapitre5.qmd
-          - formation/chapitre6.qmd
-          - formation/chapitre7.qmd
-          - text: "  "  
-      - section: "Fichier profile"
-        contents:
-          - profile/profile1.qmd  
-          - profile/profile2.qmd
-      - section: "Need for speed"
-        contents:
-          - speedup/gtools/gtools.qmd  
-          - speedup/frame/frame.qmd           
-      - section: "Super Macro World"
-        contents:
-          - macro/intro.qmd        
-      - section: "C'est dans l'R"
-        contents:
-          - R.qmd   
-      - section: "Edition des outputs"
-        contents:
-          - tableaux/intro.qmd        
+      - formation/chapitre1.qmd
+      - formation/chapitre2.qmd 
+      - formation/chapitre3.qmd
+      - formation/chapitre4.qmd
+      - formation/chapitre5.qmd
+      - formation/chapitre6.qmd
+      - formation/chapitre7.qmd
 
 format:
   html:

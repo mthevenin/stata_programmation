@@ -4,19 +4,8 @@ title: "Présentation"
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-
-library(knitr)
-library (rsconnect)
-library(haven)
-library(pander)
-library(memisc)
-library(fontawesome)
-
 ```
 
-
-
-**MAJ EN COURS DE LA VERSION 2018**
 
 
 * N'intéressera sûrement pas les utilisatrices et utilisateurs aguerri.e.s à Stata.... quoique, on trouve toujours des années plus tard des nouvelles commandes qui facilitent vraiment les choses, par exemple sur la rapide reprise du chapitre 5, la commande `sencode` (s pour super). Mais également une introduction aux frames, qui revisitent les appariements de bases de manière bien plus flexible.
@@ -31,9 +20,9 @@ library(fontawesome)
   * 22/02/23 : **Les bases de données**. Chapitre 4 [introduction aux *frame* introduites avec la v16]
 
 * Programmes des chapitres:
-  *  [Chapitre3](programme3.do)
-  *  [Chapitre4](programme4.do)
-  *  [Chapitre5](programme5.do)
+  *  [Chapitre3](formation/programme3.do)
+  *  [Chapitre4](formation/programme4.do)
+  *  [Chapitre5](formation/programme5.do)
 
 
 

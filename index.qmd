@@ -1,97 +1,27 @@
 ---
-title: "Programmation"
-css: styles.css
+title: ""
+#css: styles.css
 ---
 
-
-  
-::: callout-note 
-
-## 02 mai 2023: Sortie de la version 18  
-
-En attendant son installation, à noter:   
-
-- Un système de backup des .do: une autosave ????
-- Un format **.dtas**, on pourrais enregistrer et ouvrir un ensemble de frames liées entre elles.
-
-:::
-
-::: callout-note 
-## 07 mars 2023: **`nbstata`**. Stata sous Jupyter.
-
-Depuis plusieurs années, il est possible d'utiliser le note *jupyter* avec Stata, en particulier avec la libraire de K.Barron [**`stata_kernel`**](https://kylebarron.dev/stata_kernel/). Suite à l'intégration de *Python* avec la version 16 de Stata, la librairie officielle [**`pystata`**](https://www.stata.com/python/pystata/index.html) a été proposée avec la version 17. Plus rapide (aucune latence ou presque), elle pêche néanmoins par l'obligation d'insérer le *magic* `%%stata` à chaque bloc de code et, il me semble, par l'absence de prise en charge de la couleur syntaxique.   
-Récemment  
-T.Huegerich a mis à disposition une nouvelle librairie [**`nbstata`**](https://github.com/hugetim/nbstata), qui améliore nettement la librairie usine: pas de magic en entrée de chaque bloc de codes, couleurs syntaxique, exportation du programme en .do.  Elle nécessite néanmoins la version 17 de Stata au minumum (la 18 sortant ce printemps).  
-
-Je ne reviendrai pas sur la question de l'installation, assez souvent sportive avec Python. Penser néanmoins à installer **miniconda**, que je ne recommande pas par ailleurs pour utiliser Python sous Stata. J'utilise deux installations de Python: la classique pour une utilisation avec l'interface Stata, et conda lorsque j'utilise le notebook.  
+* Cette formation n'intéressera vraisemblablement pas les utilisatrices et utilisateurs aguerri.e.s à Stata.... quoique, on trouve toujours des années plus tard des nouvelles commandes qui facilitent vraiment les choses, par exemple sur la rapide reprise du chapitre 5, la commande `sencode` (s pour super). Mais également une introduction aux **frames**, qui revisitent les appariements de bases, et permettent de travailler sur plusieurs bases en parallèle.
+* Les chapitres sont téléchargeables en format docx. 
 
 
-  <iframe id="inlineFrameExample"
-      title="Inline Frame Example"
-      width="1000"
-      height="500"
-      src="divers/nbstata.htm">
-  </iframe>
+* Maj de la formation de 2018:
+  * 28/07/22 : **Les variables**. Chapitre 5 [todo: un topo sur les formats date] 
+  * 07/10/22 : **Introduction**.  Chapitre 1
+  * 07/10/22 : **L'environnement**.  Chapitre 2
+  * 22/02/23 : **Le langage Stata**. Chapitre 3
+  * 22/02/23 : **Les bases de données**. Chapitre 4 [introduction aux *frame* introduites avec la v16]
+
+* Programmes des chapitres:
+  *  [Chapitre3](formation/programme3.do)
+  *  [Chapitre4](formation/programme4.do)
+  *  [Chapitre5](formation/programme5.do)
 
 
 
-:::
-
-
-::: callout-note 
-## 27 février 2023
-
-Les  **frames**, introduites avec la version 16, permettent entres autres de travailler simultanément sur plusieurs bases de données sans avoir à multiplier les opérations  d'enregistrement/ouvrerture ou des preserve/restore. Elles introduisent, en plus, un système de liaison entre bases qui peuvent se substituer aux appariements classiques. Ces nouveautés permettent indirectement d'améliorement la durées d'éxécution des programmes, et de les simplifier. J'avais pris beaucoup de retard là-dessus.Le voilà partiellement comblé: [lien](/speedup/frame/frame.html)
-
-:::
-
-::: callout-note 
-## 07 octobre 2022
-
-Un premier petit topo sur le calcul des effets marginaux avec R, avec un package récent **`marginaleffects`**.  
-[Lien](R/marginaleffect/marginaleffect.html)
-
-:::
-
-::: callout-note
-
-## 30 septembre 2022
-
-Une présentation du package **Statamarkdown** de ***Doug Hemken***. La durée d'exécution n'est pas optimale, mais ce package permet d'exécuter des programmes Stata dans *RStudio* tout en éditant un 
-document (article, rapport, ouvrage).  
-[Lien](R/statamarkdown/statamarkdown_html.html)
-:::
-
-::: callout-note
-
-## 08 Septembre 2022
-
-::: {layout-ncol=2}
-<br>
-**`collect`** 
-La version 17 de Stata a introduit une suite nommée `collect` permettant de paramétrer, enregistrer, et utiliser des styles pour les tableaux. Dans le fichier d'aide, l'idée de  remplacer les commandes utilisateurs existantes, en particulier la très populaire `outreg2`, est assez clairement annoncée. Après quelques heures d'apprentissage, je suis agréablement surpris pour ne pas dire bluffé.   
-[Une première courte présentation pour les régressions](tableaux/intro.html)
-
-
-![](tableaux/collect.PNG)
-
-:::
-:::
-
-
-::: callout-note
-## 26 Août 2022
-
--   Utilité d'avoir un fichier *profile.do*
--   Présentation du package `gtools` et de plusieurs commandes associées qui améliore de manière impréssionnante le temps d'exécution. Particulièrement utile pour des bases de données volumineuses
--   La mise à jour de la formation introductive ne présente pas d'intérêt particulier pour les chercheur.e.s mais je me dois tout de même de la reprendre. Il y a toujours des commandes externes peu connues qui s'avèrent très pratiques: senscode, tabm, fre... Tout le monde connait ????
--   Les macros. Déjà une section importante traitée pour les graphiques. Dans un premier temps:
-    -   Différences avec les objets de type `scalar`
-    -   Tour d'horizon plus complet sur les fonctions associées aux macros
--   Pour la question Stata=\>R je vais surement partir sur des traductions expliquées de programmes. Dans un premier temps je vais mettre à jour avec R le travail effectué avec Cris sur Mafe en 2015 [lien](https://mafeproject.site.ined.fr/en/methodo/methodological_notes/) qui consistait à mettre en parallèle, pour une même mise en forme de données biographiques, des programmes en Stata, R et Sas.
-:::
-
-<br>
+---
 
 -    Support réalisé avec [Posit-Rstudio](https://posit.co/) - [Quarto](https://quarto.org).
 -    Version Stata: [17-SE](https://www.stata.com/)
