@@ -10,7 +10,16 @@ jupyter: nbstata
 ---
 
 
+[**Programme du chapitre**](https://mthevenin.github.io/stata_programmation/formation/programme6.do)
 
+*Commandes et expressions introduites*
+
+SECTION                    | COMMANDES
+-------------              | -------------
+**Fusion**                 | `append` - `merge` - `frlink` - `ffrval`  **`join`**
+**Transposition**          | 
+
+* **En gras, commandes externes**
 
 
 # **Fusion de bases**
