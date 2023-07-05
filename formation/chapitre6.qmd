@@ -86,7 +86,7 @@ Stata demande que les bases soient soit triées (`sort`) sur la clé d'apparieme
 
 **Syntaxe minimale 1 avec préfixe**:  
 ```markdown
-merge [1:1] [1:m] [m:1] id_var using nom_base
+merge [1:1] [1:m] [m:1] id_variables(s) using nom_base
 ```
 
 
@@ -291,6 +291,151 @@ merge id using period_act
 sort id périodes
 list
 ```
+
+### Appariement avec des frames
+
+Pour les personnes qui n'ont jamais manipulé des frames (introduction Stata 16), se reporter à l'aide Stata (`help frame`) ou à ce [court article](https://mthevenin.github.io/stata_fr/articles/index/posts/frame/frame.html).
+
+L'utilisation des frames présentent plusieurs avantages:  
+
+- Il n'est pas nécessaire de trier les bases concernées par l'appariement
+- On peut sélectionner avec la commande `frget` la ou les variables qui seront récupérées dans la base master. On apparie donc pas des bases en tant que telles, on récupère de l'information de frames liées
+
+Au niveau des désavantages:   
+
+- Si on ne travaille pas exclusivement sous frames, on devra transformer les bases en frame (voir exemple)
+- Absence de variable de type _merge, qui permet de contrôler le résultat de l'appariement.
+- les prefixes sont 1:1 et m:1. Cela signifie dans le second cas que la frame active lors de l'opération de liaison doit toujours être celle dont la clé d'identification est de type multiple (niveau individuel).
+- Peut-être le plus embêtant est l'absence d'appariement pour les informations correspondant à **merge=2** (informations seulement présentes dans la base using). Le dernier exemple illustre ce point.
+
+
+On reprend l'exemple précédent, en transformant dans un premier temps les deux bases en frames.  
+
+
+```{stata}
+frame reset
+
+frame create period_act
+frame period_act: use period_act
+frame create sexe
+frame sexe: use sexe
+
+frame dir
+```
+
+On doit se positionner sur la frame *period_act* (type m)
+
+```{stata}
+frame change period_act
+```
+
+Pour lier les frames on utilise la commande `frlink`.  
+
+**Syntaxe**  
+
+```markdown
+frlink 1:1/m:1 id_variable(s), frame(nom_frame) gen(variable_lien)
+```
+
+Ici on fait un appariement de type m:1, la clé d'identification est de nouveau *id*. On lie la frame active à la frame *sexe* et la variable de liaison (ici un alias de la variable id) est appelée *link*.
+
+```{stata}
+frlink m:1 id, frame(sexe) gen(link)
+```
+
+Pour importer la variable sexe dans la frame *period_act*, on utilise la commande **`frget`**, en précisant la ou les variable que l'on souhaite récupérer, ainsi que la variable de liaison (une même frame peut avoir plusieurs liaisons. Voir plus loin).
+
+```{stata}
+frget sexe , from(link)
+
+frame period_act: order link, last
+list
+```
+
+
+::: callout-warning
+
+## Liaison des frames en présence d'information incomplète  
+
+La liaison de frames peut être problématique en présence d'informations incomplètes. Pour faire simple la liaison des frames permet de faire des appariements de type merge=1 et merge=3 (présence dans master seulement / présence dans master et using) mais ne permet pas de récupérer des informations présentes seulement dans la base using).  
+
+Pour illustrer cela on va génére une nouvelle framme, de type individu période, avec une variable additionnelle *tvc*.  
+
+- Pour id= 1, on a pas d'information dans la frame *period_act* pour période=4
+- Pour id= 2, on a pas d'information dans la frame *tvc* pour les périodes 3 et 4.  
+
+Création de la nouvelle frame (voir le .do, la compilation pour générer ce support complexifie un peu l'opération):  
+
+```{stata}
+frame create tvc
+frame change tvc
+
+
+clear
+input id périodes tvc 
+1 1 0   
+1 2 0   
+1 3 1  
+1 4 0  
+2 1 1  
+2 2 0 
+end
+
+list 
+
+save tvc, replace
+frame tvc: use tvc
+
+```
+
+Liaison des frames et récupération de la variable tvc dans *period_act*  
+
+```{stata}
+frame change period_act
+frlink 1:1 id périodes, frame(tvc) gen(link2)
+
+frget tvc, from(link2)
+
+list
+```
+
+On voit bien que la valeur de tvc pour id=1 et périodes=4 n'a pas été importée (_merge=2 dans un appariement classique). En revanche, pour id=2 on voit bien que l'information était incomplète dans la base tvc pour les périodes 3 et 4.  
+
+
+Avec un merge classique (on suppose que *period_act* n'a pas été appariée à *sexe*): 
+
+```{stata}
+use tvc, clear
+sort id périodes
+save tvc, replace
+use period_act, clear
+sort id périodes
+merge 1:1 id périodes using tvc
+sort id périodes
+list
+```
+
+On a bien ici l'ajout de l'information correspondant à _merge=2 (*Using only*)
+
+:::
+
+
+[05-07-2023]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
