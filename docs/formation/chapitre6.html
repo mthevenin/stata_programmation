@@ -861,7 +861,7 @@ file tvc.dta saved</code></pre>
      +-------------------------------------------------------+</code></pre>
 </div>
 </div>
-<p>On voit bien que la valeur de tvc pour id=1 et périodes=4 n’a pas été importée (_merge=2 dans un appariement classique). En revanche, pour id=2 on voit bien que l’information était incomplète dans la base tvc pour les périodes 3 et 4.</p>
+<p>On voit bien que la valeur de tvc pour id=1 et périodes=4 n’a pas été importée (_merge=2 dans un appariement classique). En revanche, pour id=2, l’incomplétude de l’information dans la base <em>tvc</em> pour les périodes 3 et 4 est bien visible.</p>
 <p>Avec un merge classique (on suppose que <em>period_act</em> n’a pas été appariée à <em>sexe</em>):</p>
 <div class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> tvc, <span class="kw">clear</span></span>
@@ -1171,7 +1171,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","openEffect":"zoom","descPosition":"bottom","loop":true});</script>
+<script>var lightboxQuarto = GLightbox({"loop":true,"openEffect":"zoom","closeEffect":"zoom","selector":".lightbox","descPosition":"bottom"});</script>
 
 
 

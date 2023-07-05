@@ -399,7 +399,7 @@ frget tvc, from(link2)
 list
 ```
 
-On voit bien que la valeur de tvc pour id=1 et périodes=4 n'a pas été importée (_merge=2 dans un appariement classique). En revanche, pour id=2 on voit bien que l'information était incomplète dans la base tvc pour les périodes 3 et 4.  
+On voit bien que la valeur de tvc pour id=1 et périodes=4 n'a pas été importée (_merge=2 dans un appariement classique). En revanche, pour id=2, l'incomplétude de l'information dans la base *tvc* pour les périodes 3 et 4 est bien visible.  
 
 
 Avec un merge classique (on suppose que *period_act* n'a pas été appariée à *sexe*): 
