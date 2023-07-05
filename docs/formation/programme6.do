@@ -116,6 +116,60 @@ tab _merge
 ** merge 1:m ou merge m:1	
 
 
+clear 
+input id périodes str8 Activité
+1 1 "Emploi"
+1 2 "Emploi"
+1 3 "Chômage"
+2 1 "Chômage" 
+2 2 "Chômage"
+2 3 "Emploi"
+2 4 "Chômage" 
+end 
+list 
+sort id 
+save "period_act", replace
+
+clear
+input id str6 sexe 
+1 "Homme"  
+2 "Femme"  
+end 
+list
+sort id 
+save "sexe", replace
+
+
+*merge 1:1 id using activités
+/*
+variable id does not uniquely identify observations in the using data
+r(459);
+
+*/
+
+merge 1:m id using period_act
+
+
+use sexe, clear
+merge id using period_act
+sort id périodes
+list
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

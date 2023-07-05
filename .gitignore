@@ -2,6 +2,7 @@
 .Rhistory
 .RData
 .Ruserdata
+.stswp
 R/statamarkdown/NUL
 /.quarto/
 /_*.local

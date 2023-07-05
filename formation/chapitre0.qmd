@@ -8,7 +8,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 
-* N'intéressera sûrement pas les utilisatrices et utilisateurs aguerri.e.s à Stata.... quoique, on trouve toujours des années plus tard des nouvelles commandes qui facilitent vraiment les choses, par exemple sur la rapide reprise du chapitre 5, la commande `sencode` (s pour super). Mais également une introduction aux frames, qui revisitent les appariements de bases de manière bien plus flexible.
+* N'intéressera peut-être pas les utilisatrices et utilisateurs aguerri.e.s à Stata.... quoique. On trouve toujours des années plus tard des nouvelles commandes qui facilitent vraiment les choses,  ou une introduction aux frames, qui revisitent les appariements de bases.
 * Les chapitres sont téléchargeables en format docx. 
 
 
@@ -18,7 +18,7 @@ knitr::opts_chunk$set(echo = TRUE)
   * 07/10/22 : **L'environnement**.  Chapitre 2
   * 22/02/23 : **Le langage Stata**. Chapitre 3
   * 22/02/23 : **Les bases de données**. Chapitre 4 [introduction aux *frame* introduites avec la v16]
-  * 05/07/23 : **Opérations sur les bases de données. Chapitre 6 [début reprise du chapitre] 
+  * 05/07/23 : **Opérations sur les bases de données**. Chapitre 6 [début reprise du chapitre] 
 
 * Programmes des chapitres:
   *  [Chapitre3](formation/programme3.do)

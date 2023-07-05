@@ -9,7 +9,7 @@ format:
 jupyter: nbstata
 ---
 
-# Fusion
+# **Fusion**
 
 - Deux types de fusions:
   - La fusion verticale non controlée - empilement - (`append`)
@@ -73,8 +73,6 @@ list
 Si les informations précédentes étaient ventilées dans trois bases, une par variable *v*, et avec le même niveau d'observation (A,B,C,D,E dans les 3 bases), l'utilisation  de `append` conduirait à une structure empilée non souhaitable avec une réplication des *id*.
 
 Pour obtenir la base finale proprement appariée, il convient de faire une fusion horizontale contrôlée par une une clé d'identification.
-
-::: callout-important
 
 
 ## Merge
@@ -225,7 +223,82 @@ drop _merge*
 
 ### Niveaux d'identification différents
 
+Un merge de type 1:1 n'est pas possible. Dans l'exemple qui suit la base *period_act* liste pour deux personnes le statut d'activité observé pour plusieurs périodes soit des observations multiples pour chaque individus, et la base *sexe* donne une caractéristique unique pour chaque individu. Selon le statut des bases appariée (maste ou using), l'appariement est de type 1:m ou m:1.
+
+- Si la base active est à observations multiple sur la clé d'identification: m:1
+- Si la base active est à observation unique sur la clé d'identification: 1:m
 
 
 ![](img6/img2.png)
+
+
+On va de nouveau générer les données avec `input`
+
+```{stata}
+clear 
+input id périodes str8 Activité
+1 1 "Emploi"
+1 2 "Emploi"
+1 3 "Chômage"
+2 1 "Chômage" 
+2 2 "Chômage"
+2 3 "Emploi"
+2 4 "Chômage" 
+end 
+list 
+sort id 
+save "period_act", replace
+```
+```{stata}
+clear
+input id str6 sexe 
+1 "Homme"  
+2 "Femme"  
+end 
+list
+sort id 
+save "sexe", replace
+```
+
+Si on faisait un merge 1:1, Stata renverrai le message d'erreur suivant:
+
+```markdown
+merge 1:1 id using activités
+
+variable id does not uniquely identify observations in the using data
+r(459);
+```
+
+Ici la base active est la base *sex*. Le prefixe qui doit être utilisé est donc **`1:m`** ^[**`m:1`** renvoit un message d'erreur. Dans ce sens, la base active doit être *period_act* et la base using *sexe*.]
+
+```{stata}
+merge 1:m id using period_act
+sort id période
+list 
+```
+
+
+::: callout-tip
+Le tri de la base est régulièrement modifié après ce type d'appariement. Penser donc à retrier les données proprement, surtout quand il s'agit comme ici d'informations biographiques (`sort id périodes`)
+:::
+
+
+De nouveau les préfixes sont optionnels, et permettent seulement de contrôler l'appariement. On peut sans soucis fusionner des informations contextuelles avec des informations multiples avec seulement `merge`.
+
+```{stata}
+use sexe, clear
+merge id using period_act
+sort id périodes
+list
+```
+
+
+
+
+
+
+
+
+
+
 

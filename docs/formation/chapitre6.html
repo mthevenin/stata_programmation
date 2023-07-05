@@ -96,9 +96,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="../styles.css">
@@ -224,12 +221,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Sections</h2>
    
   <ul>
-  <li><a href="#fusion" id="toc-fusion" class="nav-link active" data-scroll-target="#fusion"><span class="header-section-number">1</span> Fusion</a>
+  <li><a href="#fusion" id="toc-fusion" class="nav-link active" data-scroll-target="#fusion"><span class="header-section-number">1</span> <strong>Fusion</strong></a>
   <ul class="collapse">
-  <li><a href="#append" id="toc-append" class="nav-link" data-scroll-target="#append"><span class="header-section-number">1.1</span> Append</a>
+  <li><a href="#append" id="toc-append" class="nav-link" data-scroll-target="#append"><span class="header-section-number">1.1</span> Append</a></li>
+  <li><a href="#merge" id="toc-merge" class="nav-link" data-scroll-target="#merge"><span class="header-section-number">1.2</span> Merge</a>
   <ul class="collapse">
-  <li><a href="#même-niveau-didentification" id="toc-même-niveau-didentification" class="nav-link" data-scroll-target="#même-niveau-didentification"><span class="header-section-number">1.1.1</span> Même niveau d’identification</a></li>
-  <li><a href="#niveaux-didentification-différents" id="toc-niveaux-didentification-différents" class="nav-link" data-scroll-target="#niveaux-didentification-différents"><span class="header-section-number">1.1.2</span> Niveaux d’identification différents</a></li>
+  <li><a href="#même-niveau-didentification" id="toc-même-niveau-didentification" class="nav-link" data-scroll-target="#même-niveau-didentification"><span class="header-section-number">1.2.1</span> Même niveau d’identification</a></li>
+  <li><a href="#niveaux-didentification-différents" id="toc-niveaux-didentification-différents" class="nav-link" data-scroll-target="#niveaux-didentification-différents"><span class="header-section-number">1.2.2</span> Niveaux d’identification différents</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -256,7 +254,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <section id="fusion" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Fusion</h1>
+<h1 data-number="1"><span class="header-section-number">1</span> <strong>Fusion</strong></h1>
 <ul>
 <li>Deux types de fusions:
 <ul>
@@ -286,9 +284,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="kw">save</span> base1, <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<style>div.jp-Notebook .datagrid-container {min-height: 448px; }</style>
-</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 
@@ -363,19 +358,11 @@ Dans l’exemple, si la base active est <em>base1</em>, on peut ne pas vouloir a
 </div>
 <p>Si les informations précédentes étaient ventilées dans trois bases, une par variable <em>v</em>, et avec le même niveau d’observation (A,B,C,D,E dans les 3 bases), l’utilisation de <code>append</code> conduirait à une structure empilée non souhaitable avec une réplication des <em>id</em>.</p>
 <p>Pour obtenir la base finale proprement appariée, il convient de faire une fusion horizontale contrôlée par une une clé d’identification.</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Merge
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Stata demande que les bases soient soit triées (<code>sort</code>) sur la clé d’appariement en amont de l’opération. Sinon un message d’erreur sera renvoyé.</p>
-</div>
-</div>
+</section>
+<section id="merge" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="merge"><span class="header-section-number">1.2</span> Merge</h2>
+<p>Stata demande que les bases soient soit triées (<code>sort</code>) sur la clé d’appariement en amont de l’opération. Sinon un message d’erreur sera renvoyé.<br>
+:::</p>
 <ul>
 <li>La base active (ouverte) est appelée <strong>base master</strong></li>
 <li>La base qui sera appariée à la base ouverte est appelée base <strong>using</strong> <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
@@ -386,8 +373,8 @@ Merge
 <li>Ici on peut apparier plus de deux bases.</li>
 <li>On ne dispose pas de sécurité, si les niveau d’identification sont différents.</li>
 </ul>
-<section id="même-niveau-didentification" class="level3" data-number="1.1.1">
-<h3 data-number="1.1.1" class="anchored" data-anchor-id="même-niveau-didentification"><span class="header-section-number">1.1.1</span> Même niveau d’identification</h3>
+<section id="même-niveau-didentification" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="même-niveau-didentification"><span class="header-section-number">1.2.1</span> Même niveau d’identification</h3>
 <p>Partons des informations suivantes: - <em>Base1</em> comprend la variable d’identification <em>id</em> (observations A,B,C) et de deux variables numériques <em>v1</em> et <em>v3</em> - <em>Base2</em> comprend la même variable d’identification <em>id</em> (observations B,C,D) et de la variable numérique <em>v3</em></p>
 <p><a href="img6/img3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="img6/img3.png" class="img-fluid"></a> Le niveau d’identification est identique dans les deux bases. Il s’agit donc d’un <strong><code>merge 1:1</code></strong> [one to one]</p>
 <p>On va de nouveau générer les bases avec <code>input</code>.</p>
@@ -589,12 +576,140 @@ Commande join du package ftools
 </div>
 </div>
 </section>
-<section id="niveaux-didentification-différents" class="level3" data-number="1.1.2">
-<h3 data-number="1.1.2" class="anchored" data-anchor-id="niveaux-didentification-différents"><span class="header-section-number">1.1.2</span> Niveaux d’identification différents</h3>
+<section id="niveaux-didentification-différents" class="level3" data-number="1.2.2">
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="niveaux-didentification-différents"><span class="header-section-number">1.2.2</span> Niveaux d’identification différents</h3>
+<p>Un merge de type 1:1 n’est pas possible. Dans l’exemple qui suit la base <em>period_act</em> liste pour deux personnes le statut d’activité observé pour plusieurs périodes soit des observations multiples pour chaque individus, et la base <em>sexe</em> donne une caractéristique unique pour chaque individu. Selon le statut des bases appariée (maste ou using), l’appariement est de type 1:m ou m:1.</p>
+<ul>
+<li>Si la base active est à observations multiple sur la clé d’identification: m:1</li>
+<li>Si la base active est à observation unique sur la clé d’identification: 1:m</li>
+</ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><a href="img6/img2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="img6/img2.png" class="img-fluid figure-img"></a></p>
 </figure>
+</div>
+<p>On va de nouveau générer les données avec <code>input</code></p>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">clear</span> </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>input id périodes str8 Activité</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>1 1 <span class="st">"Emploi"</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>1 2 <span class="st">"Emploi"</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>1 3 <span class="st">"Chômage"</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>2 1 <span class="st">"Chômage"</span> </span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>2 2 <span class="st">"Chômage"</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>2 3 <span class="st">"Emploi"</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>2 4 <span class="st">"Chômage"</span> </span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span> </span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span> </span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="kw">sort</span> id </span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="kw">save</span> <span class="st">"period_act"</span>, <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+
+     +--------------------------+
+     | id   périodes   Activité |
+     |--------------------------|
+  1. |  1          1     Emploi |
+  2. |  1          2     Emploi |
+  3. |  1          3    Chômage |
+  4. |  2          1    Chômage |
+  5. |  2          2    Chômage |
+     |--------------------------|
+  6. |  2          3     Emploi |
+  7. |  2          4    Chômage |
+     +--------------------------+
+file period_act.dta saved</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">clear</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>input id str6 sexe </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>1 <span class="st">"Homme"</span>  </span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>2 <span class="st">"Femme"</span>  </span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span> </span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="kw">sort</span> id </span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="kw">save</span> <span class="st">"sexe"</span>, <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+
+     +------------+
+     | id    sexe |
+     |------------|
+  1. |  1   Homme |
+  2. |  2   Femme |
+     +------------+
+file sexe.dta saved</code></pre>
+</div>
+</div>
+<p>Si on faisait un merge 1:1, Stata renverrai le message d’erreur suivant:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>merge 1:1 id using activités</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>variable id does not uniquely identify observations in the using data</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>r(459);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Ici la base active est la base <em>sex</em>. Le prefixe qui doit être utilisé est donc <strong><code>1:m</code></strong> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">merge</span> 1:<span class="fu">m</span> id <span class="kw">using</span> period_act</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="kw">sort</span> id période</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                                 7  (_merge==3)
+    -----------------------------------------
+
+     +------------------------------------------------+
+     | id    sexe   périodes   Activité        _merge |
+     |------------------------------------------------|
+  1. |  1   Homme          1     Emploi   Matched (3) |
+  2. |  1   Homme          2     Emploi   Matched (3) |
+  3. |  1   Homme          3    Chômage   Matched (3) |
+  4. |  2   Femme          1    Chômage   Matched (3) |
+  5. |  2   Femme          2    Chômage   Matched (3) |
+     |------------------------------------------------|
+  6. |  2   Femme          3     Emploi   Matched (3) |
+  7. |  2   Femme          4    Chômage   Matched (3) |
+     +------------------------------------------------+</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Le tri de la base est régulièrement modifié après ce type d’appariement. Penser donc à retrier les données proprement, surtout quand il s’agit comme ici d’informations biographiques (<code>sort id périodes</code>)</p>
+</div>
+</div>
+<p>De nouveau les préfixes sont optionnels, et permettent seulement de contrôler l’appariement. On peut sans soucis fusionner des informations contextuelles avec des informations multiples avec seulement <code>merge</code>.</p>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> sexe, <span class="kw">clear</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="kw">merge</span> id <span class="kw">using</span> period_act</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="kw">sort</span> id périodes</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(you are using old merge syntax; see [D] merge for new syntax)
+variable id does not uniquely identify observations in period_act.dta
+
+     +-------------------------------------------+
+     | id    sexe   périodes   Activité   _merge |
+     |-------------------------------------------|
+  1. |  1   Homme          1     Emploi        3 |
+  2. |  1   Homme          2     Emploi        3 |
+  3. |  1   Homme          3    Chômage        3 |
+  4. |  2   Femme          1    Chômage        3 |
+  5. |  2   Femme          2    Chômage        3 |
+     |-------------------------------------------|
+  6. |  2   Femme          3     Emploi        3 |
+  7. |  2   Femme          4    Chômage        3 |
+     +-------------------------------------------+</code></pre>
+</div>
 </div>
 
 
@@ -607,6 +722,7 @@ Commande join du package ftools
 
 <ol>
 <li id="fn1"><p>Cela peut être plusieurs bases.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><strong><code>m:1</code></strong> renvoit un message d’erreur. Dans ce sens, la base active doit être <em>period_act</em> et la base using <em>sexe</em>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -863,7 +979,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"loop":true,"selector":".lightbox","openEffect":"zoom","closeEffect":"zoom","descPosition":"bottom"});</script>
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","openEffect":"zoom","loop":true,"closeEffect":"zoom"});</script>
 
 
 
