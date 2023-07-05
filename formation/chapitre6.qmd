@@ -9,7 +9,11 @@ format:
 jupyter: nbstata
 ---
 
-# **Fusion**
+
+
+
+
+# **Fusion de bases**
 
 - Deux types de fusions:
   - La fusion verticale non controlée - empilement - (`append`)
@@ -78,7 +82,7 @@ Pour obtenir la base finale proprement appariée, il convient de faire une fusio
 ## Merge
 
 Stata demande que les bases soient soit triées (`sort`) sur la clé d'appariement en amont de l'opération. Sinon un message d'erreur sera renvoyé.  
-:::
+
 
 * La base active (ouverte) est appelée **base master**
 * La base qui sera appariée à la base ouverte est appelée base **using** ^[Cela peut être plusieurs bases.]
@@ -298,8 +302,9 @@ Pour les personnes qui n'ont jamais manipulé des frames (introduction Stata 16)
 
 L'utilisation des frames présentent plusieurs avantages:  
 
-- Il n'est pas nécessaire de trier les bases concernées par l'appariement
-- On peut sélectionner avec la commande `frget` la ou les variables qui seront récupérées dans la base master. On apparie donc pas des bases en tant que telles, on récupère de l'information de frames liées
+- Il n'est pas nécessaire de trier les bases concernées par l'appariement.
+- On peut sélectionner avec la commande `frget` la ou les variables qui seront récupérées dans la base master. On apparie donc pas des bases en tant que telles, on récupère de l'information de frames liées.
+- Mieux encore, on peut réaliser des opérations entre observations individuelles et observations contextuelles sans passer par un appariement.   Avec les frames, l'opération d'appariement doit être plutôt compris comme un système de liaison entre bases,le transfert d'informations n'étant qu'une opération optionnelle. 
 
 Au niveau des désavantages:   
 
@@ -419,10 +424,72 @@ On a bien ici l'ajout de l'information correspondant à _merge=2 (*Using only*)
 
 :::
 
+Un des intérêts des frames, est de faire des opérations entre informations individuelles et contextuelles sans passer par un appariement en amont. Par l'exemple, nous allons voir comment un appariement peut être évité lorsqu'on travaille sur ce genre d'information.  
+
+
+On va générer 2 bases, une individuelle et une contextuelle. La première contient un identifiant individuelle (*id*), le nom de la zône d'appartenance (*zone*) et les valeurs observéd d'une variable *x*. La seconde contient le nom de la zône et la valeur moyenne de la variable x dans cet espace.  
+
+Création des frames: 
+
+```{stata}
+frame reset 
+
+clear 
+input id str6 zone x
+1 "zoneA" 10
+2 "zoneA" 15
+3 "zoneB" 9
+4 "zoneB" 12
+5 "zoneB" 10
+6 "zoneB" 15
+7 "zoneC" 6
+8 "zoneC" 13
+9 "zoneC" 16
+end
+list
+save indiv, replace
+```
+
+```{stata}
+clear
+input str6 zone xmean
+"zoneA" 11
+"zoneB" 12
+"zoneC" 13
+end
+list
+save zone, replace
+```
+
+```{stata}
+frame create indiv
+frame indiv: use indiv
+frame create zone
+frame zone: use zone
+```
+
+Après avoir lié les deux frames (m:1), on va calculer directement la différence entre la valeur observée pour chaque individu de la variable *x* et sa moyenne par zone (*xmean*). On utilise la fonction **`frval`** comme argument de la commande **`generate`**.  
+
+```{stata}
+frame change indiv
+frlink m:1 zone, frame(zone) gen(link)
+list
+```
+
+
+```markdown
+gen = var1 - frval(nom_link, var2)
+```
+
+```{stata}
+gen diffx = x - frval(link, xmean)
+list
+```
+
 
 [05-07-2023]
 
-
+# **Transposition d'une base** 
 
 
 

@@ -221,7 +221,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Sections</h2>
    
   <ul>
-  <li><a href="#fusion" id="toc-fusion" class="nav-link active" data-scroll-target="#fusion"><span class="header-section-number">1</span> <strong>Fusion</strong></a>
+  <li><a href="#fusion-de-bases" id="toc-fusion-de-bases" class="nav-link active" data-scroll-target="#fusion-de-bases"><span class="header-section-number">1</span> <strong>Fusion de bases</strong></a>
   <ul class="collapse">
   <li><a href="#append" id="toc-append" class="nav-link" data-scroll-target="#append"><span class="header-section-number">1.1</span> Append</a></li>
   <li><a href="#merge" id="toc-merge" class="nav-link" data-scroll-target="#merge"><span class="header-section-number">1.2</span> Merge</a>
@@ -231,6 +231,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#appariement-avec-des-frames" id="toc-appariement-avec-des-frames" class="nav-link" data-scroll-target="#appariement-avec-des-frames"><span class="header-section-number">1.2.3</span> Appariement avec des frames</a></li>
   </ul></li>
   </ul></li>
+  <li><a href="#transposition-dune-base" id="toc-transposition-dune-base" class="nav-link" data-scroll-target="#transposition-dune-base"><span class="header-section-number">2</span> <strong>Transposition d’une base</strong></a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="chapitre6.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
     </div>
@@ -254,8 +255,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="fusion" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> <strong>Fusion</strong></h1>
+<section id="fusion-de-bases" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> <strong>Fusion de bases</strong></h1>
 <ul>
 <li>Deux types de fusions:
 <ul>
@@ -362,8 +363,7 @@ Dans l’exemple, si la base active est <em>base1</em>, on peut ne pas vouloir a
 </section>
 <section id="merge" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="merge"><span class="header-section-number">1.2</span> Merge</h2>
-<p>Stata demande que les bases soient soit triées (<code>sort</code>) sur la clé d’appariement en amont de l’opération. Sinon un message d’erreur sera renvoyé.<br>
-:::</p>
+<p>Stata demande que les bases soient soit triées (<code>sort</code>) sur la clé d’appariement en amont de l’opération. Sinon un message d’erreur sera renvoyé.</p>
 <ul>
 <li>La base active (ouverte) est appelée <strong>base master</strong></li>
 <li>La base qui sera appariée à la base ouverte est appelée base <strong>using</strong> <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
@@ -718,8 +718,9 @@ variable id does not uniquely identify observations in period_act.dta
 <p>Pour les personnes qui n’ont jamais manipulé des frames (introduction Stata 16), se reporter à l’aide Stata (<code>help frame</code>) ou à ce <a href="https://mthevenin.github.io/stata_fr/articles/index/posts/frame/frame.html">court article</a>.</p>
 <p>L’utilisation des frames présentent plusieurs avantages:</p>
 <ul>
-<li>Il n’est pas nécessaire de trier les bases concernées par l’appariement</li>
-<li>On peut sélectionner avec la commande <code>frget</code> la ou les variables qui seront récupérées dans la base master. On apparie donc pas des bases en tant que telles, on récupère de l’information de frames liées</li>
+<li>Il n’est pas nécessaire de trier les bases concernées par l’appariement.</li>
+<li>On peut sélectionner avec la commande <code>frget</code> la ou les variables qui seront récupérées dans la base master. On apparie donc pas des bases en tant que telles, on récupère de l’information de frames liées.</li>
+<li>Mieux encore, on peut réaliser des opérations entre observations individuelles et observations contextuelles sans passer par un appariement. Avec les frames, l’opération d’appariement doit être plutôt compris comme un système de liaison entre bases,le transfert d’informations n’étant qu’une opération optionnelle.</li>
 </ul>
 <p>Au niveau des désavantages:</p>
 <ul>
@@ -902,11 +903,128 @@ file tvc.dta saved</code></pre>
 <p>On a bien ici l’ajout de l’information correspondant à _merge=2 (<em>Using only</em>)</p>
 </div>
 </div>
+<p>Un des intérêts des frames, est de faire des opérations entre informations individuelles et contextuelles sans passer par un appariement en amont. Par l’exemple, nous allons voir comment un appariement peut être évité lorsqu’on travaille sur ce genre d’information.</p>
+<p>On va générer 2 bases, une individuelle et une contextuelle. La première contient un identifiant individuelle (<em>id</em>), le nom de la zône d’appartenance (<em>zone</em>) et les valeurs observéd d’une variable <em>x</em>. La seconde contient le nom de la zône et la valeur moyenne de la variable x dans cet espace.</p>
+<p>Création des frames:</p>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>frame <span class="kw">reset</span> </span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="kw">clear</span> </span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>input id str6 zone x</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>1 <span class="st">"zoneA"</span> 10</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>2 <span class="st">"zoneA"</span> 15</span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>3 <span class="st">"zoneB"</span> 9</span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>4 <span class="st">"zoneB"</span> 12</span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>5 <span class="st">"zoneB"</span> 10</span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a>6 <span class="st">"zoneB"</span> 15</span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>7 <span class="st">"zoneC"</span> 6</span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a>8 <span class="st">"zoneC"</span> 13</span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a>9 <span class="st">"zoneC"</span> 16</span>
+<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span></span>
+<span id="cb49-16"><a href="#cb49-16" aria-hidden="true" tabindex="-1"></a><span class="kw">save</span> indiv, <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+
+     +-----------------+
+     | id    zone    x |
+     |-----------------|
+  1. |  1   zoneA   10 |
+  2. |  2   zoneA   15 |
+  3. |  3   zoneB    9 |
+  4. |  4   zoneB   12 |
+  5. |  5   zoneB   10 |
+     |-----------------|
+  6. |  6   zoneB   15 |
+  7. |  7   zoneC    6 |
+  8. |  8   zoneC   13 |
+  9. |  9   zoneC   16 |
+     +-----------------+
+file indiv.dta saved</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="kw">clear</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>input str6 zone xmean</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="st">"zoneA"</span> 11</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="st">"zoneB"</span> 12</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="st">"zoneC"</span> 13</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span></span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a><span class="kw">save</span> zone, <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+
+     +---------------+
+     |  zone   xmean |
+     |---------------|
+  1. | zoneA      11 |
+  2. | zoneB      12 |
+  3. | zoneC      13 |
+     +---------------+
+file zone.dta saved</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>frame create indiv</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>frame indiv: <span class="kw">use</span> indiv</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>frame create zone</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>frame zone: <span class="kw">use</span> zone</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Après avoir lié les deux frames (m:1), on va calculer directement la différence entre la valeur observée pour chaque individu de la variable <em>x</em> et sa moyenne par zone (<em>xmean</em>). On utilise la fonction <strong><code>frval</code></strong> comme argument de la commande <strong><code>generate</code></strong>.</p>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>frame change indiv</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>frlink <span class="fu">m</span>:1 zone, frame(zone) <span class="kw">gen</span>(<span class="kw">link</span>)</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(all observations in frame indiv matched)
+
+     +------------------------+
+     | id    zone    x   link |
+     |------------------------|
+  1. |  1   zoneA   10      1 |
+  2. |  2   zoneA   15      1 |
+  3. |  3   zoneB    9      2 |
+  4. |  4   zoneB   12      2 |
+  5. |  5   zoneB   10      2 |
+     |------------------------|
+  6. |  6   zoneB   15      2 |
+  7. |  7   zoneC    6      3 |
+  8. |  8   zoneC   13      3 |
+  9. |  9   zoneC   16      3 |
+     +------------------------+</code></pre>
+</div>
+</div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>gen = var1 - frval(nom_link, var2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> diffx = x - frval(<span class="kw">link</span>, xmean)</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+     +--------------------------------+
+     | id    zone    x   link   diffx |
+     |--------------------------------|
+  1. |  1   zoneA   10      1      -1 |
+  2. |  2   zoneA   15      1       4 |
+  3. |  3   zoneB    9      2      -3 |
+  4. |  4   zoneB   12      2       0 |
+  5. |  5   zoneB   10      2      -2 |
+     |--------------------------------|
+  6. |  6   zoneB   15      2       3 |
+  7. |  7   zoneC    6      3      -7 |
+  8. |  8   zoneC   13      3       0 |
+  9. |  9   zoneC   16      3       3 |
+     +--------------------------------+</code></pre>
+</div>
+</div>
 <p>[05-07-2023]</p>
-
-
 </section>
 </section>
+</section>
+<section id="transposition-dune-base" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> <strong>Transposition d’une base</strong></h1>
+
+
 </section>
 
 
@@ -1171,7 +1289,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"loop":true,"openEffect":"zoom","closeEffect":"zoom","selector":".lightbox","descPosition":"bottom"});</script>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","loop":true,"selector":".lightbox","descPosition":"bottom","openEffect":"zoom"});</script>
 
 
 

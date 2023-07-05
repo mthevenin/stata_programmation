@@ -1,6 +1,10 @@
 
 
-** Append
+*************
+** Fusion  **
+*************
+
+** Append **
 
 clear
 		  
@@ -30,7 +34,7 @@ append using base2, keep(id v1 v2)
 	
 	
 	
-** Merge
+** Merge **
 
 ** merge 1:1	
 	
@@ -173,8 +177,9 @@ frame period_act: order link, last
 list
 
 
-frame create tvc
 
+* frame et merge=2
+frame create tvc
 frame change tvc
 frame tvc {
 input id périodes tvc
@@ -206,6 +211,50 @@ merge 1:1 id périodes using tvc
 sort id périodes
 list
 
+
+** fonction frval pour opérations sur bases contextuelle
+
+frame reset 
+
+clear 
+input id str6 zone x
+1 "zoneA" 10
+2 "zoneA" 15
+3 "zoneB" 9
+4 "zoneB" 12
+5 "zoneB" 10
+6 "zoneB" 15
+7 "zoneC" 6
+8 "zoneC" 13
+9 "zoneC" 16
+end
+save indiv, replace
+
+clear
+input str6 zone xmean
+"zoneA" 11
+"zoneB" 12
+"zoneC" 13
+end
+save zone, replace
+
+frame create indiv
+frame indiv: use indiv
+frame create zone
+frame zone: use zone
+
+frame change indiv
+frlink m:1 zone, frame(zone) gen(link)
+list
+
+gen diffx = x - frval(link, xmean)
+list
+
+
+
+*******************
+** Transposition **
+*******************
 
 
 
