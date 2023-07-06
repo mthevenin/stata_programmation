@@ -21,7 +21,6 @@ title: ""
   *  [Chapitre5](formation/programme5.do)
   *  [Chapitre6](formation/programme6.do)
 
-
 ---
 
 -    Support réalisé avec [Posit-Rstudio](https://posit.co/) - [Quarto](https://quarto.org).

@@ -8,24 +8,20 @@ format:
 filters:
    - lightbox
 lightbox: auto
+
+
+jupyter: nbstata
 ---
 
 
-```{r, include=FALSE}
-library(Statamarkdown)
-stataexe <- "C:/Program Files/Stata17/StataSE-64.exe"
-knitr::opts_chunk$set(engine.path=list(stata=stataexe))
-```
-
-
-
-| SECTION                                                    | COMMANDES ET EXPRESSIONS                                                                                       |
-|------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------|
-| **Affectation d'un répertoire de travail**                 | `cd`                                                                                                           |
-| **Ouverture et sauvegarde d'une base**                     | `use` `webuse [set]` `sysuse` `save` `saveold` `import` `export` **`usesas`** **`savasas`** `set obs` `insobs` |
-| **Décrire le contenu d'une base**                          | `describe` `list` `codebook` `labelbook` `label list`                                                          |
-| **Tri, doublon, position des variables**                   | `sort` `gsort` `duplicates` `order`                                                                            |
-| **Decription statistique des variables**                   | `summarize` `mean` `tabstat`  **`violinplot`** **`heatplot`** **`gjoint`**  `tabulate` **`fre`** **`tabm`** **`catplot`** |                                                            |
+| SECTION                                       | COMMANDES ET EXPRESSIONS                                                                                       |
+|-----------------------------------------------|----------------------------------------------------------------------------------------------------------------|
+| **Affectation d'un répertoire de travail**    | `cd`                                                                                                           |
+| **Ouverture et sauvegarde d'une base**        | `use` `webuse [set]` `sysuse` `save` `saveold` `import` `export` **`usesas`** **`savasas`** `set obs` `insobs` |
+| **Décrire le contenu d'une base**             | `describe` `list` `codebook` `labelbook` `label list`                                                          |
+| **Tri, doublon, position des variables**      | `sort` `gsort` `duplicates` `order`                                                                            |
+| **Decription statistique des variables**      | `summarize` `mean` `tabstat`  **`violinplot`** **`heatplot`** **`gjoint`**  `tabulate` **`fre`** **`tabm`** **`catplot`** |   
+|  **Introductions aux frames**                 | `frame dir` `frame list` `frame create` `frame rename` `frame copy` `frame change` `frame drop` `frame reset`  | 
 
 
 
@@ -37,8 +33,9 @@ knitr::opts_chunk$set(engine.path=list(stata=stataexe))
 
 La commande ```cd``` (Current Directory), permet d'indiquer le chemin d'accès du répertoire où se trouve la base à ouvrir ou à  enregistrer.   Si aucun chemin d'accès n'est spécifié, Stata ira chercher la base dans le répertoire par défaut (normalement C: ou D:).
 
-Syntaxe
-```{r filename="Syntaxe", eval=F}
+**Syntaxe**: 
+
+```markdown
 cd "path"
 ```
 
@@ -50,23 +47,26 @@ Avec cette commande, un seul repertoire de travail est actif. On peut élargir l
 ## Ouverture
 
 **Commande** ```use```  
-<br>
-Sans chargement d'un répertoire
-```{r filename="Syntaxe", eval=F}
+
+
+Syntaxe sans chargement d'un répertoire:
+
+```markdown
 use "path/nom_base.dta" [,clear]
 ```
  
 L'option ```clear``` permet d'effacer une base en cours d'utilisation. Il est conseillé de mettre cette option systématiquement. On peut également utiliser ```clear``` comme instruction avant d'ouvrir une base. on ne supprime pas la base du répertoire (commande ```erase```), elle est juste écrasée dans la session.  
 
 Syntaxe avec affectation d'un répertoire: 
-```{r filename="Syntaxe", eval=F}
+
+```markdown
 cd "path"
 use "nom_base.dta", clear 
 ```
 
 ou
 
-```{r filename="Syntaxe", eval=F}
+```markdown
 cd "path"
 clear
 use "nom_base.dta" 
@@ -74,7 +74,8 @@ use "nom_base.dta"
 
 Remarque: pour les bases d'exemples préinstallées,  on utilise la commande ```sysuse```. Dans les fichiers d'aide, des exemples font également appels a des bases localisées sur des serveurs qui s'ouvrent avec la commande ```webuse```.  
 
-```{r filename="Syntaxe", eval=F}
+
+```markdown
 sysuse auto, clear
 ```
 
@@ -87,7 +88,7 @@ Dans un premier temps, comme pour `cd` il faut charger le répertoire où se tro
 
 Pour charger ce répertoire à distance: 
 
-```{r, eval=F}
+```markdown
 webuse set  "https://raw.githubusercontent.com//mthevenin/stata_graphiques/master/ressources/gjoint"
 ```
 
@@ -95,7 +96,7 @@ On remarque que le chemin n'est pas identique au simple lien (spécificité des 
 
 Il suffit ensuite de charger la base avec `webuse`
 
-```{r, eval=F}
+```markdown
 webuse logement.dta, clear
 ```
 
@@ -103,7 +104,8 @@ On revient au dépôt officiel de stata avec `webuse set`
 
 En résumé avec un seul bloc d'instructions:  
 
-```{stata, class.output="result"}
+
+```{stata}
 webuse set  "https://raw.githubusercontent.com//mthevenin/stata_graphiques/master/ressources/gjoint"
 
 webuse "logement.dta", clear
@@ -118,13 +120,13 @@ webuse set
 
 **Commandes** ```save``` ou ```saveold```  
 
-```{stata filename="Syntaxe", eval=F}
+```markdown
 save "path/nom_base.dta" [, replace]     
 ```
 
 L'option `replace` permet d'écraser une version antérieure de la base. Obligatoire à partir de la 2ème sauvegarde, mais on peut l'utiliser dès la première sauvegarde (un message d'avertissement s'affiche).  
 
-```{stata filename="Syntaxe", collectcode=T}
+```{stata}
 sysuse auto, clear  
 
 save auto, replace
@@ -134,7 +136,7 @@ save auto, replace
 ```saveold``` permettra d'ouvrir une bases avec une version ancienne de Stata non compatibles avec la version courante. Cela commence à devenir moins critique, mais avec `save` il ne sera plus possible d'ouvrir une base avec une version inférieure à la 13 ou inférieur à la 13 (passage à l'encodage Utf8 avec la version 14).
 
 
-```{stata filename="Syntaxe", eval=F}
+```markdown
  saveold "path/nom_base.dta", [replace] [version(#)] // # = numéro de la version de Stata: 
 ```
  
@@ -143,7 +145,7 @@ Remarque:
 * Ecrire l'extension .dta n'est pas obligatoire
 * Les doubles quotes ne sont obligatoires que s'il y a un espace dans le chemin d'accès et/ou dans le nom de la base 
 
-```{stata filename="Syntaxe", eval=F}
+```markdown
 use "ma base", clear 
 use ma_base,   clear
 ```
@@ -161,7 +163,7 @@ use ma_base,   clear
 
 **Exemples
 
-```{stata, eval=F}
+```markdown
 * exportation csv
 export delimited using "D:\D\stata_temp\export_csv.csv", replace
 
@@ -202,14 +204,14 @@ import excel "D:\D\stata_temp\export_excel.xls", sheet("Sheet1") firstrow clear
 
 On peut créer une base de donnée, "vide", avec la commande **`set obs nbre_observations`**
 
-```{r, eval=F}
+```markdown
 clear 
 set obs 100
 ```
 
 A une base existante, on peut ajouter des observations (en valeurs manquante) avec la commande `insobs nbre_observation`. Par défaut ces observations s'ajouteront après la dernière ligne (option `before/after(position)` pour renseigner la position de la première observation ajoutée.  
 
-```{r, eval=F}
+```markdown
 insobs 10  // ajout de 10 observations à la base
 ```
 
@@ -225,12 +227,14 @@ Permet, sous forme de tableau, d'avoir des renseignement sur une base de donnée
 
 **Base courante (ouverte)** 
 
-```{stata filename="Syntaxe", eval=F}
+**Syntaxe**: 
+
+```markdown
 describe [varlist , short]
 ```
 
 
-```{stata, class.output="result", collectcode=T}
+```{stata}
 sysuse auto.dta, clear
 
 des 
@@ -240,7 +244,7 @@ des
 
 On peut également décrire le contenu d'une base en format .dta en mémoire et non ouverte avec l'argument `using "path/nombase"`
 
-```{stata, class.output="result"}
+```{stata}
 describe using  "https://www.stata-press.com/data/r17/census2.dta"
 ```
 
@@ -251,11 +255,13 @@ describe using  "https://www.stata-press.com/data/r17/census2.dta"
 
 Commande `list`  
 
-```{stata filename="Syntaxe", eval=F}
+**Syntaxe**: 
+
+```markdown
  list [varlist] [expression]
 ```
 
-```{stata, class.output="result"}
+```{stata}
 list price mpg turn foreign in 1/10
 ```
 
@@ -268,17 +274,17 @@ Commande `labelbook` et `label list`
 
 `labelbook`: affiche les informations sur les labels affectés aux modalités des variables. 
 
-```{stata filename="Syntaxe", eval=F}
+```markdown
 labelbook [nom_label]
 ```
 
-```{stata, class.output="result"}
+```{stata}
 labelbook origin
 ```
 
 `label list [nom_label]` donne seulement l'affectation des labels aux valeurs.
 
-```{stata, class.output="result"}
+```{stata}
 label list origin
 ```
 
@@ -288,9 +294,9 @@ label list origin
 ## Tri d'une base
 
 Commande `sort`   
-<br>
+  
 
-```{}
+```markdown
 sort varlist
 ```  
 
@@ -302,7 +308,7 @@ sort varlist
   
 * Le tri d'une peut/doit  être réalisé lorsqu'on veut répéter une instruction avec le préfixe ```bysort```: ```bysort varlist: instruction```.  Il est  imposé lorsqu'on souhaite apparier des bases [voir chapitre 6]
 
-```{Stata filename="Syntaxe", eval=F}
+```markdown
 
 * tri croissant sur la variable price
 sort price
@@ -323,8 +329,9 @@ Commande `duplicates list/tag/drop [varlist]  `
 Permet de lister, repérer (avec `gen(varname)` ) ou supprimer des observations répliquées. Si la liste de variables n'est pas renseignée, elles toutes sont utilisées. 
 
 
-Syntaxe
-```{}
+**Syntaxe**: 
+
+```markdown
 duplicates list [varlist]
 
 duplicates tag [varlist], gen(var)
@@ -337,11 +344,13 @@ duplicates drop [varlist]
 
 Commande `order`
 
-```{Stata filename="Syntaxe", eval=F}
+**Syntaxe**: 
+
+```markdown
 order varlist, [first/last] [after/before(varname)]
 ```
 
-```{stata,  class.output="result"}  
+```{stata}  
 order foreign, first
 order rep78, after(foreign)
 
@@ -367,7 +376,9 @@ Les commandes qui sont rapidement décrites afficheront des indicateurs communs,
 
 Comme son l'indique, la commande `summarize`, avec l'option  `detail` (`d`) donne un résumé complet de la distribution d'une variable quantitative:  moyenne, variance, quantiles, symétrie, applatissement ..nom l'indique l.)
 
-```{stata filename="Syntaxe", eval=F}
+**Syntaxe**: 
+
+```markdown
 summarize varlist [, detail]
 ```
 
@@ -375,29 +386,26 @@ Si on indique pas le nom d'au moins une variable, toutes les variables de la bas
 
 La commande peut-être tronquée jusqu'à `sum` [**Warning**: il existe également une fonction `sum` pour générer des cumuls lors d'une création de variable  - voir chapitre 5].  
 
-```{stata, class.output="result"}
+```{stata}
 sum price
 
 sum 
 ```
 
-```{stata, class.output="result"}
+```{stata}
 sum price length, d
 ```
 
-```{stata, class.output="result"}
+```{stata}
 bysort foreign: sum price, d
 ```    
 
 * ***Avantage***: récupération des résultats sous forme de macro rapide.
 * ***Inconvénients***: pas de sélection des indicateurs avec l'option `detail`, output pas adapté aux comparaisons.
 
-```{stata filename="return list: macros associées aux indicateurs", class.output="result", eval=F }
+**Extrait de l'aide summarize (`help summarize`**)
 
-*Extrait de l'aide de summarize
-
-/* help summarize
-
+```markdown
     summarize stores the following in r():
 
     Scalars   
@@ -420,10 +428,11 @@ bysort foreign: sum price, d
       r(kurtosis)    kurtosis (detail only)
       r(sum)         sum of variable
       r(sd)          standard deviation
-*/
-```
 
-```{stata, class.output="result"}
+```
+Informations enregistrées pour la variable *price*
+
+```{stata}
 qui sum price, d
 
 return list
@@ -434,7 +443,7 @@ return list
 
 N'affiche que la moyenne et ses statistiques associées. L'option `over` permet de comparer les valeurs moyennes des modalités d'une variable catégorielle (`over(varname)`) ou un croisement des modalités de plusieurs variables (`over(varlist)`)  
 
-```{stata, class.output="result"}
+```{stata}
 mean price  
 mean price, over(foreign)
 mean price, over(foreign rep78)
@@ -448,16 +457,15 @@ mean price, over(foreign rep78)
 
 Permet de sélectionner les indicateurs avec l'option `stat()` (par défaut la moyenne). L'option `by()` permet de comparer le ou les indicateurs pour chaque niveau d'une variable catégorielle. Dans ce cas `tabstat` affiche également les résultats sur l'ensemble des observations (sinon ajouter l'option `nototal`).
 
-```{stata, class.output="result"}
+```{stata}
 tabstat price  
 tabstat price mpg, by(foreign)
 ```
 
-```{stata filename="liste des indicateurs", class.output="result", eval=F }
 
-*Extrait de l'aide de summarize
+**Extrait de l'aide tabstat (`help tabstat`**)
 
-/* help tabstat
+```markdown
 
         mean            mean
         count           count of nonmissing observations
@@ -484,13 +492,13 @@ tabstat price mpg, by(foreign)
         p99             99th percentile
         iqr             interquartile range = p75 - p25
         q               equivalent to specifying p25 p50 p75
-*/
+
 ```
 
 
 Si on souhaite ajouter la médiane
 
-```{stata, class.output="result"}
+```{stata}
 tabstat price mpg, by(foreign) stat(mean median)
 ```
 
@@ -510,7 +518,7 @@ Deux distribution croisée: **`hexplot`** (externe), **`gjoint`** (externe)
 
 **Boxplot**  
 
-```{stata, eval=F }
+```markdown
 graph hbox mpg, 
 graph hbox mpg, over(foreign)   
 ```
@@ -524,7 +532,7 @@ graph hbox mpg, over(foreign)
 
 **Histogramme**
 
-```{stata, eval=F }
+```markdown
 histogram mpg, percent 
 histogram mpg, percent by(foreign)
 ```
@@ -548,7 +556,7 @@ histogram mpg, percent by(foreign)
 Toujours beaucoup d'options dans les commandes de *magik* B.Jann. Se reporter à son tutoriel sur github pour l'installation (nécessite l'installation de dépendances) [Lien](https://github.com/benjann/violinplot/)  
 
 
-```{stata, eval=F }
+```markdown
 violinplot mpg, fill
 
 violinplot mpg, nobox over(foreign) left overlay nomedian  dscale(.) 
@@ -578,17 +586,18 @@ violinplot mpg, fill split(foreign) horizontal
   - Courbes de niveaux
   - `Heatplot`/`hexplot`: l'idée est de visualiser un histogramme "vu du dessuss", la hauteurs des barres étant données par un différentiel de couleur issues d'une palette séquentielle (du clair au foncé par exemple). 
   
-```{stata filename="Installation heatplot", eval=F }
+
+```markdown
 ssc install heatplot, replace  
 ```
 
 * Il peut-être intéressant d'ajouté les distributions marginales des deux variables. J'ai programmé une petite commande (encore en version très alpha): **`gjoint`**. Tout le mérite revient à B.Jann pour la commande `hexplot` (j'ai juste combiné `hexplot` avec des histogrammes).
 
-```{stata filename="Installation gjoint", eval=F }
+```markdown
 net install gjoint, from("https://raw.githubusercontent.com/mthevenin/stata_graphiques/master/ressources/gjoint/") replace
 ```
 
-```{stata, eval=F }
+```markdown
 hexplot price mpg, colors(flare)
 gjoint price mpg, palette(flare)
 ```
@@ -605,8 +614,9 @@ gjoint price mpg, palette(flare)
 
 La principale commande est `tabulate` (`tab`). On peut l'utiliser avec des variables de type string.
 
-Syntaxe (tableau croisé)
-```{}
+**Syntaxe (tableau croisé)**: 
+
+```markdown
 tab var1 var2 [, mis nofreq row col sort ......]
 ```
 
@@ -614,14 +624,14 @@ tab var1 var2 [, mis nofreq row col sort ......]
 
 * Autres commandes (externe): **`fre`** [B.Jann], **`tabm`** [NJ.Cox], **`tabsort`** [NJ.Cox]
 
-```{stata, class.output="result", eval=F}
+```markdown
 ssc install fre
 ssc install tabsort
 ssc install tabm
 ```
 
 
-```{stata, class.output="result"}
+```{stata}
 tab rep78, mis
 tab rep78, mis sort 
 tab rep78 foreign, nolab mis
@@ -639,11 +649,11 @@ Niveau graphique, les possibilités restent toujours assez limitées pour les va
 
 On privilégiera ici la commande de NJ.Cox, **`catplot`** 
 
-```{stata, class.output="result", eval=F}
+```markdown
 ssc install catplot
 ```
 
-```{stata, eval=F}
+```{stata}
 catplot rep78, percent 
 catplot rep78, percent over(foreign)
 ```
@@ -683,21 +693,33 @@ frame list
 ```
 
 
-```{stata, collectcode=T}
+```{stata}
 sysuse auto, clear
-
 frame dir
 ```
 
 **`frame rename`**
 
-Comme son nom l'indique on renomme une frame avec `ancien nom` `nouveau nom`
+On renomme une frame avec `ancien nom` `nouveau nom`
 
-```{stata, collectcode=T}
+```{stata}
+frame reset   // voir plus loin - commande ici seulement nécessaire pour compatibilité avec Quarto
+sysuse auto, clear
 frame rename default auto
 
 frame dir
 ```
+
+
+::: callout-note
+
+Autre façon de procéder (et surement meilleure):  
+
+```markdown
+frame create auto
+frame auto: sysuse auto, clear
+```
+:::
 
 
 **`frame nom_frame:`** ou **`frame nom_frame {}`**
@@ -705,12 +727,12 @@ frame dir
 * On peut exécuter une commande en la préfixant par **`frame nom_frame:`**
 * Pour une série de commandes, il suffit d'enchasser cette série dans des crochets
 
-```{stata, collectcode=T}
+```{stata}
 frame auto: mean price
 ```
 
 
-```{stata, collectcode=T}
+```{stata}
 frame auto {
 mean mpg
 table rep78 foreign  
@@ -725,7 +747,7 @@ Permet de copier à l'idendique une frame **`frame copy nom_frame nouveau_nom`**
 Dans l'exemple qui suit on va une frame à partir de la base auto, frame *prix*, en conservant avec seulement les variables *foreign* et *price*. 
 
 
-```{stata, collectcode=T}
+```{stata}
 frame copy auto prix
 
 frame dir
@@ -734,7 +756,7 @@ frame dir
 
 Comme indiqué précédemment, on est pas obligé de charger une base déclarée en frame pour effectuer des opérations dessus. On peut donc conserver les deux seules variables *foreign* et *price* tout en gardant la base *auto* chargée. 
 
-```{stata, collectcode=T}
+```{stata}
 frame prix: keep foreign price
 frame dir
 ```
@@ -743,7 +765,7 @@ La frame *prix* ne comporte donc plus que deux variables.
 
 On va supprimer la variable *make* de la base/frame *auto*  
 
-```{stata, collectcode=T}
+```{stata}
 drop make
 ```
 
@@ -752,7 +774,7 @@ drop make
 
 Permet de switcher d'une frame à une autre. Ici ce sont les informations de la frame *prix* qui seront chargée dans l'interface de Stata
 
-```{stata, collectcode=T}
+```{stata}
 frame change prix 
 
 mean price, over(foreign)
@@ -760,7 +782,7 @@ mean price, over(foreign)
 
 Du côté de la frame *auto*, base chargée initialement, on note que la suppression de la  variable *make* a bien été enregistrée malgré le change de frame.
 
-```{stata, collectcode=T}
+```{stata}
 frame auto: des
 ```
 
@@ -770,7 +792,7 @@ Permettent de supprimer une ou la totalité des frames
 
 **`frame drop nom_frame`**, permet de supprimer une frame, à l'exception de celle chargée dans l'interface.   
 
-```{stata, collectcode=F}
+```{stata}
 frame change auto
 
 frame drop prix
@@ -779,26 +801,21 @@ frame dir
 
 ```
 
-On a charger dans l'interface la frame *auto*, puis on a supprimé la frame prix.
+On a chargé dans l'interface la frame *auto*, puis on a supprimé la frame prix. **Par contre il n'est pas possible de supprimer la frame active dans l'interface**. 
 
-Par contre il n'est pas possible de supprimer la frame active dans l'interface. 
+::: callout-note
 
-```{stata, collectcode=T, results=F, echo=F}
-frame reset
-sysuse auto, clear
-frame rename default auto
-```
+## Stata 18 
 
+Avec la nouvelle version, il est possible de supprimer plusieurs frames avec `frame drop`. Toujours à l'exception de celle qui est active.
 
-```{stata}
-frame drop auto
-```
+:::
 
 **`frame reset`**
 
 On peut supprimer toutes les frames, dont celle chargée dans l'interface avec **`frame reset`**. Dans ce cas il n'y a plus de base chargée dans la session.
 
-```{stata, collectcode=T, results=F, echo=F}
+```{stata}
 frame reset
 sysuse auto, clear
 frame rename default auto
