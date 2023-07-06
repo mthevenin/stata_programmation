@@ -8,13 +8,10 @@ format:
 filters:
    - lightbox
 lightbox: auto
+
+jupyter: nbstata
 ---
 
-```{r, include=FALSE}
-library(Statamarkdown)
-stataexe <- "C:/Program Files/Stata17/StataSE-64.exe"
-knitr::opts_chunk$set(engine.path=list(stata=stataexe))
-```
 
 [**Programme du chapitre**](https://mthevenin.github.io/stata_programmation/formation/programme5.do)
 
@@ -45,7 +42,7 @@ Pour accéder aux infomations sur les variables d'une base:
 
 **Commande describe**
 
-```{stata, ,  class.output="result", collectcode=TRUE }
+```{stata}
 sysuse auto, clear
 
 describe
@@ -72,7 +69,7 @@ Modification du type de variable
 ***Optimisation du poids de la base***
 
 
-```{stata,  class.output="result"}
+```{stata}
 compress 
 ```
 
@@ -91,7 +88,7 @@ list make in 1/10
 
 ***Modification du type***
 
-```{stata,  class.output="result"}
+```{stata}
 recast str3 make, force
 des make
 list make in 1/10
@@ -111,8 +108,9 @@ Variables numérique:
 On peut changer le format d'affichage avec la commande **`format`**. Si le format est de type général (g), il est préférable de passer à un format de type fixe (f) On peut un même format à une liste de variables.  
 
 
+**Syntaxe**:
 
-```{stata filename="Syntaxe", eval=F,  class.output="result"}
+```markdown
 format %format varlist
 ```
 
@@ -124,12 +122,12 @@ afficher les valeurs sans décimales.
 
 
 
-```{stata,  class.output="result"}
+```{stata}
 list gear_ratio in 1/10
 ```
 
 
-```{stata,  class.output="result"}
+```{stata}
 format %6.0f gear_ratio
 list gear_ratio in 1/10
 ```
@@ -140,14 +138,14 @@ list gear_ratio in 1/10
 Avec l'option `format` appliquée à la commande `summarize` on peut automatiquement réduire le nombre de décimales reportées dans l'output 
 
 
-```{stata,  class.output="result"}
+```{stata}
 sum gear_ratio
 sum gear_ratio, d
 ```
 
 Avec l'option **`format`**
 
-```{stata,  class.output="result"}
+```{stata}
 sum gear_ratio, format
 sum gear_ratio, d format
 ```
@@ -162,8 +160,9 @@ Il est possible de basculer d'un type caractère à un type numérique et invers
 <br>
 Si la variable numérique n'a pas de label affecté sur les modalités, ou qu'on ne veut pas conserver l'information données par les labels, on peut utiliser la commande `tostring`. On peut créer une nouvelle variable avec l'option `gen()` ou remplacer la variable numérique d'origine avec l'option `replace`.  Une des deux options doit être nécessairement renseignée. 
 
+**Syntaxe**:
 
-```{stata filename="Syntaxe", eval=F,  class.output="result"} 
+```markdown
   tostring [varlist], gen(nom_varlist)
   tostring [varlist], replace
 ```
@@ -172,7 +171,7 @@ Si la variable numérique n'a pas de label affecté sur les modalités, ou qu'on
 Exemple avec la variable *foreign* qui prend les valeur 0 et 1 avec les labels "domestic" (0) et "foreign" (1)
 
 
-```{stata,  class.output="result"}
+```{stata}
 tostring foreign, gen(foreign_str)
 des foreign foreign_str
 
@@ -183,14 +182,18 @@ tab foreign foreign_str
 
 Si la variable numérique a des labels affectés aux modalités modalités et qu'on souhaite conserver cet information, on utilise la commande **``decode``** 
 
-```{stata filename="Syntaxe", eval=F,  class.output="result"} 
+**Syntaxe**:
+
+```markdown
   decode variable, gen(nom_var)
 ```
 
 
 Exemple avec la variable *foreign*  
 
-```{stata,  class.output="result"} 
+```{stata} 
+capt drop foreign_str
+
 decode foreign, gen(foreign_str)
 
 des foreign foreign_str
@@ -204,9 +207,9 @@ tab foreign_str
 
 Si la variable caractère est a une forme numerique (une suite de nombre comme des années, des âges...), on utilise la commande ```destring```. Lorsqu'il y a des des valeurs manquantes à la variable, on doit uiliser l'option `force`.
 
+**Syntaxe**:
 
-
-```{stata filename="Stata", eval=F,  class.output="result"} 
+```markdown 
  destring [varlist] , gen(nom_varlist) 
  destring [varlist] , replace [force]
 ```
@@ -215,7 +218,7 @@ Si la variable caractère est a une forme numerique (une suite de nombre comme d
 Exemple avec la variable *rep78* qui est transformé dans un premier temps en variables caractère avec `tostring` puis de nouveau transformé en format numérique avec `destring`
 
 
-```{stata,  class.output="result"} 
+```{stata} 
 tostring rep78, replace
 des rep78
 
@@ -229,21 +232,22 @@ Si la variable caractère n'est pas de forme numérique et que l'on souhaite ré
 Avec `encode` ou `sencode` sans l'option `gsort`, le numéro de la modalité suivra l’ordre alphabétique des chaînes de caractère de la variable: si la variable caractère à pour valeur ("Homme", "Femme"), "femme" sera automatiquement codée 1 et "homme" 2.
 
 
+**Syntaxe**:
 
-```{stata filename="Syntaxe", eval=F,  class.output="result"} 
+```markdown 
 encode variable, gen(nom_variable)
 ```
 
+**Syntaxe**:
 
-```{stata filename="Syntaxe", eval=F,  class.output="result"} 
-```{} 
+```markdown
 sencode variable, gen(nom_variable) replace gsort()
 ```
 
 Exemple avec la variable *foreign_str* (variable caractère créée précédemment à partir de la variable foreign)
 
 
-```{stata,  class.output="result"}
+```{stata}
 encode foreign_str, gen(foreign2)
 
 tab foreign2
@@ -264,15 +268,17 @@ Les variables de type caractères ne sont pas acceptées, Stata renvoie alors un
 
 La création d'une nouvelle variable se fait avec la commande ```generate``` généralement tronquée jusqu'à ```gen```.
 
+**Syntaxe**:
 
-```{stata filename="Syntaxe", eval=F,  class.output="result"} 
+```markdown
 gen nom_variable=valeur/fonction [expression: if in inlist inrange...]
 ```
 
 Pour remplacer la valeur d'une valeur variable existante on utilise la commande ```replace```. Le nom n'est malheureusement pas tronquable.  
 
+**Syntaxe**:
 
-```{stata filename="Syntaxe", eval=F,  class.output="result"} 
+```markdown
 replace nom_variable=valeur/fonction [expression: if in inlist inrange...]
 ```
 
@@ -289,7 +295,9 @@ replace nom_variable=valeur/fonction [expression: if in inlist inrange...]
 <br>
 On peut rapidement générer des indicatrices (0,1) à partir d'une expression conditionnelle:
 
-```{stata filename="Syntaxe", eval=F,  class.output="result"} 
+**Syntaxe**:
+
+```markdown
 gen x= expression_conditionnelle
 ```
 
@@ -297,7 +305,7 @@ gen x= expression_conditionnelle
 Exemple avec la variable *rep78*. On génère la variable *rep2* qui prend la valeur 1 si *rep78*>3, 0 sinon. Comme il y a des valeurs manquantes dans la variable d'origine, on corrige l'information pour l'indicatrice dont les valeurs manquantes ont été automatiquement affectées à la valeur 0.
 
 
-```{stata,  class.output="result"} 
+```{stata} 
 gen rep2 = rep78>3
 replace rep2 = . if rep78==.
 tab rep78 rep2
@@ -307,8 +315,9 @@ tab rep78 rep2
 <br>
 Remarque: Avec la commande `tabulate` on peut créer une série d'indicatrices à partir d'une variable catégorielle avec l'option `gen(nom_variable)`
 
+**Syntaxe**:
 
-```{stata filename="Syntaxe", eval=F,  class.output="result"} 
+```markdown
 tab x, gen(nom_variable)
 ```
 
@@ -316,7 +325,7 @@ tab x, gen(nom_variable)
 Exemple avec la variable *foreign*. Avec `tabulate` on va générer deux indicatrices: *origine1* si *foreign*=0, et *origine2* si *foreign*=1. Un label à la variable est automatiquement créé indiquant la valeur de la variable d'origine. 
 
 
-```{stata,  class.output="result"} 
+```{stata} 
 tab foreign, gen(origine)
 
 des origine1 origine2
@@ -339,14 +348,14 @@ Réservé à l'utilisation de fonctions. Pour obtenir la liste `help egen`.
 ***Exemple***: on va créer dans un premier la variable *mprice* qui reporte pour chaque observation la moyenne de la variable *price*. Dans un second temps, on va créer la variable *mprice_or*, mais avec le prix moyen des voitures selon leur origine (*foreign*). La fonction utilisée est la fonction **`mean()`**.  
 
 
-```{stata,  class.output="result"} 
+```{stata} 
 egen mprice = mean(price)
 
 list  make price mprice in 1/10
 ```
 
 
-```{stata,  class.output="result"} 
+```{stata} 
 bysort foreign: egen mprice_or = mean(price)
 
 list  make price mprice in 1/5
@@ -362,7 +371,7 @@ Sans aucune explication, la fonction `sum()` qui permet d'obtenir une somme incr
 **Exemple**: on veut créer un identifiant numérique (variable *id*) pour chaque voiture (dans la base on a une seule voiture par nom de voiture).
 
 
-```{stata,  class.output="result"}
+```{stata}
 gen x = 1 
 gen id = sum(x)
 
@@ -373,7 +382,7 @@ list id make in 66/70
 
 Si on veut reporter le nombre total d'observations dans la base (variable *N*), avec la fonction `total`:
 
-```{stata,  class.output="result"}
+```{stata}
 egen N = total(x)
 
 list id N make in 1/5
@@ -408,7 +417,8 @@ Deux variables de comptage: ```_n``` et ```_N```
 **Application**: On veut créer un identifiant sur l'ensemble des observations de la base auto.
 
 
-```{stata, class.output="result"} 
+```{stata} 
+capt drop id
 gen id = _n
 list make foreign id in 1/10
 ```
@@ -423,7 +433,7 @@ Par défaut, pour toutes les instructions le rang sélectionné est celui de la 
 * lead(+1): Sélection du rang supérieur d'une variable x: **$x=x[_n-1]$**.  Remarque: la dernière observation est une valeur manquante.
 
 
-```{stata,  class.output="result"} 
+```{stata} 
 gen lag_make  = make[_n-1]
 gen lead_make = make[_n+1]
 
@@ -460,15 +470,16 @@ La création et la modification peut se faire directement via  la boite de dialo
 <br>
 **Label des variables**    
 
+**Syntaxe**:
 
-```{stata filename="Syntaxe", eval=F,  class.output="result"}
+```markdown
 label nom_variable "label" 
 ```
 
 On peut modifier/écraser un label existant
 
 Exemple
-```{stata,  class.output="result"}  
+```{stata}  
 des foreign
 label variable foreign "Origine de la voiture"
 des foreign
@@ -480,7 +491,9 @@ Deux étapes: la création des label et leurs affectation à une ou plusieurs va
 <br>
 **Création du label**: **`label define`**    
 
-```{stata filename="Syntaxe", eval=F,  class.output="result"}
+**Syntaxe**:
+
+```markdown
 label define nom_label val1 "label1" val2 "label2"... [,modify]
 ```    
 
@@ -489,7 +502,9 @@ Exemple variable binaire (0,1) labélisée "No-Yes" avec comme nom de label NY :
 S'il y a beaucoup de modalités à labelliser, on peut affecter ligne par ligne un label par modalité et utiliser 
 l'option ```modify```   
 
-```{stata filename="Syntaxe", eval=F,  class.output="result"}
+**Syntaxe**:
+
+```markdown
 label define nom_label 1 "nom1", modify
 label define nom_label 2 "nom2", modify
 label define nom_label 3 "nom3", modify
@@ -498,14 +513,15 @@ label define nom_label 4 "nom2", modify
 
 **Affectation du label**: **`label value`**    
 
+**Syntaxe**:
 
-```{stata filename="Syntaxe", eval=F,  class.output="result"}
+```markdown
 label value nom_variable nom_label
 ```
 
-***Exercice***: créer une variable indicatrice qui regroupe de la varble rep78: 0 si rep78<4 et 1 si rep78>3. Affecter un label à la variable (au choix) et des labels aux modalités (au choix).    
+***Exercice***: créer une variable indicatrice qui regroupe de la variable rep78: 0 si rep78<4 et 1 si rep78>3. Affecter un label à la variable (au choix) et des labels aux modalités (au choix).    
 
-```{stata,  class.output="result"}
+```{stata}
 #| code-fold: true
 #| code-summary: "Show the code"
 
@@ -533,6 +549,3 @@ La commande doit être installée, elle est externe à Stata (`ssc install mlang
 ::: callout_note
 ## TODO
 Faire un rapide topo sur les variables de type dates
-
-:::
-

@@ -1,6 +1,10 @@
 
 
-** Append
+*************
+** Fusion  **
+*************
+
+** Append **
 
 clear
 		  
@@ -30,7 +34,7 @@ append using base2, keep(id v1 v2)
 	
 	
 	
-** Merge
+** Merge **
 
 ** merge 1:1	
 	
@@ -154,6 +158,69 @@ use sexe, clear
 merge id using period_act
 sort id périodes
 list
+
+
+*** Merge avec frame
+frame reset
+
+frame create period_act
+frame period_act: use period_act
+frame create sexe
+frame sexe: use sexe
+
+frame change period_act
+
+frlink m:1 id, frame(sexe) gen(link)
+frget sexe , from(link)
+
+frame period_act: order link, last
+list
+
+
+
+* frame et merge=2
+frame create tvc
+frame change tvc
+frame tvc {
+input id périodes tvc
+1 1 0
+1 2 0
+1 3 1
+1 4 0
+2 1 1 
+2 2 0 
+end 
+
+list
+
+}
+
+frame change period_act
+frlink 1:1 id périodes, frame(tvc) gen(link2)
+
+frget tvc, from(link2)
+list
+
+
+use tvc, clear
+sort id périodes
+save tvc, replace
+use period_act, clear
+sort id périodes
+merge 1:1 id périodes using tvc
+sort id périodes
+list
+
+
+*******************
+** Transposition **
+*******************
+
+
+
+
+
+
 
 
 

@@ -27,3 +27,5 @@ title: ""
 -    Support réalisé avec [Posit-Rstudio](https://posit.co/) - [Quarto](https://quarto.org).
 -    Version Stata: [17-SE](https://www.stata.com/)
 
+![](noai.png){width=10%}
+
