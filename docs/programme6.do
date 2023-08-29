@@ -212,6 +212,46 @@ sort id périodes
 list
 
 
+** fonction frval pour opérations sur bases contextuelle
+
+frame reset 
+
+clear 
+input id str6 zone x
+1 "zoneA" 10
+2 "zoneA" 15
+3 "zoneB" 9
+4 "zoneB" 12
+5 "zoneB" 10
+6 "zoneB" 15
+7 "zoneC" 6
+8 "zoneC" 13
+9 "zoneC" 16
+end
+save indiv, replace
+
+clear
+input str6 zone xmean
+"zoneA" 11
+"zoneB" 12
+"zoneC" 13
+end
+save zone, replace
+
+frame create indiv
+frame indiv: use indiv
+frame create zone
+frame zone: use zone
+
+frame change indiv
+frlink m:1 zone, frame(zone) gen(link)
+list
+
+gen diffx = x - frval(link, xmean)
+list
+
+
+
 *******************
 ** Transposition **
 *******************

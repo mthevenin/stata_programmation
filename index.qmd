@@ -1,30 +1,41 @@
----
-title: ""
-#css: styles.css
----
-
-* N'intéressera peut-être pas les plus aguerri.e.s à Stata.... quoique. On trouve toujours des années plus tard des nouvelles commandes qui facilitent vraiment les choses (`sencode`, `fre`, `tabm`,...., commandes du package `gtools`),  ou une introduction aux **frames** (Stata16), qui revisitent les appariements de bases.
-* Les chapitres sont téléchargeables en format docx. 
 
 
-* Maj de la formation:
+# **Présentation de la formation** {-} 
+
+::: callout-note
+
+### Septembre 2023
+
+La fin de la mise à jour approche, avec le début du dernier chapitre. Penser à vous reporter sur la formation dédiée au graphiques, ces éléments ayant été retiré de ce support (encore quelques élement dans le chapitre 4).  
+:::
+
+
+* Ce support n'intéressera peut-être pas les plus aguerri.e.s à Stata.... quoique. On trouve toujours, après des années pratique, de nouvelles commandes qui facilitent vraiment les choses (`sencode`, `fre`, `tabm`,...., commandes du package `gtools`). Un introduction aux **frames** introduites avec la version 16 et qui revisitent les fusions de bases, mais qui ne semble pas encore très utilisé, a été ajouté.
+* La formation est téléchargeable en format pdf. Pour accéder à cette version aller sur l'icône pdf à droite de la barre de navigation.
+* Si la grande majorité des éléments inclus à ce support sont classiques, on peut se reporter sur l'accueil principal pour trouver des fiches, encore en nombre limités, sur des fonctions que j'ai programmé ou sur des éléments de mise à jour du logiciel.
+
+
+* Maj de la formation (de la plus ancienne à la plus récente):
   * 28/07/22 : **Les variables**. Chapitre 5 [todo: faire un topo sur les formats date avant fin 2023] 
   * 07/10/22 : **Introduction**.  Chapitre 1
   * 07/10/22 : **L'environnement**.  Chapitre 2
   * 22/02/23 : **Le langage Stata**. Chapitre 3
   * 22/02/23 : **Les bases de données**. Chapitre 4 [introduction aux *frame* introduites avec la v16]
-  * 05/07/23 : **Opérations sur les bases de données**. Chapitre 6 [début reprise du chapitre] 
+  * 09/08/23 : **Manipulation bases de données** (fusion, transpositions...). Chapitre 6 
 
-* Programmes des chapitres:
-  *  [Chapitre3](formation/programme3.do)
-  *  [Chapitre4](formation/programme4.do)
-  *  [Chapitre5](formation/programme5.do)
-  *  [Chapitre6](formation/programme6.do)
+
+Les programmes des exemples traités dans les chapitres (à partir du troisième) sont téléchargeables:
+
+  *  [Chapitre3](programme3.do)
+  *  [Chapitre4](programme4.do)
+  *  [Chapitre5](programme5.do)
+  *  [Chapitre6](programme6.do)
+  *  [Chapitre7](programme7.do)
 
 ---
 
--    Support réalisé avec [Posit-Rstudio](https://posit.co/) - [Quarto](https://quarto.org).
--    Version Stata: [17-SE](https://www.stata.com/)
+-    Support réalisé avec [Posit-Rstudio](https://posit.co/) avec l'outil d'édition [Quarto](https://quarto.org).
+-    Version Stata: [18-SE](https://www.stata.com/)
 
-![](noai.png){width=10%}
+![](noai.png){fig-align="center"}
 

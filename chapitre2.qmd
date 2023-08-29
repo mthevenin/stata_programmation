@@ -1,20 +1,13 @@
----
-title: "Environnement"
-format: 
-  html: default
-  docx:
-    toc: true
-    number-sections: true
-filters:
-   - lightbox
-lightbox: auto
----
+
 
 ```{r, include=FALSE}
 library(Statamarkdown)
 stataexe <- "C:/Program Files/Stata17/StataSE-64.exe"
 knitr::opts_chunk$set(engine.path=list(stata=stataexe))
 ```
+
+# **L'environnement**
+
 
 **Commandes et fonction introduites**  
 *En italique, commandes externes*
@@ -25,7 +18,7 @@ knitr::opts_chunk$set(engine.path=list(stata=stataexe))
 | **L'éditeur de programme** | **`run`** **`do`** **`#delimit`** **`log`** ***`log2do2`***   |
 
 
-# Les (principaux) types de fichier 
+## Les (principaux) types de fichier 
 
 * Les bases de données: **.dta**
 
@@ -39,7 +32,7 @@ knitr::opts_chunk$set(engine.path=list(stata=stataexe))
 
   
 
-# Où  passer ses instructions ?
+## Où  passer ses instructions ?
 
 * Dans l'éditeur de programme (.do ou .ado ou écritue d'un fichier d'aide)
 
@@ -49,7 +42,7 @@ knitr::opts_chunk$set(engine.path=list(stata=stataexe))
 
 
 
-# L'interface principale
+## L'interface principale
 
 ![](img2/g1.png){width=50% fig-align="left"}
 
@@ -84,7 +77,7 @@ Affiche les commandes exécutées et les résultats
 * Si le cadenat est délocké, on peut modifier ces propriétés (voir variable manager). Le code qui exécute la modification est affichée dans la fenêtre command et la boîte review
 
 
-# Menus et raccourcis
+## Menus et raccourcis
 
 ![](img2/g2.png){width=50% fig-align="left"}
 
@@ -121,11 +114,11 @@ db logit
 * Déblocage du défilement de l'output pendant l'exécution
 * Arrête l'exécution d'un programme
 
-# L'éditeur de programme
+## L'éditeur de programme
 
 ![](img2/g3.png){width=50% fig-align="left"}
 
-## Soumettre un programme ou un bloc de programme 
+### Soumettre un programme ou un bloc de programme 
 
 * On ne sélectionne aucune ligne: tout le programme est exécuté
 * On sélectionne une partie du programme: seul le bloc est exécuté
@@ -137,7 +130,7 @@ db logit
 
 ::: callout-tip
 
-## `do` et `run` dans un programme
+### `do` et `run` dans un programme
 
 On peut exécuter un ou plusieurs programme  enregistré  dans un programme
 
@@ -149,7 +142,7 @@ run "path/nom_prog.do" // sans affichage de l'output
 :::
 
 
-## delimiter  
+### delimiter  
 
 Par défaut une ligne = une instruction (**`#delimit cr`**).     
 
@@ -195,7 +188,7 @@ tabulate X1
 ``` 
 
 
-## Les commentaires 
+### Les commentaires 
 
 Si le commentaire est sur une seule ligne
 ```{stata, eval=F}
@@ -215,21 +208,32 @@ Si le commentaire est sur plusieurs lignes
 
 ::: callout-warning
 
-## Pas d'autosave T_T
+#### Pas d'autosave des programmes...jusqu'à Stata 18
 
-Il n'y a pas d'autosave avec Stata contrairement à d'autres applications comme R. C'est très regrettable, car un plantage 
-n'arrive pas toujours aux autres, et oublier de sauvegarder un programme n'est pas un évènement d'une extrême rareté.  
-On peut sauver les meubles en générant un log de session en tête de programme ou mieux en générant un log à chaque ouverture de session dans un fichier profile [[marche à suivre](https://mthevenin.github.io/stata_programmation/profile/profile1.html#exemples)].  
+Enfin, enfin, enfin....
+
+Depuis avril 2023 une autosave des programmes a été implémentée au logiciel. Pour faire court:
+
+* Penser à ce que le fichier soit déjàsauvegardé. 
+* On peut paramétrer la fréquence de sauvegarde dans les préférences de l’éditeur [edit=>preference=>onglet Advanced]. Par défaut la fréquence est de 4 secondes, ce qui semble suffisant.
+* Après un crash, ou autre mésaventure, il sera proposer d’ouvrir le fichier sauvegardé automatiquement.
+* Penser également à enregistrer le programme de récupération avec le nom original.
+
+
+**Solution pour les version antérieures: le log de session**
+
+On peut sauver les meubles en générant un log de session en tête de programme ou mieux en générant un log à chaque ouverture de session dans un fichier profile [[marche à suivre]https://mthevenin.github.io/stata_fr/articles/index/posts/profile/profile.html)].  
 
 * Pour générer un log de session qui enregistrera en continu l'output de l'interface, et donc les lignes de commandes exécutée (sauf si exécution en mode `run`):
   * **file** => **log** => **begin**, puis choisir un emplacement pour l'enregistrement du fichier *log*.
   * **`log using "path/nom_log.smcl"`**
-* commande externe **`log2do2`**: à partir d'un fichier log, permet de conserver seulement les lignes de programmes en supprimant les éléments de l'output. Attention les lignes comportant des erreurs seront également conservée.  
+* Commande externe **`log2do2`**: à partir d'un fichier log, permet de conserver seulement les lignes de programmes en supprimant les éléments de l'output de types tableaux, warning et autre messages. Attention les lignes comportant des erreurs seront également conservée.  
   **`ssc install log2do2`**
-  
+ 
 :::
 
-### Interactions entre l'interface principale, les boîtes de dialogue et l'éditeur de programme
+
+#### Interactions entre l'interface principale, les boîtes de dialogue et l'éditeur de programme
 
 
 **DEMONSTRATION PENDANT LA FORMATION** 

@@ -1,19 +1,11 @@
 ---
-title: "Les variables"
-format: 
-  html: default
-  docx:
-    toc: true
-    number-sections: true
-filters:
-   - lightbox
-lightbox: auto
-
 jupyter: nbstata
 ---
 
 
-[**Programme du chapitre**](https://mthevenin.github.io/stata_programmation/formation/programme5.do)
+# **Les variables**
+
+[**Programme du chapitre**](https://mthevenin.github.io/stata_programmation/programme5.do)
 
 *Commandes et expressions introduites*
 
@@ -35,7 +27,7 @@ Pour accéder aux infomations sur les variables d'une base:
 
 ***Variables manager***   
 ![](img5/g1.PNG){width=50%}
-<br>
+
 
 ***Fenêtre properties à droite de l'interface principale (mode dévérouillé)***   
 ![](img5/g2.PNG){width=50%}
@@ -49,9 +41,9 @@ describe
 ```
 
 
-# **Types et format**
+## **Types et format**
 
-## Types
+### Types
 
 Stata gère tous les  types de variables:  numérique, caractère, date. Un type de variable est un type de stockage.
 
@@ -74,9 +66,9 @@ compress
 ```
 
 
-***Passage de la variable make en str3***  
+***Passage de la variable make en str3 avec `recast`***  
 
-En réduisant le type, on va tronquer les chaînes de caractères qui ne garderont que les 3 premières lettres, à manupiler avec prudence donc. Pour cette opération, Stata impose une confirmation avec l'option `force`.
+En réduisant le type, on va tronquer les chaînes de caractères qui ne garderont que les 3 premières lettres, à manipuler avec prudence donc. Pour cette opération, Stata impose une confirmation avec l'option `force`.
 
 ***Variable d'origine***
 
@@ -95,17 +87,17 @@ list make in 1/10
 ```
 
 
-##  Format
+###  Format
 
 Il s'agit du format d'affichage des valeurs des variables. Ils peuvent être modifiés sans que le type soit changé (décimales, alignement....).    
 
 
 Variables numérique:  
-- format *g*: *général* (définition un peu obsure pour moi)
-- format *f*: *fixe*
-- plusieurs format d'affichage pour les variables de type dates: *%td* (date avec jour-mois-année), *%tm* (mois), *%tq* (trimestre), *%tw* (semaine). Les dates et leur manipulation sont un domaines très riche, et feront l'objet d'une courte présentation en fin de chapite.
+- Format *g*: *général* (définition un peu obsure selon moi).
+- Format *f*: *fixe*.
+- Plusieurs format d'affichage pour les variables de type dates: *%td* (date avec jour-mois-année), *%tm* (mois), *%tq* (trimestre), *%tw* (semaine). Les dates et leur manipulation sont un domaines très riche, et feront l'objet d'une courte présentation en fin de chapite.
 
-On peut changer le format d'affichage avec la commande **`format`**. Si le format est de type général (g), il est préférable de passer à un format de type fixe (f) On peut un même format à une liste de variables.  
+On peut changer le format d'affichage avec la commande **`format`**. Si le format est de type général (g), il est préférable de passer à un format de type fixe (f). On peut affecter un même format à une liste de variables.  
 
 
 **Syntaxe**:
@@ -118,14 +110,11 @@ format %format varlist
 **Exemple: changement du nombre de décimales** 
 
 Dans la base *auto*, la variable *gear_ratio* est de format fixe à 2 décimales (%6.2f). Pour supprimer, à l'affichage, les deux décimales:
-afficher les valeurs sans décimales.  
-
 
 
 ```{stata}
 list gear_ratio in 1/10
 ```
-
 
 ```{stata}
 format %6.0f gear_ratio
@@ -157,8 +146,8 @@ Il est possible de basculer d'un type caractère à un type numérique et invers
 
 **De numérique à caractère**   
 
-<br>
 Si la variable numérique n'a pas de label affecté sur les modalités, ou qu'on ne veut pas conserver l'information données par les labels, on peut utiliser la commande `tostring`. On peut créer une nouvelle variable avec l'option `gen()` ou remplacer la variable numérique d'origine avec l'option `replace`.  Une des deux options doit être nécessairement renseignée. 
+
 
 **Syntaxe**:
 
@@ -168,7 +157,7 @@ Si la variable numérique n'a pas de label affecté sur les modalités, ou qu'on
 ```
 
 
-Exemple avec la variable *foreign* qui prend les valeur 0 et 1 avec les labels "domestic" (0) et "foreign" (1)
+Exemple avec la variable *foreign* qui prend les valeurs 0 ou 1 avec les labels "domestic" (0) et "foreign" (1)
 
 
 ```{stata}
@@ -227,7 +216,7 @@ des rep78
 ```
 
 
-Si la variable caractère n'est pas de forme numérique et que l'on souhaite récupérer les labels sur les modalités, on peut utiliser la commande **`encode`** ou la commande externe **`sencode`** (`net install st0043_2, force`). La seconde permet de remplacer directement la variable d'origine, option particulièrement pratique.. Egalement, cette commande permet plus de souplesse sur le codage de la variable (`help sencode` pour plus de détail).  
+Si la variable caractère n'est pas de forme numérique et que l'on souhaite récupérer les labels sur les modalités, on peut utiliser la commande **`encode`** ou la commande externe **`sencode`** (`net install st0043_2, force`). La seconde permet de remplacer directement la variable d'origine, option particulièrement pratique. Egalement, cette commande permet plus de souplesse sur le codage de la variable (`help sencode` pour plus de détail).  
 
 Avec `encode` ou `sencode` sans l'option `gsort`, le numéro de la modalité suivra l’ordre alphabétique des chaînes de caractère de la variable: si la variable caractère à pour valeur ("Homme", "Femme"), "femme" sera automatiquement codée 1 et "homme" 2.
 
@@ -256,17 +245,19 @@ tab foreign2, nolab
 
     
 ::: callout-warning
-## Type de variable pour les modèles  
+
+#### Type de variable pour les modèles  
 Les variables de type caractères ne sont pas acceptées, Stata renvoie alors un message d'erreur avec **no observation**. Si c'est le cas, les commandes `destring` et `encode` vont s'avérer particulièrement utiles. 
+
 :::
 
 
 
-# **Création d'une variable**  
+## **Création d'une variable**  
 
-## generate - replace
+### generate - replace
 
-La création d'une nouvelle variable se fait avec la commande ```generate``` généralement tronquée jusqu'à ```gen```.
+La création d'une nouvelle variable se fait avec la commande `generate` généralement tronquée jusqu'à `gen` (voire `ge` pour les plus radicaux de la troncature de syntaxe).
 
 **Syntaxe**:
 
@@ -274,7 +265,7 @@ La création d'une nouvelle variable se fait avec la commande ```generate``` gé
 gen nom_variable=valeur/fonction [expression: if in inlist inrange...]
 ```
 
-Pour remplacer la valeur d'une valeur variable existante on utilise la commande ```replace```. Le nom n'est malheureusement pas tronquable.  
+Pour remplacer la valeur variable existante on utilise la commande `replace`. Le nom n'est malheureusement pas tronquable.  
 
 **Syntaxe**:
 
@@ -283,16 +274,20 @@ replace nom_variable=valeur/fonction [expression: if in inlist inrange...]
 ```
 
 
-* On peut utiliser le préfixe ```bysort```
-* Pour utiliser une fonction mathématique (log, exp, .)  => `help math_functions`
+* On peut utiliser le préfixe `bysort`
+* Pour utiliser une fonction mathématique (log, exp,....)  => `help math_functions`
 * Pour afficher la liste complète des fonctions (variables caractères, statistiques, pseudo nombre aléatoire, dates.): `help function`  
 
 **Rappel**: attention  entre l'opérateur d'affectation (`=`) et l'expression conditionnelle (`==`).   
 
-<br>
+```markdown
+gen     x=valeur if y==valeur
+replace x=valeur if y==valeur
+```
 
 **Création d'une indicatrice (0,1)**    
-<br>
+
+
 On peut rapidement générer des indicatrices (0,1) à partir d'une expression conditionnelle:
 
 **Syntaxe**:
@@ -312,7 +307,7 @@ tab rep78 rep2
 ```
 
 
-<br>
+
 Remarque: Avec la commande `tabulate` on peut créer une série d'indicatrices à partir d'une variable catégorielle avec l'option `gen(nom_variable)`
 
 **Syntaxe**:
@@ -335,14 +330,12 @@ tab origine2 foreign
 ```
 
 
-## egen  
+### egen  
 
 **`egen`**: extented generate  
-**`egenmore`**: package programmé par NJ.Cox qui ajoute des fonctions associée à `egen` [`ssc install egenmore`]
+**`egenmore`**: package programmé par NJ.Cox qui ajoute des fonctions associée à `egen` [`ssc install egenmore`]. On utilise la commande `egen` une fois le package installé.
 
-Réservé à l'utilisation de fonctions. Pour obtenir la liste `help egen`.   
-<br>
-
+Réservé à l'utilisation de fonctions. Pour obtenir la liste `help egen` ou `help egenmore`.   
 
 
 ***Exemple***: on va créer dans un premier la variable *mprice* qui reporte pour chaque observation la moyenne de la variable *price*. Dans un second temps, on va créer la variable *mprice_or*, mais avec le prix moyen des voitures selon leur origine (*foreign*). La fonction utilisée est la fonction **`mean()`**.  
@@ -364,9 +357,9 @@ list  make price mprice in 66/70
 
 
 ::: callout-warning
-## Les fonctions `sum()` et `total()`**
+#### Les fonctions `sum()` et `total()`
 
-Sans aucune explication, la fonction `sum()` qui permet d'obtenir une somme incrémentale n'est pas associée à `egen` mais à `generate`. En revanche la fonction `total()` est associée à `egen`. Il faut le retenir.
+Sans aucune justification, la fonction `sum()` qui permet d'obtenir une somme incrémentale n'est pas associée à `egen` mais à `generate`. En revanche la fonction `total()` est associée à `egen`. Il faut s'en souvenir.
 
 **Exemple**: on veut créer un identifiant numérique (variable *id*) pour chaque voiture (dans la base on a une seule voiture par nom de voiture).
 
@@ -391,13 +384,13 @@ list id N make in 66/70
 
 :::
 
-On va le voir, ces deux variables qui ont été générées peuvent l'être directement  avec les *variables internes dites de comptage*. 
+On va le voir, ces deux variables qui viennent d'être générées peuvent l'être directement  avec des *variables internes dites de comptage*. 
 
 
 ::: {.callout-tip icon="false"}
 ## Package gegen (M.Caceres)
 
-- Pour les volumétries dépassant le million d'observation il est fortement conseillé d'utilisée les commandes associées au package de *Mauricio Caceres*, ici la commande **`gege,`**.
+- Pour les volumétries dépassant le million d'observations il est fortement conseillé d'utiliser la commande `gegen` associée au package de *Mauricio Caceres* **`gtools`**:
 - <https://gtools.readthedocs.io/en/latest/>
 - <https://mthevenin.github.io/stata_programmation/speedup/gtools.html>
 :::
@@ -405,11 +398,10 @@ On va le voir, ces deux variables qui ont été générées peuvent l'être dire
  
 # **Les variables internes de comptage**
 
-Très utile avec des données longitudinales, de durées ou toute base avec des données avec cluster. 
-<br>
+Très utile avec des données longitudinales, de durées ou toute base avec des données avec clusters. 
 
 Deux variables de comptage: ```_n``` et ```_N```    
-<br>
+
 
 * **`_n`** : renvoie le rang de l'observation  
 * **`_N`**:  renvoie le  nombre total d'observations  
@@ -418,19 +410,21 @@ Deux variables de comptage: ```_n``` et ```_N```
 
 
 ```{stata} 
-capt drop id
+capture drop id
+
 gen id = _n
 list make foreign id in 1/10
 ```
 
+On peut associer `bysort` à la création de ce type de variables, par exemple pour générer un id unique aux personnes composant un ménage.
 
 
 **lead & lag**  
 
-Par défaut, pour toutes les instructions le rang sélectionné est celui de la ligne de l'observation  x=x[_n]  
+Par défaut, pour toutes les instructions le rang sélectionné est celui de la ligne de l'observation  `x=x[_n]`  
 
-* Lag(-1):  Sélection du rang inférieur d'une variable x: **$x=x[_n-1]$**.  Remarque: la première observation est une valeur manquante.
-* lead(+1): Sélection du rang supérieur d'une variable x: **$x=x[_n-1]$**.  Remarque: la dernière observation est une valeur manquante.
+* Lag(-1):  Sélection du rang inférieur d'une variable x: **$x=x[_n-1]$**. La première observation est une valeur manquante.
+* lead(+1): Sélection du rang supérieur d'une variable x: **$x=x[_n-1]$**. La dernière observation est une valeur manquante.
 
 
 ```{stata} 
@@ -441,33 +435,33 @@ list make lag_make lead_make in 1/10
 ```
  
  
-# **Sélection de plusieurs modalités, recodage**
+## **Sélection de plusieurs modalités, recodage**
 
-**inlist**    
-Pour sélectionner plusieurs modalités d'une variable dans une expression conditionnelle ```inlist(variable, valeur1, valeur2,..)```.  
+**`inlist`**    
+Pour sélectionner plusieurs modalités d'une variable dans une expression conditionnelle `inlist(variable, valeur1, valeur2,..)`.  
 Utile si la variable n'est pas de type ordinale.  
-Exemple: ```gen Y=1 if inlist(X,1,3,6,10)```  
-L'expression est hélas toujours limitée à 10 valeurs pour les variables caractères.  
-<br>
+Exemple: `gen Y=1 if inlist(X,1,3,6,10)` 
+L'expression reste hélas toujours limitée à 10 valeurs pour les variables caractères.  
 
-**inrange**  
-Pour sélectionner un intervalle dans une expression ```inrange(variable, valeur1,valeur2)``` avec $valeur1<valeur2$.  
+
+**`inrange`**  
+Pour sélectionner un intervalle dans une expression `inrange(variable, valeur1,valeur2)` avec $valeur1<valeur2$.  
 Exemple:  ```gen Y= inrange(X,5,10)``` pour obtenir $Y=1$ si $50\leq x\leq 10$ 0 sinon.  
-<br>
-**recode**   
+
+
+**`recode`**   
 Permet de changer les valeurs d'une variable numérique: 
 
-`recode variable (anciennes_valeurs=nouvelle_valeur) (ancienne_valeurs=nouvelles_valeur).....```  
+`recode variable (anciennes_valeurs=nouvelle_valeur) (ancienne_valeurs=nouvelles_valeur).....`  
 
-<br>
+
 **Application**: recoder la variable foreign 0=>1 et 1=>2.  
 
 
-# **Les labels**  
+## **Les labels**  
 
-La création et la modification peut se faire directement via  la boite de dialogue du **variable manager**.  
+La création et la modification peut se faire directement viala boite de dialogue du **variable manager**.  
 
-<br>
 **Label des variables**    
 
 **Syntaxe**:
@@ -478,7 +472,8 @@ label nom_variable "label"
 
 On peut modifier/écraser un label existant
 
-Exemple
+Exemple:
+
 ```{stata}  
 des foreign
 label variable foreign "Origine de la voiture"
@@ -486,9 +481,9 @@ des foreign
 ```
 
 **Label sur les modalités des variables**  
-<br>
+
 Deux étapes: la création des label et leurs affectation à une ou plusieurs variables. 
-<br>
+
 **Création du label**: **`label define`**    
 
 **Syntaxe**:
@@ -497,10 +492,10 @@ Deux étapes: la création des label et leurs affectation à une ou plusieurs va
 label define nom_label val1 "label1" val2 "label2"... [,modify]
 ```    
 
-Exemple variable binaire (0,1) labélisée "No-Yes" avec comme nom de label NY : `label define NY 0 "non" 1 "oui"`    
+Exemple variable binaire (0,1) labélisée "No-Yes" avec comme nom de label NY : `label define NY 0 "non" 1 "oui`    
 
 S'il y a beaucoup de modalités à labelliser, on peut affecter ligne par ligne un label par modalité et utiliser 
-l'option ```modify```   
+l'option `modify` 
 
 **Syntaxe**:
 
@@ -538,12 +533,13 @@ tab rep78 rep78b
 
 **Fichiers de labels et multilangue**  
 
-**label save**  
-On peut générer un fichier (.do) donnant le programme qui génère les labels (existants) d'une base:  commande ```label save``` (par le menu: data => data utilities => label utilities => save labels as do file).    
-<br>
+**`label save`**  
+On peut générer un fichier (.do) donnant le programme qui génère les labels (existants) d'une base:  commande `label save` (par le menu: data => data utilities => label utilities => *save labels as do file*).    
+
+
 **multilangue**  
-Pour des enquêtes internationales, on peut de créer des labels en plusieurs langues switcher d'une langue à l'autre (exemple MAFE l'Ined).
-La commande doit être installée, elle est externe à Stata (`ssc install mlanguage` - auteur  *Jeroen Weesie*).    
+Pour des enquêtes internationales, on peut générer des jeux de labels en plusieurs langues et switcher de l'une à l'autre (exemple MAFE l'Ined).
+La commande doit être installée, elle est externe à Stata (`ssc install mlanguage` - auteur  *J.Weesie*).    
 
 
 ::: callout_note

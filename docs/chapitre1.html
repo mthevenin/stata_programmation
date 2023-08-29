@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.361">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introduction</title>
+<title>Programmation avec Stata - 1&nbsp; Présentation de Stata</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,22 +57,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../formation/chapitre2.html" rel="next">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./chapitre2.html" rel="next">
+<link href="./index.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -81,21 +83,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "type": "textbox",
   "limit": 20,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-no-results-text": "Pas de résultats",
+    "search-matching-documents-text": "documents trouvés",
+    "search-copy-link-title": "Copier le lien vers la recherche",
+    "search-hide-matches-text": "Cacher les correspondances additionnelles",
+    "search-more-match-text": "correspondance de plus dans ce document",
+    "search-more-matches-text": "correspondances de plus dans ce document",
+    "search-clear-button-title": "Effacer",
+    "search-detached-cancel-button-title": "Annuler",
+    "search-submit-button-title": "Envoyer",
+    "search-label": "Recherche"
   }
 }</script>
 
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
@@ -104,7 +106,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Programmation avec Stata</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Basculer la navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -134,17 +141,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
 </ul>
             <div class="quarto-navbar-tools ms-auto">
+    <a href="https://github.com/mthevenin/stata_programmation" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="./stata_programmation.pdf" rel="" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../formation/chapitre1.html">Introduction</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapitre1.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">**Présentation de Stata**</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -158,56 +167,63 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
+        <div id="quarto-search" class="" title="Recherche"></div>
         </div>
         </div>
-        <div class="sidebar-tools-collapse tools-wide">
-    <a href="../about.html" title="Marc Thévenin" class="quarto-navigation-tool px-1" aria-label="Marc Thévenin"><i class="bi bi-"></i></a>
-    <a href="https://github.com/mthevenin" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
-    <a href="mailto:marc.thevenin@ined.fr" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-envelope"></i></a>
-    <a href="../about.html" title="Marc Thévenin" class="quarto-navigation-tool px-1" aria-label="Marc Thévenin"><i class="bi bi-file-person"></i></a>
+        <div class="sidebar-tools-collapse">
+    <a href="https://github.com/mthevenin" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="mailto:marc.thevenin@ined.fr" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-envelope"></i></a>
 </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../formation/chapitre1.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Introduction</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>Présentation de la formation</strong></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../formation/chapitre2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Environnement</span></a>
+  <a href="./chapitre1.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title"><strong>Présentation de Stata</strong></span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../formation/chapitre3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Le langage Stata</span></a>
+  <a href="./chapitre2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title"><strong>L’environnement</strong></span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../formation/chapitre4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Les bases de données</span></a>
+  <a href="./chapitre3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title"><strong>Le langage Stata</strong></span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../formation/chapitre5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Les variables</span></a>
+  <a href="./chapitre4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title"><strong>Les bases de données</strong></span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../formation/chapitre6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Opérations sur les bases</span></a>
+  <a href="./chapitre5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title"><strong>Les variables</strong></span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
- <span class="menu-text">formation/chapitre7.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./chapitre6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title"><strong>Manipulations des bases de données</strong></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapitre7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Analyse statistique avec Stata</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -218,23 +234,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Sections</h2>
    
   <ul>
-  <li><a href="#historique-de-stata" id="toc-historique-de-stata" class="nav-link active" data-scroll-target="#historique-de-stata"><span class="header-section-number">1</span> <strong>Historique de Stata</strong></a></li>
-  <li><a href="#stata-à-lined" id="toc-stata-à-lined" class="nav-link" data-scroll-target="#stata-à-lined"><span class="header-section-number">2</span> <strong>Stata à l’Ined</strong></a></li>
-  <li><a href="#les-ressources" id="toc-les-ressources" class="nav-link" data-scroll-target="#les-ressources"><span class="header-section-number">3</span> <strong>Les ressources</strong></a>
+  <li><a href="#historique-de-stata" id="toc-historique-de-stata" class="nav-link active" data-scroll-target="#historique-de-stata"><span class="header-section-number">1.1</span> <strong>Historique de Stata</strong></a></li>
+  <li><a href="#stata-à-lined" id="toc-stata-à-lined" class="nav-link" data-scroll-target="#stata-à-lined"><span class="header-section-number">1.2</span> <strong>Stata à l’Ined</strong></a></li>
+  <li><a href="#les-ressources" id="toc-les-ressources" class="nav-link" data-scroll-target="#les-ressources"><span class="header-section-number">1.3</span> <strong>Les ressources</strong></a>
   <ul class="collapse">
-  <li><a href="#les-ressources-externes" id="toc-les-ressources-externes" class="nav-link" data-scroll-target="#les-ressources-externes"><span class="header-section-number">3.1</span> Les ressources externes</a></li>
-  <li><a href="#les-ressources-internes" id="toc-les-ressources-internes" class="nav-link" data-scroll-target="#les-ressources-internes"><span class="header-section-number">3.2</span> Les ressources internes</a></li>
+  <li><a href="#les-ressources-externes" id="toc-les-ressources-externes" class="nav-link" data-scroll-target="#les-ressources-externes"><span class="header-section-number">1.3.1</span> Les ressources externes</a></li>
+  <li><a href="#les-ressources-internes" id="toc-les-ressources-internes" class="nav-link" data-scroll-target="#les-ressources-internes"><span class="header-section-number">1.3.2</span> Les ressources internes</a></li>
   </ul></li>
-  <li><a href="#les-users-packages" id="toc-les-users-packages" class="nav-link" data-scroll-target="#les-users-packages"><span class="header-section-number">4</span> <strong>Les users packages</strong></a></li>
+  <li><a href="#les-users-packages" id="toc-les-users-packages" class="nav-link" data-scroll-target="#les-users-packages"><span class="header-section-number">1.4</span> <strong>Les users packages</strong></a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="chapitre1.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/mthevenin/stata_programmation/edit/main/chapitre1.qmd" class="toc-action">Modifier cette page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Introduction</h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title"><strong>Présentation de Stata</strong></span></h1>
 </div>
 
 
@@ -249,8 +265,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="historique-de-stata" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> <strong>Historique de Stata</strong></h1>
+<section id="historique-de-stata" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="historique-de-stata"><span class="header-section-number">1.1</span> <strong>Historique de Stata</strong></h2>
 <p>L’entreprise <strong>Stata Corp Lp</strong> a été fondée par William Gould. Il est toujours à la tête de l’entreprise.</p>
 <ul>
 <li>Première version (sous MS Dos) en janvier 1985.<br>
@@ -266,23 +282,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Version 17
+Version 18 et 17
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><a href="https://www.stata.com/new-in-stata/">Présentation</a></p>
-<p>A noter:</p>
+<p><strong>Version 18</strong></p>
+<ul>
+<li>Une autosave des programmes (enfin)</li>
+<li>Nouveau format .dtas pour enregistrer une liste de frames générées dans un programme</li>
+<li>Graphiques (se reporter à la formation graphique):
+<ul>
+<li>Nouvelle palette qualitative (enfin)</li>
+<li>Nouveau thème par défaut (enfin)</li>
+<li>Une nouvelle option <code>colorvar</code> (cf <code>fill</code>, <code>color</code> dans R ou python) qui permet d’empiler automatiquement ou presque plusieurs objet graphiques (autrefois un objet par valeur d’une condition)</li>
+</ul></li>
+</ul>
+<p><strong>Version 17</strong></p>
+<p>Une présentation a été faite il y a plus d’un an [<a href="https://www.stata.com/new-in-stata/">Lien</a>].</p>
+<p>En résumé pour cette 17ème version:</p>
 <ul>
 <li>Amélioration de la vitesse d’exécution (je confirme)</li>
-<li>Suite <strong><code>collect</code></strong> pour gérer et générer les outputs des commandes statistiques. Rapidement testé pour des régressions, et cela me semble plutôt prometteur <a href="https://mthevenin.github.io/stata_programmation/tableaux/intro.html">rapide présentation</a></li>
+<li>Suite <strong><code>collect</code></strong> pour gérer et générer les outputs des commandes statistiques. Rapidement testé pour des régressions. C’est plutôt pas mal même si comme d’habitude avec Stata “qui se raccroche aux branche”, cela peut vite toutner à l’usine à gaz [<a href="https://mthevenin.github.io/stata_fr/articles/index/posts/collect/collect.html">rapide présentation</a>]</li>
 </ul>
 </div>
 </div>
 </section>
-<section id="stata-à-lined" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> <strong>Stata à l’Ined</strong></h1>
-<p>Version 17 Windows SE déployée au printemps 2022.<br>
-Version 17 SE sous Linux (serveur margaux).</p>
+<section id="stata-à-lined" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="stata-à-lined"><span class="header-section-number">1.2</span> <strong>Stata à l’Ined</strong></h2>
+<ul>
+<li>Version 18 Window SE en cours de déploiement, la version 17 Windows SE a été déployée au printemps 2022.<br>
+</li>
+<li>Version 17 SE sous Linux (serveur margaux).</li>
+</ul>
 <p>Petit rappel pour l’Ined: Quel que soit le logiciel choisi sous environnement Windows (SAS v9.4 ou Stata) vous avez accès à une version de l’autre application sous Linux via le serveur Margaux (SAS Studio ou STATA v17 SE).</p>
 <p><strong>Version SE: Standard Edition</strong></p>
 <ul>
@@ -292,10 +323,10 @@ Version 17 SE sous Linux (serveur margaux).</p>
 </ul>
 <p>Il existe également des versions dites MP (Multiple Process), dont la plus puissante gère 120000 variables et 20 milliards d’observations).</p>
 </section>
-<section id="les-ressources" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> <strong>Les ressources</strong></h1>
-<section id="les-ressources-externes" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="les-ressources-externes"><span class="header-section-number">3.1</span> Les ressources externes</h2>
+<section id="les-ressources" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="les-ressources"><span class="header-section-number">1.3</span> <strong>Les ressources</strong></h2>
+<section id="les-ressources-externes" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="les-ressources-externes"><span class="header-section-number">1.3.1</span> Les ressources externes</h3>
 <ul>
 <li><p>Les manuels édités par STATA. Certains sont disponibles au GED [http://www.stata.com/bookstore/books-on-stata]</p></li>
 <li><p>*<strong>Stata Journal</strong>, la revue trimestrielle éditée par Stata [http://www.stata-journal.com ]. Depuis 2015 accès total aux versions PDF (via portail GED maintenant). L’accès et le sommaire des 4 derniers numéro est disponible ici: <a href="https://mthevenin.github.io/stata_fr/Stata_journal.html">Lien</a></p></li>
@@ -304,8 +335,8 @@ Version 17 SE sous Linux (serveur margaux).</p>
 <li><p>Auto-promo: le support que j’ai mis en place à l’été 2022 et qui héberge cette formation introductive <a href="https://mthevenin.github.io/stata_fr/">Lien</a></p></li>
 </ul>
 </section>
-<section id="les-ressources-internes" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="les-ressources-internes"><span class="header-section-number">3.2</span> Les ressources internes</h2>
+<section id="les-ressources-internes" class="level3" data-number="1.3.2">
+<h3 data-number="1.3.2" class="anchored" data-anchor-id="les-ressources-internes"><span class="header-section-number">1.3.2</span> Les ressources internes</h3>
 <ul>
 <li><p>Le manuel de Stata est directement intégré au logiciel. Pour y accéder à partir du menu : <code>help =&gt; PDF documentation</code>. <strong><em>Il est vraiement de très bonne qualité</em></strong>.</p></li>
 <li><p>Pour une instruction, on peut obtenir son aide en tapant dans la fenêtre <em>command</em> de l’environnement principal <strong><code>help nom_commande</code></strong>.</p>
@@ -320,7 +351,7 @@ Version 17 SE sous Linux (serveur margaux).</p>
 <div class="code-with-filename-file">
 <pre><strong>Utiliser l'aide interne</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">help</span> <span class="kw">generate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">help</span> <span class="kw">generate</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <p>L’aide comprend généralement:</p>
@@ -351,8 +382,8 @@ Les versions inférieures ne peuvent pas ouvrir les bases au format actuel, qui 
 </div>
 </section>
 </section>
-<section id="les-users-packages" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> <strong>Les users packages</strong></h1>
+<section id="les-users-packages" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="les-users-packages"><span class="header-section-number">1.4</span> <strong>Les users packages</strong></h2>
 <p>Stata fonctionne avec un système hybride de commandes officielles ou usines et de commandes externes (idem R, Python…).<br>
 Commandes externes ou <em>user package</em>:</p>
 <ul>
@@ -368,13 +399,13 @@ Pour télécharger un package, on peut utiliser la ligne de commande:</p>
 <div class="code-with-filename-file">
 <pre><strong>Installation d'une commande</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">ssc</span> install nom_commande, <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">ssc</span> install nom_commande, <span class="kw">replace</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <p>Il est possible d’installer un package après avoir consulté les fichiers avec la commande <code>findit</code> (on peut donc consulter l’aide en amont)</p>
 <p>Les programmes des packages externes se trouve dans un répertoire spécifique <strong>plus/ado</strong>, souvent installé dans la racine du lecteur <code>C:</code>. On peut déplacer ce répertoire, et c’est conseillé si on dispose, comme à l’Ined, d’une sauvergarde régulière sur un lecteur. On peut vérifier la localisation de ce répertoire avec la commande <code>sysdir</code>, et plus généralement la localisation des répertoires d’utilisation de Stata.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ot">sysdir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ot">sysdir</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre class="result"><code>   STATA:  C:\PROGRA~1\Stata17\
     BASE:  C:\PROGRA~1\Stata17\ado\base\
@@ -401,9 +432,8 @@ profile.do
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Paramétrer vos sessions avec un fichier <strong><em>profile.do</em></strong> [<a href="https://mthevenin.github.io/stata_programmation/profile/profile1.html">Lien</a>]</p>
-<p>Sur ce chapitre introductif: déplacer le répertoire où sont stocker les commandes externes dans un lecteur faisant l’objet de sauvergardes régulières sur un réseau.<br>
-C’est une opération rarement effectué, dans ce fichier, on utilise donc un certains nombre de commandes qu’on aura pas besoin de rechercher le nom, dans le manuel ou sur internet par exemples.</p>
+<p><strong>Attention</strong>: Avec la version 18, la technique permettant avec un profile.do de récupérer une sauvegarde d’un programme n’a plus aucune utilité, Stata ayant (enfin) une autosave des programmes.</p>
+<p>Paramétrer vos sessions avec un fichier <strong><em>profile.do</em></strong> [<a href="https://mthevenin.github.io/stata_fr/articles/index/posts/profile/profile.html">Lien</a>]</p>
 </div>
 </div>
 
@@ -465,12 +495,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
+    button.setAttribute("title", "Copié");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
+      button.setAttribute("data-bs-title", "Copié");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",
@@ -646,10 +676,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><strong>Présentation de la formation</strong></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../formation/chapitre2.html" class="pagination-link">
-        <span class="nav-page-text">Environnement</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./chapitre2.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title"><strong>L’environnement</strong></span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

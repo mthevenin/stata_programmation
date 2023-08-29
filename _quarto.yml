@@ -1,8 +1,10 @@
 project:
-  type: website
+  type: book
   output-dir: docs
+ 
+lang: fr 
   
-website:
+book:
   search: 
     location: sidebar
   page-navigation: true
@@ -21,28 +23,32 @@ website:
             href: https://mthevenin.github.io/stata_programmation/
           - text: "Graphiques"
             href: https://mthevenin.github.io/stata_graphiques/   
-
+  title: "Programmation avec Stata"
+  author: "**Marc Thévenin**"
+  language: fr
+  output-file: stata_programmation
+  downloads: [pdf]
+  repo-url: https://github.com/mthevenin/stata_programmation
+  repo-actions: [edit]
+  date: today
+  reader-mode: false
   sidebar:
-    pinned: true
-    align: center
+    style: "docked"
+    collapse-level: 1
     tools: 
-      - href: about.qmd
       - icon: github
         href: https://github.com/mthevenin
       - icon: envelope
         href: mailto:marc.thevenin@ined.fr 
-      - icon: file-person
-        href: about.qmd  
-    style: "docked"
-    search: true
-    contents:
-      - formation/chapitre1.qmd
-      - formation/chapitre2.qmd 
-      - formation/chapitre3.qmd
-      - formation/chapitre4.qmd
-      - formation/chapitre5.qmd
-      - formation/chapitre6.qmd
-      - formation/chapitre7.qmd
+  chapters:
+    - index.qmd  
+    - chapitre1.qmd
+    - chapitre2.qmd 
+    - chapitre3.qmd
+    - chapitre4.qmd
+    - chapitre5.qmd
+    - chapitre6.qmd
+    - chapitre7.qmd
 
 format:
   html:
@@ -55,8 +61,39 @@ format:
     toc-depth: 3
     toc-title: Sections
     highlight-style: dracula
-number-sections: true
+    number-sections: true
+    grid:
+      sidebar-width: 350px
+      body-width: 950px
+      margin-width: 300px
+      gutter-width: 1.5rem
+
+  pdf:
+    fontsize: 12pt
+    documentclass: scrreprt
+    classoption: ["onepage", "openany"]
+    number-sections: true
+    toc: true
+#    lot: true
+#    lof: true
+    cap-location: top
+    colorlinks: true
+    highlight-style: zenburn
+    fontfamily: cabin 
+    toc-depth: 4
+    geometry: 
+      - top=20mm
+      - left=15mm
+      - right=15mm
+      - bottom=20mm  
+
 filters:
    - lightbox
 lightbox: auto
+
+
+
+
+
+
 

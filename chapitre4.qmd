@@ -1,17 +1,12 @@
 ---
-title: "Les bases de données"
-format: 
-  html: default
-  docx:
-    toc: true
-    number-sections: true
-filters:
-   - lightbox
-lightbox: auto
-
-
 jupyter: nbstata
 ---
+
+# **Les bases de données**
+
+[**Programme du chapitre**](https://mthevenin.github.io/stata_programmation/programme4.do)
+
+*Commandes et expressions introduites*
 
 
 | SECTION                                       | COMMANDES ET EXPRESSIONS                                                                                       |
@@ -29,7 +24,7 @@ jupyter: nbstata
  * *En italique, commandes associées à un chapitre ultérieur*
 
 
-# **Affectation du répertoire de travail**
+## **Affectation du répertoire de travail**
 
 La commande ```cd``` (Current Directory), permet d'indiquer le chemin d'accès du répertoire où se trouve la base à ouvrir ou à  enregistrer.   Si aucun chemin d'accès n'est spécifié, Stata ira chercher la base dans le répertoire par défaut (normalement C: ou D:).
 
@@ -42,9 +37,9 @@ cd "path"
 **Remarque**  
 Avec cette commande, un seul repertoire de travail est actif. On peut élargir les possibilités en affectant des répertoires avec des macros variables locales ou globales
 
-# **Ouverture et sauvegarde d'une base**
+## **Ouverture et sauvegarde d'une base**
 
-## Ouverture
+### Ouverture
 
 **Commande** ```use```  
 
@@ -116,7 +111,7 @@ webuse set
 :::
 
 
-## Sauvegarde
+### Sauvegarde
 
 **Commandes** ```save``` ou ```saveold```  
 
@@ -150,9 +145,9 @@ use "ma base", clear
 use ma_base,   clear
 ```
 
-## Autres formats
+### Autres formats
 
-## Importation/Exportation
+#### Importation/Exportation
 
 **Excel et fichiers textes (.txt, .csv)**    
 <br>
@@ -181,7 +176,6 @@ import excel "D:\D\stata_temp\export_excel.xls", sheet("Sheet1") firstrow clear
 
 
 **SAS**    
-<br>
 
 * Depuis la version 16 de Stata il est possible d'importer directement des formats `sas7bdat`. Pas d'exportation possible.
 * Pour les versions antérieure, la solution installée via *sasxport* n'est pas satisfaisante. Il est alors conseillé  d'utiliser le package externe  `savasas`
@@ -192,7 +186,6 @@ import excel "D:\D\stata_temp\export_excel.xls", sheet("Sheet1") firstrow clear
 
 
 **SPSS**  
-<br>
 
 * Depuis la dernière version de Stata (16), il est possible d'importer directement des bases de ce format.
 * Pas de possibilité d'exportation directe.
@@ -202,7 +195,7 @@ import excel "D:\D\stata_temp\export_excel.xls", sheet("Sheet1") firstrow clear
 
 ## Création d'une base de donnée, ajout d'observations
 
-On peut créer une base de donnée, "vide", avec la commande **`set obs nbre_observations`**
+On peut créer une base de donnée, "vide", avec la commande **`set obs n_obs`**
 
 ```markdown
 clear 
@@ -214,14 +207,14 @@ A une base existante, on peut ajouter des observations (en valeurs manquante) av
 ```markdown
 insobs 10  // ajout de 10 observations à la base
 ```
-
 :::
+
 
 
 
 # **Décrire le contenu d'une base**
 
-## Commande `describe`
+### Commande `describe`
 
 Permet, sous forme de tableau, d'avoir des renseignement sur une base de donnée: taille en mémoire, nombre d'observations, descriptif des variables (nom, format, labels). La commande est régulièrement tronquée jusqu'à `des` 
 
@@ -249,7 +242,7 @@ describe using  "https://www.stata-press.com/data/r17/census2.dta"
 ```
 
 
-## Autres commandes
+### Autres commandes
 
 * **Affichage de la base dans l'output**
 
@@ -289,13 +282,12 @@ label list origin
 ```
 
 
-# **Tri, doublon, position des variables**
+## **Tri, doublon, position des variables**
 
-## Tri d'une base
+### Tri d'une base
 
 Commande `sort`   
   
-
 ```markdown
 sort varlist
 ```  
@@ -318,9 +310,7 @@ gsort + foreign - price
 
 ```
 
-
-
-## Repérage et suppression des doublons
+### Repérage et suppression des doublons
 
 **Repérage et suppression des doublons**  
 
@@ -340,7 +330,7 @@ duplicates drop [varlist]
 ```
 
 
-## Modifier la place des variables dans la base
+### Modifier la place des variables dans la base
 
 Commande `order`
 
@@ -359,13 +349,13 @@ des
 
 Cette opération est particulièrement pour organiser sa base de données après la création de nouvelles variables.
 
-# **Description statistique des variables**
+## **Description statistique des variables**
 
 Dans les menus de l'interface principale: **Statistics** => **Summaries, tables & tests**
 
-## Variables quantitatives
+### Variables quantitatives
 
-### Tableaux d'indicateurs
+#### Tableaux d'indicateurs
 
 ::: callout-note
 Les commandes qui sont rapidement décrites afficheront des indicateurs communs, typiquement la moyenne. Elles se distinguent par la forme de leur output facilitant plus ou moins les comparaisons, les possibilités offertes en termes de pondération, et sur la récupération des résultats (macro).
@@ -446,7 +436,6 @@ N'affiche que la moyenne et ses statistiques associées. L'option `over` permet 
 ```{stata}
 mean price  
 mean price, over(foreign)
-mean price, over(foreign rep78)
 ```
 
 * **Avantage**: output synthétique si la moyenne de plusieurs groupes comparées
@@ -459,7 +448,7 @@ Permet de sélectionner les indicateurs avec l'option `stat()` (par défaut la m
 
 ```{stata}
 tabstat price  
-tabstat price mpg, by(foreign)
+tabstat price, by(foreign)
 ```
 
 
@@ -499,11 +488,11 @@ tabstat price mpg, by(foreign)
 Si on souhaite ajouter la médiane
 
 ```{stata}
-tabstat price mpg, by(foreign) stat(mean median)
+tabstat mpg, by(foreign) stat(mean median)
 ```
 
 
-### Graphiques  
+#### Graphiques  
 
 **[MAJ EN COURS: bcp de nouveautés]**
 
@@ -610,7 +599,7 @@ gjoint price mpg, palette(flare)
 
 :::
 
-## Variables catégorielles
+### Variables catégorielles
 
 La principale commande est `tabulate` (`tab`). On peut l'utiliser avec des variables de type string.
 
@@ -669,9 +658,7 @@ catplot rep78, percent over(foreign)
 :::
 
 
-# **Introduction aux frames**
-
-
+## **Introduction aux frames**
 
 * Depuis la version 16 (2019)
 * Les frames permettent de travailler en parallèle sur plusieurs bases, sans switcher avec des opérations successives d'enregistrement/ouverture (`save`/`use`).
@@ -753,7 +740,6 @@ frame copy auto prix
 frame dir
 ```
 
-
 Comme indiqué précédemment, on est pas obligé de charger une base déclarée en frame pour effectuer des opérations dessus. On peut donc conserver les deux seules variables *foreign* et *price* tout en gardant la base *auto* chargée. 
 
 ```{stata}
@@ -805,9 +791,9 @@ On a chargé dans l'interface la frame *auto*, puis on a supprimé la frame prix
 
 ::: callout-note
 
-## Stata 18 
+### Stata 18 
 
-Avec la nouvelle version, il est possible de supprimer plusieurs frames avec `frame drop`. Toujours à l'exception de celle qui est active.
+Avec la nouvelle version, il est possible de supprimer plusieurs frames avec `frame drop`, mais toujours à l'exception de celle qui est active.
 
 :::
 

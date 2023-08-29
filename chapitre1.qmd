@@ -1,11 +1,9 @@
 ---
-title: "Introduction"
-format: 
-  html: default
-  docx:
-    toc: true
-    number-sections: true
+#title: "Introduction"
 ---
+
+
+# **Présentation de Stata**
 
 ```{r, include=FALSE}
 library(Statamarkdown)
@@ -14,7 +12,7 @@ knitr::opts_chunk$set(engine.path=list(stata=stataexe))
 ```
 
 
-# **Historique de Stata**  
+## **Historique de Stata**  
 
 L'entreprise **Stata Corp Lp** a été fondée par William Gould. Il est toujours à la tête de l'entreprise. 
 
@@ -25,22 +23,34 @@ L'entreprise **Stata Corp Lp** a été fondée par William Gould. Il est toujour
 
 ::: {.callout-tip icon="false"}
 
-## Version 17 
 
-[Présentation](https://www.stata.com/new-in-stata/)   
+### Version 18 et 17
 
-A noter:
+**Version 18** 
+
+* Une autosave des programmes (enfin)
+* Nouveau format .dtas pour enregistrer une liste de frames générées dans un programme
+* Graphiques (se reporter à la formation graphique): 
+  * Nouvelle palette qualitative (enfin)
+  * Nouveau thème par défaut (enfin)
+  * Une nouvelle option `colorvar` (cf `fill`, `color` dans R ou python) qui permet d'empiler automatiquement ou presque plusieurs objet graphiques (autrefois un objet par valeur d'une condition)
+
+
+**Version 17** 
+
+Une présentation a été faite il y a plus d'un an [[Lien](https://www.stata.com/new-in-stata/)].   
+
+En résumé pour cette 17ème version:
 
 - Amélioration de la vitesse d'exécution (je confirme)
-- Suite **`collect`** pour gérer et générer les outputs des commandes statistiques. Rapidement testé pour des régressions, 
-et cela me semble plutôt prometteur [rapide présentation](https://mthevenin.github.io/stata_programmation/tableaux/intro.html)
+- Suite **`collect`** pour gérer et générer les outputs des commandes statistiques. Rapidement testé pour des régressions. C'est plutôt pas mal même si comme d'habitude avec Stata "qui se raccroche aux branche", cela peut vite toutner à l'usine à gaz [[rapide présentation](https://mthevenin.github.io/stata_fr/articles/index/posts/collect/collect.html)]
 
 :::
 
-# **Stata à l'Ined**
+## **Stata à l'Ined**
 
-Version 17 Windows SE déployée au printemps 2022.   
-Version 17 SE sous Linux (serveur margaux).  
+* Version 18 Window SE en cours de déploiement, la version 17 Windows SE a été déployée au printemps 2022.   
+* Version 17 SE sous Linux (serveur margaux).  
 
 Petit rappel pour l'Ined: Quel que soit le logiciel choisi sous environnement Windows (SAS v9.4 ou Stata) vous avez accès à une version de l'autre application sous Linux via le serveur Margaux (SAS Studio ou STATA v17 SE).
 
@@ -55,9 +65,9 @@ Petit rappel pour l'Ined: Quel que soit le logiciel choisi sous environnement Wi
 Il existe également des versions dites MP (Multiple Process), dont la plus puissante gère 120000 variables et 20 milliards d'observations).  
 
 
-# **Les ressources**
+## **Les ressources**
 
-## Les ressources externes
+### Les ressources externes
 
 * Les manuels édités par STATA. Certains sont disponibles  au GED  [http://www.stata.com/bookstore/books-on-stata] 
 
@@ -70,7 +80,7 @@ Il existe également des versions dites MP (Multiple Process), dont la plus puis
 * Auto-promo: le support que j'ai mis en place à l'été 2022 et qui héberge cette formation introductive [Lien](https://mthevenin.github.io/stata_fr/)
 
 
-## Les ressources internes
+### Les ressources internes
 
 - Le manuel de Stata  est directement intégré au logiciel. Pour y accéder à  partir du menu : `help => PDF documentation`. ***Il est vraiement de très bonne qualité***. 
 
@@ -108,7 +118,7 @@ A l'Ined, depuis le déploiement de la version 14 et le passage à la version 15
 :::
 
 
-# **Les users packages**
+## **Les users packages**
 
 Stata fonctionne avec un système hybride de commandes officielles ou usines et de commandes externes (idem R, Python...).    
 Commandes externes ou *user package*:  
@@ -152,10 +162,11 @@ Dans la fenêtre *Command*: **`sysuse auto, clear`**
 
 # profile.do
 
-Paramétrer vos sessions avec un fichier ***profile.do*** [[Lien](https://mthevenin.github.io/stata_programmation/profile/profile1.html)]   
+**Attention**: Avec la version 18, la technique permettant avec un profile.do de récupérer une sauvegarde d'un programme n'a plus aucune utilité, Stata ayant (enfin) une autosave des programmes.  
 
-Sur ce chapitre introductif: déplacer le répertoire où sont stocker les commandes externes dans un lecteur faisant l'objet de sauvergardes régulières sur un réseau.   
-C'est une opération rarement effectué, dans ce fichier, on utilise donc un certains nombre de commandes qu'on aura pas besoin de rechercher le nom, dans le manuel ou sur internet par exemples.
+
+Paramétrer vos sessions avec un fichier ***profile.do*** [[Lien](https://mthevenin.github.io/stata_fr/articles/index/posts/profile/profile.html)]   
+
 :::
 
 

@@ -1,0 +1,857 @@
+---
+jupyter: nbstata
+---
+
+
+# **Manipulations des bases de données**
+
+[**Programme du chapitre**](https://mthevenin.github.io/stata_programmation/programme6.do)
+
+*Commandes et expressions introduites*
+
+SECTION                    | COMMANDES
+-------------              | -------------
+**Fusion**                 | `append` - `merge` - `frlink` - `ffrval`  
+**Transposition**          | `reshape long` `reshape wide`
+**Allongement**            | `expand`
+**Base d'indicateurs**     | `collapse` `contract`
+
+* **En gras, commandes externes**
+
+
+## **Fusion de bases**
+
+- Deux types de fusions:
+  - La fusion verticale non controlée - empilement - (`append`)
+  - la fusion horizontale contrôlée - appariement - (`merge`).  
+
+
+### Append 
+
+- Consiste simplement à ajouter des observations entre plusieurs bases, avec ou non un même jeu de variables. 
+
+![](img6/img1.png)
+
+
+On va générer les deux bases de données avec la commande `input` (non traité dans cette formation: `help input`). 
+
+
+```{stata}
+clear 
+input str6 id v1 v2
+  "A" 8 2 
+  "B" 1 2 
+  "C" 2 4
+end
+
+list
+
+save base1, replace
+```
+
+```{stata}
+clear 
+input str20 id v1 v2 v3
+  "D" 2 5 10
+  "E" 12 1 8 
+end
+list
+
+save base2, replace
+```
+
+
+
+La syntaxe de la commande `append` consiste à ajouter une ou plusieurs bases à la base active avec l'argument `using`.  
+
+```{stata}
+append using base1
+sort id
+list
+```
+
+On peut sélectionner les variables de la base qui sera empilée à la base active avec l'option `keep`.   
+Dans l'exemple, si la base active est *base1*, on peut ne pas vouloir ajouter la variable *v3* seulement renseignée pour les observations de *base2*.
+
+```{stata}
+use base1, clear
+append using base2, keep(id v1 v2)
+list 
+```
+
+
+Si les informations précédentes étaient ventilées dans trois bases, une par variable *v*, et avec le même niveau d'observation (A,B,C,D,E dans les 3 bases), l'utilisation  de `append` conduirait à une structure empilée non souhaitable avec une réplication des *id*.
+
+Pour obtenir la base finale proprement appariée, il convient de faire une fusion horizontale contrôlée par une une clé d'identification.
+
+
+### Merge
+
+Stata demande que les bases soient soit triées (`sort`) sur la clé d'appariement en amont de l'opération. Sinon un message d'erreur sera renvoyé.  
+
+
+* La base active (ouverte) est appelée **base master**
+* La base qui sera appariée à la base ouverte est appelée base **using** ^[Cela peut être plusieurs bases.]
+
+
+**Syntaxe minimale 1 avec préfixes**:  
+
+```markdown
+merge [1:1] [1:m] [m:1] id_variables(s) using nom_base
+```
+
+
+* Ici on peut apparier plus de deux bases. 
+* On dispose d'une sécurité si les niveaux d'identification sont différents. 
+
+
+#### Même niveau d'identification
+
+Partons des informations suivantes: 
+- *Base1* comprend la variable d'identification *id* (observations A,B,C) et de deux variables numériques *v1* et *v3*
+- *Base2* comprend la même variable d'identification *id* (observations B,C,D) et de la variable numérique *v3*
+
+![](img6/img3.png)
+Le niveau d'identification est identique dans les deux bases. Il s'agit donc d'un **`merge 1:1`**  [**One to One**]
+
+On va de nouveau générer les bases avec `input`.  
+
+```{stata}
+clear 
+input str1 id v1 v2 
+"A" 8 2 
+"B" 1 2
+"C" 2 4 
+end
+list
+
+sort id
+save base1, replace
+```
+
+Rappel: bien faire le `sort` sur la base using
+
+```{stata}
+clear
+input str1 id v3 
+"B" 10 
+"C" 8
+"D" 10 
+end
+list
+
+sort id
+save base2, replace 
+```
+
+
+```{stata}
+merge 1:1 id using base1
+```
+
+* L'output affiche le résultat de l'appariement à l'aide d'un t
+ltrer si nécessaire les observations selon le résultat de l'apariement. Contrairement à d'autres applications, cette opération n'est pas effectuée en amont avec des fonctions où des options spécifiques. Par exemple avec R: `left_join`, `right_join`, `inner_join`.
+  `_merge = 1` : observations qui se trouvent seulement dans la base active (master)
+  `_merge = 2` : observations qui se trouvent seulement dans la base using (appariée)
+  `_merge = 3` : observations communes aux bases master et using.
+  
+* Les variables de la base master/active sont positionnées en tête de colonnes.
+
+```{stata}
+sort id
+list
+```
+
+Si on souhaite seulement  conserver les observations communes aux deux bases (`_merge=3`): 
+
+```{stata}
+keep if _merge==3
+list
+```
+
+::: callout-warning
+
+##### Variable _merge et appariements successifs
+
+Pensez à supprimer la variable *_merge* si plusieurs opérations d'appariement sont effectués. La commande ne prévoit pas 
+d'écraser la variable de la fusion précédente.
+:::
+
+**Situation avec plus d'une base à apparier**
+
+On ne peux pas utiliser la syntaxe avec préfixe (ici `merge 1:1`). 
+
+On va ajouter une nouvelle base qui sera appariée avec les deux premières, qui seront donc les deux bases de type *using*.
+
+```{stata}
+clear
+input str1 id str3  v4 
+"A" "Non" 
+"B" "Oui" 
+"C" "Oui" 
+end
+
+list 
+
+sort id
+```
+
+```{stata}
+merge id using base1 base2
+
+order id v1 v2 v3 v4 _merge1 _merge2 _merge 
+
+list
+```
+
+On obtient maintenant 3 variables _merge:  
+
+* *_merge1*. Donne le résultat de l'appariement entre la nouvelle base et *base1*: 0 si seulement dans une seule des deux bases (D), 1 si dans les deux bases (A,B,C).
+* *_merge2*. Donne le résultat de l'appariement entre la nouvelle base et *base2*: 0 si seulement dans une seule des deux bases (A,D), 1 si dans les deux bases (B,C). 
+* *_merge*. Résume rapidement le matching entre les bases: on retrouve au moins une fois les observations (A,B,C) dans l'un des deux appariement (_merge=3), on trouve une observation (D) qui ne se trouve que dans une base *using* (_D_merge=2).  
+
+Si l'on souhaite conserver les observations communes aux trois bases, on peut sommer les valeurs de *_merge1* et *_merge2* et conserver les observations dont la valeurs de cette somme est égale au nombre d'appariements; ou faire une sélection des observations avec un filtre conditionnel, ici: 
+
+```{stata}
+keep if _merge1==1 & _merge2==1
+list
+
+drop _merge*
+```
+
+
+::: callout-tip
+
+##### Commande join du package ftools
+
+[A tester] 
+
+- [Documentation](https://github.com/sergiocorreia/ftools). 
+- Permet de gagner 70% de durée d'exécution lorsque la volumétrie dépasse 100000 observations
+- Gère en amont le tri des bases appariée.
+
+:::
+
+#### Niveaux d'identification différents
+
+Un merge de type 1:1 n'est pas possible. Dans l'exemple qui suit la base *period_act* liste pour deux personnes le statut d'activité observé pour plusieurs périodes soit des observations multiples pour chaque individus, et la base *sexe* donne une caractéristique unique pour chaque individu. Selon le statut des bases appariée (master ou using), l'appariement est de type 1:m ou m:1.
+
+- Si la base active est à observations multiples sur la clé d'identification: m:1
+- Si la base active est à observations uniques   sur la clé d'identification: 1:m
+
+
+![](img6/img2.png)
+
+On va de nouveau générer les données avec `input`
+
+```{stata}
+clear 
+input id périodes str8 Activité
+1 1 "Emploi"
+1 2 "Emploi"
+1 3 "Chômage"
+2 1 "Chômage" 
+2 2 "Chômage"
+2 3 "Emploi"
+2 4 "Chômage" 
+end 
+list 
+sort id 
+save "period_act", replace
+```
+```{stata}
+clear
+input id str6 sexe 
+1 "Homme"  
+2 "Femme"  
+end 
+list
+sort id 
+save "sexe", replace
+```
+
+Si on effectuait un merge 1:1, Stata renverrait le message d'erreur suivant:
+
+```markdown
+merge 1:1 id using activités
+
+variable id does not uniquely identify observations in the using data
+r(459);
+```
+
+Ici la base active est la base *sex*. Le prefixe qui doit être utilisé est donc **`1:m`** ^[**`m:1`** renvoit un message d'erreur. Dans ce sens, la base active doit être *period_act* et la base using *sexe*.]
+
+```{stata}
+merge 1:m id using period_act
+sort id période
+list 
+```
+
+
+::: callout-tip
+Le tri de la base est régulièrement modifié après ce type d'appariement. Penser donc à retrier les données proprement, surtout quand il s'agit comme ici d'informations biographiques (`sort id périodes`)
+:::
+
+
+De nouveau les préfixes sont optionnels, et permettent seulement de contrôler l'appariement. On peut sans soucis fusionner des informations contextuelles avec des informations multiples avec seulement `merge`. Un avertissement se renvoyé à l'exécution de la commande
+
+```{stata}
+use sexe, clear
+merge id using period_act
+sort id périodes
+list
+```
+
+#### Appariement avec des frames
+
+L'utilisation des frames présentent plusieurs avantages:  
+
+- Il n'est pas nécessaire de trier les bases concernées par l'appariement.
+- On peut sélectionner avec la commande `frget` la ou les variables qui seront récupérées dans la base master. On apparie donc pas des bases en tant que telles, on récupère de l'information de frames liées.
+- Mieux encore, on peut réaliser des opérations entre observations individuelles et observations contextuelles sans passer par un appariement.   Avec les frames, l'opération d'appariement doit être plutôt compris comme un système de liaison entre bases, le transfert d'informations n'étant qu'une opération optionnelle. 
+
+Au niveau des désavantages:   
+
+- Si on ne travaille pas exclusivement sous frames, les bases devront être transformées en frame (voir exemple)
+- Absence de variable de type *_merge* qui permet de contrôler le résultat de l'appariement.
+- les prefixes sont uniquement 1:1 et m:1. Cela signifie dans le second cas que la frame active lors de l'opération de liaison doit toujours être celle dont la clé d'identification est de type multiple (niveau individuel).
+- Peut-être le plus embêtant est l'absence d'appariement pour les informations correspondant à **_merge=2** (Informations seulement présentes dans la base using). Le dernier exemple illustre ce point.
+
+On reprend l'exemple précédent, en transformant dans un premier temps les deux bases en frames.  
+
+
+```{stata}
+frame reset
+
+frame create period_act
+frame period_act: use period_act
+frame create sexe
+frame sexe: use sexe
+
+frame dir
+```
+
+On doit se positionner sur la frame *period_act* (type m)
+
+```{stata}
+frame change period_act
+```
+
+Pour lier les frames on utilise la commande `frlink`.  
+
+**Syntaxe**  
+
+```markdown
+frlink 1:1/m:1 id_variable(s), frame(nom_frame) gen(variable_lien)
+```
+
+Ici on fait un appariement de type m:1, la clé d'identification est de nouveau *id*. On lie la frame active à la frame *sexe* et la variable de liaison (ici un alias de la variable id) est appelée *link*.
+
+```{stata}
+frlink m:1 id, frame(sexe) gen(link)
+```
+
+Pour importer la variable sexe dans la frame *period_act*, on utilise la commande **`frget`**, en précisant la ou les variable que l'on souhaite récupérer, ainsi que la variable de liaison (une même frame peut avoir plusieurs liaisons. Voir plus loin).
+
+```{stata}
+frget sexe , from(link)
+
+frame period_act: order link, last
+list
+```
+
+
+::: callout-warning
+
+##### Liaison des frames en présence d'information incomplète  
+
+La liaison de frames peut être problématique en présence d'informations incomplètes. Pour faire simple, la liaison des frames permet de faire des appariements de type **_merge=1** et **_merge=3** (présence dans la master seulement ou présence dans la master et la using) mais ne permet pas de récupérer des informations présentes seulement dans la base using).  
+
+Pour illustrer cela on va générer une nouvelle frame, de type individus-périodes, avec une variable additionnelle *tvc*.  
+
+- Pour id= 1, on a pas d'information dans la frame *period_act* pour période=4.
+- Pour id= 2, on a pas d'information dans la frame *tvc* pour les périodes 3 et 4.  
+
+Création de la nouvelle frame (voir le .do, la compilation pour générer ce support complexifie un peu l'opération):  
+
+```{stata}
+frame create tvc
+frame change tvc
+
+
+clear
+input id périodes tvc 
+1 1 0   
+1 2 0   
+1 3 1  
+1 4 0  
+2 1 1  
+2 2 0 
+end
+
+list 
+
+save tvc, replace
+frame tvc: use tvc
+
+```
+
+Liaison des frames et récupération de la variable tvc dans *period_act*  
+
+```{stata}
+frame change period_act
+frlink 1:1 id périodes, frame(tvc) gen(link2)
+
+frget tvc, from(link2)
+
+list
+```
+
+On voit bien que la valeur de tvc pour id=1 et périodes=4 n'a pas été importée (**_merge=2** dans un appariement classique). En revanche, pour id=2, l'incomplétude de l'information dans la base *tvc* pour les périodes 3 et 4 est bien visible.  
+
+
+Avec un merge classique (on suppose que *period_act* n'a pas été appariée à *sexe*): 
+
+```{stata}
+use tvc, clear
+sort id périodes
+save tvc, replace
+use period_act, clear
+sort id périodes
+merge 1:1 id périodes using tvc
+sort id périodes
+list
+```
+
+On a bien ici l'ajout de l'information correspondant à _merge=2 (*Using only*)
+
+:::
+
+Un des intérêts des frames, est de faire des opérations entre informations individuelles et contextuelles sans passer par un appariement en amont. Par l'exemple, nous allons voir comment un appariement peut être évité lorsqu'on travaille sur ce genre d'information.  
+
+
+On va générer 2 bases, une individuelle et une contextuelle. La première contient un identifiant individuel (*id*), le nom de la zône d'appartenance (*zone*) et les valeurs observées d'une variable *x*. La seconde contient le nom des zônes et la valeur moyenne de la variable x dans ces espaces.  
+
+Création des frames: 
+
+```{stata}
+frame reset 
+
+clear 
+input id str6 zone x
+1 "zoneA" 10
+2 "zoneA" 15
+3 "zoneB" 9
+4 "zoneB" 12
+5 "zoneB" 10
+6 "zoneB" 15
+7 "zoneC" 6
+8 "zoneC" 13
+9 "zoneC" 16
+end
+list
+save indiv, replace
+```
+
+```{stata}
+clear
+input str6 zone xmean
+"zoneA" 11
+"zoneB" 12
+"zoneC" 13
+end
+list
+save zone, replace
+```
+
+```{stata}
+frame create indiv
+frame indiv: use indiv
+frame create zone
+frame zone: use zone
+```
+
+Après avoir lié les deux frames (m:1), on va calculer directement la différence entre la valeur observée pour chaque individu de la variable *x* et sa moyenne par zone (*xmean*). On utilise la fonction **`frval`** comme argument de la commande **`generate`**.  
+
+```{stata}
+frame change indiv
+frlink m:1 zone, frame(zone) gen(link)
+list
+```
+
+
+```markdown
+gen = var1 - frval(nom_link, var2)
+```
+
+```{stata}
+gen diffx = x - frval(link, xmean)
+list
+```
+
+
+## **Transposition d'une base** 
+
+### Syntaxe et exemples
+
+Cette opération permet d'**allonger** ou d'**élargir** une base, généralement sur des variables occurencées. Ces occurences peuvent être des séquences ou points chronologiques (valeur d'une variable sur plusieurs années), ou des individus composant un ménage. 
+
+Avec Stata, ces opérations de transpositions sont effectuées avec la commande **`reshape`**
+
+* De large à long: **`reshape long`**
+* De long à large: **`reshape wide`**
+
+A noter que la seconde opération est plus gourmande en durée d'exécution. De nouveau si la volumétrie de la base est élevée, disons plus d'une million d'observations, on peut se reporter sur la commande **`greshape`** du package **`gtools`**. On peut trouver un benchmark sur des données simulées [[liens](https://mthevenin.github.io/stata_fr/articles/index/posts/gtools/gtools.html)].
+
+Au niveau de la syntaxe:
+
+- Il est nécessaire d'avoir une variable d'identification pour réaliser l'opération: cela peut être un identifiant individuel^[Cela peut être une zône géographique] si la variations des observations est relatives à des périodes, ou un identifiant ménage si la source de la variation sont les personnes le composant. Ce peut bien évidemment fonctionner avec des zônes géographiques: régions-départements, régions-communes, départements-communes.  
+Cette variable d'identification doit être renseignée en option: **`i(var_id)`**
+- On indique dans l'expression principale le racine des variables occurencées: si la base est en format large avec les variables *revenu1980*, *revenu1981*,....,*revenu1990*, la racine sera donc **revenu**. Les occurences peuvent être des lettres (A,B,D...) ou des mots (un,deux,trois...). 
+- Information sur les occurences: selon le type de transposition on doit indiquer en option la variable qui contiendra ou qui contient les occurences. Cette option est **`j(nom_variable)`** 
+  - si la base est en format large et qu'on souhaite l'allonger, on indique obligatoirement la variable qui sera créée et qui reportera les valeurs des occurences. 
+  - si la base est en format long et qu'on souhaite l'élargir, on indique obligatoirement la variable qui contient les occurences.
+- Selon la transposition, le nom de commande est suivi de **`long`** ou **`wide`**
+
+**Syntaxe de large à long**: 
+
+```markdown
+reshape long racines_variables_occurencées, i(var_id) j(var_occurences)
+```
+
+**Syntaxe de long à large**: 
+
+```markdown
+reshape wide racines_variables_occurencées, i(var_id) j(var_occurences)
+```
+
+**Exemple**
+
+On part de la base suivante
+
+```{stata}
+clear 
+input id x1 x2 x3 x4
+1 10 20 12 25
+2 12 22 15 30
+3 15 25 33 30
+4 21 17 22 27
+5 13 15 14 18
+end
+
+list
+```
+
+On allonger la base sur les variables *x1* à *x4*. La racine est donc *x*. Pour le choix de la nouvelle variable qui aura pour chaque id les valeurs 1 à 4, on ne peux pas choisir x, qui sera créée automatiquement. Selon le type d'information contenu dans l'occurence, on peut utiliser un nom indiquant une période, un membre de ménage ou une zône géographique. 
+Ici on ca suposer que les occurences sont de nature temporelle, et on choisira *t* comme nom à la variable de l'option `j()`.  
+
+```{stata}
+reshape long x , i(id) j(t)
+```
+
+On remarque que Stata donne quelques informations sur le résultats de l'opération: variables créées, nombre d'observations dans le nouveau format
+
+```{stata}
+list
+```
+
+On peut repasser au format de départ (large) avec `reshape wide`
+
+```{stata}
+reshape wide x , i(id) j(t)
+```
+
+```{stata}
+list
+```
+
+Bien évidemment les variable fixes ne doivent pas être renseigné dans la commande, les valeurs sont conservées
+
+```{stata}
+clear 
+input id x1 x2 x3 x4 fixe
+1 10 20 12 25 0
+2 12 22 15 30 1
+3 15 25 33 30 0
+4 21 17 22 27 1
+5 13 15 14 18 0
+
+end
+list
+
+reshape long x, i(id) j(t)
+list
+```
+
+
+### Mise en garde
+
+**Complétude du nom de la racine**
+
+Bien penser à mettre l'intégralité de la racine, partie fixe de la variable occurencée:
+
+```{stata}
+clear 
+input id x_1 x_2 x_3 x_4
+1 10 20 12 25
+2 12 22 15 30
+3 15 25 33 30
+4 21 17 22 27
+5 13 15 14 18
+end
+
+list
+```
+
+```{stata}
+*| eval: false
+
+reshape long x , i(id) j(t)
+```
+
+renverra le message d'erreur suivant:
+
+```markdown
+variable t contains all missing values
+r(498);
+```
+
+**Omission de variables occurencée**
+
+Contrairement à l'allongement, l'élargissement  est plus contraignant, toutes les variables non fixes doivent être renseignées. 
+
+Si on omet des variables occurencées dans l'allongement, elle sont conservées tel quel et les valeurs sont répliquées d'une ligne à l'autre:
+
+```{stata}
+clear 
+input id x1 x2 y1 y2 fixe
+1 10 20 12 25 0
+2 12 22 15 30 0
+3 15 25 33 30 1
+4 21 17 22 27 1
+5 13 15 14 18 0
+end
+list
+
+reshape long x , i(id) j(t)
+list
+```
+
+En revanche si on part d'une base longue avec plusieurs dimensions variables 
+
+```{stata}
+*| echo: false
+*| results: false
+
+clear 
+input id x1 x2 y1 y2 fixe
+1 10 20 12 25 0
+2 12 22 15 30 0
+3 15 25 33 30 1
+4 21 17 22 27 1
+5 13 15 14 18 0
+end
+reshape long x y , i(id) j(t)
+```
+
+```{stata}
+list
+```
+
+```{stata}
+*| eval: false 
+
+reshape wide x, i(id) j(t)
+```
+
+renverra le message d'erreur suivant:
+
+```markdown
+(j = 1 2)
+variable y not constant within id
+Your data are currently long. You are performing a reshape wide. You typed something like
+
+. reshape wide a b, i(id) j(t)
+
+    There are variables other than a, b, id, t in your data. They must be constant within id because that is the only way they can fit into wide data without loss
+    of information.
+
+    The variable or variables listed above are not constant within id. Perhaps the values are in error. Type reshape error for a list of the problem observations.
+
+    Either that, or the values vary because they should vary, in which case you must either add the variables to the list of xij variables to be reshaped, or drop them.
+```
+
+## Allongement d'une base
+
+Section très courte. Pariculièrement utile lorsqu'on manipule des données biographiques avec des durées, et pour faire la mise en forme nécessaire pour une analyse à durée discrète. 
+La commande *`expand`* permet de répliquer les lignes, sur une valeur fixe qu'on indique ou sur des valeurs non constantes renseignés dans une variable.
+
+Dans le premier cas la syntaxe est: **`expand valeur`**
+Dans le second cas la synataxe est: **`expand nom_variable`**
+
+Exemple:  
+
+```{stata}
+clear 
+input id duree e
+1  3 0 
+2  4 1
+3  2 1 
+end
+
+list
+```
+
+***Allongement de la base*:**
+```{stata}
+expand duree
+```
+
+***Si on veut faire une analyse à durée discrère, avec les variables de comptage (chapitre 5):*** 
+
+```{stata}
+bysort id: gen t=_n
+bysort id: replace e=0 if t<_N
+list
+```
+
+
+Remarque: si la valeur sur laquelle est allongée la base a une valeur négative (par exemple des durées négatives), un message indique leur présence.
+
+## Créer des bases d'indicateurs
+
+Dans ce qui suit il est fortement recommandé d'utiliser les frames (Stata 16 minimum). 
+Pour faire ce type d'opérations deux commandes sont disponibles: 
+
+* la plus utilisée, **`collapse`** permet de créer une base d'indicateurs dédiées aux variables quantitatives: moyenne, médiane et autes quantiles, ....
+* la moins utilisée, **`contract`**, est dédiée aux variables catégorielles (effectifs et effectif cumulés, proportions et proportions cumulées). 
+
+Pour les pondérations admises, se reporter à l'aide des commandes^[La question des pondérations sera traitée dans le chapitre suivant].
+
+::: callout-warning
+
+#### Ecrasement de la base d'origine
+
+Attention la base sur laquelle on travaille va être écrasée. Si ce n'est pas souhaité: 
+
+* Utiliser les commandes `preserve` `restore` avant et après l'opération.
+
+* Générer une frame avec les variables qui seront transformées en indicateurs. On pourra conserver les deux bases dans la sessions, et les utiliser en parallèle.
+
+:::
+
+
+### `collapse`
+
+Les indicateurs disponibles sont les suivants:
+
+```markdown
+        mean         means (default)
+        median       medians
+        p1           1st percentile
+        p2           2nd percentile
+        ...          3rd-49th percentiles
+        p50          50th percentile (same as median)
+        ...          51st-97th percentiles
+        p98          98th percentile
+        p99          99th percentile
+        sd           standard deviations
+        semean       standard error of the mean (sd/sqrt(n))
+        sebinomial   standard error of the mean, binomial (sqrt(p(1-p)/n))
+        sepoisson    standard error of the mean, Poisson (sqrt(mean/n))
+        sum          sums
+        rawsum       sums, ignoring optionally specified weight except observations with a weight of zero are excluded
+        count        number of nonmissing observations
+        percent      percentage of nonmissing observations
+        max          maximums
+        min          minimums
+        iqr          interquartile range
+        first        first value
+        last         last value
+        firstnm      first nonmissing value
+        lastnm       last nonmissing value
+```
+
+* Par défaut c'est la moyenne qui est utilisée.
+* Les résultats peuvent être stratifiées avec une option `by()`.  
+
+
+
+
+**Syntaxe avec un seul indicateur**
+
+```{stata}
+*| eval: FALSE
+
+collapse [(statistique autre que moyenne) varlist [, by(varlist)] 
+```
+
+
+Dans les exemples, on utilisera `preserve` `restore` pour retrouver la base de départ.
+
+***Exemples***
+
+```{stata}
+clear
+sysuse auto
+
+preserve 
+collapse price
+list
+restore
+
+preserve 
+collapse price mpg, by(foreign)
+list
+restore
+
+preserve 
+collapse (median) price mpg, by(foreign)
+list
+restore
+
+preserve 
+collapse (median) price mpg if rep78!=., by(foreign rep78)
+list
+restore
+```
+
+On voit que la variable indicateur prend le nom de la variable. On ne peut donc pas générer une liste d'indicateurs sans renommer les variables.
+
+**Syntaxe avec plusieurs indicateurs**
+
+Dans l'expression principal, on doit donner un nom différent à chaque variable pour chaque indicateur...ce n'est pas très pratique, Stata aurait pu prévoir un moyen de générer par défaut des nom de variable comme mean_varname, min_varname....
+
+Dans le cas de deux indicateurs (*median*, *min*) pour deux variable (*price*, *mpg*).
+
+```{stata}
+*| eval: FALSE
+
+collapse [(stat1) varname11 = var1 varname21= var2  (stat2 ) varname12 = var1 varname22= var2 [, by(varlist)] 
+```
+
+```{stata}
+preserve
+collapse (median) pricemed = price mpgmed=mpg  (min) pricemin = price mpgmin= mpg , by(foreign)
+list
+restore
+```
+
+Remarque: pour des variables codées sous forme d'indicatrice, on peut générer des proportions ou des pourcentages facilement, ce qui rend la commande `contract` caduque avec deux modalités (exemple: variable foreign).
+
+### `contract`
+
+Même principe, mais le nombre d'indicateurs est limité (effectifs ou proportion, cumulées ou non). Il n'y a pas d'option by mais on peut directement croiser les dimensions avec plusieurs variables. Je n'ai jamais utilisé cette commande en dehors de la formation, donc je n'en donnerai que deux exemples:
+
+```{stata}
+preserve 
+contract rep78 foreign 
+list
+restore
+
+
+preserve 
+contract rep78 foreign,  percent(percentage) 
+list
+restore
+```
