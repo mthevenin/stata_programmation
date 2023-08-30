@@ -75,6 +75,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -234,8 +237,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Sections</h2>
    
   <ul>
-  <li><a href="#historique-de-stata" id="toc-historique-de-stata" class="nav-link active" data-scroll-target="#historique-de-stata"><span class="header-section-number">1.1</span> <strong>Historique de Stata</strong></a></li>
-  <li><a href="#stata-à-lined" id="toc-stata-à-lined" class="nav-link" data-scroll-target="#stata-à-lined"><span class="header-section-number">1.2</span> <strong>Stata à l’Ined</strong></a></li>
+  <li><a href="#petit-historique-de-stata" id="toc-petit-historique-de-stata" class="nav-link active" data-scroll-target="#petit-historique-de-stata"><span class="header-section-number">1.1</span> <strong>Petit historique de Stata</strong></a>
+  <ul class="collapse">
+  <li><a href="#a-lined" id="toc-a-lined" class="nav-link" data-scroll-target="#a-lined"><span class="header-section-number">1.1.1</span> A l’Ined</a></li>
+  </ul></li>
+  <li><a href="#versions-stata-à-lined" id="toc-versions-stata-à-lined" class="nav-link" data-scroll-target="#versions-stata-à-lined"><span class="header-section-number">1.2</span> <strong>Versions Stata à l’Ined</strong></a></li>
   <li><a href="#les-ressources" id="toc-les-ressources" class="nav-link" data-scroll-target="#les-ressources"><span class="header-section-number">1.3</span> <strong>Les ressources</strong></a>
   <ul class="collapse">
   <li><a href="#les-ressources-externes" id="toc-les-ressources-externes" class="nav-link" data-scroll-target="#les-ressources-externes"><span class="header-section-number">1.3.1</span> Les ressources externes</a></li>
@@ -265,16 +271,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="historique-de-stata" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="historique-de-stata"><span class="header-section-number">1.1</span> <strong>Historique de Stata</strong></h2>
+<section id="petit-historique-de-stata" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="petit-historique-de-stata"><span class="header-section-number">1.1</span> <strong>Petit historique de Stata</strong></h2>
 <p>L’entreprise <strong>Stata Corp Lp</strong> a été fondée par William Gould. Il est toujours à la tête de l’entreprise.</p>
 <ul>
 <li>Première version (sous MS Dos) en janvier 1985.<br>
 </li>
-<li>Première version Windows en 1995 (Stata 4).<br>
+<li>Première version Windows en 1995 [Stata 4].<br>
 </li>
-<li>La version la plus récente est la 17 [printemps 2021].</li>
-<li>Le rythme de changement de version est de 2 ans. La version 18 devrait donc sortir au printemps 2023. Attention tout de même, il s’agit plutôt de grosses mises à jour, dont l’acquisition systématique s’avère généralement dispensable.</li>
+<li>La version la plus récente est la 18 [avril 2023].</li>
+<li>Le rythme de changement de version est de 2 ans. Attention tout de même, il s’agit plutôt de grosses mises à jour, dont l’acquisition systématique est dispensable.</li>
 </ul>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -282,39 +288,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Version 18 et 17
+Versions 18 et 17
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p><strong>Version 18</strong></p>
 <ul>
 <li>Une autosave des programmes (enfin)</li>
-<li>Nouveau format .dtas pour enregistrer une liste de frames générées dans un programme</li>
-<li>Graphiques (se reporter à la formation graphique):
+<li>Nouveau format .dtas pour enregistrer une liste de frames générées dans un programme.</li>
+<li>Graphiques:
 <ul>
-<li>Nouvelle palette qualitative (enfin)</li>
-<li>Nouveau thème par défaut (enfin)</li>
-<li>Une nouvelle option <code>colorvar</code> (cf <code>fill</code>, <code>color</code> dans R ou python) qui permet d’empiler automatiquement ou presque plusieurs objet graphiques (autrefois un objet par valeur d’une condition)</li>
+<li>Nouvelle palette qualitative et nouveau thème par défaut (enfin). Vous trouverez une courte présentation et quelques visuels ici [[Lien][https://mthevenin.github.io/stata_fr/articles/index/posts/palette_style/palette_style.html]]</li>
+<li>Une nouvelle option <code>colorvar</code> (cf <code>fill</code>, <code>color</code> dans R ou python) qui permet d’empiler automatiquement ou presque plusieurs objets graphiques (autrefois un objet par valeur dans une expression conditionnelle.</li>
 </ul></li>
+<li>Non testé: une commande <em>dtable</em> pour générer et exporter des tableaux de statistiques descriptives.</li>
 </ul>
+<p>On peut consulter la liste des mises à jour sur le site officiel: [<a href="https://www.stata.com/new-in-stata/">Lien</a>]</p>
 <p><strong>Version 17</strong></p>
-<p>Une présentation a été faite il y a plus d’un an [<a href="https://www.stata.com/new-in-stata/">Lien</a>].</p>
-<p>En résumé pour cette 17ème version:</p>
+<p>Une rapide présentation a été faite il y a plus d’un an [<a href="https://www.stata.com/new-in-stata/">Lien</a>].</p>
+<p>En résumé pour la version 17:</p>
 <ul>
 <li>Amélioration de la vitesse d’exécution (je confirme)</li>
-<li>Suite <strong><code>collect</code></strong> pour gérer et générer les outputs des commandes statistiques. Rapidement testé pour des régressions. C’est plutôt pas mal même si comme d’habitude avec Stata “qui se raccroche aux branche”, cela peut vite toutner à l’usine à gaz [<a href="https://mthevenin.github.io/stata_fr/articles/index/posts/collect/collect.html">rapide présentation</a>]</li>
+<li>Suite <strong><code>collect</code></strong> pour générer des outputs des commandes statistiques et exportables dans plusieurs formats (.doc, .xlsx, .tex, .html, .md). Rapidement testé pour des régressions, c’est plutôt pas mal même si, comme d’habitude avec Stata <em>qui se raccroche aux branche</em>, cela peut vite tourner à l’usine à gaz [<a href="https://mthevenin.github.io/stata_fr/articles/index/posts/collect/collect.html">rapide présentation</a>]</li>
 </ul>
 </div>
 </div>
+<p><strong>Mise à jour d’une version</strong></p>
+<p>Régulièrement Stata corrige des bugs ou autres erreurs. On peut obtenir la liste des mises à jour en tapant dans la fenêtre de commande <code>update query</code>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>Update status</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    Last check for updates:  30 Aug 2023</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    New update available:    13 Jul 2023  (what's new)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    Current update level:    15 May 2023  (what's new)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>Possible actions</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="in">    Install available updates             (or type -update all-)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="a-lined" class="level3 callout-import" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="a-lined"><span class="header-section-number">1.1.1</span> A l’Ined</h3>
+<p>Pour réaliser la mise à jour, vous devrez vous mettre sur votre compte administrateur (adm_nom). Si vous le connaissez pas le nom de votre compte administrateur et/ou le mot de passe, contacter le service informatique.</p>
 </section>
-<section id="stata-à-lined" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="stata-à-lined"><span class="header-section-number">1.2</span> <strong>Stata à l’Ined</strong></h2>
+</section>
+<section id="versions-stata-à-lined" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="versions-stata-à-lined"><span class="header-section-number">1.2</span> <strong>Versions Stata à l’Ined</strong></h2>
 <ul>
-<li>Version 18 Window SE en cours de déploiement, la version 17 Windows SE a été déployée au printemps 2022.<br>
+<li>Version 18 Window SE est normalement en cours de déploiement. La version 17 Windows SE a été déployée au printemps 2022.<br>
 </li>
 <li>Version 17 SE sous Linux (serveur margaux).</li>
 </ul>
-<p>Petit rappel pour l’Ined: Quel que soit le logiciel choisi sous environnement Windows (SAS v9.4 ou Stata) vous avez accès à une version de l’autre application sous Linux via le serveur Margaux (SAS Studio ou STATA v17 SE).</p>
+<p>Petit rappel pour l’Ined pour Sas et Stata: Quel que soit le logiciel choisi sous environnement Windows (SAS v9.4 ou Stata) vous avez accès à une version de l’autre application sous Linux via le serveur Margaux (SAS Studio ou STATA v17 SE).</p>
 <p><strong>Version SE: Standard Edition</strong></p>
 <ul>
 <li>Nombre d’observations: 2.14 milliards</li>
@@ -328,22 +351,21 @@ Version 18 et 17
 <section id="les-ressources-externes" class="level3" data-number="1.3.1">
 <h3 data-number="1.3.1" class="anchored" data-anchor-id="les-ressources-externes"><span class="header-section-number">1.3.1</span> Les ressources externes</h3>
 <ul>
-<li><p>Les manuels édités par STATA. Certains sont disponibles au GED [http://www.stata.com/bookstore/books-on-stata]</p></li>
-<li><p>*<strong>Stata Journal</strong>, la revue trimestrielle éditée par Stata [http://www.stata-journal.com ]. Depuis 2015 accès total aux versions PDF (via portail GED maintenant). L’accès et le sommaire des 4 derniers numéro est disponible ici: <a href="https://mthevenin.github.io/stata_fr/Stata_journal.html">Lien</a></p></li>
-<li><p>Une chaîne Youtube [http://www.youtube.com/user/statacorp/videos?view=0] qui propose des tutoriels via les manips par les boites de dialogue.</p></li>
+<li><p>Les manuels édités par STATA. Certains, anciennement à la bibliothèque de l’Ined, sont disponibles au GED [http://www.stata.com/bookstore/books-on-stata]</p></li>
+<li><p>*<strong>Stata Journal</strong>, la revue trimestrielle éditée par Stata [http://www.stata-journal.com]. Depuis 2015 accès total aux versions PDF (via portail GED maintenant). L’accès et le sommaire des 4 derniers numéro est disponible ici: <a href="https://mthevenin.github.io/stata_fr/Stata_journal.html">Lien</a></p></li>
+<li><p>Une chaîne Youtube [http://www.youtube.com/user/statacorp/videos?view=0] qui propose des tutoriels via les manipulations par les boites de dialogue.</p></li>
 <li><p>Un forum particulièrement actif (<a href="https://www.statalist.org/" class="uri">https://www.statalist.org/</a>)</p></li>
-<li><p>Auto-promo: le support que j’ai mis en place à l’été 2022 et qui héberge cette formation introductive <a href="https://mthevenin.github.io/stata_fr/">Lien</a></p></li>
 </ul>
 </section>
 <section id="les-ressources-internes" class="level3" data-number="1.3.2">
 <h3 data-number="1.3.2" class="anchored" data-anchor-id="les-ressources-internes"><span class="header-section-number">1.3.2</span> Les ressources internes</h3>
 <ul>
-<li><p>Le manuel de Stata est directement intégré au logiciel. Pour y accéder à partir du menu : <code>help =&gt; PDF documentation</code>. <strong><em>Il est vraiement de très bonne qualité</em></strong>.</p></li>
+<li><p>Le manuel de Stata est directement intégré au logiciel. Pour y accéder à partir du menu : <code>help =&gt; PDF documentation</code>. <strong><em>Il est vraiment de très bonne qualité</em></strong> et reconnu comme tel.</p></li>
 <li><p>Pour une instruction, on peut obtenir son aide en tapant dans la fenêtre <em>command</em> de l’environnement principal <strong><code>help nom_commande</code></strong>.</p>
 <ul>
-<li>Pour les commandes internes, un lien permet d’accéder à l’entrée du manuel officiel, plus riche.<br>
+<li>Pour les commandes internes, un lien permet d’accéder à l’entrée du manuel officiel.<br>
 </li>
-<li>Dans les fenêtre de dialogue, on peut accéder directement au fichier d’aide en cliquant sur le point d’interrogation.</li>
+<li>Dans les fenêtres de dialogue, on peut accéder directement au fichier d’aide en cliquant sur le point d’interrogation.</li>
 </ul></li>
 </ul>
 <div class="cell">
@@ -351,17 +373,23 @@ Version 18 et 17
 <div class="code-with-filename-file">
 <pre><strong>Utiliser l'aide interne</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">help</span> <span class="kw">generate</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">help</span> <span class="kw">generate</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</div>
+<p>L’animation suivante n’est bien évidemment pas disponible en format pdf</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="gifanime/anim1.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="gifanime/anim1.gif" class="img-fluid figure-img"></a></p>
+</figure>
 </div>
 <p>L’aide comprend généralement:</p>
 <ul>
 <li><p>Le nom de la commande</p></li>
-<li><p>Le lien vers l’entrée du manuel si commande officielle. Pour les commandes externes, un lien vers le sitee support peut-être proposé.</p></li>
+<li><p>Le lien vers l’entrée du manuel si commande officielle. Pour les commandes externes, un lien vers le site support peut-être proposé.</p></li>
 <li><p>La description de la syntaxe</p></li>
 <li><p>Le détail des options</p></li>
 <li><p>Des exemples avec éventuellement une exécution directe (voir avec <code>help tw</code>)</p></li>
-<li><p>Les informations sauvegardées temporairement (jusqu’à l’exécution d’une autre commande) =&gt; <em>stored results</em>.</p></li>
+<li><p>Les informations sauvegardées temporairement (jusqu’à l’exécution d’une autre commande) =&gt; <em>stored results</em>. C’est informations peuvent être des valeurs, des matrices, qui pourront être réutilisés dans la suite d’un programme (voir le chapitre sur la syntaxe).</p></li>
 <li><p>L’instruction <code>findit nom_command</code> permet d’obtenir la liste de toutes les ressources disponibles d’une commande, internes ou externes. Exemple: <code>findit fitstat</code></p></li>
 </ul>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -374,10 +402,11 @@ Warning: compatibilité entre les versions
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Des problèmes de compatibilité entre les versions de Stata se sont posés. Cela affecte la lecture des bases entre les différentes versions du logiciel. C’est le cas entre la version 14 et les versions antérieures (dont la version 13 qui date de 2012).</p>
-<p>Version 14 (idem 15,16): refonte total du système d’encodage vers le standard UTF8.<br>
-Les versions inférieures ne peuvent pas ouvrir les bases au format actuel, qui doivent être enregistrées avec une commande particulière (<code>saveold</code>) sous Stata 14 à 17. Les accents ne sont pas lu après cette conversion, et ce qui nécessite d’exécuter un programme pour les convertir (au secours!!!!).<br>
-<br> A l’Ined, depuis le déploiement de la version 14 et le passage à la version 15 Linux, il n’y a plus de problème. Attention toutefois pour les collaborations avec l’extérieur.</p>
+<p>Des problèmes de compatibilité entre les versions de Stata se sont posés. Cela affecte la lecture des bases entre les différentes versions du logiciel. Le dernier cas en date est maintenant assez ancien (version 14).</p>
+<p>Version 14: refonte total du système d’encodage vers le standard UTF8.<br>
+Les versions inférieures de Stata ne peuvent pas ouvrir les bases au format actuel, qui doivent être enregistrées avec une commande particulière (<code>saveold</code>) sous Stata 14 à 17. Les accents ne sont pas lu après cette conversion, et ce qui nécessite d’exécuter un programme pour les convertir (au secours!!!!).<br>
+A l’Ined, depuis le déploiement de la version 14 et le passage à la version 15 Linux, il n’y a plus de problème.</p>
+<p>On peut également regréter que Stata n’offre pas un certain niveau de rétrocompatibilité avec, au moins avec la version précédente. Par exemple la nouvelle palette de couleurs et le nouveau thème pour les graphiques par défaut, aurait pu être proposés comme maj aux versions 16 ou 17.</p>
 </div>
 </div>
 </section>
@@ -399,15 +428,18 @@ Pour télécharger un package, on peut utiliser la ligne de commande:</p>
 <div class="code-with-filename-file">
 <pre><strong>Installation d'une commande</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">ssc</span> install nom_commande, <span class="kw">replace</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">ssc</span> install nom_commande, <span class="kw">replace</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<p>Il est possible d’installer un package après avoir consulté les fichiers avec la commande <code>findit</code> (on peut donc consulter l’aide en amont)</p>
-<p>Les programmes des packages externes se trouve dans un répertoire spécifique <strong>plus/ado</strong>, souvent installé dans la racine du lecteur <code>C:</code>. On peut déplacer ce répertoire, et c’est conseillé si on dispose, comme à l’Ined, d’une sauvergarde régulière sur un lecteur. On peut vérifier la localisation de ce répertoire avec la commande <code>sysdir</code>, et plus généralement la localisation des répertoires d’utilisation de Stata.</p>
+<ul>
+<li>Il est possible d’installer un package après avoir consulté les fichiers avec la commande <code>findit</code>.</li>
+<li>On peut également consulter le fichier d’aide de lacommande avant de l’installer.</li>
+</ul>
+<p>Les programmes des packages externes se trouvent dans un répertoire spécifique <strong>plus/ado</strong>, souvent installé dans la racine du lecteur <code>C:</code>. On peut déplacer ce répertoire, et c’est conseillé si on dispose, comme à l’Ined, d’une sauvergarde régulière sur un autre lecteur via un serveur. On peut vérifier la localisation de ce répertoire avec la commande <code>sysdir</code>, et plus généralement la localisation des répertoires d’utilisation de Stata.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ot">sysdir</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ot">sysdir</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="result"><code>   STATA:  C:\PROGRA~1\Stata17\
+<pre><code>   STATA:  C:\PROGRA~1\Stata17\
     BASE:  C:\PROGRA~1\Stata17\ado\base\
     SITE:  C:\PROGRA~1\Stata17\ado\site\
     PLUS:  D:\D\ado\plus\
@@ -419,8 +451,8 @@ OLDPLACE:  c:\ado\</code></pre>
 <p>Ouvrir la base d’exemple <em>auto</em><br>
 Dans la fenêtre <em>Command</em>: <strong><code>sysuse auto, clear</code></strong></p>
 <ul>
-<li>[1] Accéder à l’aide (pdf) de l’instruction <code>tabulate</code>. Faire un tableau croisé entre la variable <em>foreign</em> et <em>rep78</em></li>
-<li>[2] Installer le package externe <code>findname</code>, exécuter <code>findname t*</code> et chercher les variables de type chaine de caractère (string)</li>
+<li>[1] Accéder à l’aide (pdf) de l’instruction <code>tabulate</code>. Faire un tableau croisé entre la variable <em>foreign</em> et <em>rep78</em>.</li>
+<li>[2] Installer le package externe <code>findname</code>, exécuter <code>findname t*</code> et chercher les variables de type chaine de caractère (string).</li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -432,8 +464,8 @@ profile.do
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Attention</strong>: Avec la version 18, la technique permettant avec un profile.do de récupérer une sauvegarde d’un programme n’a plus aucune utilité, Stata ayant (enfin) une autosave des programmes.</p>
-<p>Paramétrer vos sessions avec un fichier <strong><em>profile.do</em></strong> [<a href="https://mthevenin.github.io/stata_fr/articles/index/posts/profile/profile.html">Lien</a>]</p>
+<p><strong>Attention</strong>: Avec la version 18, la technique permettant avec un <em>profile.do</em> de récupérer une sauvegarde d’un programme n’a plus aucune utilité, Stata ayant (enfin) une autosave des programmes.</p>
+<p>Pour en savoir plus sur le paramétrage des sessions avec un fichier <strong><em>profile.do</em></strong> [<a href="https://mthevenin.github.io/stata_fr/articles/index/posts/profile/profile.html">Lien</a>]</p>
 </div>
 </div>
 
@@ -698,6 +730,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","loop":true,"descPosition":"bottom","openEffect":"zoom"});</script>
 
 
 
