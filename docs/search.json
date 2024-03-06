@@ -39,14 +39,14 @@
     "href": "chapitre2.html#les-principaux-types-de-fichier",
     "title": "2  L’environnement",
     "section": "2.1 Les (principaux) types de fichier",
-    "text": "2.1 Les (principaux) types de fichier\n\nLes bases de données: .dta\nL’éditeur de programme : .do (.ado pour la programmation de commandes)\nLe log de session : .smcl ou .log (conversion possible en .txt, .doc ou .pdf)\nLes graphiques : .gph (+ enregistrement en format image: png, jpg, svf…)\nLes fichiers d’aides: .sthlp"
+    "text": "2.1 Les (principaux) types de fichier\n\nLes bases de données: .dta [.dtas depuis la version 18 qui permet d’enregistrer un ensemble de base sous format de frames]\nL’éditeur de programme : .do (.ado pour la programmation de commandes)\nLe log de session : .smcl ou .log (conversion possible en .txt, .doc ou .pdf)\nLes graphiques : .gph (+ enregistrement en format image: png, jpg, svf…)\nLes fichiers d’aides: .sthlp"
   },
   {
     "objectID": "chapitre2.html#où-passer-ses-instructions",
     "href": "chapitre2.html#où-passer-ses-instructions",
     "title": "2  L’environnement",
     "section": "2.2 Où passer ses instructions ?",
-    "text": "2.2 Où passer ses instructions ?\n\nDans l’éditeur de programme (.do ou .ado ou écritue d’un fichier d’aide)\nDans la fenêtre “Command” de l’environnement principal\nPar les menus (ouverture d’une boîte de dialogue). On récupéré la syntaxe de l’instruction directement dans l’interface principale, et par copier-coller dans l’éditeur de programme. Plutôt pratique."
+    "text": "2.2 Où passer ses instructions ?\n\nDans l’éditeur de programme (.do ou .ado ou écriture d’un fichier d’aide)\nDans la fenêtre “Command” de l’environnement principal\nPar les menus (ouverture d’une boîte de dialogue). On récupéré la syntaxe de l’instruction directement dans l’interface principale, et par copier-coller dans l’éditeur de programme. Plutôt pratique.\n\n\n\n\n\n\n\nExécution de Stata avec des interfaces externes\n\n\n\nIl est possible d’exécuter Stata via d’autres interfaces, via par exemple le notebook jupyter (outil Python) dans un navigateur web ou avec l’IDE VScode, mais encore avec RStudio (Quarto).\nSauf exception, cette exécution externe doit être plutôt réservée à la production simultanée d’une documentation, lors de l’animation du formation ou de la présentation d’un programme lors d’une résu. En effet, avec ces outils la base n’est pas directement explorable comme dans l’interface Stata.\nUn exemple d’installation et d’utilisation de ces outils avec Stata est disponible ici: [Lien]"
   },
   {
     "objectID": "chapitre2.html#linterface-principale",

@@ -6,8 +6,11 @@ stataexe <- "C:/Program Files/Stata17/StataSE-64.exe"
 knitr::opts_chunk$set(engine.path=list(stata=stataexe))
 ```
 
-# **L'environnement**
 
+
+
+
+# **L'environnement**
 
 **Commandes et fonction introduites**  
 *En italique, commandes externes*
@@ -20,7 +23,7 @@ knitr::opts_chunk$set(engine.path=list(stata=stataexe))
 
 ## Les (principaux) types de fichier 
 
-* Les bases de données: **.dta**
+* Les bases de données: **.dta**  [.dtas depuis la version 18 qui permet d'enregistrer un ensemble de base sous format de frames]
 
 * L'éditeur de programme : **.do** (**.ado** pour la programmation de commandes)
 
@@ -34,12 +37,36 @@ knitr::opts_chunk$set(engine.path=list(stata=stataexe))
 
 ## Où  passer ses instructions ?
 
-* Dans l'éditeur de programme (.do ou .ado ou écritue d'un fichier d'aide)
+* Dans l'éditeur de programme (fichiers *.do*, *.ado*, *sthlp*)
 
 * Dans la fenêtre "Command" de l'environnement principal
 
-* Par les menus (ouverture d'une boîte de dialogue). On récupéré la syntaxe de l'instruction directement dans l'interface principale, et par copier-coller dans l'éditeur de programme. Plutôt pratique.
+* Par les boîte de dialogue via le menu ou la commande `db`. On pourra récupérer la syntaxe de l'instruction directement dans l'interface principale ou dans l'éditeur de programme grâce à un bouton copier. Plutôt pratique.
 
+
+::: callout-tip
+
+### faire défiler les intructions listées dans la boîte *review*
+
+On peut faire défiler les instructions passées dans la boîte commande avec les touches *page up* et *page down* du clavier [[touches page-up et page-down](https://www.google.com/search?client=firefox-b-e&sca_esv=561848188&q=page+up+page+down&tbm=isch&source=lnms&sa=X&ved=2ahUKEwjgo8ut14iBAxWcVqQEHSxLCiAQ0pQJegQIChAB&biw=1920&bih=955&dpr=1)] 
+
+:::
+
+
+::: callout-note
+
+#### Exécution de Stata avec des interfaces externes
+
+Il est possible d'exécuter Stata via d'autres interfaces, par exemple le notebook jupyter (outil Python). Une fois ce notebook configuré pour être utilisé avec Stata, on peut l'utiliser dans un navigateur web, dan l'IDE VScode, mais encore dans RStudio (Quarto) pour générer de la documentation avec exécution d'un programme.
+
+Sauf exception, cette exécution externe doit être plutôt réservée à la production simultanée d'une documentation, lors de l'animation d'une formation ou de la présentation d'un programme lors d'une réunion. En effet, avec ces outils les bases de données ne peuvent pas être directement explorables comme dans l'interface Stata.
+
+Un exemple d'installation et d'utilisation de ces outils avec Stata est disponible ici: [[Lien](https://mthevenin.github.io/stata_fr/articles/index/posts/nbstata/nbstata.html)]
+
+On peut trouver certains bénéfices à utiliser Stata avec de type d'outils pour tester la programmation d'un  fragment d'un programme : 
+- Lorsqu'on construit un graphique un peu complexe, il s'affiche en de sous de la cellule de code et non dans une fenêtre externe.
+- Lorsqu'on utilise des expressions macro de type temporaire dans un programmes, elles restent mémorisées d'une cellule à une autre. 
+:::
 
 
 ## L'interface principale
@@ -125,17 +152,17 @@ db logit
 
 ![](img2/g4.png){width=50% fig-align="left"}
 
-*  **execute (do)**: les commandes et les résultats sont affichés dans l'output de l'interface principale
-*  **execute quietly (run)**: les commandes et les résultats ne sont pas affichés dans l'output de l'interface principale
+*  **execute (do)**: les commandes et les résultats sont affichés dans l'output de l'interface principale.
+*  **execute quietly (run)**: les commandes et les résultats ne sont pas affichés dans l'output de l'interface. principale
 
 ::: callout-tip
 
-### `do` et `run` dans un programme
-
-On peut exécuter un ou plusieurs programme  enregistré  dans un programme
+### `do` et `r
+On peut exécutun` dans un programme
+er un ou plusieurs programme  enregistrés  dans un autre programme.
 
 ```{stata, eval=F}
-do "path/nom_prog.do"  // avec affichage de l'output
+do  "path/nom_prog.do"  // avec affichage de l'output
 run "path/nom_prog.do" // sans affichage de l'output
 ```
 
@@ -177,7 +204,7 @@ tabulate X1
 
 Le délimiteur `;` est sourtout utilisé pour les graphiques qui peuvent âtre assez gourmants en options (je le conseille).
 
-La solution la plus utilisée est  ```///``` à la fin d'une ligne, à l'exception de la dernière de la commande  
+La solution la plus utilisée est  ```///``` à la fin d'une ligne, à l'exception de la dernière ligne de commande  
 
 ```{stata, eval=F}
 keep  X1 X2 /// 
@@ -195,15 +222,15 @@ Si le commentaire est sur une seule ligne
 * Commentaire
 ```
 
-Si le commentaire est sur une ligne et suit une instruction
+Si le commentaire est sur une ligne et sur la même ligne que  l'instruction
 ```{stata, eval=F}
 instruction  // Commentaire 
 ```
 
 Si le commentaire est sur plusieurs lignes
 ```{stata, eval=F}
-/* commentaire 1
-   commentaire 2 */
+/* ligne commentaire 1
+   ligne commentaire 2 */
 ```
 
 ::: callout-warning
@@ -232,11 +259,15 @@ On peut sauver les meubles en générant un log de session en tête de programme
  
 :::
 
+### Gestion des fichiers avec un mode projet
 
-#### Interactions entre l'interface principale, les boîtes de dialogue et l'éditeur de programme
+Introduit de souvenir avec la version 14 ou 15, un projet permet de gérer (ouvrir, enregistrer...) un ensemble de fichiers dans un répertoire et sous répertoires qui lui sont affectés.
 
 
-**DEMONSTRATION PENDANT LA FORMATION** 
+
+
+
+
 
 
 

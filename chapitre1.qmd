@@ -149,8 +149,8 @@ Les versions inférieures de Stata ne peuvent pas ouvrir les bases au format act
 A l'Ined, depuis le déploiement de la version 14 et le passage à la version 15 Linux, il n'y a plus de problème. 
 
 On peut également regréter que Stata n'offre pas un certain niveau de rétrocompatibilité avec, au moins avec la version précédente. Par exemple la nouvelle palette de couleurs et le nouveau thème pour les graphiques par défaut, aurait pu être proposés comme maj aux versions 16 ou 17. 
-
 :::
+
 
 
 ## **Les users packages**
@@ -182,7 +182,6 @@ Les programmes des packages externes se trouvent dans un répertoire spécifique
 ```{stata}
 sysdir
 ```
-
 
 
 **Exercice**

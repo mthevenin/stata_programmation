@@ -297,7 +297,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="les-principaux-types-de-fichier" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="les-principaux-types-de-fichier"><span class="header-section-number">2.1</span> Les (principaux) types de fichier</h2>
 <ul>
-<li><p>Les bases de données: <strong>.dta</strong></p></li>
+<li><p>Les bases de données: <strong>.dta</strong> [.dtas depuis la version 18 qui permet d’enregistrer un ensemble de base sous format de frames]</p></li>
 <li><p>L’éditeur de programme : <strong>.do</strong> (<strong>.ado</strong> pour la programmation de commandes)</p></li>
 <li><p>Le log de session : <strong>.smcl</strong> ou <strong>.log</strong> (conversion possible en <strong>.txt</strong>, <strong>.doc</strong> ou <strong>.pdf</strong>)</p></li>
 <li><p>Les graphiques : <strong>.gph</strong> (+ enregistrement en format image: png, jpg, svf…)</p></li>
@@ -307,10 +307,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="où-passer-ses-instructions" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="où-passer-ses-instructions"><span class="header-section-number">2.2</span> Où passer ses instructions ?</h2>
 <ul>
-<li><p>Dans l’éditeur de programme (.do ou .ado ou écritue d’un fichier d’aide)</p></li>
+<li><p>Dans l’éditeur de programme (.do ou .ado ou écriture d’un fichier d’aide)</p></li>
 <li><p>Dans la fenêtre “Command” de l’environnement principal</p></li>
 <li><p>Par les menus (ouverture d’une boîte de dialogue). On récupéré la syntaxe de l’instruction directement dans l’interface principale, et par copier-coller dans l’éditeur de programme. Plutôt pratique.</p></li>
 </ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exécution de Stata avec des interfaces externes
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Il est possible d’exécuter Stata via d’autres interfaces, via par exemple le notebook jupyter (outil Python) dans un navigateur web ou avec l’IDE VScode, mais encore avec RStudio (Quarto).</p>
+<p>Sauf exception, cette exécution externe doit être plutôt réservée à la production simultanée d’une documentation, lors de l’animation du formation ou de la présentation d’un programme lors d’une résu. En effet, avec ces outils la base n’est pas directement explorable comme dans l’interface Stata.</p>
+<p>Un exemple d’installation et d’utilisation de ces outils avec Stata est disponible ici: [<a href="https://mthevenin.github.io/stata_fr/articles/index/posts/nbstata/nbstata.html">Lien</a>]</p>
+</div>
+</div>
 </section>
 <section id="linterface-principale" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="linterface-principale"><span class="header-section-number">2.3</span> L’interface principale</h2>
@@ -771,7 +786,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom","loop":true});</script>
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","loop":true,"descPosition":"bottom","closeEffect":"zoom"});</script>
 
 
 
